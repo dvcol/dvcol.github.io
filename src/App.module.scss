@@ -1,0 +1,40 @@
+.app {
+  text-align: center;
+}
+
+.logo {
+  height: 40vmin;
+  animation: logo-spin infinite 20s linear;
+  pointer-events: none;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    height: 40vmin;
+    animation: none;
+    pointer-events: none;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  background-color: #282c34;
+}
+
+.link {
+  color: #b318f0;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
