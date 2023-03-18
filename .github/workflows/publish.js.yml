@@ -1,0 +1,149 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Publish - Build and publish
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    tags:
+      # Ignore release candidates
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+  workflow_dispatch:
+    inputs:
+      tagName:
+        description: Tag name
+        required: false
+
+env:
+  node_version: 18.x
+  pnpm_version: 7.x
+
+jobs:
+  tag:
+    name: Tag release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch ${{ github.ref }}
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup pnpm ${{ env.pnpm_version }}
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: ${{ env.pnpm_version }}
+
+      - name: Setup Node.js ${{ env.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node_version }}
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+
+      - name: install dependencies
+        run: pnpm install
+
+      - name: Release
+        run: |
+          # setup git creds
+          git config user.name "GitHub Release Bot"
+          git config user.email "<>"
+
+          # generate release
+          pnpm run release
+
+      - name: Push to remote
+        run: |
+          # Check status
+          git status
+          git diff --color -U0 | cat
+
+          # push changes
+          git push origin --follow-tags
+
+
+
+  release:
+    needs: tag
+    name: Release and deploy
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout branch ${{ github.ref }}
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup pnpm ${{ env.pnpm_version }}
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: ${{ env.pnpm_version }}
+
+      - name: Setup Node.js ${{ env.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node_version }}
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+
+      - name: install dependencies
+        run: pnpm install
+
+      - name: build
+        run: pnpm run build
+
+      - name: Generate Release changelog
+        run: pnpm run release:changelog
+
+      - name: Fetch latest tag
+        if: ${{ github.event_name == 'workflow_run' || (github.event_name == 'workflow_dispatch' && github.event.inputs.tagName == '') }}
+        id: latest-tag
+        run: |
+          tag_name=$(git describe --abbrev=0)
+          echo "Tag found: '$tag_name'"
+          echo "::set-output name=TAG_NAME::$tag_name"
+
+      - name: Zip build folder
+        run: |
+          # Zipping build folder for artifact upload
+          cd dist;
+          zip -r release.zip *
+          
+          # Check zip created
+          echo "Zip created in 'dist/'"
+          ls -l  release.zip
+          cd ..
+
+      - name: Push Release to github
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.tagName || steps.latest-tag.outputs.TAG_NAME || github.ref}}
+          body_path: RELEASE.md
+          files: dist/release.zip
+
+
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
