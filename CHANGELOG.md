@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/dvcol/dvcol.github.io/compare/v0.0.2...v1.1.0) (2023-03-18)
+
+
+### Features
+
+* **bump:** bump to version 1.0.0 and add permissions ([b697287](https://github.com/dvcol/dvcol.github.io/commit/b697287a0b718bf7569b9326589f10bd0d1e3629))
+
 ### [0.0.2](https://github.com/dvcol/dvcol.github.io/compare/v0.0.1...v0.0.2) (2023-03-18)
 
 
