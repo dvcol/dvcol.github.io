@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/dvcol/dvcol.github.io/compare/v1.1.0...v1.1.1) (2023-03-18)
+
+
+### Bug Fixes
+
+* **ci:** fix permissions for release ([56dcea8](https://github.com/dvcol/dvcol.github.io/commit/56dcea85b471eaea2ca2ab884af1763325a1c078))
+
 ## [1.1.0](https://github.com/dvcol/dvcol.github.io/compare/v0.0.2...v1.1.0) (2023-03-18)
 
 
