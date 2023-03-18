@@ -34,6 +34,7 @@
     "@dvcol/eslint-plugin-presets": "^1.3.2",
     "@dvcol/stylelint-plugin-presets": "^1.1.0",
     "eslint": "^8.36.0",
+    "extract-changelog-release": "^1.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "sass": "^1.59.3",

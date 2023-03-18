@@ -6,6 +6,7 @@ specifiers:
   '@dvcol/eslint-plugin-presets': ^1.3.2
   '@dvcol/stylelint-plugin-presets': ^1.1.0
   eslint: ^8.36.0
+  extract-changelog-release: ^1.0.2
   husky: ^8.0.3
   lint-staged: ^13.1.2
   sass: ^1.59.3
@@ -26,6 +27,7 @@ devDependencies:
   '@dvcol/eslint-plugin-presets': 1.3.2_j4766f7ecgqbon3u7zlxn5zszu
   '@dvcol/stylelint-plugin-presets': 1.1.0_stylelint@14.16.1
   eslint: 8.36.0
+  extract-changelog-release: 1.0.2
   husky: 8.0.3
   lint-staged: 13.2.0
   sass: 1.59.3
@@ -4601,6 +4603,13 @@ packages:
       to-regex: 3.0.2
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /extract-changelog-release/1.0.2:
+    resolution: {integrity: sha512-y7z3GsG3zlp9Y0Toqxo4vQdn8x5T0LmVpycap3OcOP+HhgSuSqfHP0gnqYWf2zsquohE/20IpJKpvbVStQG2jg==}
+    hasBin: true
+    dependencies:
+      minimist: 1.2.8
     dev: true
 
   /fast-deep-equal/3.1.3:
