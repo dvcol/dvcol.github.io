@@ -20,7 +20,7 @@
     "serve": "vite preview",
     "test:unit": "vitest run --environment jsdom --coverage",
     "test:watch": "vitest --environment jsdom",
-    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+    "lint": "eslint .",
     "lint:fix": "pnpm run lint --fix",
     "release": "standard-version",
     "release:changelog": "extract-changelog-release > RELEASE.md"
