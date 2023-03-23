@@ -29,21 +29,21 @@
     "solid-js": "^1.6.15"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.4",
+    "@commitlint/cli": "^17.5.0",
     "@commitlint/config-conventional": "^17.4.4",
-    "@dvcol/eslint-plugin-presets": "^1.3.2",
-    "@dvcol/stylelint-plugin-presets": "^1.1.0",
+    "@dvcol/eslint-plugin-presets": "^1.3.3",
+    "@dvcol/stylelint-plugin-presets": "^1.1.1",
     "eslint": "^8.36.0",
     "extract-changelog-release": "^1.0.2",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
+    "lint-staged": "^13.2.0",
     "sass": "^1.59.3",
     "standard-version": "^9.5.0",
-    "stylelint": "^14.16.1",
+    "stylelint": "^15.3.0",
     "typescript": "^5.0.2",
-    "vite": "^4.2.0",
+    "vite": "^4.2.1",
     "vite-plugin-solid": "^2.6.1",
-    "vitest": "^0.29.3"
+    "vitest": "^0.29.7"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md}": [
@@ -61,7 +61,7 @@
         "svelte"
       ],
       "allowedVersions": {
-        "stylelint": "^14.0.0"
+        "stylelint": ">=15"
       }
     }
   }
