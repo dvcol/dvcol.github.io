@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/dvcol/dvcol.github.io/compare/v1.1.1...v1.2.0) (2023-04-01)
+
+
+### Features
+
+* **solid:** adds sui and solid router ([62e80bc](https://github.com/dvcol/dvcol.github.io/commit/62e80bca3aee8767979f1ab36ca931bc25125527))
+* **synology:** adds basic support for synology mfe ([c5b117f](https://github.com/dvcol/dvcol.github.io/commit/c5b117ffc32960e366ede15034b5442022068d88))
+
 ### [1.1.1](https://github.com/dvcol/dvcol.github.io/compare/v1.1.0...v1.1.1) (2023-03-18)
 
 
