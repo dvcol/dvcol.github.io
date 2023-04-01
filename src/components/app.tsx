@@ -1,9 +1,9 @@
-import styles from './App.module.scss';
-import logo from './logo.svg';
-
 import type { Component } from 'solid-js';
 
-const App: Component = () => (
+import logo from '~/assets/logo.svg';
+import styles from '~/styles/app.module.scss';
+
+export const App: Component = () => (
   <div class={styles.app}>
     <header class={styles.header}>
       <img src={logo} class={styles.logo} alt="logo" />
@@ -16,5 +16,3 @@ const App: Component = () => (
     </header>
   </div>
 );
-
-export default App;
