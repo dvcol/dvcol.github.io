@@ -9,7 +9,7 @@ export const App: Component = () => (
   <div class={styles.app}>
     <header class={styles.header}>
       <img src={logo} class={styles.logo} alt="logo" />
-      <Stack spacing={2} direction="row">
+      <Stack spacing={2} direction="column">
         <Button
           variant="outlined"
           onclick={() => {
@@ -18,7 +18,17 @@ export const App: Component = () => (
         >
           Synology
         </Button>
+        <Button
+          variant="outlined"
+          onclick={() => {
+            window.location.href = '#/particles';
+          }}
+        >
+          Particles
+        </Button>
       </Stack>
     </header>
   </div>
 );
+
+export default App;

@@ -1,9 +1,13 @@
 /* @refresh reload */
 import { Router, hashIntegration, Routes, Route } from '@solidjs/router';
+import { lazy } from 'solid-js';
 import { render } from 'solid-js/web';
 
 import '~/styles/index.scss';
-import { App, Synology } from './components';
+import { App } from './components';
+
+const ParticlesWip = lazy(() => import('./components/particles-wip'));
+const Synology = lazy(() => import('./components/synology'));
 
 const root = document.getElementById('root');
 
@@ -16,6 +20,7 @@ render(
       <Routes>
         <Route path="/" component={App} />
         <Route path="/synology/*" component={Synology} />
+        <Route path="/particles" component={ParticlesWip} />
       </Routes>
     </Router>
   ),
