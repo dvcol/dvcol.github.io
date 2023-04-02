@@ -1,6 +1,6 @@
 import { defineComponents } from '@dvcol/synology-extension';
-import enLocales from '@dvcol/synology-extension/dist/_locales/en/messages.json';
+import en from '@dvcol/synology-extension/dist/_locales/en/messages.json';
 
-globalThis._locales = { en: enLocales };
-
-defineComponents();
+defineComponents({ patch: true, locales: { en } })
+  .then(() => console.debug('Web components defined.'))
+  .catch(err => console.error('Web components failed to define.', err));

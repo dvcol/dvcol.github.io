@@ -15,7 +15,7 @@ render(
     <Router source={hashIntegration()}>
       <Routes>
         <Route path="/" component={App} />
-        <Route path="/synology" component={Synology} />
+        <Route path="/synology/*" component={Synology} />
       </Routes>
     </Router>
   ),
