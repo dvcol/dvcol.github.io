@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/dvcol/dvcol.github.io/compare/v1.2.1...v1.3.0) (2023-04-02)
+
+
+### Features
+
+* **particles:** adds particle to project ([5a578ab](https://github.com/dvcol/dvcol.github.io/commit/5a578aba024a21be8aa9dac8cb363eaf7181701d))
+
+
+### Bug Fixes
+
+* **synology:** fix web-component typing ([1481851](https://github.com/dvcol/dvcol.github.io/commit/1481851edfe32dbcda89dc59b0c196e646b7f3c9))
+
 ### [1.2.1](https://github.com/dvcol/dvcol.github.io/compare/v1.2.0...v1.2.1) (2023-04-02)
 
 
