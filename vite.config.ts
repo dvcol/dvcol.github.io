@@ -5,6 +5,8 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
 
+console.info('SW', process.env.SERVICE_WOKER);
+
 export default defineConfig({
   plugins: [
     suidPlugin(),
@@ -41,7 +43,8 @@ export default defineConfig({
       },
       workbox: {
         sourcemap: !!process.env.SERVICE_WOKER,
-        importScripts: ['src/sw/service-worker.js'],
+        importScripts: [process.env.SERVICE_WOKER ? 'src/sw/worker.ts' : 'entry/worker.entry.js'],
+        globIgnores: ['entry/worker.entry.js'],
       },
     }),
   ],
@@ -54,12 +57,13 @@ export default defineConfig({
     rollupOptions: {
       input: {
         shell: 'index.html',
+        worker: 'src/sw/worker.ts',
         synology: 'src/apps/synology-extension/entry.ts',
       },
       output: {
         assetFileNames: 'assets/[name].[extname]',
-        entryFileNames: 'entry/[name].entry.[hash].js',
         chunkFileNames: 'chunks/[name].chunk.[hash].js',
+        entryFileNames: entry => `entry/[name].entry${entry.name !== 'worker' ? '.[hash]' : ''}.js`,
       },
     },
   },
