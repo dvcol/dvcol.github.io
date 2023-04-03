@@ -19,17 +19,17 @@ export default defineConfig({
         theme_color: '#282c34',
         icons: [
           {
-            src: 'src/assets/pwa/icon/192.png',
+            src: 'src/assets/pwa/icons/192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'src/assets/pwa/icon/512.png',
+            src: 'src/assets/pwa/icons/512.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: 'src/assets/pwa/icon/512.png',
+            src: 'src/assets/pwa/icons/512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
@@ -41,6 +41,7 @@ export default defineConfig({
       },
       workbox: {
         sourcemap: !!process.env.SERVICE_WOKER,
+        importScripts: ['src/sw/service-worker.js'],
       },
     }),
   ],
@@ -53,7 +54,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         shell: 'index.html',
-        'apps/synology-extension': 'apps/synology-extension/entry.ts',
+        synology: 'src/apps/synology-extension/entry.ts',
+      },
+      output: {
+        assetFileNames: 'assets/[name].[extname]',
+        entryFileNames: 'entry/[name].entry.[hash].js',
+        chunkFileNames: 'chunks/[name].chunk.[hash].js',
       },
     },
   },
