@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/dvcol/dvcol.github.io/compare/v1.4.0...v1.4.1) (2023-04-03)
+
+
+### Bug Fixes
+
+* **sw:** adds update prompt ([1ba9b8e](https://github.com/dvcol/dvcol.github.io/commit/1ba9b8e65a8f46d891b5fc46e02b1007cb933ec8))
+* **sw:** fix service worker build ([b6cb047](https://github.com/dvcol/dvcol.github.io/commit/b6cb0477f48922136da9e9af111cdcb84bc88a47))
+
 ## [1.4.0](https://github.com/dvcol/dvcol.github.io/compare/v1.3.0...v1.4.0) (2023-04-03)
 
 
