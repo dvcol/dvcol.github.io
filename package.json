@@ -16,6 +16,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "vite",
+    "dev:sw": "SERVICE_WOKER=true vite",
     "build": "vite build",
     "serve": "vite preview",
     "test:unit": "vitest run --environment jsdom --coverage",
@@ -52,6 +53,7 @@
     "stylelint": "^15.3.0",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
+    "vite-plugin-pwa": "^0.14.7",
     "vite-plugin-solid": "^2.6.1",
     "vitest": "^0.29.7"
   },
