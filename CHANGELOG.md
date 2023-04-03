@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/dvcol/dvcol.github.io/compare/v1.4.1...v1.4.2) (2023-04-03)
+
+
+### Bug Fixes
+
+* **sw:** fix pwa image in dist ([83c8511](https://github.com/dvcol/dvcol.github.io/commit/83c8511d100c9b0525cd231a892f37bf069566a0))
+
 ### [1.4.1](https://github.com/dvcol/dvcol.github.io/compare/v1.4.0...v1.4.1) (2023-04-03)
 
 
