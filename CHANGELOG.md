@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/dvcol/dvcol.github.io/compare/v1.4.2...v1.4.3) (2023-04-03)
+
+
+### Bug Fixes
+
+* **sw:** fix service worker dist path in prod ([6f9e6e4](https://github.com/dvcol/dvcol.github.io/commit/6f9e6e4d538ecf8b18c2d5cd9cee776708347325))
+
 ### [1.4.2](https://github.com/dvcol/dvcol.github.io/compare/v1.4.1...v1.4.2) (2023-04-03)
 
 
