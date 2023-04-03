@@ -6,6 +6,8 @@ import { render } from 'solid-js/web';
 import '~/styles/index.scss';
 import { App } from './components';
 
+import { Reload } from '~/sw';
+
 const ParticlesWip = lazy(() => import('./components/particles-wip'));
 const Synology = lazy(() => import('./components/synology'));
 
@@ -22,6 +24,7 @@ render(
         <Route path="/synology/*" component={Synology} />
         <Route path="/particles" component={ParticlesWip} />
       </Routes>
+      <Reload />
     </Router>
   ),
   root!,
