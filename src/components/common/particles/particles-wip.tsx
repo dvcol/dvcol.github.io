@@ -1,13 +1,14 @@
 import Particles from 'solid-particles';
+
 import { loadFull } from 'tsparticles';
 
+import type { Component } from 'solid-js';
 import type { ParticlesProps } from 'solid-particles';
 
-export const ParticlesWip = () => {
+export const ParticlesWip: Component = () => {
   const particlesInit: ParticlesProps['init'] = async main => {
     await loadFull(main);
   };
-
   const options: ParticlesProps['options'] = {
     fpsLimit: 120,
     interactivity: {

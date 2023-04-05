@@ -4,7 +4,7 @@ import type { Component } from 'solid-js';
 
 const wcStyle: any = { display: 'block', width: '100vw', height: '100vh', 'max-height': '60rem', 'max-width': '80rem' };
 
-export const Synology: Component = () => {
+export const SynologyDemo: Component = () => {
   // Lazy load entry script
   import(/* @vite-ignore */ `../../../apps/synology-extension/entry`);
 
@@ -16,4 +16,4 @@ export const Synology: Component = () => {
   );
 };
 
-export default Synology;
+export default SynologyDemo;
