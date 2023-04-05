@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'url';
 
 import suidPlugin from '@suid/vite-plugin';
+import devtoolsPlugin from 'solid-devtools/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
@@ -9,6 +10,14 @@ console.info('SW', process.env.SERVICE_WOKER);
 
 export default defineConfig({
   plugins: [
+    devtoolsPlugin({
+      autoname: true,
+      locator: {
+        targetIDE: 'webstorm',
+        componentLocation: true,
+        jsxLocation: true,
+      },
+    }),
     suidPlugin(),
     solidPlugin(),
     VitePWA({

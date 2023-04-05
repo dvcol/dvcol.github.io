@@ -1,34 +1,26 @@
-import { Button, Stack } from '@suid/material';
+import { hashIntegration, Route, Router, Routes } from '@solidjs/router';
+
+import { lazy } from 'solid-js';
+import { Toaster } from 'solid-toast';
+
+import { Reload } from './common';
+import { Home } from './pages';
 
 import type { Component } from 'solid-js';
 
-import logo from '~/assets/logo.svg';
-import styles from '~/styles/app.module.scss';
+const ParticlesWip = lazy(() => import('./common/particles/particles-wip'));
+const Synology = lazy(() => import('./pages/synology/synology'));
 
 export const App: Component = () => (
-  <div class={styles.app}>
-    <header class={styles.header}>
-      <img src={logo} class={styles.logo} alt="logo" />
-      <Stack spacing={2} direction="column">
-        <Button
-          variant="outlined"
-          onclick={() => {
-            window.location.href = '#/synology';
-          }}
-        >
-          Synology
-        </Button>
-        <Button
-          variant="outlined"
-          onclick={() => {
-            window.location.href = '#/particles';
-          }}
-        >
-          Particles
-        </Button>
-      </Stack>
-    </header>
-  </div>
+  <Router source={hashIntegration()}>
+    <Routes>
+      <Route path="/" component={Home} />
+      <Route path="/synology/*" component={Synology} />
+      <Route path="/particles" component={ParticlesWip} />
+    </Routes>
+    <Reload />
+    <Toaster />
+  </Router>
 );
 
 export default App;

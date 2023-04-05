@@ -1,3 +1,3 @@
 export * from './app';
-export * from './particles-wip';
-export * from './synology';
+export * from './common';
+export * from './pages';

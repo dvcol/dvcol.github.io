@@ -8,6 +8,8 @@
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "types": ["vite/client", "vite-plugin-pwa/client"],
     "noEmit": true,
     "isolatedModules": true,
