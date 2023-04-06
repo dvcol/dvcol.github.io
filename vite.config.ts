@@ -1,15 +1,18 @@
 import { fileURLToPath, URL } from 'url';
 
+import { viteI18nPlugin } from '@dvcol/vite-plugin-i18n';
 import suidPlugin from '@suid/vite-plugin';
 import devtoolsPlugin from 'solid-devtools/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
 
-console.info('SW', process.env.SERVICE_WOKER);
-
 export default defineConfig({
   plugins: [
+    viteI18nPlugin({
+      path: 'src/i18n',
+      out: true,
+    }),
     devtoolsPlugin({
       autoname: true,
       locator: {
@@ -63,6 +66,7 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'dist',
+    chunkSizeWarningLimit: 1500,
     rollupOptions: {
       input: {
         shell: 'index.html',
