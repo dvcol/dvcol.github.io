@@ -72,6 +72,7 @@ export default defineConfig({
         shell: 'index.html',
         worker: 'src/sw/worker.ts',
         synology: 'src/apps/synology-extension/entry.ts',
+        'about-me': 'src/apps/about-me/entry.ts',
       },
       output: {
         assetFileNames: 'assets/[name].[extname]',

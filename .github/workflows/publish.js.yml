@@ -68,8 +68,6 @@ jobs:
           # push changes
           git push origin --follow-tags
 
-
-
   release:
     needs: tag
     name: Release and deploy
@@ -125,7 +123,7 @@ jobs:
           # Zipping build folder for artifact upload
           cd dist;
           zip -r release.zip *
-          
+
           # Check zip created
           echo "Zip created in 'dist/'"
           ls -l  release.zip
@@ -137,8 +135,6 @@ jobs:
           tag_name: ${{ github.event.inputs.tagName || steps.latest-tag.outputs.TAG_NAME || github.ref}}
           body_path: RELEASE.md
           files: dist/release.zip
-
-
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
