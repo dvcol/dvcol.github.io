@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/dvcol/dvcol.github.io/compare/v1.4.3...v1.5.0) (2023-04-07)
+
+
+### Features
+
+* **about:** adds about-me MFE ([a185df6](https://github.com/dvcol/dvcol.github.io/commit/a185df68821a897c9336a5c550f4efb715272e91))
+* **i18n:** adds support for i18n ([818c4c6](https://github.com/dvcol/dvcol.github.io/commit/818c4c6b7a248e99a6c6da94f64292501aef47bc))
+* **structure:** rework folder structure ([a3c16e0](https://github.com/dvcol/dvcol.github.io/commit/a3c16e0e89b80c98075f050379656fe9ea804d3e))
+
+
+### Bug Fixes
+
+* **routing:** simplify routing setup ([6408e04](https://github.com/dvcol/dvcol.github.io/commit/6408e0491c9fbeed862642916358770e6c412995))
+
 ### [1.4.3](https://github.com/dvcol/dvcol.github.io/compare/v1.4.2...v1.4.3) (2023-04-03)
 
 
