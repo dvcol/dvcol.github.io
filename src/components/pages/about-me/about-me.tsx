@@ -7,7 +7,7 @@ export const AboutMe: Component = () => {
   import(/* @vite-ignore */ `../../../apps/about-me/entry`);
 
   return (
-    <Box>
+    <Box sx={{ margin: '0 auto' }}>
       <wc-about-me />
     </Box>
   );
