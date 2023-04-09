@@ -1,8 +1,10 @@
 import type { Component } from 'solid-js';
 
+type GtagParameters = [string, string | Date];
 declare global {
   interface Window {
     dataLayer?: [string, string | Date][];
+    gtag: (...args: GtagParameters) => void;
   }
 }
 
@@ -16,8 +18,9 @@ const injectScript = (id: string) => {
 
 const injectConfig = (id: string) => {
   if (!window.dataLayer) window.dataLayer = [];
-  window.dataLayer.push(['js', new Date()]);
-  window.dataLayer.push(['config', id]);
+  if (!window.gtag) window.gtag = (...args) => window.dataLayer?.push(args);
+  window.gtag('js', new Date());
+  window.gtag('config', id);
 };
 
 export const GoogleTagId = 'G-VTFBLLVCLQ';
