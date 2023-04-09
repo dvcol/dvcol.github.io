@@ -13,7 +13,7 @@ export const Reload: Component = () => {
 
   // const onUpdate = () => updateServiceWorker(true);
 
-  return <div hidden id={'service-worker-reload'} />;
+  return <div hidden aria-hidden="true" id={'service-worker-reload'} />;
 };
 
 export default Reload;
