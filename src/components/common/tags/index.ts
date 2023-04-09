@@ -1,1 +1,2 @@
-export * from './google-tag';
+export * from './google-analytics';
+export * from './google-tag-manager';

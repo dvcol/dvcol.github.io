@@ -1,6 +1,6 @@
 import { Toaster } from 'solid-toast';
 
-import { GoogleTag, I18nProvider, Reload, Router } from './common';
+import { GoogleAnalytics, GoogleTagManager, I18nProvider, Reload, Router } from './common';
 
 import type { Component } from 'solid-js';
 
@@ -9,7 +9,8 @@ export const App: Component = () => (
     <Router>
       <Toaster />
       <Reload />
-      <GoogleTag />
+      <GoogleAnalytics />
+      <GoogleTagManager />
     </Router>
   </I18nProvider>
 );
