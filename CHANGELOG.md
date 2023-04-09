@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/dvcol/dvcol.github.io/compare/v1.5.1...v1.6.0) (2023-04-09)
+
+
+### Features
+
+* **tag:** adds google analytics tag ([fac08d3](https://github.com/dvcol/dvcol.github.io/commit/fac08d353f19164e902149f995533484109bea55))
+
+
+### Bug Fixes
+
+* **lint:** add lint ignore ([940879a](https://github.com/dvcol/dvcol.github.io/commit/940879a3408421b6ecb4ae84352c4090a66015b2))
+* **ui:** center div ([e5ae9f5](https://github.com/dvcol/dvcol.github.io/commit/e5ae9f571b3e70ef7f9687e7a71bcc95b976df31))
+
 ### [1.5.1](https://github.com/dvcol/dvcol.github.io/compare/v1.5.0...v1.5.1) (2023-04-08)
 
 
