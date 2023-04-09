@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/dvcol/dvcol.github.io/compare/v1.6.1...v1.7.0) (2023-04-09)
+
+
+### Features
+
+* **tag:** adds google tag manager in addition to analytics ([1292c7a](https://github.com/dvcol/dvcol.github.io/commit/1292c7aa67919f4e57922f78b629493456ecb1ed))
+
+
+### Bug Fixes
+
+* **tag:** use GA through GTM to simplify ([665ab13](https://github.com/dvcol/dvcol.github.io/commit/665ab13f9ec7ae0d7852c6dd4e1c0992c9ac6280))
+
 ### [1.6.1](https://github.com/dvcol/dvcol.github.io/compare/v1.6.0...v1.6.1) (2023-04-09)
 
 
