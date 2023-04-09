@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/dvcol/dvcol.github.io/compare/v1.7.0...v1.7.1) (2023-04-09)
+
+
+### Bug Fixes
+
+* **tag:** fix gtm init ([75e81cc](https://github.com/dvcol/dvcol.github.io/commit/75e81cc0c4591335135929a0fe7badf9b829750d))
+
 ## [1.7.0](https://github.com/dvcol/dvcol.github.io/compare/v1.6.1...v1.7.0) (2023-04-09)
 
 
