@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/dvcol/dvcol.github.io/compare/v1.6.0...v1.6.1) (2023-04-09)
+
+
+### Bug Fixes
+
+* **tag:** fix google tag manager ([105e694](https://github.com/dvcol/dvcol.github.io/commit/105e69461c522fbe17e45fa113614066df156a0a))
+
 ## [1.6.0](https://github.com/dvcol/dvcol.github.io/compare/v1.5.1...v1.6.0) (2023-04-09)
 
 
