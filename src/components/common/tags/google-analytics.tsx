@@ -2,10 +2,8 @@ import type { Component } from 'solid-js';
 
 const injectConfig = (id: string) => {
   if (!window.dataLayer) window.dataLayer = [];
-  if (!window.gtag) window.gtag = (...args) => window.dataLayer?.push(args);
-
-  window.gtag('js', new Date());
-  window.gtag('config', id);
+  window.dataLayer.push(['js', new Date()]);
+  window.dataLayer.push(['config', id]);
 };
 
 const injectScript = (tag: string, id: string) => {

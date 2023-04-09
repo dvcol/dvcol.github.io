@@ -2,10 +2,8 @@ import type { Component } from 'solid-js';
 
 const injectConfig = (id: string) => {
   if (!window.dataLayer) window.dataLayer = [];
-  if (!window.gtag) window.gtag = (...args) => window.dataLayer?.push(args);
-
-  window.gtag({ 'gtm-tag': id });
-  window.gtag({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+  window.dataLayer.push({ 'gtm-tag': id });
+  window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
 };
 
 const injectScript = (tag: string, id: string) => {
