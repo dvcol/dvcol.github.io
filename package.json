@@ -39,7 +39,8 @@
     "solid-js": "~1.6.16",
     "solid-particles": "^2.9.3",
     "solid-toast": "^0.5.0",
-    "tsparticles": "^2.9.3"
+    "tsparticles": "^2.9.3",
+    "tsparticles-plugin-polygon-mask": "^2.9.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",

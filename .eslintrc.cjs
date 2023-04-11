@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['plugin:@dvcol/presets/solid','plugin:@dvcol/presets/jest', 'plugin:@dvcol/presets/vitest'],
+  extends: ['plugin:@dvcol/presets/solid', 'plugin:@dvcol/presets/vitest'],
   plugins: ['@dvcol/presets'],
   parserOptions: {
     project: './tsconfig.json',
