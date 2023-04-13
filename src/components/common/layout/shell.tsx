@@ -23,7 +23,6 @@ export const Shell: ParentComponent<{ routes?: RouteMeta[] }> = props => {
           {props.children}
         </Stack>
       </main>
-      <footer hidden={open()}>TODO - footer</footer>
     </>
   );
 };

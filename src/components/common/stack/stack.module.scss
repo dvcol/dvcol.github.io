@@ -15,7 +15,7 @@
   position: relative;
   z-index: 5;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: #2a2b30;
   box-shadow: 0 -1px 10px rgb(0 0 0 / 10%);
   transform: translate3d(0, 40%, 0);
@@ -51,7 +51,7 @@
   }
 
   .page__inactive {
-    min-height: 100vh;
+    min-height: 100dvh;
     transition: transform 0.45s, opacity 0.45s, min-height 0s linear 0s;
   }
 }

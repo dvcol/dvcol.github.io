@@ -2,7 +2,7 @@ import { Box } from '@suid/material';
 
 import type { Component } from 'solid-js';
 
-const wcStyle: any = { display: 'block', width: '100vw', height: '100vh', 'max-height': '60rem', 'max-width': '80rem' };
+const wcStyle: any = { display: 'block', width: '100dvw', height: '100dvh', 'max-height': '60rem', 'max-width': '80rem' };
 
 export const SynologyDemo: Component = () => {
   // Lazy load entry script
