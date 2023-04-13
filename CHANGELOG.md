@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/dvcol/dvcol.github.io/compare/v1.8.0...v1.8.1) (2023-04-13)
+
+
+### Bug Fixes
+
+* **navbar:** fix translations ([da663ab](https://github.com/dvcol/dvcol.github.io/commit/da663ab9a76fd1acc08accfd15c5281204913e80))
+* **stack:** adds title on hover ([b051872](https://github.com/dvcol/dvcol.github.io/commit/b051872cd54b2fa5f58aff4e4f29ecb0e7a0faef))
+* **stack:** fix scrolling ([4e66343](https://github.com/dvcol/dvcol.github.io/commit/4e663439b0f847fe80827e32c700f7d75c343c4f))
+
 ## [1.8.0](https://github.com/dvcol/dvcol.github.io/compare/v1.7.1...v1.8.0) (2023-04-13)
 
 
