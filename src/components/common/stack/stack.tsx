@@ -3,7 +3,7 @@ import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, createSignal, For, onMount } from 'solid-js';
+import { createEffect, createMemo, For } from 'solid-js';
 
 import styles from './stack.module.scss';
 
@@ -20,9 +20,11 @@ const computeShift = (): number => {
 
 const transformToCSSProperties = (transform: string, opacity = 1): JSX.CSSProperties => ({ transform, opacity });
 
-type TransformOptions = { offset: number; opacity?: number; shift: number };
-const offsetTransform = ({ offset, opacity, shift }: TransformOptions) =>
-  transformToCSSProperties(`translate3d(0,${shift}%,-${offset * 100}px)`, opacity ?? (10 - offset) / 10);
+type TransformOptions = { offset?: number; opacity?: number; shift?: number };
+const offsetTransform = (options: TransformOptions = {}) => {
+  const { offset, opacity, shift } = { offset: 2, shift: computeShift(), ...options };
+  return transformToCSSProperties(`translate3d(0,${shift ?? computeShift()}%,-${offset * 100}px)`, opacity ?? (10 - offset) / 10);
+};
 
 const computeTransform = (open = false): ((options: TransformOptions) => JSX.CSSProperties | undefined) => (open ? offsetTransform : () => undefined);
 
@@ -45,10 +47,6 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
   const navigate = useNavigate();
   const [t] = useI18n();
 
-  const [shift, setShift] = createSignal(40);
-
-  onMount(() => setShift(computeShift()));
-
   createEffect<string>(previous => {
     const _overflow = document.body.style.overflow;
     if (props.open) document.body.style.overflow = 'hidden';
@@ -61,9 +59,10 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
       <For each={pages()}>
         {({ path, title }, index) => (
           <Box
+            component={'article'}
             class={styles.page}
             classList={{ [styles.page__inactive]: true }}
-            style={transform()({ shift: shift(), offset: 3 - index() / 2 })}
+            style={transform()({ offset: 3 - index() / 2 })}
             onClick={() => navigate(path)}
           >
             <Box class={styles.page__title}>{t(title)}</Box>
@@ -71,9 +70,10 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
         )}
       </For>
       <Box
+        component={'article'}
         class={styles.page}
         classList={{ [styles.page__active]: true }}
-        style={transform()({ offset: 2, opacity: 1, shift: shift() })}
+        style={transform()({ offset: 2, opacity: 1 })}
         onClick={close}
       >
         {props.children}

@@ -4,11 +4,9 @@ import type { Component } from 'solid-js';
 
 export const NavbarButton: Component<{ open?: boolean; onClick?: (_open?: boolean) => void }> = props => {
   return (
-    <div>
-      <button class={styles.menu_button} classList={{ [styles.menu_button__open]: props.open }} onClick={() => props?.onClick?.(!props.open)}>
-        <span>Menu</span>
-      </button>
-    </div>
+    <button class={styles.menu_button} classList={{ [styles.menu_button__open]: props.open }} onClick={() => props?.onClick?.(!props.open)}>
+      <span>Menu</span>
+    </button>
   );
 };
 

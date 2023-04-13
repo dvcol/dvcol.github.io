@@ -9,7 +9,7 @@ import type { ParentComponent } from 'solid-js';
 
 import type { RouteMeta } from '~/services';
 
-export const Layout: ParentComponent<{ routes?: RouteMeta[] }> = props => {
+export const Shell: ParentComponent<{ routes?: RouteMeta[] }> = props => {
   const [open, setOpen] = createSignal(false);
   useBeforeLeave(() => setOpen(false));
   return (
@@ -23,10 +23,9 @@ export const Layout: ParentComponent<{ routes?: RouteMeta[] }> = props => {
           {props.children}
         </Stack>
       </main>
-
-      <footer>Footer here</footer>
+      <footer hidden={open()}>TODO - footer</footer>
     </>
   );
 };
 
-export default Layout;
+export default Shell;
