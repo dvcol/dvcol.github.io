@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/dvcol/dvcol.github.io/compare/v1.7.1...v1.8.0) (2023-04-13)
+
+
+### Features
+
+* **navbar:** adds initial stack navbar feature ([a395281](https://github.com/dvcol/dvcol.github.io/commit/a395281537a2f4212c331e25408afa988f60b830))
+* **particles:** add mask plugin ([d3d93fc](https://github.com/dvcol/dvcol.github.io/commit/d3d93fcba1ba65572e03f00cb4c01929ddd2c471))
+
 ### [1.7.1](https://github.com/dvcol/dvcol.github.io/compare/v1.7.0...v1.7.1) (2023-04-09)
 
 
