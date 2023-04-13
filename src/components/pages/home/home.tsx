@@ -9,7 +9,7 @@ import styles from './home.module.scss';
 import type { Component } from 'solid-js';
 
 import logo from '~/assets/logo.svg';
-import { RoutesArray } from '~/services/router';
+import { RoutesMetas } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
 export const Home: Component = () => {
@@ -20,11 +20,11 @@ export const Home: Component = () => {
       <header class={styles.header}>
         <img src={logo} class={styles.logo} alt="logo" />
         <Stack spacing={2} direction="column">
-          <For each={RoutesArray}>
-            {([route, path]) => (
+          <For each={RoutesMetas}>
+            {({ name, path }) => (
               <>
                 <Button variant="outlined" onclick={() => navigate(path)}>
-                  {t(`routes.${camelToSnakeCase(route)}`, {}, 'fallback')}
+                  {t(`routes.${camelToSnakeCase(name)}`, {}, 'fallback')}
                 </Button>
               </>
             )}

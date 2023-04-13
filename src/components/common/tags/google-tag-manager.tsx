@@ -1,3 +1,5 @@
+import { createEffect } from 'solid-js';
+
 import type { Component } from 'solid-js';
 
 const injectConfig = (id: string) => {
@@ -22,10 +24,12 @@ export const GoogleTagManager: Component<{ tag?: string }> = (props = { tag: Goo
   const tag = props.tag ?? GoogleTagId;
   const id = `google-tag-${tag}`;
 
-  if (!document.head.querySelector(`#${id}`)) {
-    injectConfig(tag);
-    injectScript(tag, id);
-  }
+  createEffect(() => {
+    if (!document.head.querySelector(`#${id}`)) {
+      injectConfig(tag);
+      injectScript(tag, id);
+    }
+  });
 
   return <div hidden aria-hidden="true" id="google-tag" data-tag={tag} />;
 };

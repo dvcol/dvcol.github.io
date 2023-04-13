@@ -211,7 +211,7 @@ export const ParticlesWip: Component = () => {
         },
       },
       color: {
-        value: '#ffffff',
+        value: ['#4285f4', '#34A853', '#FBBC05', '#EA4335'],
         animation: {
           h: {
             count: 0,
@@ -510,13 +510,13 @@ export const ParticlesWip: Component = () => {
       links: {
         blink: false,
         color: {
-          value: '#ffffff',
+          value: 'random',
         },
         consent: false,
-        distance: 30,
+        distance: 40,
         enable: true,
         frequency: 1,
-        opacity: 0.4,
+        opacity: 1,
         shadow: {
           blur: 5,
           color: {
@@ -553,7 +553,7 @@ export const ParticlesWip: Component = () => {
     zLayers: 100,
     polygon: {
       draw: {
-        enable: true,
+        enable: false,
         stroke: {
           color: {
             value: 'rgba(255,255,255,0.2)',
@@ -570,17 +570,17 @@ export const ParticlesWip: Component = () => {
         radius: 10,
         type: 'path',
       },
-      scale: 0.5,
+      scale: 1,
       type: 'inline',
-      url: 'https://particles.js.org/images/smalldeer.svg',
+      url: 'https://particles.js.org/images/google.svg',
+      position: {
+        x: 30,
+        y: 10,
+      },
     },
   };
 
-  return (
-    <div>
-      <Particles id="tsparticles" init={particlesInit} options={options} />
-    </div>
-  );
+  return <Particles id="tsparticles" init={particlesInit} options={options} />;
 };
 
 export default ParticlesWip;

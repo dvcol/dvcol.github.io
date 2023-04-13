@@ -9,7 +9,7 @@ export const SynologyDemo: Component = () => {
   import(/* @vite-ignore */ `../../../apps/synology-extension/entry`);
 
   return (
-    <Box sx={{ minHeight: '50rem' }}>
+    <Box sx={{ minHeight: '50rem', pt: '5em' }}>
       <wc-synology-download-standalone basename="synology" style={wcStyle} />
       <wc-synology-download-content />
     </Box>

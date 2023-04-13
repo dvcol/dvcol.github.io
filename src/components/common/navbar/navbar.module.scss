@@ -1,0 +1,161 @@
+.pages_nav {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
+  background: transparent;
+  transform: translate3d(0, 150px, 0);
+  opacity: 0;
+  transition: -webkit-transform 1.2s, opacity 1.2s;
+  transition: transform 1.2s, opacity 1.2s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.pages_nav__item__social {
+  width: 100%;
+  transform: translate3d(0, 20px, 0);
+  opacity: 0;
+  transition: -webkit-transform 1.2s, opacity 1.2s;
+  transition: transform 1.2s, opacity 1.2s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.pages_nav__open {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  pointer-events: auto;
+
+  .pages_nav__item__social {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    transition-delay: 0.35s;
+  }
+}
+
+.pages_nav__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 2em;
+}
+
+.pages_nav__item {
+  display: flex;
+  flex: 1 1 30%;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages_nav__item__small {
+  font-size: inherit;
+}
+
+.link {
+  position: relative;
+  font-weight: bold;
+  font-size: 0.85em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+}
+
+a.link {
+  text-decoration: none;
+  outline: none;
+}
+
+.link__page {
+  display: block;
+  color: #cecece;
+
+  &:not(.link__faded)::before {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 30px;
+    height: 2px;
+    margin: 5px 0 0 -15px;
+    background: #fff;
+    transform: scale3d(0, 1, 1);
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    content: '';
+  }
+
+  &:hover::before,
+  &:focus::before {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.link__faded {
+  color: #4f4f64;
+
+  &:hover,
+  &:focus {
+    color: #5c5edc;
+  }
+}
+
+.link__page.link__faded {
+  font-size: 0.65em;
+}
+
+.link__social {
+  margin: 0 0.75em;
+  font-size: 1.5em;
+}
+
+.text-hidden {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  color: transparent;
+}
+
+@media screen and (max-width: 60em) {
+  .pages_nav__item {
+    width: 50%;
+    min-height: 20px;
+  }
+
+  .link__page {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .link__social {
+    margin: 0 0.1em;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .pages_nav {
+    display: block;
+    padding: 10px 20px 0;
+    text-align: left;
+  }
+
+  .pages_nav__item {
+    width: 100%;
+    padding: 4px 0;
+  }
+
+  .pages_nav__item__small {
+    display: inline-block;
+    width: auto;
+    margin-right: 5px;
+  }
+
+  .pages_nav__item__social {
+    font-size: 0.9em;
+  }
+}

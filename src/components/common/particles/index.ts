@@ -1,1 +1,1 @@
-export * from './particles-wip.tsx';
+export * from './particles-wip';

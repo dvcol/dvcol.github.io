@@ -1,4 +1,4 @@
-import { lazy } from 'solid-js';
+import { createSignal, lazy } from 'solid-js';
 
 import type { RouteDefinition } from '@solidjs/router/dist/types';
 
@@ -10,12 +10,77 @@ export enum Routes {
   AboutMe = '/about/me',
 }
 
-export const RoutesArray = Object.entries(Routes) as [Routes, string][];
+export type RouteMeta = {
+  path: Routes;
+  name: keyof typeof Routes;
+  title: string;
+};
+
+const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
+  Home: {
+    path: Routes.Home,
+    name: 'Home',
+    title: 'routes.title.home',
+  },
+  Particles: {
+    path: Routes.Particles,
+    name: 'Particles',
+    title: 'routes.title.particles',
+  },
+  Synology: {
+    path: Routes.Synology,
+    name: 'Synology',
+    title: 'routes.title.synology',
+  },
+  SynologyDemo: {
+    path: Routes.SynologyDemo,
+    name: 'SynologyDemo',
+    title: 'routes.title.synology_demo',
+  },
+  AboutMe: {
+    path: Routes.AboutMe,
+    name: 'AboutMe',
+    title: 'routes.title.about_me',
+  },
+};
+
+export const RoutesMetas = Object.values(RoutesMeta);
+
+const [routeData, setRouteData] = createSignal<RouteMeta>();
+
+export const getRouteData = routeData;
+
+const getData =
+  (meta: RouteMeta): (() => RouteMeta) =>
+  () => {
+    setRouteData(meta);
+    return meta;
+  };
 
 export const RoutesDefinitions: RouteDefinition[] = [
-  { path: Routes.Home, component: lazy(() => import('~/components/pages/home/home')) },
-  { path: Routes.Particles, component: lazy(() => import('~/components/common/particles/particles-wip')) },
-  { path: Routes.Synology, component: lazy(() => import('~/components/pages/synology/synology-home')) },
-  { path: `${Routes.SynologyDemo}/*`, component: lazy(() => import('~/components/pages/synology/synology-demo')) },
-  { path: `${Routes.AboutMe}/*`, component: lazy(() => import('~/components/pages/about-me/about-me')) },
+  {
+    path: Routes.Home,
+    component: lazy(() => import('~/components/pages/home/home')),
+    data: getData(RoutesMeta.Home),
+  },
+  {
+    path: Routes.Particles,
+    component: lazy(() => import('~/components/common/particles/particles-wip')),
+    data: getData(RoutesMeta.Particles),
+  },
+  {
+    path: Routes.Synology,
+    component: lazy(() => import('~/components/pages/synology/synology-home')),
+    data: getData(RoutesMeta.Synology),
+  },
+  {
+    path: `${Routes.SynologyDemo}/*`,
+    component: lazy(() => import('~/components/pages/synology/synology-demo')),
+    data: getData(RoutesMeta.SynologyDemo),
+  },
+  {
+    path: `${Routes.AboutMe}/*`,
+    component: lazy(() => import('~/components/pages/about-me/about-me')),
+    data: getData(RoutesMeta.AboutMe),
+  },
 ];
