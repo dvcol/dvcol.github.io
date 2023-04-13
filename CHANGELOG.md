@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.2](https://github.com/dvcol/dvcol.github.io/compare/v1.8.1...v1.8.2) (2023-04-13)
+
+
+### Bug Fixes
+
+* **stack:** fix height clipping on mobile ([87e00e3](https://github.com/dvcol/dvcol.github.io/commit/87e00e3f347e3e6e0cdf3c7be7806ad64e2b9ccc))
+* **stack:** fix transform when document resizes ([769d8d7](https://github.com/dvcol/dvcol.github.io/commit/769d8d73912836873bfb6704b0a117ea088d0c47))
+* **ui:** switch to dynamic viewport units ([75c8f12](https://github.com/dvcol/dvcol.github.io/commit/75c8f1235bf418a2b273277c7542f9bd5894ae61))
+
 ### [1.8.1](https://github.com/dvcol/dvcol.github.io/compare/v1.8.0...v1.8.1) (2023-04-13)
 
 
