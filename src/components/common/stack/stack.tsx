@@ -59,7 +59,7 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
             style={transform()(3 - index() / 2, shift())}
             onClick={() => navigate(path)}
           >
-            {t(title)}
+            <Box class={styles.page__title}>{t(title)}</Box>
           </Box>
         )}
       </For>
