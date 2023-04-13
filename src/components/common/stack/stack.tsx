@@ -3,7 +3,7 @@ import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, For, onMount } from 'solid-js';
+import { createEffect, createMemo, createSignal, For, onMount } from 'solid-js';
 
 import styles from './stack.module.scss';
 
@@ -20,11 +20,11 @@ const computeShift = (): number => {
 
 const transformToCSSProperties = (transform: string, opacity = 1): JSX.CSSProperties => ({ transform, opacity });
 
-const offsetTransform = (offset = 3, shift = computeShift()) =>
-  transformToCSSProperties(`translate3d(0,${shift}%,-${offset * 100}px)`, (10 - offset) / 10);
+type TransformOptions = { offset: number; opacity?: number; shift: number };
+const offsetTransform = ({ offset, opacity, shift }: TransformOptions) =>
+  transformToCSSProperties(`translate3d(0,${shift}%,-${offset * 100}px)`, opacity ?? (10 - offset) / 10);
 
-const computeTransform = (open = false): ((offset?: number, shift?: number) => JSX.CSSProperties | undefined) =>
-  open ? offsetTransform : () => undefined;
+const computeTransform = (open = false): ((options: TransformOptions) => JSX.CSSProperties | undefined) => (open ? offsetTransform : () => undefined);
 
 export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean) => void }> = props => {
   const routes = [...RoutesMetas];
@@ -49,6 +49,13 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
 
   onMount(() => setShift(computeShift()));
 
+  createEffect<string>(previous => {
+    const _overflow = document.body.style.overflow;
+    if (props.open) document.body.style.overflow = 'hidden';
+    else if (_overflow !== previous) document.body.style.overflow = previous ?? '';
+    return _overflow;
+  });
+
   return (
     <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }}>
       <For each={pages()}>
@@ -56,14 +63,19 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
           <Box
             class={styles.page}
             classList={{ [styles.page__inactive]: true }}
-            style={transform()(3 - index() / 2, shift())}
+            style={transform()({ shift: shift(), offset: 3 - index() / 2 })}
             onClick={() => navigate(path)}
           >
             <Box class={styles.page__title}>{t(title)}</Box>
           </Box>
         )}
       </For>
-      <Box class={styles.page} classList={{ [styles.page__active]: true }} style={transform()(2, shift())} onClick={close}>
+      <Box
+        class={styles.page}
+        classList={{ [styles.page__active]: true }}
+        style={transform()({ offset: 2, opacity: 1, shift: shift() })}
+        onClick={close}
+      >
         {props.children}
       </Box>
     </div>

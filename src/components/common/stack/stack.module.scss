@@ -16,31 +16,41 @@
   z-index: 5;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   background: #2a2b30;
   box-shadow: 0 -1px 10px rgb(0 0 0 / 10%);
   transform: translate3d(0, 40%, 0);
-  cursor: pointer;
   transition: -webkit-transform 0.45s, opacity 0.45s;
-  transition: transform 0.45s, opacity 0.45s;
+  transition: transform 0.45s, opacity 0.45s, height 0.45s;
   transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
   pointer-events: auto;
+}
 
-  &:hover,
-  &:focus {
-    .page__title {
-      display: block;
-    }
-  }
+.page__active {
+  transform: translate3d(0, 0, 0);
 }
 
 .page__inactive {
   position: absolute;
   top: 0;
   z-index: 0;
+  height: 0;
   opacity: 0;
 }
 
-.page__active {
-  transform: translate3d(0, 0, 0);
+.pages_stack__open {
+  .page {
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      .page__title {
+        display: block;
+      }
+    }
+  }
+
+  .page__inactive {
+    height: 100vh;
+  }
 }
