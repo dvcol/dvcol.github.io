@@ -5,6 +5,12 @@
   pointer-events: none;
 }
 
+.page__title {
+  display: none;
+  padding: 0.5em;
+  color: #9fa0a1;
+}
+
 .page {
   position: relative;
   z-index: 5;
@@ -19,11 +25,13 @@
   transition: transform 0.45s, opacity 0.45s;
   transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
   pointer-events: auto;
-}
 
-.page__title {
-  padding: 0.5em;
-  color: #9fa0a1;
+  &:hover,
+  &:focus {
+    .page__title {
+      display: block;
+    }
+  }
 }
 
 .page__inactive {
