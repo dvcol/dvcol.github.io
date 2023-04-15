@@ -23,7 +23,7 @@ const transformToCSSProperties = (transform: string, opacity = 1): JSX.CSSProper
 type TransformOptions = { offset?: number; opacity?: number; shift?: number };
 const offsetTransform = (options: TransformOptions = {}) => {
   const { offset, opacity, shift } = { offset: 2, shift: computeShift(), ...options };
-  return transformToCSSProperties(`translate3d(0,${shift ?? computeShift()}%,-${offset * 100}px)`, opacity ?? (10 - offset) / 10);
+  return transformToCSSProperties(`translate3d(0,${shift}%,-${offset * 100}px)`, opacity ?? (10 - offset) / 10);
 };
 
 const computeTransform = (open = false): ((options: TransformOptions) => JSX.CSSProperties | undefined) => (open ? offsetTransform : () => undefined);
@@ -42,7 +42,7 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
         return 0;
       })
       .filter(page => page.name !== active()?.name)
-      .slice(2),
+      .slice(-2),
   );
   const navigate = useNavigate();
   const [t] = useI18n();

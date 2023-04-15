@@ -15,7 +15,8 @@
   position: relative;
   z-index: 5;
   width: 100%;
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: auto;
   background: #2a2b30;
   box-shadow: 0 -1px 10px rgb(0 0 0 / 10%);
   transform: translate3d(0, 40%, 0);
@@ -39,6 +40,7 @@
 
 .pages_stack__open {
   .page {
+    height: 100dvh;
     overflow: hidden;
     cursor: pointer;
 

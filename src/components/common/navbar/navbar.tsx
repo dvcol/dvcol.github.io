@@ -31,25 +31,29 @@ export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?:
         </For>
       </div>
 
-      <div class={`${styles.pages_nav__item} ${styles.pages_nav__item__social}`}>
-        <NavbarSocial
-          class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
-          link={'https://github.com/dvcol'}
-          label={'Github'}
-          show={props.open}
-          delay={400}
-        >
-          <GithubLoop />
-        </NavbarSocial>
-        <NavbarSocial
-          class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
-          link={'https://linkedin.com/in/dinh-van-colomban-76b513a4'}
-          label={'Linked'}
-          show={props.open}
-          delay={400}
-        >
-          <LinkedIn style={{ margin: '0 0 6px 1px' }} />
-        </NavbarSocial>
+      <div class={`${styles.pages_nav__items} ${styles.pages_nav__items__social}`}>
+        <div class={`${styles.pages_nav__item} ${styles.pages_nav__item__social}`}>
+          <NavbarSocial
+            class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
+            link={'https://github.com/dvcol'}
+            label={'Github'}
+            show={props.open}
+            delay={400}
+          >
+            <GithubLoop />
+          </NavbarSocial>
+        </div>
+        <div class={`${styles.pages_nav__item} ${styles.pages_nav__item__social}`}>
+          <NavbarSocial
+            class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
+            link={'https://linkedin.com/in/dinh-van-colomban-76b513a4'}
+            label={'Linked'}
+            show={props.open}
+            delay={400}
+          >
+            <LinkedIn style={{ margin: '0 0 6px 1px' }} />
+          </NavbarSocial>
+        </div>
       </div>
     </nav>
   );

@@ -12,13 +12,33 @@
   pointer-events: none;
 }
 
-.pages_nav__item__social {
-  width: 100%;
-  transform: translate3d(0, 20px, 0);
-  opacity: 0;
-  transition: -webkit-transform 1.2s, opacity 1.2s;
-  transition: transform 1.2s, opacity 1.2s;
-  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+.pages_nav__items {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__social {
+    flex: 0 1 auto;
+    padding: 0 2em;
+  }
+}
+
+.pages_nav__item {
+  display: flex;
+  flex: 1 1 30%;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0;
+
+  &__social {
+    flex: 0 1 120px;
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+    transition: -webkit-transform 1.2s, opacity 1.2s;
+    transition: transform 1.2s, opacity 1.2s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  }
 }
 
 .pages_nav__open {
@@ -31,24 +51,6 @@
     opacity: 1;
     transition-delay: 0.35s;
   }
-}
-
-.pages_nav__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  padding: 2em;
-}
-
-.pages_nav__item {
-  display: flex;
-  flex: 1 1 30%;
-  align-items: center;
-  justify-content: center;
-}
-
-.pages_nav__item__small {
-  font-size: inherit;
 }
 
 .link {
@@ -115,7 +117,6 @@ a.link {
 
 @media screen and (max-width: 60em) {
   .pages_nav__item {
-    width: 50%;
     min-height: 20px;
   }
 
@@ -132,23 +133,69 @@ a.link {
 
 @media screen and (max-width: 40em) {
   .pages_nav {
-    display: block;
     padding: 10px 20px 0;
     text-align: left;
   }
 
+  .link {
+    font-size: 0.85em;
+  }
+
+  .pages_nav__items {
+    padding: 0 2em;
+  }
+
   .pages_nav__item {
-    width: 100%;
+    flex: 1 1 40%;
     padding: 4px 0;
+
+    &__social {
+      font-size: 0.9em;
+    }
+  }
+}
+
+@media screen and (max-width: 20em) {
+  .pages_nav__items {
+    display: block;
+    justify-content: flex-start;
+    padding: 0 1em;
   }
 
-  .pages_nav__item__small {
-    display: inline-block;
-    width: auto;
-    margin-right: 5px;
-  }
+  .pages_nav__item {
+    justify-content: flex-start;
 
-  .pages_nav__item__social {
-    font-size: 0.9em;
+    &__social {
+      flex: 1 1 20px;
+
+      svg {
+        margin: 0;
+        transform: scale(0.75);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1919px) {
+  .pages_nav {
+    &__item {
+      flex: 1 1 10%;
+
+      &__social {
+        flex: 0 1 10%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2159px) {
+  .pages_nav {
+    &__item {
+      flex: 1 1 10%;
+
+      &__social {
+        flex: 0 1 10%;
+      }
+    }
   }
 }

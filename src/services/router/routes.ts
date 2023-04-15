@@ -28,20 +28,20 @@ const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Synology',
     title: 'routes.title.synology',
   },
-  AboutMe: {
-    path: Routes.AboutMe,
-    name: 'AboutMe',
-    title: 'routes.title.about_me',
+  SynologyDemo: {
+    path: Routes.SynologyDemo,
+    name: 'SynologyDemo',
+    title: 'routes.title.synology_demo',
   },
   Particles: {
     path: Routes.Particles,
     name: 'Particles',
     title: 'routes.title.particles',
   },
-  SynologyDemo: {
-    path: Routes.SynologyDemo,
-    name: 'SynologyDemo',
-    title: 'routes.title.synology_demo',
+  AboutMe: {
+    path: Routes.AboutMe,
+    name: 'AboutMe',
+    title: 'routes.title.about_me',
   },
   Contact: {
     path: Routes.Contact,
