@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/dvcol/dvcol.github.io/compare/v1.8.2...v1.9.0) (2023-04-15)
+
+
+### Features
+
+* **branding:** switch from solid to custom branding ([a26eef5](https://github.com/dvcol/dvcol.github.io/commit/a26eef5c9d40ed9b14a14dd286dbef451222f8a0))
+* **icon:** adds line-md social icons ([a5203a7](https://github.com/dvcol/dvcol.github.io/commit/a5203a7c448453e603e0416078cd77c2d88b167b))
+
+
+### Bug Fixes
+
+* **navbar:** fix navbar button placement ([66d9d54](https://github.com/dvcol/dvcol.github.io/commit/66d9d54c911f2af3ef3a4a2a3400c7f1a33ecc6a))
+* **navbar:** fix reactive ([b1e3973](https://github.com/dvcol/dvcol.github.io/commit/b1e397348ac2d172320fe99b0bc3e9633b25ccc8))
+* **svg:** github svg doesn't load properly ([37a1371](https://github.com/dvcol/dvcol.github.io/commit/37a1371c705e86fb4d832ca9b5f944f23a6f148e))
+
 ### [1.8.2](https://github.com/dvcol/dvcol.github.io/compare/v1.8.1...v1.8.2) (2023-04-13)
 
 
