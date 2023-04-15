@@ -6,6 +6,7 @@ import devtoolsPlugin from 'solid-devtools/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
+import solidSVGPlugin from 'vite-plugin-solid-svg';
 
 export default defineConfig({
   plugins: [
@@ -23,6 +24,9 @@ export default defineConfig({
     }),
     suidPlugin(),
     solidPlugin(),
+    solidSVGPlugin({
+      defaultAsComponent: true,
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'logo.svg', 'pwa/icon.png'],

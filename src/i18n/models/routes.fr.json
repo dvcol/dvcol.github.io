@@ -4,11 +4,13 @@
   "synology": "Synology",
   "synology_demo": "Synology Demo",
   "about_me": "A propos",
+  "contact": "Contact",
   "title": {
     "home": "Home - Page d'accueil pour les projets de Dinh-Van",
     "particles": "Particles - Bac à sable pour Particles",
     "synology": "Synology - Une extension chrome pour les NAS Synology",
     "synology_demo": "Synology Demo - Une démo interactive for Synology Download",
-    "about_me": "A propos - A propos de mes projects et expériences."
+    "about_me": "A propos - A propos de mes projects et expériences.",
+    "contact": "Contact - Formulaire de contact"
   }
 }

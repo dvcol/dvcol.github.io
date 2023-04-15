@@ -54,9 +54,8 @@
 .link {
   position: relative;
   font-weight: bold;
-  font-size: 0.85em;
+  font-size: 1em;
   letter-spacing: 1px;
-  text-transform: uppercase;
 
   &:hover,
   &:focus {
@@ -107,17 +106,11 @@ a.link {
 }
 
 .link__social {
+  display: flex;
+  align-items: center;
+  min-width: 80px;
+  min-height: 30px;
   margin: 0 0.75em;
-  font-size: 1.5em;
-}
-
-.text-hidden {
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  color: transparent;
 }
 
 @media screen and (max-width: 60em) {

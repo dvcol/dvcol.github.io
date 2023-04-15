@@ -8,7 +8,7 @@ import styles from './home.module.scss';
 
 import type { Component } from 'solid-js';
 
-import logo from '~/assets/logo.svg';
+import Logo from '~/assets/logo.svg?component-solid';
 import { RoutesMetas } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
@@ -18,7 +18,7 @@ export const Home: Component = () => {
   return (
     <div class={styles.app}>
       <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
+        <Logo class={styles.logo} />
         <Stack spacing={2} direction="column">
           <For each={RoutesMetas}>
             {({ name, path }) => (

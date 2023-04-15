@@ -1,12 +1,15 @@
 import { useI18n } from '@solid-primitives/i18n';
 import { Link } from '@solidjs/router';
 
+import GithubLoop from 'line-md/svg/github-loop.svg?component-solid';
+import LinkedIn from 'line-md/svg/linkedin.svg?component-solid';
+
 import { For } from 'solid-js';
 
+import { NavbarSocial } from './navbar-social';
 import styles from './navbar.module.scss';
 
 import type { Component } from 'solid-js';
-
 import type { RouteMeta } from '~/services';
 
 import { camelToSnakeCase } from '~/utils';
@@ -29,14 +32,24 @@ export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?:
       </div>
 
       <div class={`${styles.pages_nav__item} ${styles.pages_nav__item__social}`}>
-        <a class={`${styles.link} ${styles.link__social} ${styles.link__faded}`} href="https://github.com/dvcol">
-          <i class="fa fa-twitter" />
-          <span class={styles.textHidden}>Github</span>
-        </a>
-        <a class={`${styles.link} ${styles.link__social} ${styles.link__faded}`} href="https://linkedin.com/in/dinh-van-colomban-76b513a4">
-          <i class="fa fa-linkedin" />
-          <span class={styles.textHidden}>LinkedIn</span>
-        </a>
+        <NavbarSocial
+          class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
+          link={'https://github.com/dvcol'}
+          label={'Github'}
+          show={props.open}
+          delay={400}
+        >
+          <GithubLoop />
+        </NavbarSocial>
+        <NavbarSocial
+          class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
+          link={'https://linkedin.com/in/dinh-van-colomban-76b513a4'}
+          label={'Linked'}
+          show={props.open}
+          delay={400}
+        >
+          <LinkedIn style={{ margin: '0 0 6px 1px' }} />
+        </NavbarSocial>
       </div>
     </nav>
   );

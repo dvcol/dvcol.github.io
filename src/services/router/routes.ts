@@ -8,6 +8,7 @@ export enum Routes {
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
   AboutMe = '/about/me',
+  Contact = '/contact',
 }
 
 export type RouteMeta = {
@@ -22,25 +23,30 @@ const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Home',
     title: 'routes.title.home',
   },
-  Particles: {
-    path: Routes.Particles,
-    name: 'Particles',
-    title: 'routes.title.particles',
-  },
   Synology: {
     path: Routes.Synology,
     name: 'Synology',
     title: 'routes.title.synology',
+  },
+  AboutMe: {
+    path: Routes.AboutMe,
+    name: 'AboutMe',
+    title: 'routes.title.about_me',
+  },
+  Particles: {
+    path: Routes.Particles,
+    name: 'Particles',
+    title: 'routes.title.particles',
   },
   SynologyDemo: {
     path: Routes.SynologyDemo,
     name: 'SynologyDemo',
     title: 'routes.title.synology_demo',
   },
-  AboutMe: {
-    path: Routes.AboutMe,
-    name: 'AboutMe',
-    title: 'routes.title.about_me',
+  Contact: {
+    path: Routes.Contact,
+    name: 'Contact',
+    title: 'routes.title.contact',
   },
 };
 
@@ -82,5 +88,10 @@ export const RoutesDefinitions: RouteDefinition[] = [
     path: `${Routes.AboutMe}/*`,
     component: lazy(() => import('~/components/pages/about-me/about-me')),
     data: getData(RoutesMeta.AboutMe),
+  },
+  {
+    path: `${Routes.Contact}`,
+    component: lazy(() => import('~/components/pages/contact/contact')),
+    data: getData(RoutesMeta.Contact),
   },
 ];
