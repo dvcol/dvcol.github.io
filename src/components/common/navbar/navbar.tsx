@@ -1,15 +1,17 @@
 import { useI18n } from '@solid-primitives/i18n';
 import { Link } from '@solidjs/router';
 
-import GithubLoop from 'line-md/svg/github-loop.svg?component-solid';
 import LinkedIn from 'line-md/svg/linkedin.svg?component-solid';
 
 import { For } from 'solid-js';
+
+import { GithubLoop } from './navbar-github';
 
 import { NavbarSocial } from './navbar-social';
 import styles from './navbar.module.scss';
 
 import type { Component } from 'solid-js';
+
 import type { RouteMeta } from '~/services';
 
 import { camelToSnakeCase } from '~/utils';
