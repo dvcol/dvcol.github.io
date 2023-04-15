@@ -8,7 +8,7 @@ import styles from './home.module.scss';
 
 import type { Component } from 'solid-js';
 
-import Logo from '~/assets/logo.svg?component-solid';
+import Logo from '~/assets/logo/solid.svg?component-solid';
 import { RoutesMetas } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 

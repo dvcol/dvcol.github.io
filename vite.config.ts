@@ -34,7 +34,9 @@ export default defineConfig({
         name: 'Dinh-Van Colomban',
         short_name: 'Dinh-Van',
         description: "Web app for Dinh-Van's projects",
-        theme_color: '#282c34',
+        theme_color: '#2a2b30',
+        background_color: '#1d1e21',
+        display: 'standalone',
         icons: [
           {
             src: 'assets/pwa-icon-192.png',
