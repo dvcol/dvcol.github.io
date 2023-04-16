@@ -1,3 +1,4 @@
+import { generateTask } from '@dvcol/synology-extension';
 import { Button, Stack, Typography } from '@suid/material';
 
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '@dvcol/synology-extension/dist/types/pages/web/models';
@@ -10,9 +11,8 @@ const wcStyle: any = {
   display: 'flex',
   flex: '1 1 auto',
   'flex-direction': 'column',
-  'max-height': '80dvh',
+  height: '80dvh',
   'max-width': '100dvw',
-  'min-height': '50dvh',
 };
 
 export const SynologyDemo: Component = () => {
@@ -33,9 +33,7 @@ export const SynologyDemo: Component = () => {
           <Button
             variant="outlined"
             onClick={() => {
-              console.info({ content, standalone });
-              (window as any).content = content;
-              (window as any).standalone = standalone;
+              standalone?.add(generateTask());
             }}
           >
             Add download
