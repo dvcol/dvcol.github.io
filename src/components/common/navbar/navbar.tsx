@@ -14,6 +14,7 @@ import type { Component } from 'solid-js';
 
 import type { RouteMeta } from '~/services';
 
+import { AppLink } from '~/models';
 import { camelToSnakeCase } from '~/utils';
 
 export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?: (_open?: boolean) => void }> = props => {
@@ -37,8 +38,8 @@ export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?:
         <div class={`${styles.pages_nav__item} ${styles.pages_nav__item__social}`}>
           <NavbarSocial
             class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
-            link={'https://github.com/dvcol'}
-            label={'Github'}
+            link={AppLink.github}
+            label={t('navbar.social.github')}
             show={props.open}
             delay={400}
           >
@@ -48,8 +49,8 @@ export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?:
         <div class={`${styles.pages_nav__item} ${styles.pages_nav__item__social}`}>
           <NavbarSocial
             class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
-            link={'https://linkedin.com/in/dinh-van-colomban-76b513a4'}
-            label={'Linked'}
+            link={AppLink.linkedIn}
+            label={t('navbar.social.linked')}
             show={props.open}
             delay={400}
           >
