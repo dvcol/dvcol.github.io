@@ -1,5 +1,3 @@
-/* Menu button */
-
 .menu_button {
   position: fixed;
   top: 30px;
@@ -49,6 +47,17 @@
 
   &::after {
     transform: translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
+  }
+
+  &:not(.menu_button__open):hover {
+    // stylelint-disable-line a11y/selector-pseudo-class-focus -- not animate when focused
+    &::before {
+      transform: translate3d(0, -10px, 0);
+    }
+
+    &::after {
+      transform: translate3d(0, 10px, 0);
+    }
   }
 }
 
