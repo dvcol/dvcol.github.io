@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/dvcol/dvcol.github.io/compare/v1.9.0...v1.10.0) (2023-04-16)
+
+
+### Features
+
+* **synology:** adds basic demo binding ([5521c92](https://github.com/dvcol/dvcol.github.io/commit/5521c927869e6fef8a31c9c468dfa8f28a7bb99c))
+* **synology:** adds task creation mock ([0a3f0c3](https://github.com/dvcol/dvcol.github.io/commit/0a3f0c328391f404ed81813d8f4968cb6e001976))
+
+
+### Bug Fixes
+
+* **navbar:** fix button animation on hover ([a0ef479](https://github.com/dvcol/dvcol.github.io/commit/a0ef479120ed522ff7694a221b2b2667327d7927))
+
 ## [1.9.0](https://github.com/dvcol/dvcol.github.io/compare/v1.8.2...v1.9.0) (2023-04-15)
 
 
