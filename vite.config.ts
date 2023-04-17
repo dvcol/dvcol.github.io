@@ -70,6 +70,10 @@ export default defineConfig({
     port: 3000,
     host: true,
   },
+  preview: {
+    port: 3002,
+    host: true,
+  },
   build: {
     target: 'esnext',
     outDir: 'dist',

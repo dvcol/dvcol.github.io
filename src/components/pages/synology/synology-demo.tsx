@@ -1,10 +1,9 @@
-import { generateTask } from '@dvcol/synology-extension';
 import { Button, Stack, Typography } from '@suid/material';
 
-import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '@dvcol/synology-extension/dist/types/pages/web/models';
-
 import type { Component } from 'solid-js';
+import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
 
+import { defineComponents, en, generateTask } from '~/apps/synology-extension/entry';
 import { Page, Section } from '~/components/common';
 
 const wcStyle: any = {
@@ -16,11 +15,12 @@ const wcStyle: any = {
 };
 
 export const SynologyDemo: Component = () => {
-  // Lazy load entry script
-  import(/* @vite-ignore */ `../../../apps/synology-extension/entry`);
+  defineComponents({ patch: true, locales: { en } })
+    .then(() => console.debug('Web components defined.'))
+    .catch(err => console.error('Web components failed to define.', err));
 
-  let content: Partial<ContentAppHtmlElement>;
-  let standalone: Partial<StandaloneAppHtmlElement>;
+  let content: ContentAppHtmlElement;
+  let standalone: StandaloneAppHtmlElement;
   return (
     <Page>
       <Section ref>
@@ -33,7 +33,7 @@ export const SynologyDemo: Component = () => {
           <Button
             variant="outlined"
             onClick={() => {
-              standalone?.add(generateTask());
+              standalone?.add?.(generateTask());
             }}
           >
             Add download
@@ -64,7 +64,9 @@ export const SynologyDemo: Component = () => {
         <wc-synology-download-content ref={content!} />
       </Section>
       <Section>
-        <wc-synology-download-standalone ref={standalone!} basename="synology" style={wcStyle} />
+        <wc-synology-download-standalone ref={standalone!} basename="synology" style={wcStyle}>
+          {/* TODO skeleton loading here */}
+        </wc-synology-download-standalone>
       </Section>
     </Page>
   );

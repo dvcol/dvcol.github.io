@@ -2,9 +2,10 @@ import { Box } from '@suid/material';
 
 import type { Component } from 'solid-js';
 
+import { definedComponent } from '~/apps/about-me/entry';
+
 export const AboutMe: Component = () => {
-  // Lazy load entry script
-  import(/* @vite-ignore */ `../../../apps/about-me/entry`);
+  definedComponent();
 
   return (
     <Box sx={{ margin: '0 auto' }}>
