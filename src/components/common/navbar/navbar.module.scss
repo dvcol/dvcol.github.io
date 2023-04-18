@@ -70,26 +70,33 @@ a.link {
   outline: none;
 }
 
-.link__page {
+.link__page,
+.link__social {
   display: block;
   color: #cecece;
 
-  &:not(.link__faded)::before {
+  &::before {
     position: absolute;
     top: 100%;
     left: 50%;
     width: 30px;
     height: 2px;
     margin: 5px 0 0 -15px;
-    background: #fff;
+    background: #fff6;
     transform: scale3d(0, 1, 1);
     transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
     content: '';
   }
 
+  &.link__active::before {
+    color: #cecece;
+    transform: scale3d(0.5, 1, 1);
+  }
+
   &:hover::before,
   &:focus::before {
+    background: #fff;
     transform: scale3d(1, 1, 1);
   }
 }
@@ -100,6 +107,11 @@ a.link {
   &:hover,
   &:focus {
     color: #5c5edc;
+  }
+
+  &::before {
+    margin: 0 0 0 -15px;
+    background: #5c5edc;
   }
 }
 

@@ -15,18 +15,25 @@ import type { Component } from 'solid-js';
 import type { RouteMeta } from '~/services';
 
 import { AppLink } from '~/models';
+import { getRouteData } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
 export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?: (_open?: boolean) => void }> = props => {
   const close = () => props?.onClick?.(false);
   const [t] = useI18n();
+  const active = getRouteData;
   return (
     <nav class={styles.pages_nav} classList={{ [styles.pages_nav__open]: props.open ?? false }} id="navbar">
       <div class={styles.pages_nav__items}>
         <For each={props.routes}>
           {route => (
             <div class={styles.pages_nav__item}>
-              <Link class={`${styles.link} ${styles.link__page}`} href={route.path} onclick={close}>
+              <Link
+                class={`${styles.link} ${styles.link__page}`}
+                classList={{ [styles.link__active]: active()?.path === route.path }}
+                href={route.path}
+                onclick={close}
+              >
                 {t(`routes.${camelToSnakeCase(route.name)}`)}
               </Link>
             </div>
