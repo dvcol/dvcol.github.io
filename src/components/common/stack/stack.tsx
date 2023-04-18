@@ -11,19 +11,12 @@ import type { JSX, ParentComponent } from 'solid-js';
 
 import { getRouteData, RoutesMetas } from '~/services';
 
-const computeShift = (): number => {
-  const navbar = document.querySelector('#navbar')?.clientHeight;
-  const body = document.querySelector('body')?.clientHeight;
-  const shift = navbar && body ? (navbar / body) * 2 * 100 : 40;
-  return Math.ceil(shift);
-};
-
-const transformToCSSProperties = (transform: string, opacity = 1): JSX.CSSProperties => ({ transform, opacity });
-
-type TransformOptions = { offset?: number; opacity?: number; shift?: number };
-const offsetTransform = (options: TransformOptions = {}) => {
-  const { offset, opacity, shift } = { offset: 2, shift: computeShift(), ...options };
-  return transformToCSSProperties(`translate3d(0,${shift}%,-${offset * 100}px)`, opacity ?? (10 - offset) / 10);
+type TransformOptions = { offset?: number; opacity?: number };
+const offsetTransform = (options: TransformOptions = {}): JSX.CSSProperties => {
+  const { offset, opacity: _opacity } = { offset: 2, ...options };
+  const transform = `translate3d(0,15%,-${offset * 100}px)`;
+  const opacity = _opacity ?? (10 - offset) / 10;
+  return { transform, opacity };
 };
 
 const computeTransform = (open = false): ((options: TransformOptions) => JSX.CSSProperties | undefined) => (open ? offsetTransform : () => undefined);
@@ -54,8 +47,13 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
     return _overflow;
   });
 
+  const stackTransform = createMemo<JSX.CSSProperties>(() => {
+    const height = document.querySelector('#navbar')?.clientHeight;
+    return { transform: `translateY(${props.open ? height : 0}px)` };
+  });
+
   return (
-    <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }}>
+    <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }} style={stackTransform()}>
       <For each={pages()}>
         {({ path, title }, index) => (
           <Box
