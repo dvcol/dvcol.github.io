@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@dvcol/about-me": "^1.1.2",
-    "@dvcol/synology-extension": "^3.1.1",
+    "@dvcol/synology-extension": "^3.3.0",
     "@solid-primitives/i18n": "^1.2.4",
     "@solidjs/meta": "^0.28.4",
     "@solidjs/router": "^0.8.2",

@@ -1,4 +1,4 @@
-import { defineComponents, generateTask } from '@dvcol/synology-extension';
+import { activateDemo, defineComponents } from '@dvcol/synology-extension';
 
 import en from '@dvcol/synology-extension/dist/_locales/en/messages.json';
 
@@ -15,4 +15,4 @@ declare module 'solid-js' {
   }
 }
 
-export { en, defineComponents, generateTask, StandaloneAppHtmlElement, ContentAppHtmlElement };
+export { en, defineComponents, activateDemo, StandaloneAppHtmlElement, ContentAppHtmlElement };

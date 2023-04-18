@@ -3,7 +3,7 @@ import { Button, Stack, Typography } from '@suid/material';
 import type { Component } from 'solid-js';
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
 
-import { defineComponents, en, generateTask } from '~/apps/synology-extension/entry';
+import { activateDemo, defineComponents, en } from '~/apps/synology-extension/entry';
 import { Page, Section } from '~/components/common';
 
 const wcStyle: any = {
@@ -16,7 +16,11 @@ const wcStyle: any = {
 
 export const SynologyDemo: Component = () => {
   defineComponents({ patch: true, locales: { en } })
-    .then(() => console.debug('Web components defined.'))
+    .then(() => {
+      console.debug('Web components defined.');
+      const _task = window._synology?.mock?.task;
+      if (_task) activateDemo(_task);
+    })
     .catch(err => console.error('Web components failed to define.', err));
 
   let content: ContentAppHtmlElement;
@@ -33,7 +37,8 @@ export const SynologyDemo: Component = () => {
           <Button
             variant="outlined"
             onClick={() => {
-              standalone?.add?.(generateTask());
+              window._synology?.mock?.task?.add();
+              standalone.poll();
             }}
           >
             Add download
