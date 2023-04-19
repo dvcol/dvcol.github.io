@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/dvcol/dvcol.github.io/compare/v1.11.1...v1.12.0) (2023-04-19)
+
+
+### Features
+
+* **synology:** bump deps and add support to task demo ([5e04151](https://github.com/dvcol/dvcol.github.io/commit/5e04151ebd67b6a2bf433bee27306288c84890fe))
+
+
+### Bug Fixes
+
+* **navbar:** fix underline active ([b92dcb0](https://github.com/dvcol/dvcol.github.io/commit/b92dcb0393ba1a71507dd08fa0b6b5407fd3c6b5))
+
 ### [1.11.1](https://github.com/dvcol/dvcol.github.io/compare/v1.11.0...v1.11.1) (2023-04-18)
 
 
