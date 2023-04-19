@@ -7,6 +7,7 @@ import { activateDemo, defineComponents, en } from '~/apps/synology-extension/en
 import { Page, Section } from '~/components/common';
 
 const wcStyle: any = {
+  position: 'relative',
   display: 'flex',
   flex: '1 1 auto',
   'flex-direction': 'column',
@@ -48,6 +49,12 @@ export const SynologyDemo: Component = () => {
             onClick={() =>
               content.dialog?.({
                 open: true,
+                form: {
+                  uri: 'http://my-download-link/modal/payload.pdf',
+                  destination: {
+                    path: 'modal/path',
+                  },
+                },
               })
             }
           >
@@ -59,7 +66,12 @@ export const SynologyDemo: Component = () => {
               content.anchor?.({
                 event,
                 anchor: null,
-                form: {},
+                form: {
+                  uri: 'http://my-download-link/quick-menu/payload.pdf',
+                  destination: {
+                    path: 'quick/menu/path',
+                  },
+                },
               })
             }
           >
@@ -69,7 +81,7 @@ export const SynologyDemo: Component = () => {
         <wc-synology-download-content ref={content!} />
       </Section>
       <Section>
-        <wc-synology-download-standalone ref={standalone!} basename="synology" style={wcStyle}>
+        <wc-synology-download-standalone ref={standalone!} basename="synology/demo" style={wcStyle}>
           {/* TODO skeleton loading here */}
         </wc-synology-download-standalone>
       </Section>
