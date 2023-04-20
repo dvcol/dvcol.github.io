@@ -28,6 +28,7 @@
   transition: transform 0.45s, opacity 0.45s, min-height 0s linear 0.45s;
   transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
   pointer-events: auto;
+  overscroll-behavior-y: contain;
 }
 
 .page__active {

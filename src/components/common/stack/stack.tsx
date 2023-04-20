@@ -9,6 +9,9 @@ import styles from './stack.module.scss';
 
 import type { JSX, ParentComponent } from 'solid-js';
 
+import type { OnTriggerCallback } from '~/components/common/utils/over-scroll-handler';
+
+import { useOverScrollHandler } from '~/components/common/utils/over-scroll-handler';
 import { getRouteData, RoutesMetas } from '~/services';
 
 type TransformOptions = { offset?: number; opacity?: number };
@@ -52,6 +55,12 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
     return { transform: `translateY(${props.open ? height : 0}px)` };
   });
 
+  const onTrigger: OnTriggerCallback = () => {
+    props?.onClick?.(true);
+  };
+
+  const { setContainerRef, handlers } = useOverScrollHandler({ onTrigger });
+
   return (
     <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }} style={stackTransform()}>
       <For each={pages()}>
@@ -68,6 +77,8 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
         )}
       </For>
       <Box
+        ref={setContainerRef}
+        {...handlers}
         component={'article'}
         class={styles.page}
         classList={{ [styles.page__active]: true }}
