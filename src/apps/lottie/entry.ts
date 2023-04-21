@@ -6,7 +6,7 @@ const LottieWebComponent = 'lottie-player';
 
 // type LottiePlayerComponent = LottiePlayer & { mode: keyof typeof PlayMode };
 
-type LottiePlayerComponent = Partial<Omit<typeof LottiePlayer.prototype, 'mode' | 'currentState'>> & {
+export type LottiePlayerComponent = Partial<Omit<typeof LottiePlayer.prototype, 'mode' | 'currentState'>> & {
   mode?: `${PlayMode}`;
   currentState?: `${PlayerState}`;
 };
@@ -25,5 +25,4 @@ const defineComponent = async () => {
   }
 };
 
-export { defineComponent, PlayMode };
-export type { LottiePlayerComponent };
+defineComponent().catch(err => console.error('Lottie web component failed to define.', err));

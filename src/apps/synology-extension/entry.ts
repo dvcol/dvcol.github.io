@@ -15,4 +15,11 @@ declare module 'solid-js' {
   }
 }
 
-export { en, defineComponents, activateDemo, StandaloneAppHtmlElement, ContentAppHtmlElement };
+export { StandaloneAppHtmlElement, ContentAppHtmlElement };
+
+defineComponents({ patch: true, locales: { en } })
+  .then(() => {
+    const _task = window._synology?.mock?.task;
+    if (_task) activateDemo(_task);
+  })
+  .catch(err => console.error('Synology Web components failed to define.', err));

@@ -1,4 +1,4 @@
-import { definedComponent } from '@dvcol/about-me';
+import { defineComponent } from '@dvcol/about-me';
 
 import type { AppWc } from '@dvcol/about-me';
 
@@ -10,4 +10,4 @@ declare module 'solid-js' {
   }
 }
 
-export { definedComponent };
+defineComponent();

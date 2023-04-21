@@ -1,11 +1,10 @@
 import { Button, Stack, TextField, Typography } from '@suid/material';
 
-import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
+import { createEffect, createSignal, onCleanup } from 'solid-js';
 
 import type { Component } from 'solid-js';
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
 
-import { activateDemo, defineComponents, en } from '~/apps/synology-extension/entry';
 import { Page, Section } from '~/components/common';
 
 const wcStyle: any = {
@@ -18,13 +17,6 @@ const wcStyle: any = {
 };
 
 export const SynologyDemo: Component = () => {
-  defineComponents({ patch: true, locales: { en } })
-    .then(() => {
-      const _task = window._synology?.mock?.task;
-      if (_task) activateDemo(_task);
-    })
-    .catch(err => console.error('Synology Web components failed to define.', err));
-
   let content: ContentAppHtmlElement;
   let standalone: StandaloneAppHtmlElement;
 
@@ -43,10 +35,10 @@ export const SynologyDemo: Component = () => {
       }
     }, 250);
 
-  createEffect(onTaskChange);
-
-  onMount(() => window._synology.mock?.task?.addListener(onTaskChange));
+  import('~/apps/synology-extension/entry').then(() => window._synology.mock?.task?.addListener(onTaskChange));
   onCleanup(() => window._synology.mock?.task?.removeListener(onTaskChange));
+
+  createEffect(onTaskChange);
 
   return (
     <Page>

@@ -82,8 +82,9 @@ export default defineConfig({
       input: {
         shell: 'index.html',
         worker: 'src/sw/worker.ts',
-        synology: 'src/apps/synology-extension/entry.ts',
+        lottie: 'src/apps/lottie/entry.ts',
         'about-me': 'src/apps/about-me/entry.ts',
+        synology: 'src/apps/synology-extension/entry.ts',
       },
       output: {
         chunkFileNames: 'chunks/[name].chunk.[hash].js',
