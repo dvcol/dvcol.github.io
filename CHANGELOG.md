@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/dvcol/dvcol.github.io/compare/v1.12.0...v1.13.0) (2023-04-21)
+
+
+### Features
+
+* **stack:** scroll to open navbar ([54f6228](https://github.com/dvcol/dvcol.github.io/commit/54f6228c387371e9ab4aa21ca964525c863f209b))
+
+
+### Bug Fixes
+
+* **synology:** fix demo mode ([1d11248](https://github.com/dvcol/dvcol.github.io/commit/1d11248e0e13675aa7a5c46c261321da3e75264d))
+
 ## [1.12.0](https://github.com/dvcol/dvcol.github.io/compare/v1.11.1...v1.12.0) (2023-04-19)
 
 
