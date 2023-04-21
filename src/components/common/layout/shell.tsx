@@ -16,7 +16,7 @@ export const Shell: ParentComponent<{ routes?: RouteMeta[] }> = props => {
     <>
       <header style={{ position: 'absolute', top: '0', width: '100%' }}>
         <NavbarButton open={open()} onClick={setOpen} />
-        <Navbar open={open()} routes={props.routes} onClick={setOpen} />
+        <Navbar open={open()} routes={props.routes?.filter(r => r.navbar)} onClick={setOpen} />
       </header>
       <main>
         <Stack open={open()} onClick={setOpen}>

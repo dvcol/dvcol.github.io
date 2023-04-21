@@ -3,7 +3,14 @@ import { createSignal, lazy } from 'solid-js';
 import type { RouteDefinition } from '@solidjs/router/dist/types';
 
 export enum Routes {
+  /** Technical pages **/
   Home = '/',
+  NotFound = '/404',
+  Unauthorized = '/401',
+  Forbidden = '/403',
+  Error = '/500',
+
+  /** Public pages **/
   Particles = '/particles',
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
@@ -15,38 +22,68 @@ export type RouteMeta = {
   path: Routes;
   name: keyof typeof Routes;
   title: string;
+  navbar?: boolean;
 };
 
 const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
+  /** Technical pages **/
+  NotFound: {
+    path: Routes.NotFound,
+    name: 'NotFound',
+    title: 'routes.title.not_found',
+  },
+  Unauthorized: {
+    path: Routes.Unauthorized,
+    name: 'Unauthorized',
+    title: 'routes.title.unauthorized',
+  },
+  Forbidden: {
+    path: Routes.Forbidden,
+    name: 'Forbidden',
+    title: 'routes.title.forbidden',
+  },
+  Error: {
+    path: Routes.Error,
+    name: 'Error',
+    title: 'routes.title.error',
+  },
+
+  /** Public pages **/
   Home: {
     path: Routes.Home,
     name: 'Home',
     title: 'routes.title.home',
+    navbar: true,
   },
   Synology: {
     path: Routes.Synology,
     name: 'Synology',
     title: 'routes.title.synology',
+    navbar: true,
   },
   SynologyDemo: {
     path: Routes.SynologyDemo,
     name: 'SynologyDemo',
     title: 'routes.title.synology_demo',
+    navbar: true,
   },
   Particles: {
     path: Routes.Particles,
     name: 'Particles',
     title: 'routes.title.particles',
+    navbar: true,
   },
   AboutMe: {
     path: Routes.AboutMe,
     name: 'AboutMe',
     title: 'routes.title.about_me',
+    navbar: true,
   },
   Contact: {
     path: Routes.Contact,
     name: 'Contact',
     title: 'routes.title.contact',
+    navbar: true,
   },
 };
 
@@ -64,6 +101,29 @@ const getData =
   };
 
 export const RoutesDefinitions: RouteDefinition[] = [
+  /** Technical pages **/
+  {
+    path: ['*', `${Routes.NotFound}`],
+    component: lazy(() => import('~/components/pages/errors/page-not-found')),
+    data: getData(RoutesMeta.NotFound),
+  },
+  {
+    path: `${Routes.Unauthorized}`,
+    component: lazy(() => import('~/components/pages/errors/page-unauthorized')),
+    data: getData(RoutesMeta.Unauthorized),
+  },
+  {
+    path: `${Routes.Forbidden}`,
+    component: lazy(() => import('~/components/pages/errors/page-forbidden')),
+    data: getData(RoutesMeta.Forbidden),
+  },
+  {
+    path: `${Routes.Error}`,
+    component: lazy(() => import('~/components/pages/errors/page-internal-error')),
+    data: getData(RoutesMeta.Error),
+  },
+
+  /** Public pages **/
   {
     path: Routes.Home,
     component: lazy(() => import('~/components/pages/home/home')),
