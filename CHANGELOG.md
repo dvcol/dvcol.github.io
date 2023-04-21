@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.1](https://github.com/dvcol/dvcol.github.io/compare/v1.14.0...v1.14.1) (2023-04-21)
+
+
+### Bug Fixes
+
+* **build:** fix lazy loading entry files ([73563b8](https://github.com/dvcol/dvcol.github.io/commit/73563b87d4ab47a530122348c12a01d3e4e7bc9b))
+* **navbar:** fix style offset for social links ([67fd26f](https://github.com/dvcol/dvcol.github.io/commit/67fd26f45f7e5193f5da069a775c16618cb17cf0))
+
 ## [1.14.0](https://github.com/dvcol/dvcol.github.io/compare/v1.13.0...v1.14.0) (2023-04-21)
 
 
