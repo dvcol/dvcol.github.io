@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/dvcol/dvcol.github.io/compare/v1.13.0...v1.14.0) (2023-04-21)
+
+
+### Features
+
+* **layout:** rework layout and add support to lottie ([65014e1](https://github.com/dvcol/dvcol.github.io/commit/65014e1cac2301d6662685ad7778c0d7efbac4bf))
+* **routing:** adds technical error pages ([2403035](https://github.com/dvcol/dvcol.github.io/commit/2403035beade129ae263eb5612ca92dca1f36d1d))
+
 ## [1.13.0](https://github.com/dvcol/dvcol.github.io/compare/v1.12.0...v1.13.0) (2023-04-21)
 
 
