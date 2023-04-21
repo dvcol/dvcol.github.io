@@ -40,6 +40,9 @@ export const useOverScrollHandler = (options: Options) => {
   };
 
   const onWheel: WheelEventHandler = e => {
+    // prevent propagation to parents
+    e.stopPropagation();
+
     if (disabled?.()) return clearOffset();
     const scrollTop = containerRef()?.scrollTop;
     // if we are not a scroll top, reset timer and set start
@@ -69,12 +72,18 @@ export const useOverScrollHandler = (options: Options) => {
   };
 
   const onTouchStart: TouchEventHandler = e => {
+    // prevent propagation to parents
+    e.stopPropagation();
+
     if (disabled?.()) return clearOffset();
     setTriggered(false);
     setStart(e.touches[0].screenY);
   };
 
   const onTouchMove: TouchEventHandler = e => {
+    // prevent propagation to parents
+    e.stopPropagation();
+
     if (disabled?.()) return clearOffset();
     if (containerRef()?.scrollTop !== 0) return; // not container scroll top
     const current = e.touches[0].screenY;
@@ -83,7 +92,10 @@ export const useOverScrollHandler = (options: Options) => {
     setOffset(Math.abs(delta));
   };
 
-  const onTouchEnd: TouchEventHandler = () => {
+  const onTouchEnd: TouchEventHandler = e => {
+    // prevent propagation to parents
+    e.stopPropagation();
+
     if (disabled?.()) return clearOffset();
     if (progress() >= 1) {
       onTrigger?.({ start: start(), offset: offset(), progress: progress() });

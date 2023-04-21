@@ -1,4 +1,6 @@
-import { Button, Stack, Typography } from '@suid/material';
+import { Button, Stack, TextField, Typography } from '@suid/material';
+
+import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
 
 import type { Component } from 'solid-js';
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
@@ -26,6 +28,27 @@ export const SynologyDemo: Component = () => {
 
   let content: ContentAppHtmlElement;
   let standalone: StandaloneAppHtmlElement;
+
+  const [min, setMin] = createSignal(5);
+
+  const onTaskChange = () =>
+    setTimeout(() => {
+      console.info('change');
+      if (!window._synology.mock?.task) return;
+
+      const current = window._synology.mock?.task?.tasks.length ?? 0;
+
+      if (current < min()) {
+        window._synology.mock.task.add();
+        standalone?.poll();
+      }
+    }, 250);
+
+  createEffect(onTaskChange);
+
+  onMount(() => window._synology.mock?.task?.addListener(onTaskChange));
+  onCleanup(() => window._synology.mock?.task?.removeListener(onTaskChange));
+
   return (
     <Page>
       <Section ref>
@@ -34,17 +57,19 @@ export const SynologyDemo: Component = () => {
         </Typography>
       </Section>
       <Section>
-        <Stack direction="row">
+        <Stack direction="row" spacing="2em" sx={{ justifyContent: 'center' }}>
           <Button
+            id="add-task"
             variant="outlined"
             onClick={() => {
               window._synology?.mock?.task?.add();
               standalone.poll();
             }}
           >
-            Add download
+            Add task
           </Button>
           <Button
+            id="open-modal"
             variant="outlined"
             onClick={() =>
               content.dialog?.({
@@ -61,6 +86,7 @@ export const SynologyDemo: Component = () => {
             Open modal
           </Button>
           <Button
+            id="quick-menu"
             variant="outlined"
             onClick={event =>
               content.anchor?.({
@@ -77,6 +103,7 @@ export const SynologyDemo: Component = () => {
           >
             Open Quick menu
           </Button>
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" value={min()} type="number" onChange={e => setMin(e.target.value)} />
         </Stack>
         <wc-synology-download-content ref={content!} />
       </Section>
