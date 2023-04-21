@@ -86,9 +86,15 @@ export default defineConfig({
         'about-me': 'src/apps/about-me/entry.ts',
       },
       output: {
-        assetFileNames: 'assets/[name].[extname]',
         chunkFileNames: 'chunks/[name].chunk.[hash].js',
         entryFileNames: entry => `entry/[name].entry${entry.name !== 'worker' ? '.[hash]' : ''}.js`,
+        assetFileNames: asset => {
+          const format = '[name].[extname]';
+          if (asset.name?.endsWith('.png')) return `assets/png/${format}`;
+          if (asset.name?.endsWith('.lottie')) return `assets/lottie/${format}`;
+          if (asset.name?.endsWith('css')) return `styles/${format}`;
+          return `assets/[name].[extname]`;
+        },
       },
     },
   },

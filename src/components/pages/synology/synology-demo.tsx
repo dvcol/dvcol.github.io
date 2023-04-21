@@ -20,20 +20,19 @@ const wcStyle: any = {
 export const SynologyDemo: Component = () => {
   defineComponents({ patch: true, locales: { en } })
     .then(() => {
-      console.debug('Web components defined.');
       const _task = window._synology?.mock?.task;
       if (_task) activateDemo(_task);
     })
-    .catch(err => console.error('Web components failed to define.', err));
+    .catch(err => console.error('Synology Web components failed to define.', err));
 
   let content: ContentAppHtmlElement;
   let standalone: StandaloneAppHtmlElement;
 
   const [min, setMin] = createSignal(5);
+  const onMinChange: (e: any) => void = (e: InputEvent) => setMin(Number(e.data));
 
   const onTaskChange = () =>
     setTimeout(() => {
-      console.info('change');
       if (!window._synology.mock?.task) return;
 
       const current = window._synology.mock?.task?.tasks.length ?? 0;
@@ -51,7 +50,7 @@ export const SynologyDemo: Component = () => {
 
   return (
     <Page>
-      <Section ref>
+      <Section>
         <Typography variant="h2" gutterBottom component="div">
           Synology Demo
         </Typography>
@@ -103,7 +102,7 @@ export const SynologyDemo: Component = () => {
           >
             Open Quick menu
           </Button>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" value={min()} type="number" onChange={e => setMin(e.target.value)} />
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" value={min()} type="number" onChange={onMinChange} />
         </Stack>
         <wc-synology-download-content ref={content!} />
       </Section>

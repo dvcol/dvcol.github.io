@@ -4,17 +4,17 @@ import type { RouteDefinition } from '@solidjs/router/dist/types';
 
 export enum Routes {
   /** Technical pages **/
-  Home = '/',
   NotFound = '/404',
   Unauthorized = '/401',
   Forbidden = '/403',
   Error = '/500',
 
   /** Public pages **/
-  Particles = '/particles',
+  Home = '/',
+  Trakt = '/trakt',
+  AboutMe = '/about/me',
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
-  AboutMe = '/about/me',
   Contact = '/contact',
 }
 
@@ -55,6 +55,18 @@ const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.home',
     navbar: true,
   },
+  Trakt: {
+    path: Routes.Trakt,
+    name: 'Trakt',
+    title: 'routes.title.trakt',
+    navbar: true,
+  },
+  AboutMe: {
+    path: Routes.AboutMe,
+    name: 'AboutMe',
+    title: 'routes.title.about_me',
+    navbar: true,
+  },
   Synology: {
     path: Routes.Synology,
     name: 'Synology',
@@ -65,18 +77,6 @@ const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.SynologyDemo,
     name: 'SynologyDemo',
     title: 'routes.title.synology_demo',
-    navbar: true,
-  },
-  Particles: {
-    path: Routes.Particles,
-    name: 'Particles',
-    title: 'routes.title.particles',
-    navbar: true,
-  },
-  AboutMe: {
-    path: Routes.AboutMe,
-    name: 'AboutMe',
-    title: 'routes.title.about_me',
     navbar: true,
   },
   Contact: {
@@ -130,9 +130,14 @@ export const RoutesDefinitions: RouteDefinition[] = [
     data: getData(RoutesMeta.Home),
   },
   {
-    path: Routes.Particles,
-    component: lazy(() => import('~/components/common/particles/particles-wip')),
-    data: getData(RoutesMeta.Particles),
+    path: Routes.Trakt,
+    component: lazy(() => import('~/components/pages/trakt/trakt-home')),
+    data: getData(RoutesMeta.Trakt),
+  },
+  {
+    path: `${Routes.AboutMe}/*`,
+    component: lazy(() => import('~/components/pages/about-me/about-me')),
+    data: getData(RoutesMeta.AboutMe),
   },
   {
     path: Routes.Synology,
@@ -143,11 +148,6 @@ export const RoutesDefinitions: RouteDefinition[] = [
     path: `${Routes.SynologyDemo}/*`,
     component: lazy(() => import('~/components/pages/synology/synology-demo')),
     data: getData(RoutesMeta.SynologyDemo),
-  },
-  {
-    path: `${Routes.AboutMe}/*`,
-    component: lazy(() => import('~/components/pages/about-me/about-me')),
-    data: getData(RoutesMeta.AboutMe),
   },
   {
     path: `${Routes.Contact}`,

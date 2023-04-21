@@ -6,8 +6,10 @@ import { I18nContext } from './i18n-context';
 import type { ParentComponent } from 'solid-js';
 
 export const I18nProvider: ParentComponent<{ initialLocale?: string }> = props => {
+  const user = navigator.language;
+  const fallback = user === 'fr' ? 'fr' : 'en';
   return (
-    <I18nContext initialDictionary={locales} initialLocale={props.initialLocale ?? 'en'}>
+    <I18nContext initialDictionary={locales} initialLocale={props.initialLocale ?? fallback}>
       {props.children}
     </I18nContext>
   );

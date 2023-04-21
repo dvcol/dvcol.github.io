@@ -1,6 +1,6 @@
 {
   "home": "Home",
-  "particles": "Particles",
+  "trakt": "Trakt",
   "synology": "Synology",
   "synology_demo": "Synology Demo",
   "about_me": "About Me",
@@ -11,8 +11,8 @@
   "error": "Error",
   "title": {
     "home": "Home - Landing page for Dinh-Van's projects",
-    "particles": "Particles - Particles sandbox",
-    "synology": "Synology - A chromes tore extension for Synology NAS",
+    "trakt": "Trakt - A chrome extension for Trakt.tv",
+    "synology": "Synology - A chrome extension for Synology NAS",
     "synology_demo": "Synology Demo - Interactive demo of Synology Download",
     "about_me": "About Me - About my various projects and experiences",
     "contact": "Contact - Contact form",

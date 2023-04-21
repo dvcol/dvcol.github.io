@@ -1,1 +1,1 @@
-export * from './particles-wip';
+export * from './particles-container';

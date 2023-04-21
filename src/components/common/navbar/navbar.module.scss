@@ -70,6 +70,14 @@ a.link {
   outline: none;
 }
 
+.link__social {
+  display: flex;
+  align-items: center;
+  min-width: 80px;
+  min-height: 30px;
+  margin: 0 0.75em;
+}
+
 .link__page,
 .link__social {
   display: block;
@@ -96,8 +104,14 @@ a.link {
 
   &:hover::before,
   &:focus::before {
-    background: #fff;
     transform: scale3d(1, 1, 1);
+  }
+
+  &:not(.link__faded) {
+    &:hover::before,
+    &:focus::before {
+      background: #fff;
+    }
   }
 }
 
@@ -117,14 +131,6 @@ a.link {
 
 .link__page.link__faded {
   font-size: 0.65em;
-}
-
-.link__social {
-  display: flex;
-  align-items: center;
-  min-width: 80px;
-  min-height: 30px;
-  margin: 0 0.75em;
 }
 
 @media screen and (max-width: 60em) {

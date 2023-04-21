@@ -4,12 +4,10 @@ import { Button, Stack } from '@suid/material';
 
 import { For } from 'solid-js';
 
-import styles from './home.module.scss';
-
 import type { Component } from 'solid-js';
 
-import Logo from '~/assets/logo/solid.svg?component-solid';
-import { Page } from '~/components';
+import { Page, ParticlesContainer } from '~/components';
+import { TriangleParticles } from '~/components/common/particles/triangle.particles';
 import { RoutesMetas } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
@@ -17,23 +15,20 @@ export const Home: Component = () => {
   const navigate = useNavigate();
   const [t] = useI18n();
   return (
-    <Page>
-      <div class={styles.app}>
-        <header class={styles.header}>
-          <Logo class={styles.logo} />
-          <Stack spacing={2} direction="column">
-            <For each={RoutesMetas}>
-              {({ name, path }) => (
-                <>
-                  <Button variant="outlined" onclick={() => navigate(path)}>
-                    {t(`routes.${camelToSnakeCase(name)}`, {}, 'fallback')}
-                  </Button>
-                </>
-              )}
-            </For>
-          </Stack>
-        </header>
-      </div>
+    <Page sx={{ justifyContent: 'center' }}>
+      <ParticlesContainer options={TriangleParticles}>
+        <Stack spacing={2} direction="column" sx={{ alignItems: 'center' }}>
+          <For each={RoutesMetas?.filter(r => r.navbar)}>
+            {({ name, path }) => (
+              <>
+                <Button variant="outlined" onclick={() => navigate(path)} sx={{ width: 'fit-content' }}>
+                  {t(`routes.${camelToSnakeCase(name)}`, {}, 'fallback')}
+                </Button>
+              </>
+            )}
+          </For>
+        </Stack>
+      </ParticlesContainer>
     </Page>
   );
 };

@@ -2,7 +2,7 @@ import type { Component } from 'solid-js';
 
 import { ComingSoon, Page, Section } from '~/components';
 
-export const SynologyHome: Component = () => {
+export const TraktHome: Component = () => {
   return (
     <Page>
       <Section>
@@ -12,4 +12,4 @@ export const SynologyHome: Component = () => {
   );
 };
 
-export default SynologyHome;
+export default TraktHome;
