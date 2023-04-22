@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.2](https://github.com/dvcol/dvcol.github.io/compare/v1.14.1...v1.14.2) (2023-04-22)
+
+
+### Bug Fixes
+
+* **scroll:** add scroll indicator and fix nested scroll in wc ([ce48dd7](https://github.com/dvcol/dvcol.github.io/commit/ce48dd77c19e4f92f8db4c1137f7374de64073a0))
+* **scroll:** remove unnecessary prevent default to make listener passive ([56258e9](https://github.com/dvcol/dvcol.github.io/commit/56258e968f85ae38471881a407e88e3114024605))
+* **synology:** clean up synology demo ([327ef8e](https://github.com/dvcol/dvcol.github.io/commit/327ef8ed42618d4085540567ee3d38a037022f84))
+
 ### [1.14.1](https://github.com/dvcol/dvcol.github.io/compare/v1.14.0...v1.14.1) (2023-04-21)
 
 
