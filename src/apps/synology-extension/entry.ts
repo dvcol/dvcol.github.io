@@ -15,7 +15,7 @@ declare module 'solid-js' {
   }
 }
 
-export { StandaloneAppHtmlElement, ContentAppHtmlElement };
+export { StandaloneAppHtmlElement, ContentAppHtmlElement, WebComponents };
 
 defineComponents({ patch: true, locales: { en } })
   .then(() => {

@@ -1,6 +1,6 @@
-import { Button, Stack, TextField, Typography } from '@suid/material';
+import { Button, Stack, Typography } from '@suid/material';
 
-import { createEffect, createSignal, onCleanup } from 'solid-js';
+import { onMount } from 'solid-js';
 
 import type { Component } from 'solid-js';
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
@@ -20,25 +20,9 @@ export const SynologyDemo: Component = () => {
   let content: ContentAppHtmlElement;
   let standalone: StandaloneAppHtmlElement;
 
-  const [min, setMin] = createSignal(5);
-  const onMinChange: (e: any) => void = (e: InputEvent) => setMin(Number(e.data));
+  import('~/apps/synology-extension/entry').catch(() => console.error('Failed to define synology web components'));
 
-  const onTaskChange = () =>
-    setTimeout(() => {
-      if (!window._synology.mock?.task) return;
-
-      const current = window._synology.mock?.task?.tasks.length ?? 0;
-
-      if (current < min()) {
-        window._synology.mock.task.add();
-        standalone?.poll();
-      }
-    }, 250);
-
-  import('~/apps/synology-extension/entry').then(() => window._synology.mock?.task?.addListener(onTaskChange));
-  onCleanup(() => window._synology.mock?.task?.removeListener(onTaskChange));
-
-  createEffect(onTaskChange);
+  onMount(() => standalone?.poll);
 
   return (
     <Page>
@@ -94,7 +78,6 @@ export const SynologyDemo: Component = () => {
           >
             Open Quick menu
           </Button>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" value={min()} type="number" onChange={onMinChange} />
         </Stack>
         <wc-synology-download-content ref={content!} />
       </Section>
