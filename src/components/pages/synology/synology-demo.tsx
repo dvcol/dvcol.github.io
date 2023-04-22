@@ -99,7 +99,7 @@ export const SynologyDemo: Component = () => {
         <wc-synology-download-content ref={content!} />
       </Section>
       <Section>
-        <wc-synology-download-standalone ref={standalone!} basename="synology/demo" style={wcStyle}>
+        <wc-synology-download-standalone ref={standalone!} basename="synology/demo" style={wcStyle} data-over-scroll="false">
           {/* TODO skeleton loading here */}
         </wc-synology-download-standalone>
       </Section>

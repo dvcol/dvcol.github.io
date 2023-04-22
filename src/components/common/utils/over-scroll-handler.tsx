@@ -39,8 +39,14 @@ export const useOverScrollHandler = (options: Options) => {
     );
   };
 
+  const isExcluded = (el: EventTarget | null) => {
+    if (el instanceof Element) return el.getAttribute('data-over-scroll') === 'false';
+    return false;
+  };
+
   const onWheel: WheelEventHandler = e => {
     if (disabled?.()) return clearOffset();
+    if (isExcluded(e.target)) return clearOffset();
     const scrollTop = containerRef()?.scrollTop;
     // if we are not a scroll top, reset timer and set start
     if (scrollTop !== undefined && scrollTop !== 0) {
@@ -76,6 +82,7 @@ export const useOverScrollHandler = (options: Options) => {
 
   const onTouchMove: TouchEventHandler = e => {
     if (disabled?.()) return clearOffset();
+    if (isExcluded(e.target)) return clearOffset();
     if (containerRef()?.scrollTop !== 0) return; // not container scroll top
     const current = e.touches[0].screenY;
     const delta = start() - current;
