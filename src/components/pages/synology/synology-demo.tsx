@@ -44,6 +44,16 @@ export const SynologyDemo: Component = () => {
             Add task
           </Button>
           <Button
+            id="add-task"
+            variant="outlined"
+            onClick={() => {
+              window._synology?.mock?.download?.add();
+              standalone.poll();
+            }}
+          >
+            Add download
+          </Button>
+          <Button
             id="open-modal"
             variant="outlined"
             onClick={() =>

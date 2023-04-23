@@ -19,7 +19,7 @@ export { StandaloneAppHtmlElement, ContentAppHtmlElement, WebComponents };
 
 defineComponents({ patch: true, locales: { en } })
   .then(() => {
-    const _task = window._synology?.mock?.task;
-    if (_task) activateDemo(_task);
+    const { task, download } = window._synology?.mock ?? {};
+    if (task && download) activateDemo({ task: [task], download: [download] });
   })
   .catch(err => console.error('Synology Web components failed to define.', err));
