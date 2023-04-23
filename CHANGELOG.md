@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/dvcol/dvcol.github.io/compare/v1.14.2...v1.15.0) (2023-04-23)
+
+
+### Features
+
+* **synology:** adds mock download support ([395022e](https://github.com/dvcol/dvcol.github.io/commit/395022e16c9e6fe4357879fe598588e33ecafcca))
+
 ### [1.14.2](https://github.com/dvcol/dvcol.github.io/compare/v1.14.1...v1.14.2) (2023-04-22)
 
 
