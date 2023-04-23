@@ -1,4 +1,4 @@
-import { createMemo, createSignal } from 'solid-js';
+import { createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
 
 import type { Accessor } from 'solid-js';
 
@@ -100,6 +100,19 @@ export const useOverScrollHandler = (options: Options) => {
 
     clearOffset();
   };
+
+  createEffect(() => {
+    containerRef()?.addEventListener('wheel', onWheel, { passive: true });
+    containerRef()?.addEventListener('touchstart', onTouchStart, { passive: true });
+    containerRef()?.addEventListener('touchmove', onTouchMove, { passive: true });
+    containerRef()?.addEventListener('touchend', onTouchEnd, { passive: true });
+  });
+  onCleanup(() => {
+    containerRef()?.removeEventListener('wheel', onWheel);
+    containerRef()?.removeEventListener('touchstart', onTouchStart);
+    containerRef()?.removeEventListener('touchmove', onTouchMove);
+    containerRef()?.removeEventListener('touchend', onTouchEnd);
+  });
 
   return {
     handlers: { onWheel, onTouchStart, onTouchMove, onTouchEnd },

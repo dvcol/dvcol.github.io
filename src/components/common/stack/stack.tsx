@@ -60,7 +60,7 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
     props?.onClick?.(true);
   };
 
-  const { setContainerRef, handlers, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
+  const { setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
 
   const scale = createMemo(() => {
     const height = window.innerHeight;
@@ -92,7 +92,6 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
       </For>
       <Box
         ref={setContainerRef}
-        {...handlers}
         component={'article'}
         class={styles.page}
         classList={{ [styles.page__active]: true }}
