@@ -3,12 +3,12 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    padding: 0 6em;
+    margin: 0 3em;
   }
 }
 
 @media screen and (max-width: 40em) {
   .section_container {
-    padding: 0;
+    margin: 0;
   }
 }
