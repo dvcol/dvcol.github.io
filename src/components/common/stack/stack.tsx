@@ -5,13 +5,11 @@ import { Box } from '@suid/material';
 
 import { createEffect, createMemo, For } from 'solid-js';
 
+import { StackPage } from './stack-page';
 import styles from './stack.module.scss';
 
 import type { JSX, ParentComponent } from 'solid-js';
 
-import type { OnTriggerCallback } from '~/components/common/utils/over-scroll-handler';
-
-import { useOverScrollHandler } from '~/components/common/utils/over-scroll-handler';
 import { getRouteData, RoutesMetas } from '~/services';
 
 type TransformOptions = { offset?: number; opacity?: number } & Omit<JSX.CSSProperties, 'offset' | 'opacity' | 'transform'>;
@@ -25,9 +23,9 @@ const offsetTransform = (options: TransformOptions = {}): JSX.CSSProperties => {
 const computeTransform = (open = false): ((options: TransformOptions, _styles?: JSX.CSSProperties) => JSX.CSSProperties | undefined) =>
   open ? offsetTransform : (_, _styles) => _styles;
 
-export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean) => void }> = props => {
+type StackProps = { open?: boolean; onClick?: (_open?: boolean) => void };
+export const Stack: ParentComponent<StackProps> = props => {
   const routes = [...RoutesMetas];
-  const close = () => props?.onClick?.(false);
 
   const transform = createMemo(() => computeTransform(props.open), computeTransform(false));
   const active = getRouteData;
@@ -46,8 +44,13 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
 
   createEffect<string>(previous => {
     const _overflow = document.body.style.overflow;
-    if (props.open) document.body.style.overflow = 'hidden';
-    else if (_overflow !== previous) document.body.style.overflow = previous ?? '';
+    if (props.open) {
+      document.body.style.overflow = 'hidden';
+    } else if (_overflow !== previous) {
+      setTimeout(() => {
+        document.body.style.overflow = previous ?? '';
+      }, 450);
+    }
     return _overflow;
   });
 
@@ -56,50 +59,18 @@ export const Stack: ParentComponent<{ open?: boolean; onClick?: (_open?: boolean
     return { transform: `translateY(${props.open ? height : 0}px)` };
   });
 
-  const onTrigger: OnTriggerCallback = () => {
-    props?.onClick?.(true);
-  };
-
-  const { setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
-
-  const scale = createMemo(() => {
-    const height = window.innerHeight;
-    const width = window.innerWidth;
-    const hDiff = (height - width) / (width * 100);
-    const wDiff = (width - height) / (height * 100);
-
-    const _progress = progress();
-    const _scale = _progress > 0.025 ? 0.025 : _progress;
-    const _scaleX = 1 - (_scale + hDiff);
-    const _scaleY = 1 - (_scale + wDiff);
-    return _progress ? `scale(${_scaleX},${_scaleY})` : undefined;
-  });
-
   return (
     <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }} style={stackTransform()}>
       <For each={pages()}>
         {({ path, title }, index) => (
-          <Box
-            component={'article'}
-            class={styles.page}
-            classList={{ [styles.page__inactive]: true }}
-            style={transform()({ offset: 3 - index() / 2 })}
-            onClick={() => navigate(path)}
-          >
+          <StackPage open={props.open} class={styles.page} style={transform()({ offset: 3 - index() / 2 })} onClick={() => navigate(path)}>
             <Box class={styles.page__title}>{t(title)}</Box>
-          </Box>
+          </StackPage>
         )}
       </For>
-      <Box
-        ref={setContainerRef}
-        component={'article'}
-        class={styles.page}
-        classList={{ [styles.page__active]: true }}
-        style={transform()({ offset: 2, opacity: 1 }, { transform: scale() })}
-        onClick={close}
-      >
+      <StackPage active={true} open={props.open} class={styles.page} style={transform()({ offset: 2, opacity: 1 })} onClick={props.onClick}>
         {props.children}
-      </Box>
+      </StackPage>
     </div>
   );
 };

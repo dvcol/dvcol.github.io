@@ -9,3 +9,4 @@ export * from './router';
 export * from './stack';
 export * from './sw';
 export * from './tags';
+export * from './utils';
