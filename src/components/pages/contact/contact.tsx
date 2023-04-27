@@ -5,11 +5,12 @@ import { Background, LottiePlayer, Page, Section } from '~/components';
 import { RoutesMeta } from '~/services';
 
 export const Contact: Component = () => {
+  const LottieStyles: any = { 'max-width': '60vh', height: 'fit-content' };
   return (
     <Page header={<Section>403 forbidden</Section>}>
       <Background color={RoutesMeta.Contact.bgColor} />
-      <Section>
-        <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
+      <Section sx={{ alignItems: 'center' }}>
+        <LottiePlayer style={LottieStyles} autoplay loop mode="normal" src={ContactLottie} />
       </Section>
     </Page>
   );
