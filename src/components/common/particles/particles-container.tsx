@@ -20,7 +20,7 @@ export const ParticlesContainer: ParentComponent<Omit<ParticlesProps, 'id' | 'in
 
   return (
     <Box>
-      <Particles id="tsparticles" init={particlesInit} {..._props} />
+      <Particles id="tsparticles" init={particlesInit} style={{ position: 'absolute', top: 0, left: 0 }} {..._props} />
       {children}
     </Box>
   );

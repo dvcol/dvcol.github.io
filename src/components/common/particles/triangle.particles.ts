@@ -99,5 +99,8 @@ export const TriangleParticles: ParticlesProps['options'] = {
       },
     },
   },
+  fullScreen: {
+    enable: false,
+  },
   detectRetina: true,
 };

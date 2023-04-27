@@ -56,8 +56,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Home',
     title: 'routes.title.home',
     navbar: true,
-    color: 'black',
-    bgColor: 'white',
   },
   Trakt: {
     path: Routes.Trakt,
