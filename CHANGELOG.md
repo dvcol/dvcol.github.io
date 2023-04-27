@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/dvcol/dvcol.github.io/compare/v1.16.0...v1.17.0) (2023-04-27)
+
+
+### Features
+
+* **stack:** adds background color support ([87e6f87](https://github.com/dvcol/dvcol.github.io/commit/87e6f87fb002f31504b0966f9b61394c520a2629))
+
 ## [1.16.0](https://github.com/dvcol/dvcol.github.io/compare/v1.15.0...v1.16.0) (2023-04-27)
 
 
