@@ -1,0 +1,11 @@
+.background_container {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+}
+
+.background_container,
+.background {
+  width: 100%;
+  height: 100%;
+}

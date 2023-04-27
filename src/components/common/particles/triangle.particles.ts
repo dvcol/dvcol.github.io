@@ -2,10 +2,6 @@ import type { ParticlesProps } from 'solid-particles';
 
 export const TriangleParticles: ParticlesProps['options'] = {
   fpsLimit: 60,
-  backgroundMode: {
-    enable: true,
-    zIndex: 0,
-  },
   particles: {
     number: {
       value: 80,
@@ -104,10 +100,4 @@ export const TriangleParticles: ParticlesProps['options'] = {
     },
   },
   detectRetina: true,
-  background: {
-    image: '',
-    position: '50% 50%',
-    repeat: 'no-repeat',
-    size: 'cover',
-  },
 };
