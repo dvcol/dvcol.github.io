@@ -23,9 +23,11 @@ export type RouteMeta = {
   name: keyof typeof Routes;
   title: string;
   navbar?: boolean;
+  color?: string;
+  bgColor?: string;
 };
 
-const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
+export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
   /** Technical pages **/
   NotFound: {
     path: Routes.NotFound,
@@ -54,6 +56,8 @@ const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Home',
     title: 'routes.title.home',
     navbar: true,
+    color: 'black',
+    bgColor: 'white',
   },
   Trakt: {
     path: Routes.Trakt,
@@ -84,6 +88,8 @@ const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Contact',
     title: 'routes.title.contact',
     navbar: true,
+    color: 'white',
+    bgColor: 'maroon',
   },
 };
 

@@ -22,12 +22,7 @@ export const Router: ParentComponent<{ routes?: RouteDefinition[] }> = ({ childr
     enter.finished.then(done);
   };
 
-  const onExit: TransitionEvents['onExit'] = (el, done) => {
-    const exit = el.animate([{ opacity: 1 }, { opacity: 0 }], {
-      duration,
-    });
-    exit.finished.then(done);
-  };
+  const onExit: TransitionEvents['onExit'] = (el, done) => done();
   return (
     <SolidRouter source={hashIntegration()}>
       <Shell routes={RoutesMetas}>

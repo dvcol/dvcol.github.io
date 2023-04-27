@@ -62,8 +62,13 @@ export const Stack: ParentComponent<StackProps> = props => {
   return (
     <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }} style={stackTransform()}>
       <For each={pages()}>
-        {({ path, title }, index) => (
-          <StackPage open={props.open} class={styles.page} style={transform()({ offset: 3 - index() / 2 })} onClick={() => navigate(path)}>
+        {({ path, title, color, bgColor }, index) => (
+          <StackPage
+            open={props.open}
+            class={styles.page}
+            style={{ ...transform()({ offset: 3 - index() / 2 }), color, 'background-color': bgColor }}
+            onClick={() => navigate(path)}
+          >
             <Box class={styles.page__title}>{t(title)}</Box>
           </StackPage>
         )}
