@@ -1,14 +1,14 @@
-import { Box } from '@suid/material';
-
 import type { Component } from 'solid-js';
+
+import { Page } from '~/components';
 
 export const AboutMe: Component = () => {
   import('~/apps/about-me/entry').catch(() => console.error('Failed to define about-me web components'));
 
   return (
-    <Box sx={{ margin: '0 auto' }}>
+    <Page>
       <wc-about-me />
-    </Box>
+    </Page>
   );
 };
 
