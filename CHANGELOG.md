@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/dvcol/dvcol.github.io/compare/v1.15.0...v1.16.0) (2023-04-27)
+
+
+### Features
+
+* **animation:** adds route transition ([8b45292](https://github.com/dvcol/dvcol.github.io/commit/8b45292a38234228ce69ae34e2dc7e0815c84e31))
+* **dev:** adds HMR support to i18n ([a7adacf](https://github.com/dvcol/dvcol.github.io/commit/a7adacf5ba743f2703f8824799805acc246961a0))
+
+
+### Bug Fixes
+
+* **over-scroll:** makes scroll listener passive ([0e69453](https://github.com/dvcol/dvcol.github.io/commit/0e69453c87d3a43de1bcdcd842c1872e92a35aca))
+* **pages:** fix pages layouts ([f61c9ed](https://github.com/dvcol/dvcol.github.io/commit/f61c9ed3448bab8a966b1ec3685f074e6cda7e86))
+* **section:** reduce margin in sections ([89d3464](https://github.com/dvcol/dvcol.github.io/commit/89d346430bce23c1a1577b924afc5f488642ab3b))
+* **stack:** simplify stack page components ([782c4ce](https://github.com/dvcol/dvcol.github.io/commit/782c4cef635b2b0809a25d7f536f5ec78af29990))
+
 ## [1.15.0](https://github.com/dvcol/dvcol.github.io/compare/v1.14.2...v1.15.0) (2023-04-23)
 
 
