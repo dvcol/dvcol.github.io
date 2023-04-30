@@ -14,7 +14,7 @@ export const PageComingSoon: Component = () => {
   return (
     <ErrorPage title={t('page_coming_soon.title')} subtitle={t('page_coming_soon.subtitle')} description={t('page_coming_soon.description')}>
       <Box sx={{ overflow: 'hidden', height: '52rem' }}>
-        <LottiePlayer style={{ transform: 'translateX(-10%) scale(1.4)' }} autoplay loop src={ComingSoonLottie} />
+        <LottiePlayer style={{ transform: 'translateX(-10%)' }} autoplay loop src={ComingSoonLottie} />
       </Box>
     </ErrorPage>
   );

@@ -77,12 +77,14 @@ const common: ThemeOptions = {
     },
     h6: {
       fontSize: '1.5rem',
+      lineHeight: '1.75rem',
       '@media (max-width:900px)': {
         fontSize: '1.25rem',
+        lineHeight: '1.5rem',
       },
       '@media (max-width:600px)': {
         fontSize: '1rem',
-        lineHeight: '1.125rem',
+        lineHeight: '1.25rem',
       },
     },
   },

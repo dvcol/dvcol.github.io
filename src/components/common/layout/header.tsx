@@ -36,7 +36,7 @@ export const Header: ParentComponent<HeaderProps> = props => {
         sx={{
           mb: {
             default: '0.5rem',
-            tablet: 0,
+            tablet: '0.25rem',
           },
         }}
         {...props.descriptionProps}

@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@suid/material';
+import { Button, Grid } from '@suid/material';
 
 import { onMount } from 'solid-js';
 
@@ -7,7 +7,7 @@ import styles from './synology-demo.module.scss';
 import type { Component } from 'solid-js';
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
 
-import { Page, Section } from '~/components/common';
+import { Header, Page, Section } from '~/components/common';
 
 export const SynologyDemo: Component = () => {
   let content: ContentAppHtmlElement;
@@ -18,18 +18,33 @@ export const SynologyDemo: Component = () => {
   onMount(() => standalone?.poll);
 
   return (
-    <Page>
-      <Section>
-        <Typography variant="h2" gutterBottom component="div">
-          Synology Demo
-        </Typography>
-      </Section>
-      <Section>
+    <Page
+      header={
+        <Header
+          title={'Synology Demo'}
+          subtitle={'Welcome to the live demo for synology download'}
+          description={'This is a simulated version of the extension, please use the following buttons to trigger task or download events.'}
+          sectionProps={{
+            sx: {
+              mt: {
+                default: '1rem',
+                tablet: '3rem',
+                fhd: 0,
+              },
+              justifyContent: {
+                fhd: 'center',
+              },
+            },
+          }}
+        />
+      }
+      headerProps={{ sx: { mb: '1rem' } }}
+    >
+      <Section sx={{ flex: '0 1 auto' }}>
         <Grid container spacing={2} class={styles.grid_container}>
           <Grid item xs={6} sm={3} class={styles.grid_item}>
             <Button
               id="add-task"
-              variant="outlined"
               onClick={() => {
                 window._synology?.mock?.task?.add();
                 standalone.poll();
@@ -41,7 +56,6 @@ export const SynologyDemo: Component = () => {
           <Grid item xs={6} sm={3} class={styles.grid_item}>
             <Button
               id="add-task"
-              variant="outlined"
               onClick={() => {
                 window._synology?.mock?.download?.add();
                 standalone.poll();
@@ -53,7 +67,6 @@ export const SynologyDemo: Component = () => {
           <Grid item xs={6} sm={3} class={styles.grid_item}>
             <Button
               id="open-modal"
-              variant="outlined"
               onClick={() =>
                 content.dialog?.({
                   open: true,
@@ -72,7 +85,6 @@ export const SynologyDemo: Component = () => {
           <Grid item xs={6} sm={3} class={styles.grid_item}>
             <Button
               id="quick-menu"
-              variant="outlined"
               onClick={event =>
                 content.anchor?.({
                   event,
