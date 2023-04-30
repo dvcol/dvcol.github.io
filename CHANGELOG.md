@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.18.0](https://github.com/dvcol/dvcol.github.io/compare/v1.17.0...v1.18.0) (2023-04-30)
+
+
+### Features
+
+* **css:** clean up synology-demo ([103cf9a](https://github.com/dvcol/dvcol.github.io/commit/103cf9ab16417eb24ed0a23c5b9a8b2623f23dc4))
+* **errors:** clean up error page layout ([0e7533b](https://github.com/dvcol/dvcol.github.io/commit/0e7533b8edb2a14aceb2cb90abc7d1b6f65590a8))
+
+
+### Bug Fixes
+
+* **errors:** move coming soon to error pages ([53e7cc8](https://github.com/dvcol/dvcol.github.io/commit/53e7cc887b25a1d7b82d7f80a193901849a0a41a))
+* **navbar:** move navbar state to dedicated service ([60e76ac](https://github.com/dvcol/dvcol.github.io/commit/60e76ac445ceb3dfbb5bbf3251e5ddb561dc862b))
+* **particles:** fix particles position ([725b7f5](https://github.com/dvcol/dvcol.github.io/commit/725b7f515a2f3e75af315b8a143f92f3e750065c))
+
 ## [1.17.0](https://github.com/dvcol/dvcol.github.io/compare/v1.16.0...v1.17.0) (2023-04-27)
 
 
