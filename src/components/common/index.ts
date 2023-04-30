@@ -1,4 +1,3 @@
-export * from './coming-soon';
 export * from './i18n';
 export * from './layout';
 export * from './loader';

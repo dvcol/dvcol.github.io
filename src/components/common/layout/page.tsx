@@ -12,6 +12,16 @@ import type { JSX, ParentComponent } from 'solid-js';
 
 import type { BreakPoints } from '~/themes';
 
+const sideBySideSx = {
+  flexDirection: {
+    default: 'column',
+    fhd: 'row',
+  },
+  justifyContent: {
+    fhd: 'center',
+  },
+};
+
 export const Page: ParentComponent<{
   header?: JSX.Element;
   headerProps?: BoxProps;
@@ -20,13 +30,21 @@ export const Page: ParentComponent<{
   background?: BackgroundProps;
   maxWidth?: keyof BreakPoints;
   sx?: ContainerProps['sx'];
+  sideBySide?: boolean;
 }> = props => {
   return (
     <Container
       component="section"
       disableGutters
       maxWidth={props.maxWidth ?? 'desktop'}
-      sx={{ display: 'flex', flex: '1 1 auto', flexDirection: 'column', maxWidth: 'desktop', ...props?.sx }}
+      sx={{
+        display: 'flex',
+        flex: '1 1 auto',
+        flexDirection: 'column',
+        maxWidth: 'desktop',
+        ...(props.sideBySide ? sideBySideSx : {}),
+        ...props?.sx,
+      }}
     >
       <Show when={!!props.background} keyed>
         <Background {...props.background} />

@@ -1,9 +1,9 @@
 import type { Component } from 'solid-js';
 
-import { ComingSoon } from '~/components';
+import { PageComingSoon } from '~/components';
 
 export const SynologyHome: Component = () => {
-  return <ComingSoon />;
+  return <PageComingSoon />;
 };
 
 export default SynologyHome;
