@@ -1,15 +1,18 @@
+import { useI18n } from '@solid-primitives/i18n';
+
+import { ErrorPage } from './error-page';
+
 import type { Component } from 'solid-js';
 
 import PoliceLottie from '~/assets/lottie/84311-cop-riding-on-a-motorcycle.json?url';
-import { LottiePlayer, Page, Section } from '~/components';
+import { LottiePlayer } from '~/components';
 
 export const PageForbidden: Component = () => {
+  const [t] = useI18n();
   return (
-    <Page header={<Section>403 forbidden</Section>}>
-      <Section>
-        <LottiePlayer autoplay loop mode="normal" src={PoliceLottie} />
-      </Section>
-    </Page>
+    <ErrorPage title={t('page_forbidden.title')} subtitle={t('page_forbidden.subtitle')} description={t('page_forbidden.description')}>
+      <LottiePlayer autoplay loop mode="normal" src={PoliceLottie} />
+    </ErrorPage>
   );
 };
 

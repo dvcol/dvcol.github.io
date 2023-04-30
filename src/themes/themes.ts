@@ -3,6 +3,22 @@ import { createTheme } from '@suid/material';
 import type { Theme } from '@suid/material';
 import type { ThemeOptions } from '@suid/material/styles/createTheme';
 
+export enum BreakPoints {
+  xs = 0,
+  sm = 600,
+  md = 900,
+  lg = 1200,
+  xl = 1900,
+  default = 0,
+  mobile = 600,
+  tablet = 900,
+  laptop = 1024,
+  desktop = 1280,
+  hd = 1280,
+  fhd = 1920,
+  uhd = 3840,
+}
+
 const scrollbar: Record<string, any> = {
   scrollbarWidth: 'thin',
   scrollbarColor: 'rgb(150 150 150 / 50%) transparent',
@@ -21,6 +37,55 @@ const scrollbar: Record<string, any> = {
 };
 
 const common: ThemeOptions = {
+  breakpoints: {
+    values: {
+      xs: BreakPoints.xs,
+      sm: BreakPoints.sm,
+      md: BreakPoints.md,
+      lg: BreakPoints.lg,
+      xl: BreakPoints.xl,
+      default: BreakPoints.default,
+      mobile: BreakPoints.mobile,
+      tablet: BreakPoints.tablet,
+      laptop: BreakPoints.laptop,
+      desktop: BreakPoints.desktop,
+      hd: BreakPoints.hd,
+      fhd: BreakPoints.fhd,
+      uhd: BreakPoints.uhd,
+    },
+  },
+  typography: {
+    // typography overrides here
+    h2: {
+      fontSize: '3.75rem',
+      '@media (max-width:900px)': {
+        fontSize: '2.75rem',
+      },
+      '@media (max-width:600px)': {
+        fontSize: '1.75rem',
+      },
+    },
+    h4: {
+      fontSize: '2.125rem',
+      '@media (max-width:900px)': {
+        fontSize: '1.5rem',
+      },
+      '@media (max-width:600px)': {
+        fontSize: '1.25rem',
+        lineHeight: '1.5rem',
+      },
+    },
+    h6: {
+      fontSize: '1.5rem',
+      '@media (max-width:900px)': {
+        fontSize: '1.25rem',
+      },
+      '@media (max-width:600px)': {
+        fontSize: '1rem',
+        lineHeight: '1.125rem',
+      },
+    },
+  },
   components: {
     MuiContainer: {
       styleOverrides: {

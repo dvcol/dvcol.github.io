@@ -1,15 +1,19 @@
+import { useI18n } from '@solid-primitives/i18n';
+
+import { ErrorPage } from './error-page';
+
 import type { Component } from 'solid-js';
 
 import NotFoundLottie from '~/assets/lottie/55873-404-error-page.json?url';
-import { LottiePlayer, Page, Section } from '~/components';
+
+import { LottiePlayer } from '~/components';
 
 export const PageNotFound: Component = () => {
+  const [t] = useI18n();
   return (
-    <Page header={<Section>404 Page not found</Section>}>
-      <Section>
-        <LottiePlayer autoplay loop mode="normal" src={NotFoundLottie} />
-      </Section>
-    </Page>
+    <ErrorPage title={t('page_not_found.title')} subtitle={t('page_not_found.subtitle')} description={t('page_not_found.description')}>
+      <LottiePlayer autoplay loop mode="normal" src={NotFoundLottie} />
+    </ErrorPage>
   );
 };
 

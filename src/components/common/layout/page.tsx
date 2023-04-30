@@ -2,18 +2,45 @@ import { Box, Container } from '@suid/material';
 
 import { Show } from 'solid-js';
 
+import { Background } from './background';
+
+import type { BackgroundProps } from './background';
+import type BoxProps from '@suid/material/Box/BoxProps';
+
 import type { ContainerProps } from '@suid/material/Container';
 import type { JSX, ParentComponent } from 'solid-js';
 
-export const Page: ParentComponent<{ header?: JSX.Element; footer?: JSX.Element; sx?: ContainerProps['sx'] }> = props => {
+import type { BreakPoints } from '~/themes';
+
+export const Page: ParentComponent<{
+  header?: JSX.Element;
+  headerProps?: BoxProps;
+  footer?: JSX.Element;
+  footerProps?: BoxProps;
+  background?: BackgroundProps;
+  maxWidth?: keyof BreakPoints;
+  sx?: ContainerProps['sx'];
+}> = props => {
   return (
-    <Container component="section" maxWidth="lg" disableGutters sx={{ display: 'flex', flex: '1 1 auto', flexDirection: 'column', ...props?.sx }}>
+    <Container
+      component="section"
+      disableGutters
+      maxWidth={props.maxWidth ?? 'desktop'}
+      sx={{ display: 'flex', flex: '1 1 auto', flexDirection: 'column', maxWidth: 'desktop', ...props?.sx }}
+    >
+      <Show when={!!props.background} keyed>
+        <Background {...props.background} />
+      </Show>
       <Show when={!!props.header} keyed>
-        <Box component="header">{props.header}</Box>
+        <Box component="header" {...props.headerProps} sx={{ display: 'flex', ...props.headerProps?.sx }}>
+          {props.header}
+        </Box>
       </Show>
       {props.children}
       <Show when={!!props.footer} keyed>
-        <Box component="footer">{props.footer}</Box>
+        <Box component="footer" {...props.footerProps} sx={{ display: 'flex', ...props.footerProps?.sx }}>
+          {props.footer}
+        </Box>
       </Show>
     </Container>
   );

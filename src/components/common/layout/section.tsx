@@ -2,16 +2,27 @@ import { Box } from '@suid/material';
 
 import { splitProps } from 'solid-js';
 
-import styles from './section.module.scss';
-
 import type BoxProps from '@suid/material/Box/BoxProps';
 import type { ParentComponent } from 'solid-js';
 
-export const Section: ParentComponent<Omit<BoxProps, 'class'>> = props => {
-  const [{ children }, _props] = splitProps(props, ['children']);
+export type SectionProps = BoxProps;
+export const Section: ParentComponent<SectionProps> = props => {
+  const [{ children, sx }, _props] = splitProps(props, ['children', 'sx']);
 
   return (
-    <Box class={styles.section_container} {..._props}>
+    <Box
+      sx={{
+        display: 'flex',
+        flex: '1 1 auto',
+        flexDirection: 'column',
+        margin: {
+          default: '0 1rem',
+          tablet: '0 3rem',
+        },
+        ...sx,
+      }}
+      {..._props}
+    >
       {children}
     </Box>
   );

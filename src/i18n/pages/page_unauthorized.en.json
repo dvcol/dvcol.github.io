@@ -1,0 +1,5 @@
+{
+  "title": "401 - Access Unauthorized",
+  "subtitle": "Oops! It looks like you are not authenticated properly",
+  "description": "Please sign in before accessing this ressource"
+}

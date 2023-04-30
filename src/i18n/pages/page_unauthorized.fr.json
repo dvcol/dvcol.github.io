@@ -1,0 +1,5 @@
+{
+  "title": "401 - Accès interdit",
+  "subtitle": "Oops! Il semblerait que la session active n'est pas correct ment authentifiée",
+  "description": "Veuillez vous (re)connecter avant d'accéder à cette ressource"
+}

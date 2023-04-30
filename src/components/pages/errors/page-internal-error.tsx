@@ -1,15 +1,18 @@
+import { useI18n } from '@solid-primitives/i18n';
+
+import { ErrorPage } from './error-page';
+
 import type { Component } from 'solid-js';
 
 import MaintenanceLottie from '~/assets/lottie/6873-under-maintenance.json?url';
-import { LottiePlayer, Page, Section } from '~/components';
+import { LottiePlayer } from '~/components';
 
 export const PageInternalError: Component = () => {
+  const [t] = useI18n();
   return (
-    <Page header={<Section>500 internal error</Section>}>
-      <Section>
-        <LottiePlayer autoplay loop mode="normal" src={MaintenanceLottie} />
-      </Section>
-    </Page>
+    <ErrorPage title={t('page_internal_error.title')} subtitle={t('page_internal_error.subtitle')} description={t('page_internal_error.description')}>
+      <LottiePlayer autoplay loop mode="normal" src={MaintenanceLottie} />
+    </ErrorPage>
   );
 };
 

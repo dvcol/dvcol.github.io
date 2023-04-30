@@ -5,3 +5,5 @@ export type NavbarState = { isOpen: boolean; open: () => void; close: () => void
 export const NavbarContext = createContext<NavbarState>();
 
 export const useNavbar = () => useContext<NavbarState>(NavbarContext);
+
+export const NavbarButtonId = 'navbar-button';
