@@ -3,14 +3,14 @@ import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, For } from 'solid-js';
+import { createEffect, createMemo, For, onCleanup } from 'solid-js';
 
 import { StackPage } from './stack-page';
 import styles from './stack.module.scss';
 
 import type { JSX, ParentComponent } from 'solid-js';
 
-import { getRouteData, RoutesMetas } from '~/services';
+import { getRouteData, RoutesMetas, useNavbar } from '~/services';
 
 type TransformOptions = { offset?: number; opacity?: number } & Omit<JSX.CSSProperties, 'offset' | 'opacity' | 'transform'>;
 const offsetTransform = (options: TransformOptions = {}): JSX.CSSProperties => {
@@ -22,12 +22,12 @@ const offsetTransform = (options: TransformOptions = {}): JSX.CSSProperties => {
 
 const computeTransform = (open = false): ((options: TransformOptions, _styles?: JSX.CSSProperties) => JSX.CSSProperties | undefined) =>
   open ? offsetTransform : (_, _styles) => _styles;
-
-type StackProps = { open?: boolean; onClick?: (_open?: boolean) => void };
-export const Stack: ParentComponent<StackProps> = props => {
+export const Stack: ParentComponent = props => {
   const routes = [...RoutesMetas];
 
-  const transform = createMemo(() => computeTransform(props.open), computeTransform(false));
+  const { isOpen, close } = useNavbar();
+
+  const transform = createMemo(() => computeTransform(isOpen()), computeTransform(false));
   const active = getRouteData;
   const pages = createMemo(() =>
     routes
@@ -44,27 +44,35 @@ export const Stack: ParentComponent<StackProps> = props => {
 
   createEffect<string>(previous => {
     const _overflow = document.body.style.overflow;
-    if (props.open) {
+    if (isOpen()) {
       document.body.style.overflow = 'hidden';
     } else if (_overflow !== previous) {
       setTimeout(() => {
         document.body.style.overflow = previous ?? '';
-      }, 450);
+      }, 500);
     }
     return _overflow;
   });
 
   const stackTransform = createMemo<JSX.CSSProperties>(() => {
     const height = document.querySelector('#navbar')?.clientHeight;
-    return { transform: `translateY(${props.open ? height : 0}px)` };
+    return { transform: `translateY(${isOpen() ? height : 0}px)` };
   });
 
+  const listener = (e: HashChangeEvent) => {
+    const oldHash = e.oldURL.split('?', 1)?.[0];
+    const newHash = e.newURL.split('?', 1)?.[0];
+    if (oldHash !== newHash) close();
+  };
+
+  window.addEventListener('hashchange', listener);
+  onCleanup(() => window.removeEventListener('hashchange', listener));
+
   return (
-    <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: props.open }} style={stackTransform()}>
+    <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: isOpen() }} style={stackTransform()}>
       <For each={pages()}>
         {({ path, title, color, bgColor }, index) => (
           <StackPage
-            open={props.open}
             class={styles.page}
             style={{ ...transform()({ offset: 3 - index() / 2 }), color, 'background-color': bgColor }}
             onClick={() => navigate(path)}
@@ -73,7 +81,7 @@ export const Stack: ParentComponent<StackProps> = props => {
           </StackPage>
         )}
       </For>
-      <StackPage active={true} open={props.open} class={styles.page} style={transform()({ offset: 2, opacity: 1 })} onClick={props.onClick}>
+      <StackPage active={true} class={styles.page} style={transform()({ offset: 2, opacity: 1 })} onClick={() => close()}>
         {props.children}
       </StackPage>
     </div>

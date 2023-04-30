@@ -1,7 +1,3 @@
-import { useBeforeLeave } from '@solidjs/router';
-
-import { createSignal } from 'solid-js';
-
 import { Navbar, NavbarButton } from '../navbar';
 import { Stack } from '../stack';
 
@@ -9,21 +5,19 @@ import type { ParentComponent } from 'solid-js';
 
 import type { RouteMeta } from '~/services';
 
+import { NavbarProvider } from '~/components';
+
 export const Shell: ParentComponent<{ routes?: RouteMeta[] }> = props => {
-  const [open, setOpen] = createSignal(false);
-  useBeforeLeave(() => setOpen(false));
   return (
-    <>
+    <NavbarProvider>
       <header style={{ position: 'absolute', top: '0', width: '100%' }}>
-        <NavbarButton open={open()} onClick={setOpen} />
-        <Navbar open={open()} routes={props.routes?.filter(r => r.navbar)} onClick={setOpen} />
+        <NavbarButton />
+        <Navbar routes={props.routes?.filter(r => r.navbar)} />
       </header>
       <main>
-        <Stack open={open()} onClick={setOpen}>
-          {props.children}
-        </Stack>
+        <Stack>{props.children}</Stack>
       </main>
-    </>
+    </NavbarProvider>
   );
 };
 

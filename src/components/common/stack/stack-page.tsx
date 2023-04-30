@@ -9,11 +9,12 @@ import type { JSX, ParentComponent } from 'solid-js';
 import type { OnTriggerCallback } from '~/components';
 
 import { useOverScrollHandler } from '~/components';
+import { useNavbar } from '~/services';
 
-type StackPageProps = { open?: boolean; onClick?: (_open?: boolean) => void; active?: boolean; class?: string; style?: JSX.CSSProperties };
+type StackPageProps = { active?: boolean; class?: string; style?: JSX.CSSProperties; onClick?: () => void };
 export const StackPage: ParentComponent<StackPageProps> = props => {
-  const onClose = () => props?.onClick?.(false);
-  const onTrigger: OnTriggerCallback = () => props?.onClick?.(true);
+  const { isOpen, open } = useNavbar();
+  const onTrigger: OnTriggerCallback = () => open();
 
   const { setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
 
@@ -35,12 +36,12 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
       component={'article'}
       class={[props?.class, styles.stack_page].join(' ')}
       classList={{
-        [styles.pages_stack__open]: props.open,
+        [styles.pages_stack__open]: isOpen(),
         [styles.stack_page__active]: props.active,
         [styles.stack_page__inactive]: !props.active,
       }}
       style={props.style ?? { transform: scale() }}
-      onClick={onClose}
+      onClick={props.onClick}
     >
       {props.children}
     </Box>

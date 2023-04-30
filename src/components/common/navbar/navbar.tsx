@@ -1,7 +1,7 @@
 import { useI18n } from '@solid-primitives/i18n';
 import { Link } from '@solidjs/router';
 
-import LinkedIn from 'line-md/svg/linkedin.svg?component-solid';
+import LinkedInSvg from 'line-md/svg/linkedin.svg?component-solid';
 
 import { For } from 'solid-js';
 
@@ -15,15 +15,15 @@ import type { Component } from 'solid-js';
 import type { RouteMeta } from '~/services';
 
 import { AppLink } from '~/models';
-import { getRouteData } from '~/services';
+import { getRouteData, useNavbar } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
-export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?: (_open?: boolean) => void }> = props => {
-  const close = () => props?.onClick?.(false);
+export const Navbar: Component<{ routes?: RouteMeta[] }> = props => {
   const [t] = useI18n();
   const active = getRouteData;
+  const { isOpen, close } = useNavbar();
   return (
-    <nav class={styles.pages_nav} classList={{ [styles.pages_nav__open]: props.open ?? false }} id="navbar">
+    <nav class={styles.pages_nav} classList={{ [styles.pages_nav__open]: isOpen() ?? false }} id="navbar">
       <div class={styles.pages_nav__items}>
         <For each={props.routes}>
           {route => (
@@ -47,7 +47,7 @@ export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?:
             class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
             link={AppLink.github}
             label={t('navbar.social.github')}
-            show={props.open}
+            show={isOpen()}
             delay={400}
           >
             <GithubLoop />
@@ -58,10 +58,10 @@ export const Navbar: Component<{ open?: boolean; routes?: RouteMeta[]; onClick?:
             class={`${styles.link} ${styles.link__social} ${styles.link__faded}`}
             link={AppLink.linkedIn}
             label={t('navbar.social.linked')}
-            show={props.open}
+            show={isOpen()}
             delay={400}
           >
-            <LinkedIn style={{ margin: '0 0 6px 1px' }} />
+            <LinkedInSvg style={{ margin: '0 0 6px 1px' }} />
           </NavbarSocial>
         </div>
       </div>

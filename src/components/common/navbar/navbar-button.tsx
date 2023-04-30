@@ -2,9 +2,12 @@ import styles from './navbar-buttion.module.scss';
 
 import type { Component } from 'solid-js';
 
-export const NavbarButton: Component<{ open?: boolean; onClick?: (_open?: boolean) => void }> = props => {
+import { useNavbar } from '~/services';
+
+export const NavbarButton: Component = () => {
+  const { isOpen, toggle } = useNavbar();
   return (
-    <button class={styles.menu_button} classList={{ [styles.menu_button__open]: props.open }} onClick={() => props?.onClick?.(!props.open)}>
+    <button id="navbar-button" class={styles.menu_button} classList={{ [styles.menu_button__open]: isOpen() }} onClick={() => toggle()}>
       <span>Menu</span>
     </button>
   );

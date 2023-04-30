@@ -5,6 +5,7 @@ export * from './loader';
 export * from './lottie';
 export * from './navbar';
 export * from './particles';
+export * from './provider';
 export * from './router';
 export * from './stack';
 export * from './sw';
