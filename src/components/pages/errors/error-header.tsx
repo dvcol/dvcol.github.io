@@ -8,7 +8,7 @@ import StackSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 
 import type { Component } from 'solid-js';
 
-import { Header } from '~/components';
+import { PageHeader } from '~/components';
 import { Routes, useNavbar } from '~/services';
 
 export type ErrorHeaderProps = { title?: string; subtitle?: string; description?: string };
@@ -17,23 +17,7 @@ export const ErrorHeader: Component<ErrorHeaderProps> = props => {
   const [t] = useI18n();
   const { open } = useNavbar();
   return (
-    <Header
-      title={props.title}
-      subtitle={props.subtitle}
-      description={props.description}
-      sectionProps={{
-        sx: {
-          mt: {
-            default: '1rem',
-            tablet: '3rem',
-            fhd: 0,
-          },
-          justifyContent: {
-            fhd: 'center',
-          },
-        },
-      }}
-    >
+    <PageHeader title={props.title} subtitle={props.subtitle} description={props.description}>
       <Stack
         direction={{
           default: 'column',
@@ -66,7 +50,7 @@ export const ErrorHeader: Component<ErrorHeaderProps> = props => {
           {t('error_header.navbar')}
         </Button>
       </Stack>
-    </Header>
+    </PageHeader>
   );
 };
 

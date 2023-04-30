@@ -7,7 +7,8 @@ import styles from './synology-demo.module.scss';
 import type { Component } from 'solid-js';
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement } from '~/apps/synology-extension/entry';
 
-import { Header, Page, Section } from '~/components/common';
+import { Page, PageHeader, Section } from '~/components/common';
+import { RoutesMeta } from '~/services';
 
 export const SynologyDemo: Component = () => {
   let content: ContentAppHtmlElement;
@@ -19,23 +20,12 @@ export const SynologyDemo: Component = () => {
 
   return (
     <Page
+      background={{ color: RoutesMeta.SynologyDemo.bgColor }}
       header={
-        <Header
+        <PageHeader
           title={'Synology Demo'}
           subtitle={'Welcome to the live demo for synology download'}
           description={'This is a simulated version of the extension, please use the following buttons to trigger task or download events.'}
-          sectionProps={{
-            sx: {
-              mt: {
-                default: '1rem',
-                tablet: '3rem',
-                fhd: 0,
-              },
-              justifyContent: {
-                fhd: 'center',
-              },
-            },
-          }}
         />
       }
       headerProps={{ sx: { mb: '1rem' } }}
