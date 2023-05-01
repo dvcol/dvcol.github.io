@@ -1,11 +1,11 @@
 import { Suspense } from 'solid-js';
 
-import type { Component, JSX } from 'solid-js';
+import { Spinner } from './spinner';
 
-export const LazyLoader: Component<{ component: Component; fallback?: JSX.Element }> = props => (
-  <Suspense fallback={props.fallback ?? <div>fallback</div>}>
-    <props.component />
-  </Suspense>
+import type { JSX, ParentComponent } from 'solid-js';
+
+export const LazyLoader: ParentComponent<{ fallback?: JSX.Element }> = props => (
+  <Suspense fallback={props.fallback ?? <Spinner />}>{props.children}</Suspense>
 );
 
 export default LazyLoader;

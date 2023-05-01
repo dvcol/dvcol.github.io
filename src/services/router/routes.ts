@@ -88,8 +88,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'SynologyDemo',
     title: 'routes.title.synology_demo',
     navbar: true,
-    color: 'white',
-    bgColor: 'black',
   },
   Contact: {
     path: Routes.Contact,

@@ -16,25 +16,8 @@ export enum BreakPoints {
   desktop = 1280,
   hd = 1280,
   fhd = 1920,
+  qhd = 2560,
   uhd = 3840,
-}
-
-declare module '@suid/material/styles/createTheme' {
-  interface BreakpointOverrides {
-    xs: true;
-    sm: true;
-    md: true;
-    lg: true;
-    xl: true;
-    default: true;
-    mobile: true;
-    tablet: true;
-    laptop: true;
-    desktop: true;
-    hd: true;
-    fhd: true;
-    uhd: true;
-  }
 }
 
 const scrollbar: Record<string, any> = {
@@ -69,6 +52,7 @@ const common: ThemeOptions = {
       desktop: BreakPoints.desktop,
       hd: BreakPoints.hd,
       fhd: BreakPoints.fhd,
+      qhd: BreakPoints.qhd,
       uhd: BreakPoints.uhd,
     },
   },

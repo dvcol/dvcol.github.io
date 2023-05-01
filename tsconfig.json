@@ -9,7 +9,7 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "resolveJsonModule": true,
-    "types": ["vite/client", "vite-plugin-pwa/client", "vite-plugin-solid-svg/types", "@dvcol/vite-plugin-i18n"],
+    "types": ["vite/client", "vite-plugin-pwa/client", "vite-plugin-solid-svg/types", "@dvcol/vite-plugin-i18n", "src/global.d.ts"],
     "noEmit": true,
     "isolatedModules": true,
     "paths": {

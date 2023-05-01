@@ -6,3 +6,22 @@ declare global {
     // empty interface for extension
   }
 }
+
+declare module '@suid/system/createTheme/createBreakpoints' {
+  export interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    default: true;
+    mobile: true;
+    tablet: true;
+    laptop: true;
+    desktop: true;
+    hd: true;
+    fhd: true;
+    qhd: true;
+    uhd: true;
+  }
+}

@@ -19,10 +19,9 @@ export const Background: ParentComponent<BackgroundProps> = props => {
         <Show when={props.show ?? true}>
           <Motion
             class={styles.background}
-            style={{ 'background-color': props.color }}
-            initial={{ scale: 0, position: 'absolute', top: '-25%' }}
-            animate={{ scale: 2, borderRadius: '50%' }}
-            exit={{ scale: 0 }}
+            style={{ 'background-color': props.color, 'border-radius': '100%' }}
+            animate={{ scale: [0, 2] }}
+            exit={{ scale: [2, 0] }}
             transition={{ scale: { duration: 2 } }}
           >
             {props.children}
