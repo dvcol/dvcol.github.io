@@ -91,6 +91,11 @@ const common: ThemeOptions = {
     },
   },
   components: {
+    MuiBox: {
+      styleOverrides: {
+        root: scrollbar,
+      },
+    },
     MuiContainer: {
       styleOverrides: {
         root: scrollbar,

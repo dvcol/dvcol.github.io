@@ -101,7 +101,7 @@ export const SynologyDemo: Component = () => {
     >
       <Section
         sx={{
-          m: { default: '1em', tablet: '2em 3em' },
+          m: { default: '1em', tablet: '2em 5em 2em 3em' },
           maxWidth: {
             fhd: '40vw',
           },

@@ -1,6 +1,6 @@
 import { Box } from '@suid/material';
 
-import { createMemo } from 'solid-js';
+import { createMemo, Show } from 'solid-js';
 
 import styles from './stack-page.module.scss';
 
@@ -10,6 +10,7 @@ import type { JSX, ParentComponent } from 'solid-js';
 import type { OnTriggerCallback } from '~/components';
 
 import { useOverScrollHandler } from '~/components';
+import { ProgressBar } from '~/components/common/loader/progress-bar';
 import { useNavbar } from '~/services';
 
 type StackPageProps = {
@@ -23,7 +24,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   const { isOpen, open } = useNavbar();
   const onTrigger: OnTriggerCallback = () => open();
 
-  const { setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
+  const { containerRef, setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
 
   const scale = createMemo(() => {
     const height = window.innerHeight;
@@ -39,21 +40,26 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   });
 
   return (
-    <Box
-      ref={setContainerRef}
-      component={'article'}
-      class={[props?.class, styles.stack_page].join(' ')}
-      classList={{
-        [styles.pages_stack__open]: isOpen(),
-        [styles.stack_page__active]: props.active,
-        [styles.stack_page__inactive]: !props.active,
-      }}
-      style={{ ...props.style, transform: props.style?.transform ?? scale() }}
-      onClick={props.onClick}
-      sx={props.sx}
-    >
-      {props.children}
-    </Box>
+    <>
+      <Show when={props.active}>
+        <ProgressBar container={containerRef} />
+      </Show>
+      <Box
+        ref={setContainerRef}
+        component={'article'}
+        class={[props?.class, styles.stack_page].join(' ')}
+        classList={{
+          [styles.pages_stack__open]: isOpen(),
+          [styles.stack_page__active]: props.active,
+          [styles.stack_page__inactive]: !props.active,
+        }}
+        style={{ ...props.style, transform: props.style?.transform ?? scale() }}
+        onClick={props.onClick}
+        sx={props.sx}
+      >
+        {props.children}
+      </Box>
+    </>
   );
 };
 
