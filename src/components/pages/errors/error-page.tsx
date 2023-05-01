@@ -23,7 +23,7 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
   });
   const animateSection = createMemo(() => {
     if (matches()) return { translate: ['-50%', 0] };
-    return { scale: [0.5, 1] };
+    return { scale: [0, 1] };
   });
   return (
     <Page
