@@ -5,8 +5,8 @@ dependencies:
     specifier: ^1.1.3
     version: 1.1.3
   '@dvcol/synology-extension':
-    specifier: ^3.8.1
-    version: 3.8.1
+    specifier: ^3.8.3
+    version: 3.8.3
   '@lottiefiles/lottie-player':
     specifier: ^1.7.1
     version: 1.7.1
@@ -1830,8 +1830,8 @@ packages:
       - supports-color
     dev: true
 
-  /@dvcol/synology-extension@3.8.1:
-    resolution: {integrity: sha512-8/hHJKRA4/UGdVuVd8kC7GlEA+9SmhceEkP1j3eiijnbc9u8w0d21+ndhHGdAXqV0LG8sJNgNt7dKHdk9NWL0g==}
+  /@dvcol/synology-extension@3.8.3:
+    resolution: {integrity: sha512-ByTPt9EDGK7JwlH1hwBManrKQKIHI1oCOvg/0ZpeoUm67gwOT56ZYl0XgnbUwxRD/H299RgvE11qA6/VSn+C8Q==}
     engines: {node: '>=16.0.0', yarn: '>=3.2.0'}
     dependencies:
       '@dnd-kit/core': 6.0.8(react-dom@17.0.2)(react@17.0.2)
@@ -1958,7 +1958,7 @@ packages:
       '@emotion/memoize': 0.8.0
       '@emotion/unitless': 0.8.0
       '@emotion/utils': 1.2.0
-      csstype: 3.1.1
+      csstype: 3.1.2
     dev: false
 
   /@emotion/sheet@1.2.1:
@@ -2562,7 +2562,7 @@ packages:
       '@mui/utils': 5.11.13(react@17.0.2)
       '@types/react-transition-group': 4.4.5
       clsx: 1.2.1
-      csstype: 3.1.1
+      csstype: 3.1.2
       prop-types: 15.8.1
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
@@ -2603,7 +2603,7 @@ packages:
       '@emotion/cache': 11.10.5
       '@emotion/react': 11.10.6(react@17.0.2)
       '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(react@17.0.2)
-      csstype: 3.1.1
+      csstype: 3.1.2
       prop-types: 15.8.1
       react: 17.0.2
     dev: false
@@ -2632,7 +2632,7 @@ packages:
       '@mui/types': 7.2.3
       '@mui/utils': 5.11.13(react@17.0.2)
       clsx: 1.2.1
-      csstype: 3.1.1
+      csstype: 3.1.2
       prop-types: 15.8.1
       react: 17.0.2
     dev: false
@@ -3361,7 +3361,7 @@ packages:
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
-      csstype: 3.1.1
+      csstype: 3.1.2
     dev: false
 
   /@types/resolve@1.17.1:
@@ -4956,7 +4956,7 @@ packages:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
     dependencies:
       '@babel/runtime': 7.21.0
-      csstype: 3.1.1
+      csstype: 3.1.2
     dev: false
 
   /dom-serializer@0.2.2:

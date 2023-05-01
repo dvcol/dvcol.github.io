@@ -2,7 +2,7 @@ import { activateDemo, defineComponents } from '@dvcol/synology-extension';
 
 import en from '@dvcol/synology-extension/dist/_locales/en/messages.json';
 
-import type { ContentAppHtmlElement, StandaloneAppHtmlElement, WebComponents } from '@dvcol/synology-extension';
+import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnectedEvent, WebComponents } from '@dvcol/synology-extension';
 
 import type { SolidWebComponent } from '~/utils';
 
@@ -15,7 +15,7 @@ declare module 'solid-js' {
   }
 }
 
-export { StandaloneAppHtmlElement, ContentAppHtmlElement, WebComponents };
+export { StandaloneAppHtmlElement, ContentAppHtmlElement, WebComponents, StandaloneConnectedEvent };
 
 defineComponents({ patch: true, locales: { en } })
   .then(() => {
