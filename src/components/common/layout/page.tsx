@@ -20,6 +20,9 @@ const sideBySideSx = {
   justifyContent: {
     fhd: 'center',
   },
+  alignItems: {
+    fhd: 'center',
+  },
 };
 
 export type PageProps = {

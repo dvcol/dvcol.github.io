@@ -48,7 +48,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
         [styles.stack_page__active]: props.active,
         [styles.stack_page__inactive]: !props.active,
       }}
-      style={props.style ?? { transform: scale() }}
+      style={{ ...props.style, transform: props.style.transform ?? scale() }}
       onClick={props.onClick}
       sx={props.sx}
     >

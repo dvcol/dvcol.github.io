@@ -19,7 +19,7 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
       <Section
         sx={{
           maxWidth: { fhd: '40vw' },
-          maxHeight: { mobile: 'calc(100dvh - 220px)', tablet: 'calc(100dvh - 280px)' },
+          maxHeight: { default: 'calc(100dvh - 180px)', mobile: 'calc(100dvh - 220px)', tablet: 'calc(100dvh - 280px)' },
         }}
       >
         {props.children}
