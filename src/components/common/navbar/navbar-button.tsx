@@ -1,15 +1,32 @@
+import { Box } from '@suid/material';
+
+import { createMemo } from 'solid-js';
+
 import styles from './navbar-buttion.module.scss';
 
 import type { Component } from 'solid-js';
 
-import { NavbarButtonId, useNavbar } from '~/services';
+import { NavbarButtonId, useNavbar, useRouteData } from '~/services';
 
 export const NavbarButton: Component = () => {
   const { isOpen, toggle } = useNavbar();
+  const { active } = useRouteData();
+  const accent = createMemo(() => active()?.accentColor || active()?.color);
   return (
-    <button id={NavbarButtonId} class={styles.menu_button} classList={{ [styles.menu_button__open]: isOpen() }} onClick={() => toggle()}>
+    <Box
+      component="button"
+      id={NavbarButtonId}
+      class={styles.menu_button}
+      classList={{ [styles.menu_button__open]: isOpen() }}
+      sx={{
+        '& span': { backgroundColor: accent() },
+        '&::before': { backgroundColor: accent() },
+        '&::after': { backgroundColor: accent() },
+      }}
+      onClick={() => toggle()}
+    >
       <span>Menu</span>
-    </button>
+    </Box>
   );
 };
 

@@ -25,6 +25,7 @@ export type RouteMeta = {
   navbar?: boolean;
   color?: string;
   bgColor?: string;
+  accentColor?: string;
 };
 
 export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
