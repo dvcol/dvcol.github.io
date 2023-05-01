@@ -4,12 +4,12 @@ import { createEffect } from 'solid-js';
 
 import type { Component } from 'solid-js';
 
-import { getRouteData } from '~/services';
+import { useRouteData } from '~/services';
 
 export const RouteData: Component = () => {
   const [t] = useI18n();
   createEffect(() => {
-    const data = getRouteData();
+    const data = useRouteData().active();
     if (data) document.title = t(data.title);
   });
 

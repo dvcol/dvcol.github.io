@@ -15,12 +15,12 @@ import type { Component } from 'solid-js';
 import type { RouteMeta } from '~/services';
 
 import { AppLink } from '~/models';
-import { getRouteData, useNavbar } from '~/services';
+import { useNavbar, useRouteData } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
 export const Navbar: Component<{ routes?: RouteMeta[] }> = props => {
   const [t] = useI18n();
-  const active = getRouteData;
+  const { active } = useRouteData();
   const { isOpen, close } = useNavbar();
   return (
     <nav class={styles.pages_nav} classList={{ [styles.pages_nav__open]: isOpen() ?? false }} id="navbar">

@@ -4,6 +4,7 @@ import { createMemo } from 'solid-js';
 
 import styles from './stack-page.module.scss';
 
+import type BoxProps from '@suid/material/Box/BoxProps';
 import type { JSX, ParentComponent } from 'solid-js';
 
 import type { OnTriggerCallback } from '~/components';
@@ -11,7 +12,7 @@ import type { OnTriggerCallback } from '~/components';
 import { useOverScrollHandler } from '~/components';
 import { useNavbar } from '~/services';
 
-type StackPageProps = { active?: boolean; class?: string; style?: JSX.CSSProperties; onClick?: () => void };
+type StackPageProps = { active?: boolean; class?: string; style?: JSX.CSSProperties; onClick?: () => void; sx?: BoxProps['sx'] };
 export const StackPage: ParentComponent<StackPageProps> = props => {
   const { isOpen, open } = useNavbar();
   const onTrigger: OnTriggerCallback = () => open();
@@ -30,6 +31,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
     const _scaleY = 1 - (_scale + wDiff);
     return _progress ? `scale(${_scaleX},${_scaleY})` : undefined;
   });
+
   return (
     <Box
       ref={setContainerRef}
@@ -42,6 +44,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
       }}
       style={props.style ?? { transform: scale() }}
       onClick={props.onClick}
+      sx={props.sx}
     >
       {props.children}
     </Box>

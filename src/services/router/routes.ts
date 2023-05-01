@@ -80,6 +80,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'SynologyDemo',
     title: 'routes.title.synology_demo',
     navbar: true,
+    color: 'white',
+    bgColor: 'black',
   },
   Contact: {
     path: Routes.Contact,
@@ -93,13 +95,15 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
 
 export const RoutesMetas = Object.values(RoutesMeta);
 
+const [previous, setPrevious] = createSignal<RouteMeta>();
 const [routeData, setRouteData] = createSignal<RouteMeta>();
 
-export const getRouteData = routeData;
+export const useRouteData = () => ({ active: routeData, previous });
 
 const getData =
   (meta: RouteMeta): (() => RouteMeta) =>
   () => {
+    setPrevious(routeData());
     setRouteData(meta);
     return meta;
   };

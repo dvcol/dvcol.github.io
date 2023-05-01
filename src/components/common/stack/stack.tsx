@@ -10,7 +10,7 @@ import styles from './stack.module.scss';
 
 import type { JSX, ParentComponent } from 'solid-js';
 
-import { getRouteData, RoutesMetas, useNavbar } from '~/services';
+import { RoutesMetas, useNavbar, useRouteData } from '~/services';
 
 type TransformOptions = { offset?: number; opacity?: number } & Omit<JSX.CSSProperties, 'offset' | 'opacity' | 'transform'>;
 const offsetTransform = (options: TransformOptions = {}): JSX.CSSProperties => {
@@ -28,7 +28,7 @@ export const Stack: ParentComponent = props => {
   const { isOpen, close } = useNavbar();
 
   const transform = createMemo(() => computeTransform(isOpen()), computeTransform(false));
-  const active = getRouteData;
+  const { active } = useRouteData();
   const pages = createMemo(() =>
     routes
       .sort((a, b) => {
