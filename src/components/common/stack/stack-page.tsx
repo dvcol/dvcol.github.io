@@ -12,7 +12,13 @@ import type { OnTriggerCallback } from '~/components';
 import { useOverScrollHandler } from '~/components';
 import { useNavbar } from '~/services';
 
-type StackPageProps = { active?: boolean; class?: string; style?: JSX.CSSProperties; onClick?: () => void; sx?: BoxProps['sx'] };
+type StackPageProps = {
+  active?: boolean;
+  class?: string;
+  style?: JSX.CSSProperties;
+  onClick?: () => void;
+  sx?: BoxProps['sx'];
+};
 export const StackPage: ParentComponent<StackPageProps> = props => {
   const { isOpen, open } = useNavbar();
   const onTrigger: OnTriggerCallback = () => open();

@@ -33,21 +33,29 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.NotFound,
     name: 'NotFound',
     title: 'routes.title.not_found',
+    color: 'white',
+    bgColor: 'darkred',
   },
   Unauthorized: {
     path: Routes.Unauthorized,
     name: 'Unauthorized',
     title: 'routes.title.unauthorized',
+    color: 'white',
+    bgColor: 'navy',
   },
   Forbidden: {
     path: Routes.Forbidden,
     name: 'Forbidden',
     title: 'routes.title.forbidden',
+    color: 'white',
+    bgColor: 'navy',
   },
   Error: {
     path: Routes.Error,
     name: 'Error',
     title: 'routes.title.error',
+    color: 'white',
+    bgColor: 'darkred',
   },
 
   /** Public pages **/

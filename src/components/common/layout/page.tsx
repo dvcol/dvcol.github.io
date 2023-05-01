@@ -22,16 +22,17 @@ const sideBySideSx = {
   },
 };
 
-export const Page: ParentComponent<{
+export type PageProps = {
   header?: JSX.Element;
   headerProps?: BoxProps;
   footer?: JSX.Element;
   footerProps?: BoxProps;
   background?: BackgroundProps;
-  maxWidth?: keyof BreakPoints;
+  maxWidth?: keyof typeof BreakPoints;
   sx?: ContainerProps['sx'];
   sideBySide?: boolean;
-}> = props => {
+};
+export const Page: ParentComponent<PageProps> = props => {
   return (
     <Container
       component="section"
@@ -41,7 +42,6 @@ export const Page: ParentComponent<{
         display: 'flex',
         flex: '1 1 auto',
         flexDirection: 'column',
-        maxWidth: 'desktop',
         ...(props.sideBySide ? sideBySideSx : {}),
         ...props?.sx,
       }}

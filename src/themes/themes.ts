@@ -19,6 +19,24 @@ export enum BreakPoints {
   uhd = 3840,
 }
 
+declare module '@suid/material/styles/createTheme' {
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    default: true;
+    mobile: true;
+    tablet: true;
+    laptop: true;
+    desktop: true;
+    hd: true;
+    fhd: true;
+    uhd: true;
+  }
+}
+
 const scrollbar: Record<string, any> = {
   scrollbarWidth: 'thin',
   scrollbarColor: 'rgb(150 150 150 / 50%) transparent',

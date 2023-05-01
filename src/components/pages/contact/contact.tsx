@@ -8,8 +8,8 @@ export const Contact: Component = () => {
   const LottieStyles: any = { 'max-width': '60vh', height: 'fit-content' };
   return (
     <Page
-      header={<PageHeader title={'Contact'} subtitle={'TODO - Contact subheader'} description={'TODO - Contact description'} />}
       background={{ color: RoutesMeta.Contact.bgColor }}
+      header={<PageHeader title={'Contact'} subtitle={'TODO - Contact subheader'} description={'TODO - Contact description'} />}
     >
       <Section sx={{ alignItems: 'center' }}>
         <LottiePlayer style={LottieStyles} autoplay loop mode="normal" src={ContactLottie} />
