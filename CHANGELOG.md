@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.20.0](https://github.com/dvcol/dvcol.github.io/compare/v1.19.0...v1.20.0) (2023-05-01)
+
+
+### Features
+
+* **loader:** add spinner ([82b6232](https://github.com/dvcol/dvcol.github.io/commit/82b6232765ed8fd919500a67b69897e4fde6ae9c))
+* **route:** adds accent color to route data ([0648a3e](https://github.com/dvcol/dvcol.github.io/commit/0648a3ecf9b267e9b36f9003dfc5c24e49c44f83))
+* **scroll:** adds scroll listener ([68a7766](https://github.com/dvcol/dvcol.github.io/commit/68a7766dad548efbc57d17a55fd96b5479fbaf21))
+
+
+### Bug Fixes
+
+* **responsive:** fix responsive sizing for error pages ([b0cf543](https://github.com/dvcol/dvcol.github.io/commit/b0cf5435019715158732670ef32f5817e2ef4696))
+* **stack:** fix broken scale ([ff9f3c2](https://github.com/dvcol/dvcol.github.io/commit/ff9f3c26d84e92f3a1d4ce8739982d0522de63b8))
+* **synology:** adds auto-login ([b36b45c](https://github.com/dvcol/dvcol.github.io/commit/b36b45c523e569253be7d06e194937a6cfb75b9e))
+
 ## [1.19.0](https://github.com/dvcol/dvcol.github.io/compare/v1.18.0...v1.19.0) (2023-05-01)
 
 
