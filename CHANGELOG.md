@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.19.0](https://github.com/dvcol/dvcol.github.io/compare/v1.18.0...v1.19.0) (2023-05-01)
+
+
+### Features
+
+* **background:** adds background to error pages ([125aebc](https://github.com/dvcol/dvcol.github.io/commit/125aebca9a8a09eae48a963d8a3119c10fc39a75))
+* **navigation:** move route data to hook and store previous state ([725c726](https://github.com/dvcol/dvcol.github.io/commit/725c726b57dc37af1f82fffe506f8898d0fc2068))
+* **page:** create page header ([61833a7](https://github.com/dvcol/dvcol.github.io/commit/61833a7993d6364dc2f6e9022f9125251a5227a6))
+
+
+### Bug Fixes
+
+* **synology:** fix header and sizing ([400b3e7](https://github.com/dvcol/dvcol.github.io/commit/400b3e78c2437a8ed91937574aeeedf3aed4821e))
+
 ## [1.18.0](https://github.com/dvcol/dvcol.github.io/compare/v1.17.0...v1.18.0) (2023-04-30)
 
 
