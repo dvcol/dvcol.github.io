@@ -8,7 +8,16 @@ export const PageHeader: ParentComponent<HeaderProps> = props => {
   return (
     <Header
       {...props}
+      titleProps={{
+        sx: {
+          mr: {
+            default: '1.25em',
+            tablet: '0.5em',
+          },
+        },
+      }}
       sectionProps={{
+        ...props.sectionProps,
         sx: {
           mt: {
             default: '1rem',
@@ -18,7 +27,7 @@ export const PageHeader: ParentComponent<HeaderProps> = props => {
           justifyContent: {
             fhd: 'center',
           },
-          ...props.sectionProps,
+          ...props.sectionProps?.sx,
         },
       }}
     >

@@ -23,6 +23,7 @@ const sideBySideSx = {
 };
 
 export type PageProps = {
+  ref?: HTMLDivElement;
   header?: JSX.Element;
   headerProps?: BoxProps;
   footer?: JSX.Element;
@@ -35,6 +36,7 @@ export type PageProps = {
 export const Page: ParentComponent<PageProps> = props => {
   return (
     <Container
+      ref={props.ref}
       component="section"
       disableGutters
       maxWidth={props.maxWidth ?? 'desktop'}

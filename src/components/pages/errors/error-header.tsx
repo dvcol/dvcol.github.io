@@ -11,21 +11,31 @@ import type { Component } from 'solid-js';
 import { PageHeader } from '~/components';
 import { Routes, useNavbar } from '~/services';
 
-export type ErrorHeaderProps = { title?: string; subtitle?: string; description?: string };
+export type ErrorHeaderProps = { ref?: HTMLDivElement; title?: string; subtitle?: string; description?: string };
 export const ErrorHeader: Component<ErrorHeaderProps> = props => {
   const navigate = useNavigate();
   const [t] = useI18n();
   const { open } = useNavbar();
   return (
-    <PageHeader title={props.title} subtitle={props.subtitle} description={props.description}>
+    <PageHeader
+      ref={props.ref}
+      title={props.title}
+      subtitle={props.subtitle}
+      description={props.description}
+      sectionProps={{
+        sx: { flex: '1 1 auto' },
+      }}
+    >
       <Stack
         direction={{
           default: 'column',
           mobile: 'row',
         }}
-        spacing={2}
         sx={{
-          gap: '1em',
+          gap: {
+            default: '0.25em',
+            mobile: '1em',
+          },
           justifyContent: {
             default: 'center',
             mobile: 'flex-start',
@@ -36,7 +46,7 @@ export const ErrorHeader: Component<ErrorHeaderProps> = props => {
         <Button sx={{ alignItems: 'flex-start' }} startIcon={<ArrowLeftSvg />} onclick={() => window.history.back()}>
           {t('error_header.back')}
         </Button>
-        <Button sx={{ alignItems: 'flex-start' }} startIcon={<HomeSvg />} onclick={() => navigate(Routes.Home)}>
+        <Button sx={{ alignItems: 'flex-start', mb: '0.25em' }} startIcon={<HomeSvg />} onclick={() => navigate(Routes.Home)}>
           {t('error_header.home')}
         </Button>
         <Button

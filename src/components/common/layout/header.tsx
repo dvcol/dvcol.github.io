@@ -7,6 +7,7 @@ import type { TypographyProps } from '@suid/material/Typography';
 import type { ParentComponent } from 'solid-js';
 
 export type HeaderProps = {
+  ref?: HTMLDivElement;
   title?: string;
   subtitle?: string;
   description?: string;
@@ -16,9 +17,10 @@ export type HeaderProps = {
 };
 export const Header: ParentComponent<HeaderProps> = props => {
   return (
-    <Section {...props.sectionProps}>
+    <Section ref={props.ref} {...props.sectionProps}>
       <Typography
         variant="h2"
+        {...props.titleProps}
         sx={{
           fontWeight: 'bold',
           mb: {
@@ -26,32 +28,34 @@ export const Header: ParentComponent<HeaderProps> = props => {
             tablet: '1rem',
             desktop: '2rem',
           },
+          ...props.titleProps?.sx,
         }}
-        {...props.titleProps}
       >
         {props.title}
       </Typography>
       <Typography
         variant="h4"
+        {...props.descriptionProps}
         sx={{
           mb: {
             default: '0.5rem',
             tablet: '0.25rem',
           },
+          ...props.descriptionProps?.sx,
         }}
-        {...props.descriptionProps}
       >
         {props.subtitle}
       </Typography>
       <Typography
         variant="h6"
+        {...props.descriptionProps}
         sx={{
           mb: {
             default: '0.5rem',
             tablet: '0.25rem',
           },
+          ...props.descriptionProps?.sx,
         }}
-        {...props.descriptionProps}
       >
         {props.description}
       </Typography>

@@ -80,7 +80,7 @@ const common: ThemeOptions = {
         fontSize: '2.75rem',
       },
       '@media (max-width:600px)': {
-        fontSize: '1.75rem',
+        fontSize: '1.7rem',
       },
     },
     h4: {
