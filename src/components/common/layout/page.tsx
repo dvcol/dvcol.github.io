@@ -1,15 +1,18 @@
-import { Box, Container } from '@suid/material';
+import { Motion } from '@motionone/solid';
+import { Box, Container, useMediaQuery, useTheme } from '@suid/material';
 
-import { Show } from 'solid-js';
+import { createMemo, Show } from 'solid-js';
 
 import { Background } from './background';
 
+import { Section } from './section';
+
 import type { BackgroundProps } from './background';
+import type { SectionProps } from './section';
 import type BoxProps from '@suid/material/Box/BoxProps';
 
 import type { ContainerProps } from '@suid/material/Container';
 import type { JSX, ParentComponent } from 'solid-js';
-
 import type { BreakPoints } from '~/themes';
 
 const sideBySideSx = {
@@ -31,12 +34,25 @@ export type PageProps = {
   headerProps?: BoxProps;
   footer?: JSX.Element;
   footerProps?: BoxProps;
+  sectionProps?: SectionProps;
   background?: BackgroundProps;
   maxWidth?: keyof typeof BreakPoints;
   sx?: ContainerProps['sx'];
   sideBySide?: boolean;
+  transition?: 'fade' | 'slide' | boolean;
 };
 export const Page: ParentComponent<PageProps> = props => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('fhd'));
+  const isSideBySide = createMemo(() => props.sideBySide && matches());
+  const animateHeader = createMemo(() => {
+    if (props.transition === 'slide' && isSideBySide()) return { translate: ['50%', 0] };
+    if (props.transition) return { opacity: [0, 1] };
+  });
+  const animateSection = createMemo(() => {
+    if (props.transition === 'slide' && isSideBySide()) return { translate: ['-50%', 0] };
+    if (props.transition) return { scale: [0, 1] };
+  });
   return (
     <Container
       ref={props.ref}
@@ -55,11 +71,29 @@ export const Page: ParentComponent<PageProps> = props => {
         <Background {...props.background} />
       </Show>
       <Show when={!!props.header} keyed>
-        <Box component="header" {...props.headerProps} sx={{ display: 'flex', ...props.headerProps?.sx }}>
-          {props.header}
-        </Box>
+        <Motion animate={animateHeader()} transition={{ scale: { duration: 2 }, translate: { duration: 1 } }}>
+          <Box component="header" {...props.headerProps} sx={{ display: 'flex', ...props.headerProps?.sx }}>
+            {props.header}
+          </Box>
+        </Motion>
       </Show>
-      {props.children}
+      <Section
+        {...props.sectionProps}
+        sx={{
+          maxWidth: props.sideBySide ? { fhd: '40vw' } : undefined,
+          ...props.sectionProps?.sx,
+        }}
+      >
+        <Show when={props.transition} fallback={props.children}>
+          <Motion
+            style={{ width: '100%', height: '100%' }}
+            animate={animateSection()}
+            transition={{ scale: { duration: 1 }, translate: { duration: 1 } }}
+          >
+            {props.children}
+          </Motion>
+        </Show>
+      </Section>
       <Show when={!!props.footer} keyed>
         <Box component="footer" {...props.footerProps} sx={{ display: 'flex', ...props.footerProps?.sx }}>
           {props.footer}

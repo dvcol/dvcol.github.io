@@ -1,19 +1,27 @@
 import type { Component } from 'solid-js';
 
 import ContactLottie from '~/assets/lottie/95145-contact.json?url';
-import { LottiePlayer, Page, PageHeader, Section } from '~/components';
+import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
 import { RoutesMeta } from '~/services';
 
 export const Contact: Component = () => {
-  const LottieStyles: any = { 'max-width': '60vh', height: 'fit-content' };
   return (
     <Page
+      maxWidth="uhd"
+      sideBySide
+      transition="slide"
       background={{ color: RoutesMeta.Contact.bgColor }}
       header={<PageHeader title={'Contact'} subtitle={'TODO - Contact subheader'} description={'TODO - Contact description'} />}
+      sectionProps={{
+        sx: {
+          justifyContent: 'center',
+          maxHeight: { default: 'calc(100dvh - 125px)', mobile: 'calc(100dvh - 155px)', tablet: 'calc(100dvh - 215px)' },
+        },
+      }}
     >
-      <Section sx={{ alignItems: 'center' }}>
-        <LottiePlayer style={LottieStyles} autoplay loop mode="normal" src={ContactLottie} />
-      </Section>
+      <HoverScale>
+        <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
+      </HoverScale>
     </Page>
   );
 };

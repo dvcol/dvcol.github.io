@@ -15,7 +15,7 @@ export const HoverScale: ParentComponent<HoverScaleProps> = props => {
   if (props.initialDelay) setTimeout(() => setDisabled(false), props.initialDelay);
   return (
     <Motion
-      style={{ width: '100%', height: '100%' }}
+      style={{ display: 'flex', 'align-items': 'center', width: '100%', height: '100%' }}
       animate={animations().animate}
       hover={animations().hover}
       transition={{ duration: props.duration ?? 1 }}

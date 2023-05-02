@@ -11,6 +11,7 @@ export const Section: ParentComponent<SectionProps> = props => {
 
   return (
     <Box
+      {..._props}
       sx={{
         display: 'flex',
         flex: '1 1 auto',
@@ -21,7 +22,6 @@ export const Section: ParentComponent<SectionProps> = props => {
         },
         ...sx,
       }}
-      {..._props}
     >
       {children}
     </Box>
