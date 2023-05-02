@@ -4,13 +4,13 @@ import { Section } from './section';
 
 import type { SectionProps } from './section';
 import type { TypographyProps } from '@suid/material/Typography';
-import type { ParentComponent } from 'solid-js';
+import type { JSX, ParentComponent } from 'solid-js';
 
 export type HeaderProps = {
   ref?: HTMLDivElement;
-  title?: string;
-  subtitle?: string;
-  description?: string;
+  title?: JSX.Element | string;
+  subtitle?: JSX.Element | string;
+  description?: JSX.Element | string;
   titleProps?: TypographyProps;
   descriptionProps?: TypographyProps;
   sectionProps?: SectionProps;

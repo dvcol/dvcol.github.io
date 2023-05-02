@@ -11,7 +11,7 @@ import type { ParentComponent } from 'solid-js';
 
 import type { PageProps } from '~/components';
 
-import { Page, Section } from '~/components';
+import { HoverScale, Page, Section } from '~/components';
 
 export type ErrorPageProps = ErrorHeaderProps & { page?: Omit<PageProps, 'header'> };
 export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
@@ -48,7 +48,7 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
           animate={animateSection()}
           transition={{ scale: { duration: 1 }, translate: { duration: 1 } }}
         >
-          {props.children}
+          <HoverScale>{props.children}</HoverScale>
         </Motion>
       </Section>
     </Page>

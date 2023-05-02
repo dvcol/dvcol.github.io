@@ -6,12 +6,17 @@ import ArrowLeftSvg from 'line-md/svg/arrow-small-left.svg?component-solid';
 import HomeSvg from 'line-md/svg/home.svg?component-solid';
 import StackSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 
-import type { Component } from 'solid-js';
+import type { Component, JSX } from 'solid-js';
 
 import { PageHeader } from '~/components';
 import { Routes, useNavbar } from '~/services';
 
-export type ErrorHeaderProps = { ref?: HTMLDivElement; title?: string; subtitle?: string; description?: string };
+export type ErrorHeaderProps = {
+  ref?: HTMLDivElement;
+  title?: JSX.Element | string;
+  subtitle?: JSX.Element | string;
+  description?: JSX.Element | string;
+};
 export const ErrorHeader: Component<ErrorHeaderProps> = props => {
   const navigate = useNavigate();
   const [t] = useI18n();
