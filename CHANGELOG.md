@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](https://github.com/dvcol/dvcol.github.io/compare/v1.20.0...v1.21.0) (2023-05-02)
+
+
+### Features
+
+* **animation:** hover scale ([e0e245d](https://github.com/dvcol/dvcol.github.io/commit/e0e245d35424f56e4cd4abc3b01300e425b0ed99))
+
+
+### Bug Fixes
+
+* **animation:** move transition to base Page component ([90d6439](https://github.com/dvcol/dvcol.github.io/commit/90d64395f1f8627724ac8d529c6008831d12f082))
+* **background:** fix scaling start ([56e87ae](https://github.com/dvcol/dvcol.github.io/commit/56e87ae364a1707c97db2d2a6abc219c2d4c3b4f))
+
 ## [1.20.0](https://github.com/dvcol/dvcol.github.io/compare/v1.19.0...v1.20.0) (2023-05-01)
 
 
