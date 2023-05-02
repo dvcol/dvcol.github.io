@@ -8,7 +8,7 @@ import StackSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 
 import type { Component, JSX } from 'solid-js';
 
-import { PageHeader } from '~/components';
+import { PageHeader, TextRotate } from '~/components';
 import { Routes, useNavbar } from '~/services';
 
 export type ErrorHeaderProps = {
@@ -24,9 +24,9 @@ export const ErrorHeader: Component<ErrorHeaderProps> = props => {
   return (
     <PageHeader
       ref={props.ref}
-      title={props.title}
-      subtitle={props.subtitle}
-      description={props.description}
+      title={<TextRotate value={props.title} />}
+      subtitle={<TextRotate value={props.subtitle} />}
+      description={<TextRotate value={props.description} />}
       sectionProps={{
         sx: { flex: '1 1 auto' },
       }}
