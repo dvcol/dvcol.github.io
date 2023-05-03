@@ -1,25 +1,62 @@
 import { Motion } from '@motionone/solid';
-import { Button, Grid } from '@suid/material';
+import { useI18n } from '@solid-primitives/i18n';
+import { useNavigate } from '@solidjs/router';
+import { Box, Button, Grid, Typography } from '@suid/material';
+
+import TaskSvg from 'line-md/svg/cloud-download-outline-loop.svg?component-solid';
+import DownloadSvg from 'line-md/svg/downloading-loop.svg?component-solid';
+import MenuSvg from 'line-md/svg/list-3.svg?component-solid';
+import ModalSvg from 'line-md/svg/plus-circle.svg?component-solid';
+import PageSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 
 import { createEffect, createSignal, Show } from 'solid-js';
-
-import styles from './synology-demo.module.scss';
 
 import type { Component } from 'solid-js';
 
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnectedEvent } from '~/apps/synology-extension/entry';
 
-import { Page, PageHeader, Spinner } from '~/components/common';
+import { GithubLoop, Page, PageHeader, Spinner, WebstoreSvg } from '~/components/common';
+import { AppLink } from '~/models';
+import { Routes } from '~/services';
+
+const GridContainerSx = {
+  mt: '0.5em',
+  justifyContent: 'center',
+};
+const GridItemSx = {
+  display: 'flex',
+  height: {
+    default: '4rem',
+    fhd: '5rem',
+  },
+  mr: {
+    fhd: '2rem',
+  },
+  justifyContent: 'center',
+};
+
+const WebComponentStyles = {
+  position: 'relative',
+  display: 'flex',
+  flex: '1 1 auto',
+  'flex-direction': 'column',
+  'justify-content': 'center',
+  width: '100%',
+  height: '100%',
+};
 
 export const SynologyDemo: Component = () => {
+  const [t] = useI18n();
   const [contentRef, setContentRef] = createSignal<ContentAppHtmlElement>();
   const [standaloneRef, setStandaloneRef] = createSignal<StandaloneAppHtmlElement>();
 
-  const [loded, setLoaded] = createSignal(false);
+  const [loaded, setLoaded] = createSignal(false);
   import('~/apps/synology-extension/entry').then(() => setLoaded(true)).catch(() => console.error('Failed to define synology web components'));
 
   const onConnected = (e: Event) => (e as StandaloneConnectedEvent).detail?.login();
   createEffect(() => standaloneRef()?.addEventListener('connected', onConnected));
+
+  const navigate = useNavigate();
 
   return (
     <Page
@@ -28,36 +65,74 @@ export const SynologyDemo: Component = () => {
       maxWidth="qhd"
       header={
         <PageHeader
-          title={'Synology Demo'}
-          subtitle={'Welcome to the demo for synology download'}
-          description={'This is a simulated version of the extension, please use the buttons to trigger task or download events'}
+          title={t('synology.demo.title')}
+          subtitle={t('synology.demo.subtitle')}
+          description={
+            <>
+              <Box sx={{ mb: '0.5em' }}>{t('synology.demo.description_line_1')}</Box>
+              <Box>{t('synology.demo.description_line_2')}</Box>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  ...GridContainerSx,
+                  mt: {
+                    default: '2rem',
+                    mobile: '0.5em',
+                  },
+                }}
+              >
+                <Grid item xs={12} sm={3} sx={GridItemSx}>
+                  <Button href={AppLink.synologyWebStore}>
+                    <WebstoreSvg color={'#90caf9'} />
+                  </Button>
+                </Grid>
+                <Grid item xs={6} sm={3} sx={GridItemSx}>
+                  <Button endIcon={<GithubLoop />} href={AppLink.synologyGithub}>
+                    {t('synology.demo.buttons.github')}
+                  </Button>
+                </Grid>
+                <Grid item xs={6} sm={3} sx={GridItemSx}>
+                  <Button endIcon={<PageSvg />} onclick={() => navigate(Routes.Synology)}>
+                    {t('synology.demo.buttons.feature')}
+                  </Button>
+                </Grid>
+              </Grid>
+            </>
+          }
         >
-          <Grid container spacing={2} sx={{ mt: '0.5em' }}>
-            <Grid item xs={6} sm={3} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid container spacing={2} sx={GridContainerSx}>
+            <Grid item sm={12} sx={{ mb: GridContainerSx.mt }}>
+              <Typography variant={'h6'}>{t('synology.demo.button_title')}</Typography>
+            </Grid>
+            <Grid item xs={6} sm={3} xl={4} sx={GridItemSx}>
               <Button
                 id="add-task"
+                endIcon={<TaskSvg />}
                 onClick={() => {
                   window._synology?.mock?.task?.add();
                   standaloneRef()?.poll();
                 }}
               >
-                Add task
+                {t('synology.demo.buttons.add_task')}
               </Button>
             </Grid>
-            <Grid item xs={6} sm={3} class={styles.grid_item}>
+            <Grid item xs={6} sm={3} xl={4} sx={GridItemSx}>
               <Button
-                id="add-task"
+                id="add-download"
+                endIcon={<DownloadSvg />}
                 onClick={() => {
                   window._synology?.mock?.download?.add();
                   standaloneRef()?.poll();
                 }}
               >
-                Add download
+                {t('synology.demo.buttons.add_download')}
               </Button>
             </Grid>
-            <Grid item xs={6} sm={3} class={styles.grid_item}>
+            <Grid item xs={6} sm={3} xl={4} sx={GridItemSx}>
               <Button
                 id="open-modal"
+                endIcon={<ModalSvg />}
                 onClick={() =>
                   contentRef()?.dialog?.({
                     open: true,
@@ -70,12 +145,13 @@ export const SynologyDemo: Component = () => {
                   })
                 }
               >
-                Open modal
+                {t('synology.demo.buttons.open_modal')}
               </Button>
             </Grid>
-            <Grid item xs={6} sm={3} class={styles.grid_item}>
+            <Grid item xs={6} sm={3} xl={4} sx={GridItemSx}>
               <Button
                 id="quick-menu"
+                endIcon={<MenuSvg />}
                 onClick={event =>
                   contentRef()?.anchor?.({
                     event,
@@ -89,7 +165,7 @@ export const SynologyDemo: Component = () => {
                   })
                 }
               >
-                Open Quick menu
+                {t('synology.demo.buttons.open_menu')}
               </Button>
             </Grid>
           </Grid>
@@ -98,8 +174,7 @@ export const SynologyDemo: Component = () => {
       headerProps={{
         sx: {
           maxWidth: {
-            fhd: '50vw',
-            qhd: '30vw',
+            fhd: '55.5rem',
           },
         },
       }}
@@ -118,13 +193,13 @@ export const SynologyDemo: Component = () => {
       }}
     >
       <wc-synology-download-content ref={setContentRef} />
-      <Show when={loded()} fallback={<Spinner size={'5em'} sx={{ position: 'absolute', top: 'calc(50% - 2.5em)', left: 'calc(50% - 2.5em)' }} />}>
+      <Show when={loaded()} fallback={<Spinner size={'5em'} sx={{ position: 'absolute', top: 'calc(50% - 2.5em)', left: 'calc(50% - 2.5em)' }} />}>
         <Motion
           style={{ width: '100%', height: '100%' }}
           animate={{ scale: [0, 1] }}
           transition={{ scale: { duration: 1 }, translate: { duration: 1 } }}
         >
-          <wc-synology-download-standalone class={styles.web_component} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
+          <wc-synology-download-standalone style={WebComponentStyles} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
             <Spinner size={'5em'} sx={{ alignSelf: 'center' }} />
           </wc-synology-download-standalone>
         </Motion>

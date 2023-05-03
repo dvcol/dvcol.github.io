@@ -81,7 +81,13 @@ export const Stack: ParentComponent = props => {
           </StackPage>
         )}
       </For>
-      <StackPage active={true} class={styles.page} style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color })} onClick={() => close()}>
+      <StackPage
+        active={true}
+        open={isOpen()}
+        class={styles.page}
+        style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color })}
+        onClick={() => close()}
+      >
         {props.children}
       </StackPage>
     </div>

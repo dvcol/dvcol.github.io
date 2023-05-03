@@ -15,6 +15,7 @@ import { useNavbar } from '~/services';
 
 type StackPageProps = {
   active?: boolean;
+  open?: boolean;
   class?: string;
   style?: JSX.CSSProperties;
   onClick?: () => void;
@@ -41,7 +42,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
 
   return (
     <>
-      <Show when={props.active}>
+      <Show when={props.active && !props.open}>
         <ProgressBar container={containerRef} />
       </Show>
       <Box

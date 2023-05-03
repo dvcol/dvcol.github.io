@@ -5,14 +5,14 @@ import LinkedInSvg from 'line-md/svg/linkedin.svg?component-solid';
 
 import { For } from 'solid-js';
 
-import { GithubLoop } from './navbar-github';
-
 import { NavbarSocial } from './navbar-social';
 import styles from './navbar.module.scss';
 
 import type { Component } from 'solid-js';
 
 import type { RouteMeta } from '~/services';
+
+import { GithubLoop } from '~/components';
 
 import { AppLink } from '~/models';
 import { useNavbar, useRouteData } from '~/services';

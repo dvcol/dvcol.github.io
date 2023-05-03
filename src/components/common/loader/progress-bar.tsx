@@ -4,9 +4,10 @@ import { animate, scroll } from 'motion';
 
 import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
 
+import type BoxProps from '@suid/material/Box/BoxProps';
 import type { Accessor, Component } from 'solid-js';
 
-export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefined> }> = props => {
+export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefined>; boxProps?: BoxProps }> = props => {
   const [scrolled, setScrolled] = createSignal();
 
   const scrollListener = () => {
@@ -35,6 +36,7 @@ export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefin
   return (
     <Box
       ref={setRef}
+      {...props.boxProps}
       sx={{
         position: 'fixed',
         top: 0,
@@ -43,6 +45,7 @@ export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefin
         background: 'white',
         transform: 'scaleX(0)',
         zIndex: 9999,
+        ...props.boxProps?.sx,
       }}
     />
   );

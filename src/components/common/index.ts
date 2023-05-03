@@ -7,6 +7,7 @@ export * from './particles';
 export * from './provider';
 export * from './router';
 export * from './stack';
+export * from './svg';
 export * from './sw';
 export * from './tags';
 export * from './utils';
