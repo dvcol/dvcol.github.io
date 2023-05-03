@@ -19,9 +19,9 @@ export const NavbarButton: Component = () => {
       class={styles.menu_button}
       classList={{ [styles.menu_button__open]: isOpen() }}
       sx={{
-        '& span': { backgroundColor: accent() },
-        '&::before': { backgroundColor: accent() },
-        '&::after': { backgroundColor: accent() },
+        '& span': { color: accent() },
+        '&::before': { color: accent() },
+        '&::after': { color: accent() },
       }}
       onClick={() => toggle()}
     >
