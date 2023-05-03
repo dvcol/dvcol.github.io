@@ -9,10 +9,10 @@ export const Contact: Component = () => {
     <Page
       maxWidth="uhd"
       sideBySide
-      transition="slide"
+      animate="slide"
       background={{ color: RoutesMeta.Contact.bgColor }}
       header={<PageHeader title={'Contact'} subtitle={'TODO - Contact subheader'} description={'TODO - Contact description'} />}
-      sectionProps={{
+      contentProps={{
         sx: {
           justifyContent: 'center',
           maxHeight: { default: 'calc(100dvh - 125px)', mobile: 'calc(100dvh - 155px)', tablet: 'calc(100dvh - 215px)' },

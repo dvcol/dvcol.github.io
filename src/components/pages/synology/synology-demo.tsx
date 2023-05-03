@@ -1,6 +1,7 @@
+import { Motion } from '@motionone/solid';
 import { Button, Grid } from '@suid/material';
 
-import { createEffect, createSignal } from 'solid-js';
+import { createEffect, createSignal, Show } from 'solid-js';
 
 import styles from './synology-demo.module.scss';
 
@@ -8,20 +9,22 @@ import type { Component } from 'solid-js';
 
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnectedEvent } from '~/apps/synology-extension/entry';
 
-import { Page, PageHeader, Section, Spinner } from '~/components/common';
+import { Page, PageHeader, Spinner } from '~/components/common';
 
 export const SynologyDemo: Component = () => {
   const [contentRef, setContentRef] = createSignal<ContentAppHtmlElement>();
   const [standaloneRef, setStandaloneRef] = createSignal<StandaloneAppHtmlElement>();
 
-  import('~/apps/synology-extension/entry').catch(() => console.error('Failed to define synology web components'));
+  const [loded, setLoaded] = createSignal(false);
+  import('~/apps/synology-extension/entry').then(() => setLoaded(true)).catch(() => console.error('Failed to define synology web components'));
 
-  const onConnected = (e: StandaloneConnectedEvent) => e.detail?.login();
+  const onConnected = (e: Event) => (e as StandaloneConnectedEvent).detail?.login();
   createEffect(() => standaloneRef()?.addEventListener('connected', onConnected));
 
   return (
     <Page
       sideBySide
+      animate="scale"
       maxWidth="qhd"
       header={
         <PageHeader
@@ -100,9 +103,8 @@ export const SynologyDemo: Component = () => {
           },
         },
       }}
-    >
-      <Section
-        sx={{
+      contentProps={{
+        sx: {
           m: { default: '1em', tablet: '2em 5em 2em 3em' },
           maxWidth: {
             fhd: '40vw',
@@ -112,13 +114,21 @@ export const SynologyDemo: Component = () => {
             qhd: '60vh',
           },
           alignItems: 'center',
-        }}
-      >
-        <wc-synology-download-content ref={setContentRef} />
-        <wc-synology-download-standalone class={styles.web_component} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
-          <Spinner size={'5em'} sx={{ alignSelf: 'center' }} />
-        </wc-synology-download-standalone>
-      </Section>
+        },
+      }}
+    >
+      <wc-synology-download-content ref={setContentRef} />
+      <Show when={loded()} fallback={<Spinner size={'5em'} sx={{ position: 'absolute', top: 'calc(50% - 2.5em)', left: 'calc(50% - 2.5em)' }} />}>
+        <Motion
+          style={{ width: '100%', height: '100%' }}
+          animate={{ scale: [0, 1] }}
+          transition={{ scale: { duration: 1 }, translate: { duration: 1 } }}
+        >
+          <wc-synology-download-standalone class={styles.web_component} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
+            <Spinner size={'5em'} sx={{ alignSelf: 'center' }} />
+          </wc-synology-download-standalone>
+        </Motion>
+      </Show>
     </Page>
   );
 };

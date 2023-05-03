@@ -16,7 +16,7 @@ export const Home: Component = () => {
   const [t] = useI18n();
   return (
     <Page
-      sectionProps={{
+      contentProps={{
         sx: { justifyContent: 'center' },
       }}
     >

@@ -14,9 +14,9 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
       {...props.page}
       maxWidth="uhd"
       sideBySide
-      transition="slide"
+      animate="slide"
       header={<ErrorHeader title={props.title} subtitle={props.subtitle} description={props.description} />}
-      sectionProps={{
+      contentProps={{
         sx: {
           justifyContent: 'center',
           maxHeight: { default: 'calc(100dvh - 270px)', mobile: 'calc(100dvh - 220px)', tablet: 'calc(100dvh - 290px)' },
