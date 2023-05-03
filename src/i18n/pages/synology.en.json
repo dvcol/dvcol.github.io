@@ -3,7 +3,7 @@
   "demo": {
     "title": "Synology Demo",
     "subtitle": "Welcome to the demo for Synology Download",
-    "description_line_1": "To download the extension, get it from the web store, or github",
+    "description_line_1": "To download the extension, get it from the web store or github",
     "description_line_2": "To know more about supported functionalities check out our feature page",
     "button_title": "To emulate new task or download events, please use the buttons below",
     "buttons": {

@@ -49,7 +49,7 @@ export type PageProps = {
   maxWidth?: keyof typeof BreakPoints;
   sx?: ContainerProps['sx'];
   sideBySide?: boolean;
-  animate?: 'scale' | 'slide';
+  animate?: 'fade' | 'scale' | 'slide';
   motion?: { header?: MotionComponentProps; content?: MotionComponentProps };
 };
 export const Page: ParentComponent<PageProps> = props => {
@@ -66,6 +66,7 @@ export const Page: ParentComponent<PageProps> = props => {
     if (props.motion?.content) return props.motion.content;
     if (props.animate === 'slide' && isSideBySide()) return slideRight;
     if (props.animate === 'scale') return scale;
+    if (props.animate === 'fade') return fade;
     if (props.animate) return scale;
   });
   return (

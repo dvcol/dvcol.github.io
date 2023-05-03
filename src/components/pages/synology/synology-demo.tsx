@@ -61,7 +61,7 @@ export const SynologyDemo: Component = () => {
   return (
     <Page
       sideBySide
-      animate="scale"
+      animate="fade"
       maxWidth="qhd"
       header={
         <PageHeader
@@ -180,6 +180,7 @@ export const SynologyDemo: Component = () => {
       }}
       contentProps={{
         sx: {
+          position: 'relative',
           m: { default: '1em', tablet: '2em 5em 2em 3em' },
           maxWidth: {
             fhd: '40vw',
@@ -196,8 +197,8 @@ export const SynologyDemo: Component = () => {
       <Show when={loaded()} fallback={<Spinner size={'5em'} sx={{ position: 'absolute', top: 'calc(50% - 2.5em)', left: 'calc(50% - 2.5em)' }} />}>
         <Motion
           style={{ width: '100%', height: '100%' }}
-          animate={{ scale: [0, 1] }}
-          transition={{ scale: { duration: 1 }, translate: { duration: 1 } }}
+          animate={{ opacity: [0, 1] }}
+          transition={{ opacity: { duration: 1 }, translate: { duration: 1 } }}
         >
           <wc-synology-download-standalone style={WebComponentStyles} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
             <Spinner size={'5em'} sx={{ alignSelf: 'center' }} />
