@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.22.0](https://github.com/dvcol/dvcol.github.io/compare/v1.21.0...v1.22.0) (2023-05-03)
+
+
+### Features
+
+* **synology:** rework layout and adds buttons ([ad1af2b](https://github.com/dvcol/dvcol.github.io/commit/ad1af2bc55bcf8947fc20cf9ea174ec6b9521fd2))
+
+
+### Bug Fixes
+
+* **animation:** fix hover animation on transition ([96b260b](https://github.com/dvcol/dvcol.github.io/commit/96b260bffbdfc16b087fd5d70dd2e71dbdf1be44))
+* **home:** fix home layout ([6b7f06b](https://github.com/dvcol/dvcol.github.io/commit/6b7f06b644d4d9739920c4f4d651479ecaf46bc4))
+* **navbar:** fix navbar buttons ([807f206](https://github.com/dvcol/dvcol.github.io/commit/807f206c78be41c9507a7f5cd975cbfe7f9274f6))
+* **synology:** fix enter animation ([ecc6d0f](https://github.com/dvcol/dvcol.github.io/commit/ecc6d0f5f78ae7d58df0c0a3d3efaed7444bde86))
+* **synology:** fix relative positioning ([d980e84](https://github.com/dvcol/dvcol.github.io/commit/d980e8401cb7c8debdedd206a47966cad06bb535))
+
 ## [1.21.0](https://github.com/dvcol/dvcol.github.io/compare/v1.20.0...v1.21.0) (2023-05-02)
 
 
