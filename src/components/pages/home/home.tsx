@@ -8,17 +8,21 @@ import type { Component } from 'solid-js';
 
 import { Page, ParticlesContainer } from '~/components';
 import { TriangleParticles } from '~/components/common/particles/triangle.particles';
-import { RoutesMetas } from '~/services';
+import { Routes, RoutesMetas } from '~/services';
 import { camelToSnakeCase } from '~/utils';
 
 export const Home: Component = () => {
   const navigate = useNavigate();
   const [t] = useI18n();
   return (
-    <Page sx={{ justifyContent: 'center' }}>
+    <Page
+      sectionProps={{
+        sx: { justifyContent: 'center' },
+      }}
+    >
       <ParticlesContainer options={TriangleParticles}>
         <Stack spacing={2} direction="column" sx={{ alignItems: 'center' }}>
-          <For each={RoutesMetas?.filter(r => r.navbar)}>
+          <For each={RoutesMetas?.filter(r => r.navbar && r.path !== Routes.Home)}>
             {({ name, path }) => (
               <>
                 <Button variant="outlined" onclick={() => navigate(path)} sx={{ width: 'fit-content' }}>
