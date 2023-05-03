@@ -19,7 +19,7 @@ export const Contact: Component = () => {
         },
       }}
     >
-      <HoverScale>
+      <HoverScale initialDelay={1000}>
         <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
       </HoverScale>
     </Page>

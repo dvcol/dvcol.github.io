@@ -23,7 +23,7 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
         },
       }}
     >
-      <HoverScale>{props.children}</HoverScale>
+      <HoverScale initialDelay={1000}>{props.children}</HoverScale>
     </Page>
   );
 };

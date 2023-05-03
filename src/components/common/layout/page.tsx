@@ -60,11 +60,13 @@ export const Page: ParentComponent<PageProps> = props => {
     if (props.motion?.header) return props.motion.header;
     if (props.animate === 'slide' && isSideBySide()) return slideLeft;
     if (props.animate === 'scale') return fade;
+    if (props.animate) return fade;
   });
   const motionContent = createMemo(() => {
     if (props.motion?.content) return props.motion.content;
     if (props.animate === 'slide' && isSideBySide()) return slideRight;
     if (props.animate === 'scale') return scale;
+    if (props.animate) return scale;
   });
   return (
     <Container
