@@ -20,6 +20,13 @@ export enum BreakPoints {
   uhd = 3840,
 }
 
+export type ResponsiveStyleValue<T> =
+  | T
+  | Array<T | undefined>
+  | {
+      [key in BreakPoints]?: T;
+    };
+
 const scrollbar: Record<string, any> = {
   scrollbarWidth: 'thin',
   scrollbarColor: 'rgb(150 150 150 / 50%) transparent',
