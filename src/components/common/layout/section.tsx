@@ -16,7 +16,7 @@ export const Section: ParentComponent<SectionProps> = props => {
         display: 'flex',
         flex: '1 1 auto',
         flexDirection: 'column',
-        margin: {
+        padding: {
           default: '0 1rem',
           tablet: '0 3rem',
         },

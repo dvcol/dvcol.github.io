@@ -6,7 +6,7 @@ export const WebstoreSvg: Component<WebStoreSvgProps> = props => (
     version="1.1"
     id="svg2"
     width={props.width}
-    height={props.height ?? '5rem'}
+    height={props.height ?? '100%'}
     viewBox="0 0 661.33331 200"
     sodipodi:docname="xewneAQuXHkZbVSAEgiV.ai"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"

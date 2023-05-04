@@ -2,10 +2,11 @@
   "home": "Synology Extension",
   "demo": {
     "title": "Synology Demo",
-    "subtitle": "Welcome to the demo for Synology Download",
-    "description_line_1": "To download the extension, get it from the web store or github",
-    "description_line_2": "To know more about supported functionalities check out our feature page",
-    "button_title": "To emulate new task or download events, please use the buttons below",
+    "subtitle": "Manage your synology NAS right from the browser",
+    "description_line_1": "Welcome to the Synology Download Extension. This demo is simulated and most functionality available in the full extension are replicated here.",
+    "description_line_2": "To know more, have a look at our dedicated pages, go to github or add it to your navigator",
+    "button_title": "Try adding a task or download",
+    "button_description": "To emulate new task or download events, please use the buttons below",
     "buttons": {
       "feature": "Feature page",
       "github": "Github page",

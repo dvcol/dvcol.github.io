@@ -78,7 +78,7 @@ const common: ThemeOptions = {
       },
     },
     h6: {
-      fontSize: '1.5rem',
+      fontSize: '1.35rem',
       lineHeight: '1.75rem',
       '@media (max-width:900px)': {
         fontSize: '1.25rem',

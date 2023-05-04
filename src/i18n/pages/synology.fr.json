@@ -2,10 +2,11 @@
   "home": "Synology Extension",
   "demo": {
     "title": "Synology Demo",
-    "subtitle": "Bienvenu sur la démo de Synology Download",
-    "description_line_1": "Pour télécharger l'extension, accédez au web store ou à github",
-    "description_line_2": "Pour connaitre plus sur les fonctionnalités disponibles, naviguez vers la page de présentation",
-    "button_title": "Pour simuler un téléchargement on l'ajout d'une tâche, veuillez utiliser les boutons ci-dessous",
+    "subtitle": "Administrer votre NAS Synology depuis votre navigateur",
+    "description_line_1": "Bienvenu sur la démo de l'extension Synology Download. Cette démo est simulée et la majorité des fonctions de l'application sont supportées",
+    "description_line_2": "Pour en savoir plus, naviguez vers la page de présentation, consulter le repo github ou accédez au store",
+    "button_title": "Ajoutez une tâche ou un téléchargement",
+    "button_description": "Pour simuler un téléchargement on l'ajout d'une tâche, veuillez utiliser les boutons ci-dessous",
     "buttons": {
       "feature": "Page de présentation",
       "github": "Page Github",

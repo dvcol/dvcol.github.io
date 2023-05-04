@@ -9,11 +9,13 @@ export const PageHeader: ParentComponent<HeaderProps> = props => {
     <Header
       {...props}
       titleProps={{
+        ...props.titleProps,
         sx: {
           mr: {
             default: '1.25em',
             tablet: '0.5em',
           },
+          ...props.titleProps?.sx,
         },
       }}
       sectionProps={{

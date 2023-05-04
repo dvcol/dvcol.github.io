@@ -12,6 +12,7 @@ export type HeaderProps = {
   subtitle?: JSX.Element | string;
   description?: JSX.Element | string;
   titleProps?: TypographyProps;
+  subtitleProps?: TypographyProps;
   descriptionProps?: TypographyProps;
   sectionProps?: SectionProps;
 };
@@ -35,13 +36,13 @@ export const Header: ParentComponent<HeaderProps> = props => {
       </Typography>
       <Typography
         variant="h4"
-        {...props.descriptionProps}
+        {...props.subtitleProps}
         sx={{
           mb: {
-            default: '0.5rem',
-            tablet: '0.25rem',
+            default: '0.75rem',
+            tablet: '1rem',
           },
-          ...props.descriptionProps?.sx,
+          ...props.subtitleProps?.sx,
         }}
       >
         {props.subtitle}
