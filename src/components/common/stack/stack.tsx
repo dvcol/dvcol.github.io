@@ -82,7 +82,7 @@ export const Stack: ParentComponent = props => {
         )}
       </For>
       <StackPage
-        active={true}
+        active={active()}
         open={isOpen()}
         class={styles.page}
         style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color, 'background-color': active()?.bgColor })}

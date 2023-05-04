@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 70dvh;
   }
 
   &::before {
@@ -31,17 +31,27 @@
     inset: 0;
   }
 
-  @media screen and (min-width: 899px) {
+  @media screen and (min-width: 900px) {
     &::before {
-      margin: 1rem 4rem 1rem 2rem;
-      border-radius: 2%;
+      margin: 2.5rem 5.5rem 2.5rem 3.5rem;
     }
   }
 
-  @media screen and (min-width: 1919px) {
+  @media screen and (min-width: 1920px) {
     &::before {
-      margin: 1rem 3rem 1rem 1rem;
-      border-radius: 5%;
+      margin: 2.5rem 5rem 2.5rem 3rem;
+    }
+  }
+
+  @media screen and (min-width: 2500px) {
+    .web_component {
+      height: 60dvh;
+    }
+  }
+
+  @media screen and (min-width: 3840px) {
+    .web_component {
+      height: 50dvh;
     }
   }
 }

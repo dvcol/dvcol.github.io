@@ -57,9 +57,6 @@ export const SynologyDemo: Component = () => {
       sideBySide
       animate="fade"
       maxWidth="qhd"
-      sx={{
-        bgcolor: RoutesMeta.SynologyDemo.bgColor,
-      }}
       header={
         <PageHeader
           title={t('synology.demo.title')}

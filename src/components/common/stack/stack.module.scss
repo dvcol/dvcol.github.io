@@ -4,7 +4,10 @@
   perspective-origin: 50% -50%;
   transition: transform 0.45s;
   transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
-  pointer-events: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .page__title {
