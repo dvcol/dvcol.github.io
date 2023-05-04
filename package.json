@@ -43,7 +43,6 @@
     "solid-js": "^1.7.3",
     "solid-particles": "^2.9.3",
     "solid-toast": "^0.5.0",
-    "solid-transition-group": "^0.2.2",
     "tsparticles": "^2.9.3",
     "tsparticles-plugin-polygon-mask": "^2.9.3"
   },
