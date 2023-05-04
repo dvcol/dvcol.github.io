@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0](https://github.com/dvcol/dvcol.github.io/compare/v1.23.1...v1.24.0) (2023-05-04)
+
+
+### Features
+
+* **home:** update home page to use cards ([fad0e68](https://github.com/dvcol/dvcol.github.io/commit/fad0e68591636eb3e4dff81dc433866ea32879c8))
+
+
+### Bug Fixes
+
+* **animation:** remove unused transition-group ([dda3a5d](https://github.com/dvcol/dvcol.github.io/commit/dda3a5da01ce7bca3c68b88d57bcadfda8562f74))
+* **contact:** fix header offset ([4025fc9](https://github.com/dvcol/dvcol.github.io/commit/4025fc9b7f7acce6099f73ba18caac8b2915393b))
+* **stack:** fix background transitions ([ee236b9](https://github.com/dvcol/dvcol.github.io/commit/ee236b9924523a2f6633a37c461d11b236cd1cba))
+* **synology:** fix responsive design ([e1bb2a7](https://github.com/dvcol/dvcol.github.io/commit/e1bb2a72a9127df6b72864b658fdf3fd4e8f5ac5))
+
 ### [1.23.1](https://github.com/dvcol/dvcol.github.io/compare/v1.23.0...v1.23.1) (2023-05-04)
 
 
