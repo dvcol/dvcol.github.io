@@ -13,11 +13,11 @@ import type { JSX, ParentComponent } from 'solid-js';
 import { RoutesMetas, useNavbar, useRouteData } from '~/services';
 
 type TransformOptions = { offset?: number; opacity?: number } & Omit<JSX.CSSProperties, 'offset' | 'opacity' | 'transform'>;
-const offsetTransform = (options: TransformOptions = {}): JSX.CSSProperties => {
+const offsetTransform = (options: TransformOptions = {}, _styles?: JSX.CSSProperties): JSX.CSSProperties => {
   const { offset, opacity: _opacity, ...props } = { offset: 2, ...options };
   const transform = `translate3d(0,15%,-${offset * 100}px)`;
   const opacity = _opacity ?? (10 - offset) / 10;
-  return { transform, opacity, ...props };
+  return { transform, opacity, ...props, ..._styles };
 };
 
 const computeTransform = (open = false): ((options: TransformOptions, _styles?: JSX.CSSProperties) => JSX.CSSProperties | undefined) =>
@@ -85,7 +85,7 @@ export const Stack: ParentComponent = props => {
         active={true}
         open={isOpen()}
         class={styles.page}
-        style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color })}
+        style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color, 'background-color': active()?.bgColor })}
         onClick={() => close()}
       >
         {props.children}
