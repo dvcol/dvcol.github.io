@@ -194,12 +194,16 @@ export const SynologyDemo: Component = () => {
       contentProps={{
         sx: {
           position: 'relative',
+          marginTop: {
+            default: '1rem',
+            tablet: 0,
+          },
           padding: { default: '1em', tablet: '2em 5em 2em 3em' },
           maxWidth: {
             fhd: '40%',
           },
           height: {
-            fhd: '70%',
+            fhd: '66%',
             qhd: '60%',
             uhd: '50%',
           },

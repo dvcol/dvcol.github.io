@@ -97,7 +97,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.synology_demo',
     navbar: true,
     color: 'white',
-    bgColor: '#0F1115',
+    bgColor: 'black',
     accentColor: '#0D63F8',
   },
   Contact: {
