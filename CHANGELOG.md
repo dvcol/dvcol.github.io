@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.24.1](https://github.com/dvcol/dvcol.github.io/compare/v1.24.0...v1.24.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* **synology:** fix ::after and ::before event interference ([600bec8](https://github.com/dvcol/dvcol.github.io/commit/600bec8f70770846771c53e5f8a221f30abf3f86))
+* **synology:** fix i18n ([acf6d8f](https://github.com/dvcol/dvcol.github.io/commit/acf6d8fc875aa006cf6ff1ce90d3c20faeb7cbfb))
+* **theme:** disable light theme for the moment ([063359e](https://github.com/dvcol/dvcol.github.io/commit/063359e9a3aa0d1b35258cf3c15729001ddc59c1))
+
 ## [1.24.0](https://github.com/dvcol/dvcol.github.io/compare/v1.23.1...v1.24.0) (2023-05-04)
 
 
