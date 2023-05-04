@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.23.0](https://github.com/dvcol/dvcol.github.io/compare/v1.22.0...v1.23.0) (2023-05-04)
+
+
+### Features
+
+* **synology:** adds gradient background ([d883a73](https://github.com/dvcol/dvcol.github.io/commit/d883a73c699c90ba30e956b699bb96f6893e027d))
+* **synology:** theme color for synology ([c0e5a07](https://github.com/dvcol/dvcol.github.io/commit/c0e5a076e5130e6f9558471c66963694384c9efe))
+
 ## [1.22.0](https://github.com/dvcol/dvcol.github.io/compare/v1.21.0...v1.22.0) (2023-05-03)
 
 
