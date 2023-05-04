@@ -103,7 +103,7 @@ export const Page: ParentComponent<PageProps> = props => {
       <Section
         {...props.contentProps}
         sx={{
-          maxWidth: props.sideBySide ? { fhd: '40vw' } : undefined,
+          maxWidth: props.sideBySide ? { fhd: '40%' } : undefined,
           ...props.contentProps?.sx,
         }}
       >

@@ -15,7 +15,7 @@ export const Contact: Component = () => {
       contentProps={{
         sx: {
           justifyContent: 'center',
-          maxHeight: { default: 'calc(100dvh - 125px)', mobile: 'calc(100dvh - 155px)', tablet: 'calc(100dvh - 215px)' },
+          maxHeight: { default: 'calc(100dvh - 130px)', mobile: 'calc(100dvh - 160px)', tablet: 'calc(100dvh - 230px)' },
         },
       }}
     >

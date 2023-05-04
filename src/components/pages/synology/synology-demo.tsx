@@ -190,6 +190,7 @@ export const SynologyDemo: Component = () => {
         sx: {
           maxWidth: {
             fhd: '56rem',
+            qhd: '50%',
           },
         },
       }}
@@ -198,11 +199,12 @@ export const SynologyDemo: Component = () => {
           position: 'relative',
           padding: { default: '1em', tablet: '2em 5em 2em 3em' },
           maxWidth: {
-            fhd: '40vw',
+            fhd: '40%',
           },
           height: {
-            fhd: '70vh',
-            qhd: '60vh',
+            fhd: '70%',
+            qhd: '60%',
+            uhd: '50%',
           },
           alignItems: 'center',
         },

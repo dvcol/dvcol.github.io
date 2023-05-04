@@ -19,7 +19,7 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
       contentProps={{
         sx: {
           justifyContent: 'center',
-          maxHeight: { default: 'calc(100dvh - 270px)', mobile: 'calc(100dvh - 220px)', tablet: 'calc(100dvh - 290px)' },
+          maxHeight: { default: 'calc(100dvh - 280px)', mobile: 'calc(100dvh - 230px)', tablet: 'calc(100dvh - 300px)' },
         },
       }}
     >
