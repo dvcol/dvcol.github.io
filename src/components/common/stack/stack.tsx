@@ -11,6 +11,7 @@ import styles from './stack.module.scss';
 import type { JSX, ParentComponent } from 'solid-js';
 
 import { RoutesMetas, useNavbar, useRouteData } from '~/services';
+import { Colors } from '~/themes';
 
 type TransformOptions = { offset?: number; opacity?: number } & Omit<JSX.CSSProperties, 'offset' | 'opacity' | 'transform'>;
 const offsetTransform = (options: TransformOptions = {}, _styles?: JSX.CSSProperties): JSX.CSSProperties => {
@@ -78,7 +79,13 @@ export const Stack: ParentComponent = props => {
       return setTimeout(() => setBackground(activeBgColor), activeDelay);
     }
     if (activeBgColor) return setBackground(activeBgColor);
-    return setBackground();
+    return setBackground(Colors.theme);
+  });
+
+  createEffect(() => {
+    const themeColor = document.querySelector('#meta-theme-color');
+    const newValue = background();
+    if (themeColor && newValue) themeColor?.setAttribute('content', newValue);
   });
 
   return (

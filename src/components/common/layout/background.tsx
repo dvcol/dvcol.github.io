@@ -8,13 +8,14 @@ import styles from './background.module.scss';
 import type { JSX, ParentComponent } from 'solid-js';
 
 import { useRouteData } from '~/services';
+import { Colors } from '~/themes';
 
 export type BackgroundProps = { show?: boolean; color?: JSX.CSSProperties['background-color'] };
 export const Background: ParentComponent<BackgroundProps> = props => {
   const { previous } = useRouteData();
 
   return (
-    <Box class={styles.background_container} sx={{ backgroundColor: previous()?.bgColor ?? '#2a2b30' }}>
+    <Box class={styles.background_container} sx={{ backgroundColor: previous()?.bgColor ?? Colors.theme }}>
       <Presence exitBeforeEnter>
         <Show when={props.show ?? true}>
           <Motion

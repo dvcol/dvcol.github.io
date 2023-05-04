@@ -3,6 +3,11 @@ import { createTheme } from '@suid/material';
 import type { Theme } from '@suid/material';
 import type { ThemeOptions } from '@suid/material/styles/createTheme';
 
+export enum Colors {
+  theme = '#2a2b30',
+  background = '#1d1e21',
+}
+
 export enum BreakPoints {
   xs = 0,
   sm = 600,
