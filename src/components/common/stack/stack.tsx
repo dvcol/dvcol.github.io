@@ -3,7 +3,7 @@ import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, For, onCleanup } from 'solid-js';
+import { createEffect, createMemo, createSignal, For, onCleanup } from 'solid-js';
 
 import { StackPage } from './stack-page';
 import styles from './stack.module.scss';
@@ -68,6 +68,19 @@ export const Stack: ParentComponent = props => {
   window.addEventListener('hashchange', listener);
   onCleanup(() => window.removeEventListener('hashchange', listener));
 
+  const [background, setBackground] = createSignal<string>();
+
+  createEffect(() => {
+    const activeDelay = active()?.transition;
+    const activeBgColor = active()?.bgColor;
+
+    if (activeDelay && activeBgColor) {
+      return setTimeout(() => setBackground(activeBgColor), activeDelay);
+    }
+    if (activeBgColor) return setBackground(activeBgColor);
+    return setBackground();
+  });
+
   return (
     <div class={styles.pages_stack} classList={{ [styles.pages_stack__open]: isOpen() }} style={stackTransform()}>
       <For each={pages()}>
@@ -85,7 +98,7 @@ export const Stack: ParentComponent = props => {
         active={active()}
         open={isOpen()}
         class={styles.page}
-        style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color, 'background-color': active()?.bgColor })}
+        style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color, 'background-color': background() })}
         onClick={() => close()}
       >
         {props.children}

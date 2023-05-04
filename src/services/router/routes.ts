@@ -26,6 +26,7 @@ export type RouteMeta = {
   color?: string;
   bgColor?: string;
   accentColor?: string;
+  transition?: number;
 };
 
 export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
@@ -36,6 +37,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.not_found',
     color: 'white',
     bgColor: 'darkred',
+    transition: 500,
   },
   Unauthorized: {
     path: Routes.Unauthorized,
@@ -43,6 +45,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.unauthorized',
     color: 'white',
     bgColor: 'navy',
+    transition: 500,
   },
   Forbidden: {
     path: Routes.Forbidden,
@@ -50,6 +53,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.forbidden',
     color: 'white',
     bgColor: 'navy',
+    transition: 500,
   },
   Error: {
     path: Routes.Error,
@@ -57,6 +61,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.error',
     color: 'white',
     bgColor: 'darkred',
+    transition: 500,
   },
 
   /** Public pages **/
@@ -100,6 +105,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'maroon',
+    transition: 500,
   },
 };
 
