@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.25.0](https://github.com/dvcol/dvcol.github.io/compare/v1.24.1...v1.25.0) (2023-05-04)
+
+
+### Features
+
+* **theme:** changes theme color dynamically ([2c142c6](https://github.com/dvcol/dvcol.github.io/commit/2c142c68b1614c4aa008f898756da71a19c43b74))
+
+
+### Bug Fixes
+
+* **synology:** makes background true black for miniled/oled ([807e9c5](https://github.com/dvcol/dvcol.github.io/commit/807e9c56c6847f7f1b21fdf5fc694310885c482b))
+
 ### [1.24.1](https://github.com/dvcol/dvcol.github.io/compare/v1.24.0...v1.24.1) (2023-05-04)
 
 
