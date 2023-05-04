@@ -11,6 +11,8 @@ import PageSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 
 import { createEffect, createSignal, Show } from 'solid-js';
 
+import styles from './synology-demo.module.scss';
+
 import type { Component } from 'solid-js';
 
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnectedEvent } from '~/apps/synology-extension/entry';
@@ -38,16 +40,6 @@ const GridItemSx = {
   },
 };
 
-const WebComponentStyles = {
-  position: 'relative',
-  display: 'flex',
-  flex: '1 1 auto',
-  'flex-direction': 'column',
-  'justify-content': 'center',
-  width: '100%',
-  height: '100%',
-};
-
 export const SynologyDemo: Component = () => {
   const [t] = useI18n();
   const [contentRef, setContentRef] = createSignal<ContentAppHtmlElement>();
@@ -60,7 +52,6 @@ export const SynologyDemo: Component = () => {
   createEffect(() => standaloneRef()?.addEventListener('connected', onConnected));
 
   const navigate = useNavigate();
-
   return (
     <Page
       sideBySide
@@ -220,11 +211,12 @@ export const SynologyDemo: Component = () => {
       <wc-synology-download-content ref={setContentRef} />
       <Show when={loaded()} fallback={<Spinner size={'5em'} sx={{ position: 'absolute', top: 'calc(50% - 2.5em)', left: 'calc(50% - 2.5em)' }} />}>
         <Motion
+          class={styles.shadow}
           style={{ width: '100%', height: '100%' }}
           animate={{ opacity: [0, 1] }}
           transition={{ opacity: { duration: 1 }, translate: { duration: 1 } }}
         >
-          <wc-synology-download-standalone style={WebComponentStyles} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
+          <wc-synology-download-standalone class={styles.web_component} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
             <Spinner size={'5em'} sx={{ alignSelf: 'center' }} />
           </wc-synology-download-standalone>
         </Motion>
