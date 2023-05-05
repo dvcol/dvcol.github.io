@@ -198,7 +198,7 @@ export const SynologyDemo: Component = () => {
             default: '1rem',
             tablet: 0,
           },
-          padding: { default: '1em', tablet: '2em 5em 2em 3em' },
+          padding: { default: '1em', tablet: '3em' },
           maxWidth: {
             fhd: '40%',
           },

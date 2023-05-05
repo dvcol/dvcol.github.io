@@ -26,14 +26,15 @@ export const Home: Component = () => {
       title: RoutesMeta.SynologyDemo.name,
       imageProps: { image: SolidSvg },
     },
-    {
-      path: RoutesMeta.Trakt.path,
-      title: RoutesMeta.Trakt.name,
-      imageProps: { image: SolidSvg },
-    },
+
     {
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
+      imageProps: { image: SolidSvg },
+    },
+    {
+      path: RoutesMeta.Trakt.path,
+      title: RoutesMeta.Trakt.name,
       imageProps: { image: SolidSvg },
     },
     {
@@ -51,7 +52,14 @@ export const Home: Component = () => {
       <ParticlesContainer options={TriangleParticles}>
         <Grid
           container
-          sx={{ position: 'relative', justifyContent: 'center' }}
+          sx={{
+            position: 'relative',
+            justifyContent: 'center',
+            mt: {
+              default: '2.5rem',
+              tablet: 0,
+            },
+          }}
           spacing={{
             default: 0,
             tablet: 2,
@@ -65,6 +73,7 @@ export const Home: Component = () => {
                     title={t(`routes.${camelToSnakeCase(title)}`)}
                     description={t(`home.${camelToSnakeCase(title)}`)}
                     imageProps={{
+                      alt: `cover image for ${title}`,
                       sx: {
                         height: {
                           default: 200,

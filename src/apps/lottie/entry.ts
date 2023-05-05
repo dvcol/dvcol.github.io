@@ -4,8 +4,6 @@ import type { SolidWebComponent } from '~/utils';
 
 const LottieWebComponent = 'lottie-player';
 
-// type LottiePlayerComponent = LottiePlayer & { mode: keyof typeof PlayMode };
-
 export type LottiePlayerComponent = Partial<Omit<typeof LottiePlayer.prototype, 'mode' | 'currentState'>> & {
   mode?: `${PlayMode}`;
   currentState?: `${PlayerState}`;

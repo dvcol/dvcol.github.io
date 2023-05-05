@@ -16,7 +16,7 @@ type ImageCardMediaProps = CardMediaProps & {
 export type ImageCardProps = {
   title?: string | JSX.Element;
   description?: string | JSX.Element;
-  imageProps?: ImageCardMediaProps;
+  imageProps?: ImageCardMediaProps & { alt?: string };
   actionProps?: CardActionsProps;
 } & CardProps;
 export const ImageCard: ParentComponent<ImageCardProps> = props => {
