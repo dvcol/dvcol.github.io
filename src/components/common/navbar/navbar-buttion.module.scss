@@ -66,21 +66,32 @@
     }
   }
 
-  &__container,
-  &__trigger {
-    position: absolute;
-    top: 0;
-    right: 0;
+  --offset: -20px;
+
+  @media screen and (max-width: 600px) {
+    --offset: -15px;
   }
 
-  &__container {
-    z-index: 1000;
-    padding: 4rem;
+  &__collapsed:not(.menu_button__open) {
+    &::before,
+    &::after,
+    & span {
+      transform: rotate3d(0, 0, 1, 90deg) translateY(var(--offset));
+    }
   }
 
-  &__trigger {
-    z-index: 1001;
-    padding: 2.5rem;
+  &__expand:not(.menu_button__open) {
+    &::before {
+      transform: rotate3d(0, 0, 1, 90deg) translateY(var(--offset));
+    }
+
+    & span {
+      transform: rotate3d(0, 0, 1, 90deg) translateY(calc(var(--offset) + 5px)) scale(0.7);
+    }
+
+    &::after {
+      transform: rotate3d(0, 0, 1, 90deg) translateY(calc(var(--offset) + 10px)) scale(0.5);
+    }
   }
 
   &:not(.menu_button__open):hover {
@@ -95,46 +106,6 @@
 
     &::after {
       transform: translate3d(0, 10px, 0);
-    }
-  }
-
-  &__collapsed {
-    --offset: -20px;
-
-    @media screen and (max-width: 600px) {
-      --offset: -15px;
-    }
-
-    .menu_button__trigger:not(:hover) {
-      // stylelint-disable-line a11y/selector-pseudo-class-focus -- not animate when focused
-      .menu_button:not(.menu_button__open) {
-        &::before,
-        &::after,
-        & span {
-          transform: rotate3d(0, 0, 1, 90deg) translateY(var(--offset));
-        }
-      }
-    }
-
-    &:hover {
-      // stylelint-disable-line a11y/selector-pseudo-class-focus -- not animate when focused
-      .menu_button__trigger:not(:hover) {
-        // stylelint-disable-line a11y/selector-pseudo-class-focus -- not animate when focused
-        .menu_button:not(.menu_button__open) {
-          // stylelint-disable-line a11y/selector-pseudo-class-focus -- not animate when focused
-          &::before {
-            transform: rotate3d(0, 0, 1, 90deg) translateY(var(--offset));
-          }
-
-          & span {
-            transform: rotate3d(0, 0, 1, 90deg) translateY(calc(var(--offset) + 5px)) scale(0.7);
-          }
-
-          &::after {
-            transform: rotate3d(0, 0, 1, 90deg) translateY(calc(var(--offset) + 10px)) scale(0.5);
-          }
-        }
-      }
     }
   }
 }
