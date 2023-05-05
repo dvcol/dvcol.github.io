@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.26.0](https://github.com/dvcol/dvcol.github.io/compare/v1.25.0...v1.26.0) (2023-05-05)
+
+
+### Features
+
+* **navbar:** collapse navbar button on scroll ([ff3c4ef](https://github.com/dvcol/dvcol.github.io/commit/ff3c4ef13177533e74e2bbc7c457099588028f45))
+
+
+### Bug Fixes
+
+* **navbar:** switch to eventlistner ([36a71c8](https://github.com/dvcol/dvcol.github.io/commit/36a71c84e486f94cb314afe7da1b7234ae2da5f6))
+
 ## [1.25.0](https://github.com/dvcol/dvcol.github.io/compare/v1.24.1...v1.25.0) (2023-05-04)
 
 
