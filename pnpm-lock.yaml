@@ -7,6 +7,9 @@ dependencies:
   '@dvcol/synology-extension':
     specifier: ^3.8.5
     version: 3.8.5
+  '@emailjs/browser':
+    specifier: ^3.11.0
+    version: 3.11.0
   '@lottiefiles/lottie-player':
     specifier: ^1.7.1
     version: 1.7.1
@@ -1827,8 +1830,8 @@ packages:
       - supports-color
     dev: true
 
-  /@dvcol/synology-extension@3.8.3:
-    resolution: {integrity: sha512-ByTPt9EDGK7JwlH1hwBManrKQKIHI1oCOvg/0ZpeoUm67gwOT56ZYl0XgnbUwxRD/H299RgvE11qA6/VSn+C8Q==}
+  /@dvcol/synology-extension@3.8.5:
+    resolution: {integrity: sha512-GXT2TGhlzMt3BVcBmMF00AN24/leWdDJI/NfOqqU/nUG7WGeHtN+vtF/nElVzVBKpX9egxlNTdSV5Yajkh/KuA==}
     engines: {node: '>=16.0.0', yarn: '>=3.2.0'}
     dependencies:
       '@dnd-kit/core': 6.0.8(react-dom@17.0.2)(react@17.0.2)
@@ -1886,6 +1889,11 @@ packages:
     engines: {node: '>=16', pnpm: '>= 6.32.0'}
     dependencies:
       rxjs: 7.8.0
+    dev: false
+
+  /@emailjs/browser@3.11.0:
+    resolution: {integrity: sha512-RkY3FKZ3fPdK++OeF46mRTFpmmQWCHUVHZH209P3NE4D5sg2Atg7S2wa3gw5062Gl4clt4Wn5SyC4WhlVZC5pA==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@emotion/babel-plugin@11.10.6:
