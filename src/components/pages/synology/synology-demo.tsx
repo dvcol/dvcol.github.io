@@ -44,6 +44,7 @@ export const SynologyDemo: Component = () => {
   const [t] = useI18n();
   const [contentRef, setContentRef] = createSignal<ContentAppHtmlElement>();
   const [standaloneRef, setStandaloneRef] = createSignal<StandaloneAppHtmlElement>();
+  const [quickMenuRef, setQuickMenuRef] = createSignal<HTMLButtonElement>(null);
 
   const [loaded, setLoaded] = createSignal(false);
   import('~/apps/synology-extension/entry').then(() => setLoaded(true)).catch(() => console.error('Failed to define synology web components'));
@@ -162,12 +163,12 @@ export const SynologyDemo: Component = () => {
             </Grid>
             <Grid item xs={6} sm={3} xl={5} sx={GridItemSx}>
               <Button
+                ref={setQuickMenuRef}
                 id="quick-menu"
                 endIcon={<MenuSvg />}
-                onClick={event =>
+                onClick={() =>
                   contentRef()?.anchor?.({
-                    event,
-                    anchor: null,
+                    anchor: quickMenuRef(),
                     form: {
                       uri: 'http://my-download-link/quick-menu/payload.pdf',
                       destination: {
