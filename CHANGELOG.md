@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.27.0](https://github.com/dvcol/dvcol.github.io/compare/v1.26.0...v1.27.0) (2023-05-07)
+
+
+### Features
+
+* **contact:** setup emailjs ([499e45a](https://github.com/dvcol/dvcol.github.io/commit/499e45a9f1256e2de84b4cf29fc1ac156a59078c))
+* **form:** basic form validation ([55ccec1](https://github.com/dvcol/dvcol.github.io/commit/55ccec1ebe40d5d26b1aece806303612e473665b))
+
+
+### Bug Fixes
+
+* **contact:** fix card ([f0e10f7](https://github.com/dvcol/dvcol.github.io/commit/f0e10f79da07cb7658a50ddbc599f971c8adb4b1))
+* **page:** fix side by side responsive breaks ([32b4c55](https://github.com/dvcol/dvcol.github.io/commit/32b4c55fc2153fbef9366a483e0d788d01575b13))
+* **synology:** fix quick menu anchor ([b55a44f](https://github.com/dvcol/dvcol.github.io/commit/b55a44f13a7203ea78963bd4f6ab54c2210226c2))
+* **theme:** fix accent colors ([e30e0d1](https://github.com/dvcol/dvcol.github.io/commit/e30e0d11878888da71e99494288a223625e4b040))
+
 ## [1.26.0](https://github.com/dvcol/dvcol.github.io/compare/v1.25.0...v1.26.0) (2023-05-05)
 
 
