@@ -10,9 +10,9 @@ import { BreakPointsStop } from '~/themes';
 export const Contact: Component = () => {
   return (
     <Page
-      maxWidth="uhd"
       sideBySide
       animate="slide"
+      maxWidth="uhd"
       background={{ color: RoutesMeta.Contact.bgColor }}
       header={<PageHeader title={'Contact'} subtitle={'TODO - Contact subheader'} description={'TODO - Contact description'} />}
       contentProps={{
@@ -26,10 +26,10 @@ export const Contact: Component = () => {
         },
       }}
     >
-      <ContactForm />
       <HoverScale initialDelay={1000}>
         <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
       </HoverScale>
+      <ContactForm />
     </Page>
   );
 };
