@@ -6,6 +6,7 @@ import type { ParentComponent } from 'solid-js';
 import type { PageProps } from '~/components';
 
 import { HoverScale, Page } from '~/components';
+import { BreakPointsStop } from '~/themes';
 
 export type ErrorPageProps = ErrorHeaderProps & { page?: Omit<PageProps, 'header'> };
 export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
@@ -19,7 +20,11 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
       contentProps={{
         sx: {
           justifyContent: 'center',
-          maxHeight: { default: 'calc(100dvh - 280px)', mobile: 'calc(100dvh - 230px)', tablet: 'calc(100dvh - 300px)' },
+          maxHeight: {
+            [BreakPointsStop.default]: 'calc(100dvh - 280px)',
+            [BreakPointsStop.mobile]: 'calc(100dvh - 230px)',
+            [BreakPointsStop.tablet]: 'calc(100dvh - 300px)',
+          },
         },
       }}
     >

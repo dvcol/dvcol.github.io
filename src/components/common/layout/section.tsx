@@ -5,6 +5,8 @@ import { splitProps } from 'solid-js';
 import type BoxProps from '@suid/material/Box/BoxProps';
 import type { ParentComponent } from 'solid-js';
 
+import { BreakPointsStop } from '~/themes';
+
 export type SectionProps = BoxProps & { component?: string };
 export const Section: ParentComponent<SectionProps> = props => {
   const [{ children, sx }, _props] = splitProps(props, ['children', 'sx']);
@@ -17,8 +19,8 @@ export const Section: ParentComponent<SectionProps> = props => {
         flex: '1 1 auto',
         flexDirection: 'column',
         padding: {
-          default: '0 1rem',
-          tablet: '0 3rem',
+          [BreakPointsStop.default]: '0 1rem',
+          [BreakPointsStop.tablet]: '0 3rem',
         },
         ...sx,
       }}

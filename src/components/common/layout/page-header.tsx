@@ -1,10 +1,17 @@
+import { createMemo } from 'solid-js';
+
 import type { ParentComponent } from 'solid-js';
 
 import type { HeaderProps } from '~/components';
 
 import { Header } from '~/components';
+import { BreakPointsStop } from '~/themes';
 
-export const PageHeader: ParentComponent<HeaderProps> = props => {
+export type PageHeaderProps = HeaderProps & { sideBySide?: boolean | BreakPointsStop };
+export const PageHeader: ParentComponent<PageHeaderProps> = props => {
+  const sideBySide = createMemo<BreakPointsStop>(() =>
+    typeof props.sideBySide === 'boolean' ? BreakPointsStop.desktop : props.sideBySide ?? BreakPointsStop.desktop,
+  );
   return (
     <Header
       {...props}
@@ -12,8 +19,8 @@ export const PageHeader: ParentComponent<HeaderProps> = props => {
         ...props.titleProps,
         sx: {
           mr: {
-            default: '1.25em',
-            tablet: '0.5em',
+            [BreakPointsStop.default]: '1.25em',
+            [BreakPointsStop.tablet]: '0.5em',
           },
           ...props.titleProps?.sx,
         },
@@ -22,12 +29,12 @@ export const PageHeader: ParentComponent<HeaderProps> = props => {
         ...props.sectionProps,
         sx: {
           mt: {
-            default: '1rem',
-            tablet: '3rem',
-            fhd: 0,
+            [BreakPointsStop.default]: '1rem',
+            [BreakPointsStop.tablet]: '3rem',
+            [sideBySide()]: 0,
           },
           justifyContent: {
-            fhd: 'center',
+            [sideBySide()]: 'center',
           },
           ...props.sectionProps?.sx,
         },

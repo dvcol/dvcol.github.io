@@ -8,6 +8,7 @@ import ContactLottie from '~/assets/lottie/95145-contact.json?url';
 import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
 import { emailJS } from '~/models';
 import { RoutesMeta } from '~/services';
+import { BreakPointsStop } from '~/themes';
 
 export const Contact: Component = () => {
   const form: ContactForm = {
@@ -35,7 +36,11 @@ export const Contact: Component = () => {
       contentProps={{
         sx: {
           justifyContent: 'center',
-          maxHeight: { default: 'calc(100dvh - 130px)', mobile: 'calc(100dvh - 160px)', tablet: 'calc(100dvh - 240px)' },
+          maxHeight: {
+            [BreakPointsStop.default]: 'calc(100dvh - 130px)',
+            [BreakPointsStop.mobile]: 'calc(100dvh - 160px)',
+            [BreakPointsStop.tablet]: 'calc(100dvh - 240px)',
+          },
         },
       }}
     >

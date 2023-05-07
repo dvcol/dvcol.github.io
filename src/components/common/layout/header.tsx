@@ -6,6 +6,8 @@ import type { SectionProps } from './section';
 import type { TypographyProps } from '@suid/material/Typography';
 import type { JSX, ParentComponent } from 'solid-js';
 
+import { BreakPointsStop } from '~/themes';
+
 export type HeaderProps = {
   ref?: HTMLDivElement;
   title?: JSX.Element | string;
@@ -25,9 +27,9 @@ export const Header: ParentComponent<HeaderProps> = props => {
         sx={{
           fontWeight: 'bold',
           mb: {
-            default: '1rem',
-            tablet: '1rem',
-            desktop: '2rem',
+            [BreakPointsStop.default]: '1rem',
+            [BreakPointsStop.tablet]: '1rem',
+            [BreakPointsStop.desktop]: '2rem',
           },
           ...props.titleProps?.sx,
         }}
@@ -39,8 +41,8 @@ export const Header: ParentComponent<HeaderProps> = props => {
         {...props.subtitleProps}
         sx={{
           mb: {
-            default: '0.75rem',
-            tablet: '1rem',
+            [BreakPointsStop.default]: '0.75rem',
+            [BreakPointsStop.tablet]: '1rem',
           },
           ...props.subtitleProps?.sx,
         }}
@@ -52,8 +54,8 @@ export const Header: ParentComponent<HeaderProps> = props => {
         {...props.descriptionProps}
         sx={{
           mb: {
-            default: '0.5rem',
-            tablet: '0.25rem',
+            [BreakPointsStop.default]: '0.5rem',
+            [BreakPointsStop.tablet]: '0.25rem',
           },
           ...props.descriptionProps?.sx,
         }}

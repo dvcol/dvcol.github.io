@@ -20,6 +20,7 @@ import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnect
 import { GithubLoop, Page, PageHeader, Spinner, WebstoreSvg } from '~/components/common';
 import { AppLink } from '~/models';
 import { Routes, RoutesMeta } from '~/services';
+import { BreakPointsStop } from '~/themes';
 import { gradientText } from '~/utils';
 
 const GridContainerSx = {
@@ -34,8 +35,8 @@ const GridItemSx = {
     padding: '1em',
     textTransform: 'none',
     fontSize: {
-      default: '0.875rem',
-      tablet: '1rem',
+      [BreakPointsStop.default]: '0.875rem',
+      [BreakPointsStop.tablet]: '1rem',
     },
   },
 };
@@ -44,7 +45,7 @@ export const SynologyDemo: Component = () => {
   const [t] = useI18n();
   const [contentRef, setContentRef] = createSignal<ContentAppHtmlElement>();
   const [standaloneRef, setStandaloneRef] = createSignal<StandaloneAppHtmlElement>();
-  const [quickMenuRef, setQuickMenuRef] = createSignal<HTMLButtonElement>(null);
+  const [quickMenuRef, setQuickMenuRef] = createSignal<HTMLButtonElement | null>(null);
 
   const [loaded, setLoaded] = createSignal(false);
   import('~/apps/synology-extension/entry').then(() => setLoaded(true)).catch(() => console.error('Failed to define synology web components'));
@@ -83,26 +84,25 @@ export const SynologyDemo: Component = () => {
                   mt: '0.5em',
                 }}
               >
-                <Grid item xs={12} sm={3} xl={5} sx={GridItemSx}>
+                <Grid item xs={12} sm={4} xl={4} sx={GridItemSx}>
                   <Button
-                    href={AppLink.synologyWebStore}
-                    target="_blank"
+                    {...{ href: AppLink.synologyWebStore, target: '_blank' }}
                     sx={{
                       height: {
-                        default: '5rem',
-                        fhd: '6rem',
+                        [BreakPointsStop.default]: '5rem',
+                        [BreakPointsStop.desktop]: '6rem',
                       },
                     }}
                   >
                     <WebstoreSvg color={'#90caf9'} />
                   </Button>
                 </Grid>
-                <Grid item xs={6} sm={3} sx={GridItemSx}>
+                <Grid item xs={6} sm={4} sx={GridItemSx}>
                   <Button endIcon={<GithubLoop />} onclick={() => window.open(AppLink.synologyGithub)}>
                     {t('synology.demo.buttons.github')}
                   </Button>
                 </Grid>
-                <Grid item xs={6} sm={3} sx={GridItemSx}>
+                <Grid item xs={6} sm={4} sx={GridItemSx}>
                   <Button endIcon={<PageSvg />} onclick={() => navigate(Routes.Synology)}>
                     {t('synology.demo.buttons.feature')}
                   </Button>
@@ -118,7 +118,7 @@ export const SynologyDemo: Component = () => {
             <Grid item sm={12} sx={{ mb: GridContainerSx.mt }}>
               <Typography variant={'h6'}>{t('synology.demo.button_description')}</Typography>
             </Grid>
-            <Grid item xs={6} sm={3} xl={4} sx={GridItemSx}>
+            <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>
               <Button
                 id="add-task"
                 endIcon={<TaskSvg />}
@@ -130,7 +130,7 @@ export const SynologyDemo: Component = () => {
                 {t('synology.demo.buttons.add_task')}
               </Button>
             </Grid>
-            <Grid item xs={6} sm={3} xl={5} sx={GridItemSx}>
+            <Grid item xs={6} sm={3} lg={5} sx={GridItemSx}>
               <Button
                 id="add-download"
                 endIcon={<DownloadSvg />}
@@ -142,7 +142,7 @@ export const SynologyDemo: Component = () => {
                 {t('synology.demo.buttons.add_download')}
               </Button>
             </Grid>
-            <Grid item xs={6} sm={3} xl={4} sx={GridItemSx}>
+            <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>
               <Button
                 id="open-modal"
                 endIcon={<ModalSvg />}
@@ -161,7 +161,7 @@ export const SynologyDemo: Component = () => {
                 {t('synology.demo.buttons.open_modal')}
               </Button>
             </Grid>
-            <Grid item xs={6} sm={3} xl={5} sx={GridItemSx}>
+            <Grid item xs={6} sm={3} lg={5} sx={GridItemSx}>
               <Button
                 ref={setQuickMenuRef}
                 id="quick-menu"
@@ -187,8 +187,9 @@ export const SynologyDemo: Component = () => {
       headerProps={{
         sx: {
           maxWidth: {
-            fhd: '56rem',
-            qhd: '50%',
+            [BreakPointsStop.desktop]: '50%',
+            [BreakPointsStop.fhd]: '56rem',
+            [BreakPointsStop.qhd]: '50%',
           },
         },
       }}
@@ -196,17 +197,18 @@ export const SynologyDemo: Component = () => {
         sx: {
           position: 'relative',
           marginTop: {
-            default: '1rem',
-            tablet: 0,
+            [BreakPointsStop.default]: '1rem',
+            [BreakPointsStop.tablet]: 0,
           },
-          padding: { default: '1em', tablet: '3em' },
+          padding: { [BreakPointsStop.default]: '1em', [BreakPointsStop.tablet]: '3em' },
           maxWidth: {
-            fhd: '40%',
+            [BreakPointsStop.desktop]: '50%',
+            [BreakPointsStop.fhd]: '40%',
           },
           height: {
-            fhd: '66%',
-            qhd: '60%',
-            uhd: '50%',
+            [BreakPointsStop.desktop]: '66%',
+            [BreakPointsStop.qhd]: '60%',
+            [BreakPointsStop.uhd]: '50%',
           },
           alignItems: 'center',
         },

@@ -1,6 +1,6 @@
 import { Motion } from '@motionone/solid';
 
-import { Box, Container, useMediaQuery, useTheme } from '@suid/material';
+import { Box, Container, useMediaQuery } from '@suid/material';
 
 import { createMemo, Show } from 'solid-js';
 
@@ -18,20 +18,32 @@ import type BoxProps from '@suid/material/Box/BoxProps';
 
 import type { ContainerProps } from '@suid/material/Container';
 import type { JSX, ParentComponent } from 'solid-js';
-import type { BreakPoints } from '~/themes';
 
-const sideBySideSx: any = {
-  flexDirection: {
-    default: 'column',
-    fhd: 'row',
+import type { BreakPointsKeys } from '~/themes';
+
+import { BreakPointsStop } from '~/themes';
+
+type SideBySideSx = { container: ContainerProps['sx']; header: BoxProps['sx']; section: BoxProps['sx'] };
+const getSideBySideSx = (breakpoint: BreakPointsStop): SideBySideSx => ({
+  container: {
+    flexDirection: {
+      [BreakPointsStop.default]: 'column',
+      [breakpoint]: 'row',
+    },
+    justifyContent: {
+      [breakpoint]: 'center',
+    },
+    alignItems: {
+      [breakpoint]: 'center',
+    },
   },
-  justifyContent: {
-    fhd: 'center',
+  header: {
+    maxWidth: { [breakpoint]: '50%' },
   },
-  alignItems: {
-    fhd: 'center',
+  section: {
+    maxWidth: { [breakpoint]: '50%' },
   },
-};
+});
 
 const fade: MotionComponentProps = { animate: { opacity: [0, 1] }, transition: { opacity: { duration: 1 } } };
 const scale: MotionComponentProps = { animate: { scale: [0, 1] }, transition: { scale: { duration: 1 } } };
@@ -46,22 +58,29 @@ export type PageProps = {
   footerProps?: BoxProps;
   contentProps?: SectionProps;
   background?: BackgroundProps;
-  maxWidth?: keyof typeof BreakPoints;
+  maxWidth?: BreakPointsKeys;
   sx?: ContainerProps['sx'];
-  sideBySide?: boolean;
+  sideBySide?: boolean | BreakPointsStop;
   animate?: 'fade' | 'scale' | 'slide';
   motion?: { header?: MotionComponentProps; content?: MotionComponentProps };
 };
 export const Page: ParentComponent<PageProps> = props => {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('fhd'));
+  const sideBySide = createMemo<BreakPointsStop>(() =>
+    typeof props.sideBySide === 'boolean' ? BreakPointsStop.desktop : props.sideBySide ?? BreakPointsStop.desktop,
+  );
+  const matches = useMediaQuery(theme => theme.breakpoints.up(sideBySide()));
   const isSideBySide = createMemo(() => props.sideBySide && matches());
+  const sideBySideSx = createMemo<SideBySideSx>(() =>
+    props.sideBySide ? getSideBySideSx(sideBySide()) : { container: {}, header: {}, section: {} },
+  );
+
   const motionHeader = createMemo<MotionComponentProps | undefined>(() => {
     if (props.motion?.header) return props.motion.header;
     if (props.animate === 'slide' && isSideBySide()) return slideLeft;
     if (props.animate === 'scale') return fade;
     if (props.animate) return fade;
   });
+
   const motionContent = createMemo(() => {
     if (props.motion?.content) return props.motion.content;
     if (props.animate === 'slide' && isSideBySide()) return slideRight;
@@ -74,14 +93,16 @@ export const Page: ParentComponent<PageProps> = props => {
       ref={props.ref}
       component="section"
       disableGutters
-      maxWidth={props.maxWidth ?? 'desktop'}
-      sx={{
-        display: 'flex',
-        flex: '1 1 auto',
-        flexDirection: 'column',
-        ...(props.sideBySide ? sideBySideSx : {}),
-        ...props?.sx,
-      }}
+      maxWidth={props.maxWidth ?? BreakPointsStop.desktop}
+      sx={
+        {
+          display: 'flex',
+          flex: '1 1 auto',
+          flexDirection: 'column',
+          ...sideBySideSx().container,
+          ...props?.sx,
+        } as ContainerProps['sx']
+      }
     >
       {/* Background */}
       <Show when={!!props.background} keyed>
@@ -90,7 +111,7 @@ export const Page: ParentComponent<PageProps> = props => {
 
       {/* Header */}
       <Show when={!!props.header} keyed>
-        <Box component="header" {...props.headerProps} sx={{ display: 'flex', ...props.headerProps?.sx }}>
+        <Box component="header" {...props.headerProps} sx={{ display: 'flex', ...sideBySideSx().header, ...props.headerProps?.sx }}>
           <Show when={motionHeader()} fallback={props.header}>
             <Motion animate={motionHeader()?.animate} transition={motionHeader()?.transition}>
               {props.header}
@@ -103,7 +124,7 @@ export const Page: ParentComponent<PageProps> = props => {
       <Section
         {...props.contentProps}
         sx={{
-          maxWidth: props.sideBySide ? { fhd: '40%' } : undefined,
+          ...sideBySideSx().section,
           ...props.contentProps?.sx,
         }}
       >

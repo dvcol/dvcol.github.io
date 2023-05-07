@@ -13,6 +13,7 @@ import { HoverScale, ImageCard, Page, ParticlesContainer } from '~/components';
 
 import { TriangleParticles } from '~/components/common/particles/triangle.particles';
 import { RoutesMeta } from '~/services';
+import { BreakPointsStop } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
 type Cards = ImageCardProps & { path: string; title: string };
@@ -56,13 +57,13 @@ export const Home: Component = () => {
             position: 'relative',
             justifyContent: 'center',
             mt: {
-              default: '2.5rem',
-              tablet: 0,
+              [BreakPointsStop.default]: '2.5rem',
+              [BreakPointsStop.tablet]: 0,
             },
           }}
           spacing={{
-            default: 0,
-            tablet: 2,
+            [BreakPointsStop.default]: 0,
+            [BreakPointsStop.tablet]: 2,
           }}
         >
           <For each={cards}>
@@ -76,9 +77,9 @@ export const Home: Component = () => {
                       alt: `cover image for ${title}`,
                       sx: {
                         height: {
-                          default: 200,
-                          tablet: 300,
-                          fhd: 400,
+                          [BreakPointsStop.default]: 200,
+                          [BreakPointsStop.tablet]: 300,
+                          [BreakPointsStop.fhd]: 400,
                         },
                       },
                       ...imageProps,

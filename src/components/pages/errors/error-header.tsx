@@ -10,6 +10,7 @@ import type { Component, JSX } from 'solid-js';
 
 import { PageHeader } from '~/components';
 import { Routes, useNavbar } from '~/services';
+import { BreakPointsStop } from '~/themes';
 
 export type ErrorHeaderProps = {
   ref?: HTMLDivElement;
@@ -33,17 +34,17 @@ export const ErrorHeader: Component<ErrorHeaderProps> = props => {
     >
       <Stack
         direction={{
-          default: 'column',
-          mobile: 'row',
+          [BreakPointsStop.default]: 'column',
+          [BreakPointsStop.mobile]: 'row',
         }}
         sx={{
           gap: {
-            default: '0.25em',
-            mobile: '1em',
+            [BreakPointsStop.default]: '0.25em',
+            [BreakPointsStop.mobile]: '1em',
           },
           justifyContent: {
-            default: 'center',
-            mobile: 'flex-start',
+            [BreakPointsStop.default]: 'center',
+            [BreakPointsStop.mobile]: 'flex-start',
           },
           mt: '1rem',
         }}

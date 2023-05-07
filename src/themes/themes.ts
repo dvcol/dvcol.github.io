@@ -3,34 +3,12 @@ import { createTheme } from '@suid/material';
 import type { Theme } from '@suid/material';
 import type { ThemeOptions } from '@suid/material/styles/createTheme';
 
+import { BreakPoints } from '~/themes/breakpoints';
+
 export enum Colors {
   theme = '#2a2b30',
   background = '#1d1e21',
 }
-
-export enum BreakPoints {
-  xs = 0,
-  sm = 600,
-  md = 900,
-  lg = 1200,
-  xl = 1900,
-  default = 0,
-  mobile = 600,
-  tablet = 900,
-  laptop = 1024,
-  desktop = 1280,
-  hd = 1280,
-  fhd = 1920,
-  qhd = 2560,
-  uhd = 3840,
-}
-
-export type ResponsiveStyleValue<T> =
-  | T
-  | Array<T | undefined>
-  | {
-      [key in BreakPoints]?: T;
-    };
 
 const scrollbar: Record<string, any> = {
   scrollbarWidth: 'thin',
