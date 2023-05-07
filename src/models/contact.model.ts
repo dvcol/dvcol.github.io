@@ -8,7 +8,7 @@ export const emailJS = {
   template: CONTACT_TEMPLATE,
 };
 
-export type ContactForm = {
+export type ContactTemplateForm = {
   sender_mail: string;
   sender_name?: string;
   subject: string;

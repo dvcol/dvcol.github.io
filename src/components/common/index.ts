@@ -12,3 +12,4 @@ export * from './sw';
 export * from './tags';
 export * from './utils';
 export * from './animation';
+export * from './form';
