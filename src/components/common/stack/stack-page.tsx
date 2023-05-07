@@ -14,6 +14,7 @@ import type { RouteMeta } from '~/services';
 import { useOverScrollHandler } from '~/components';
 import { ProgressBar } from '~/components/common/loader/progress-bar';
 import { useNavbar } from '~/services';
+import { Colors } from '~/themes';
 
 type StackPageProps = {
   active?: RouteMeta;
@@ -53,7 +54,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   return (
     <>
       <Show when={props.active && !props.open}>
-        <ProgressBar container={containerRef} boxProps={{ sx: { background: props.active?.accentColor } }} />
+        <ProgressBar container={containerRef} boxProps={{ sx: { background: props.active?.accentColor ?? Colors.accent } }} />
       </Show>
       <Box
         ref={setContainerRef}

@@ -72,6 +72,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'black',
+    accentColor: 'white',
   },
   Trakt: {
     path: Routes.Trakt,
@@ -107,6 +108,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'maroon',
+    accentColor: 'white',
     transition: 500,
   },
 };
