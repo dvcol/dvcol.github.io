@@ -111,7 +111,7 @@ export const Page: ParentComponent<PageProps> = props => {
 
       {/* Header */}
       <Show when={!!props.header} keyed>
-        <Box component="header" {...props.headerProps} sx={{ display: 'flex', ...sideBySideSx().header, ...props.headerProps?.sx }}>
+        <Box component="header" {...props.headerProps} sx={{ display: 'flex', width: '100%', ...sideBySideSx().header, ...props.headerProps?.sx }}>
           <Show when={motionHeader()} fallback={props.header}>
             <Motion animate={motionHeader()?.animate} transition={motionHeader()?.transition}>
               {props.header}

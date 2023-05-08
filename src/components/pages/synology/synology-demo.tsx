@@ -58,7 +58,7 @@ export const SynologyDemo: Component = () => {
     <Page
       sideBySide
       animate="fade"
-      maxWidth="qhd"
+      maxWidth="uhd"
       header={
         <PageHeader
           title={t('synology.demo.title')}
@@ -188,8 +188,9 @@ export const SynologyDemo: Component = () => {
         sx: {
           maxWidth: {
             [BreakPointsStop.desktop]: '50%',
-            [BreakPointsStop.fhd]: '56rem',
-            [BreakPointsStop.qhd]: '50%',
+            [BreakPointsStop.fhd]: '45%',
+            [BreakPointsStop.qhd]: '40%',
+            [BreakPointsStop.uhd]: '30%',
           },
         },
       }}
@@ -200,10 +201,12 @@ export const SynologyDemo: Component = () => {
             [BreakPointsStop.default]: '1rem',
             [BreakPointsStop.tablet]: 0,
           },
-          padding: { [BreakPointsStop.default]: '1em', [BreakPointsStop.tablet]: '3em' },
+          margin: { [BreakPointsStop.default]: '1em', [BreakPointsStop.tablet]: '3em' },
           maxWidth: {
             [BreakPointsStop.desktop]: '50%',
             [BreakPointsStop.fhd]: '40%',
+            [BreakPointsStop.qhd]: '40%',
+            [BreakPointsStop.uhd]: '30%',
           },
           height: {
             [BreakPointsStop.desktop]: '66%',

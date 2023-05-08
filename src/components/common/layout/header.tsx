@@ -20,7 +20,14 @@ export type HeaderProps = {
 };
 export const Header: ParentComponent<HeaderProps> = props => {
   return (
-    <Section ref={props.ref} {...props.sectionProps}>
+    <Section
+      ref={props.ref}
+      {...props.sectionProps}
+      sx={{
+        whiteSpace: 'pre-line',
+        ...props.sectionProps?.sx,
+      }}
+    >
       <Typography
         variant="h2"
         {...props.titleProps}
@@ -29,7 +36,7 @@ export const Header: ParentComponent<HeaderProps> = props => {
           mb: {
             [BreakPointsStop.default]: '1rem',
             [BreakPointsStop.tablet]: '1rem',
-            [BreakPointsStop.desktop]: '2rem',
+            [BreakPointsStop.fhd]: '2rem',
           },
           ...props.titleProps?.sx,
         }}
