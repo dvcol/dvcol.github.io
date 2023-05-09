@@ -9,12 +9,11 @@ import type { Component, Signal } from 'solid-js';
 
 import type { FormValidation } from '~/models';
 
-import type { FormGroupValidation } from '~/utils/validation.utils';
+import type { FormGroupValidation, PropsWithRef } from '~/utils';
 
-import { useFormValidation, watchFormChange } from '~/utils/validation.utils';
+import { useFormValidation, watchFormChange } from '~/utils';
 
-export type FormInputProps<V = any> = {
-  ref?: HTMLDivElement | ((el: HTMLDivElement) => void);
+export type FormInputProps<V = any> = PropsWithRef<{
   id?: string;
   label?: string;
   initialValue?: V;
@@ -24,7 +23,7 @@ export type FormInputProps<V = any> = {
   fieldProps?: TextFieldProps;
   form?: Signal<FormGroupValidation>;
   key?: string;
-};
+}>;
 export const FormInput: Component<FormInputProps> = props => {
   const [value, setValue] = createSignal(props.initialValue ?? '');
 

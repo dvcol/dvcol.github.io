@@ -16,15 +16,17 @@ import type { FormInputProps, FormSelectProps, FormValidation, HeaderProps } fro
 
 import type { ContactTemplateForm } from '~/models';
 
+import type { PropsWithRef } from '~/utils';
+
 import type { FormGroupValidation } from '~/utils/validation.utils';
 
 import { FormInput, FormSelect, stopScrollPropagation } from '~/components';
 import { emailJS } from '~/models';
 
 import { BreakPointsStop } from '~/themes';
-import { useValidator } from '~/utils/validation.utils';
+import { useValidator } from '~/utils';
 
-export type ContactFormProps = { cardProps?: CardProps; headerProps?: HeaderProps; contentProps?: CardContentProps };
+export type ContactFormProps = { cardProps?: PropsWithRef<CardProps>; headerProps?: HeaderProps; contentProps?: CardContentProps };
 export const ContactForm: Component<ContactFormProps> = props => {
   const [t] = useI18n();
 
@@ -168,7 +170,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
         sx={{
           padding: {
             [BreakPointsStop.default]: 0,
-            [BreakPointsStop.tablet]: '1rem',
+            [BreakPointsStop.tablet]: '1rem 1rem 0.5rem',
           },
           ...props.contentProps?.sx,
         }}
@@ -191,7 +193,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
           justifyContent: 'flex-end',
           padding: {
             [BreakPointsStop.default]: '0 1rem 1rem',
-            [BreakPointsStop.tablet]: '0 2rem 2rem',
+            [BreakPointsStop.tablet]: '0 2rem 1.5rem',
           },
         }}
       >

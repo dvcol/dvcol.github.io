@@ -6,10 +6,11 @@ import type { SectionProps } from './section';
 import type { TypographyProps } from '@suid/material/Typography';
 import type { JSX, ParentComponent } from 'solid-js';
 
+import type { PropsWithRef } from '~/utils';
+
 import { BreakPointsStop } from '~/themes';
 
-export type HeaderProps = {
-  ref?: HTMLDivElement;
+export type HeaderProps = PropsWithRef<{
   title?: JSX.Element | string;
   subtitle?: JSX.Element | string;
   description?: JSX.Element | string;
@@ -17,7 +18,7 @@ export type HeaderProps = {
   subtitleProps?: TypographyProps;
   descriptionProps?: TypographyProps;
   sectionProps?: SectionProps;
-};
+}>;
 export const Header: ParentComponent<HeaderProps> = props => {
   return (
     <Section

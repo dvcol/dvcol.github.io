@@ -7,7 +7,7 @@ import type { ParentComponent } from 'solid-js';
 
 import { BreakPointsStop } from '~/themes';
 
-export type SectionProps = BoxProps & { component?: string };
+export type SectionProps = BoxProps & { ref?: HTMLDivElement | ((el: HTMLDivElement) => void); component?: string };
 export const Section: ParentComponent<SectionProps> = props => {
   const [{ children, sx }, _props] = splitProps(props, ['children', 'sx']);
 

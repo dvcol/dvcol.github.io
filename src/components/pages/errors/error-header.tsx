@@ -8,16 +8,17 @@ import StackSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 
 import type { Component, JSX } from 'solid-js';
 
+import type { PropsWithRef } from '~/utils';
+
 import { PageHeader } from '~/components';
 import { Routes, useNavbar } from '~/services';
 import { BreakPointsStop } from '~/themes';
 
-export type ErrorHeaderProps = {
-  ref?: HTMLDivElement;
+export type ErrorHeaderProps = PropsWithRef<{
   title?: JSX.Element | string;
   subtitle?: JSX.Element | string;
   description?: JSX.Element | string;
-};
+}>;
 export const ErrorHeader: Component<ErrorHeaderProps> = props => {
   const navigate = useNavigate();
   const [t] = useI18n();

@@ -21,6 +21,8 @@ import type { JSX, ParentComponent } from 'solid-js';
 
 import type { BreakPointsKeys } from '~/themes';
 
+import type { PropsWithRef } from '~/utils';
+
 import { BreakPointsStop } from '~/themes';
 
 type SideBySideSx = { container: ContainerProps['sx']; header: BoxProps['sx']; section: BoxProps['sx'] };
@@ -50,8 +52,7 @@ const scale: MotionComponentProps = { animate: { scale: [0, 1] }, transition: { 
 const slideLeft: MotionComponentProps = { animate: { translate: ['50%', 0] }, transition: { translate: { duration: 1 } } };
 const slideRight: MotionComponentProps = { animate: { translate: ['-50%', 0] }, transition: { translate: { duration: 1 } } };
 
-export type PageProps = {
-  ref?: HTMLDivElement;
+export type PageProps = PropsWithRef<{
   header?: JSX.Element;
   headerProps?: BoxProps;
   footer?: JSX.Element;
@@ -63,7 +64,7 @@ export type PageProps = {
   sideBySide?: boolean | BreakPointsStop;
   animate?: 'fade' | 'scale' | 'slide';
   motion?: { header?: MotionComponentProps; content?: MotionComponentProps };
-};
+}>;
 export const Page: ParentComponent<PageProps> = props => {
   const sideBySide = createMemo<BreakPointsStop>(() =>
     typeof props.sideBySide === 'boolean' ? BreakPointsStop.desktop : props.sideBySide ?? BreakPointsStop.desktop,

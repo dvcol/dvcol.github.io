@@ -10,9 +10,9 @@ import type { Component, Signal } from 'solid-js';
 
 import type { FormValidation } from '~/models';
 
-import type { FormGroupValidation } from '~/utils/validation.utils';
+import type { FormGroupValidation } from '~/utils';
 
-import { useFormValidation, watchFormChange } from '~/utils/validation.utils';
+import { useFormValidation, watchFormChange } from '~/utils';
 
 export type FromSelectOption<V> = { value: V; label?: string };
 export type FormSelectProps<V = any> = {
