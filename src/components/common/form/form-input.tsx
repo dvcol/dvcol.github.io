@@ -1,16 +1,20 @@
-import { FormControl, FormHelperText, TextField } from '@suid/material';
+import { FormControl, TextField } from '@suid/material';
 
-import { createSignal, Show } from 'solid-js';
+import { createSignal } from 'solid-js';
 
 import type { FormControlProps } from '@suid/material/FormControl';
 import type { SelectChangeEvent } from '@suid/material/Select';
 import type { TextFieldProps } from '@suid/material/TextField';
-import type { Component } from 'solid-js';
+import type { Component, Signal } from 'solid-js';
+
 import type { FormValidation } from '~/models';
 
-import { useFormValidation } from '~/utils/validation.utils';
+import type { FormGroupValidation } from '~/utils/validation.utils';
+
+import { useFormValidation, watchFormChange } from '~/utils/validation.utils';
 
 export type FormInputProps<V = any> = {
+  ref?: HTMLDivElement | ((el: HTMLDivElement) => void);
   id?: string;
   label?: string;
   initialValue?: V;
@@ -18,23 +22,37 @@ export type FormInputProps<V = any> = {
   onChange?: (value: V) => void;
   controlProps?: FormControlProps;
   fieldProps?: TextFieldProps;
+  form?: Signal<FormGroupValidation>;
+  key?: string;
 };
 export const FormInput: Component<FormInputProps> = props => {
-  const [formValue, setFormValue] = createSignal(props.initialValue ?? '');
+  const [value, setValue] = createSignal(props.initialValue ?? '');
 
   const handleChange = (event: SelectChangeEvent) => {
-    setFormValue(event.target.value);
-    props.onChange?.(formValue());
+    setValue(event.target.value);
+    props.onChange?.(value());
   };
 
-  const { valid, message } = useFormValidation<V>(props, formValue);
+  const { error, valid, dirty, touched, message, setTouched } = useFormValidation(props, value);
+
+  watchFormChange(props, { value, setValue, valid, dirty, touched, setTouched });
 
   return (
-    <FormControl {...props.controlProps} sx={{ m: '1rem', minWidth: '12.5rem', ...props.controlProps?.sx }} error={!valid()}>
-      <TextField label={props.label} id={props.id ?? 'form-select'} value={formValue()} onChange={handleChange} {...props.fieldProps} />
-      <Show when={message()}>
-        <FormHelperText>{message()}</FormHelperText>
-      </Show>
+    <FormControl
+      ref={props.ref}
+      {...props.controlProps}
+      sx={{ display: 'flex', flex: '1 1 auto', m: '0rem 1rem', minWidth: '12.5rem', ...props.controlProps?.sx }}
+    >
+      <TextField
+        label={props.label}
+        id={props.id ?? 'form-select'}
+        value={value()}
+        error={error()}
+        helperText={message()}
+        onChange={handleChange}
+        onBlur={() => setTouched(true)}
+        {...props.fieldProps}
+      />
     </FormControl>
   );
 };

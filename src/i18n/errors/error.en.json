@@ -1,0 +1,7 @@
+{
+  "validation": {
+    "required": "Required",
+    "maximum": "Maximum length reached '{{max}}'",
+    "email": "Email format invalid"
+  }
+}

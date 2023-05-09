@@ -51,6 +51,7 @@ export const SynologyDemo: Component = () => {
   import('~/apps/synology-extension/entry').then(() => setLoaded(true)).catch(() => console.error('Failed to define synology web components'));
 
   const onConnected = (e: Event) => (e as StandaloneConnectedEvent).detail?.login();
+  // TODO : investigate stop propagation on scroll for mobile
   createEffect(() => standaloneRef()?.addEventListener('connected', onConnected));
 
   const navigate = useNavigate();

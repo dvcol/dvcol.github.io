@@ -6,11 +6,13 @@ import type { FormControlProps } from '@suid/material/FormControl';
 
 import type { MenuItemProps } from '@suid/material/MenuItem';
 import type { SelectChangeEvent, SelectProps } from '@suid/material/Select';
-import type { Component } from 'solid-js';
+import type { Component, Signal } from 'solid-js';
 
 import type { FormValidation } from '~/models';
 
-import { useFormValidation } from '~/utils/validation.utils';
+import type { FormGroupValidation } from '~/utils/validation.utils';
+
+import { useFormValidation, watchFormChange } from '~/utils/validation.utils';
 
 export type FromSelectOption<V> = { value: V; label?: string };
 export type FormSelectProps<V = any> = {
@@ -23,19 +25,27 @@ export type FormSelectProps<V = any> = {
   controlProps?: FormControlProps;
   selectProps?: SelectProps;
   menuProps?: MenuItemProps;
+  form?: Signal<FormGroupValidation>;
+  key?: string;
 };
 export const FormSelect: Component<FormSelectProps> = props => {
   const [formValue, setFormValue] = createSignal(props.initialValue ?? '');
 
   const handleChange = (event: SelectChangeEvent) => {
     setFormValue(event.target.value);
-    props.onChange?.(formValue());
+    props.onChange?.(value());
   };
 
-  const { valid, message } = useFormValidation<V>(props, formValue);
+  const { error, message, valid, dirty, touched, setTouched } = useFormValidation(props, formValue);
+
+  watchFormChange(props, { value: formValue, setValue: setFormValue, valid, dirty, touched, setTouched });
 
   return (
-    <FormControl {...props.controlProps} sx={{ m: '1rem', minWidth: '12.5rem', ...props.controlProps?.sx }} error={!valid()}>
+    <FormControl
+      {...props.controlProps}
+      sx={{ display: 'flex', flex: '1 1 auto', m: '0rem 1rem', minWidth: '12.5rem', ...props.controlProps?.sx }}
+      error={error()}
+    >
       <Show when={props.label}>
         <InputLabel id={`${props.id ?? 'form-select'}-label`}>{props.label}</InputLabel>
       </Show>
@@ -45,6 +55,7 @@ export const FormSelect: Component<FormSelectProps> = props => {
         id={props.id ?? 'form-select'}
         value={formValue()}
         onChange={handleChange}
+        onBlur={() => setTouched(true)}
         {...props.selectProps}
       >
         <For each={props.options}>

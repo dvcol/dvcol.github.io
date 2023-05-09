@@ -1,0 +1,20 @@
+{
+  "title": "Contact",
+  "subtitle": "Un question ou remarque ? Écrivez moi un message !",
+  "description": "Veuillez saisir une adresse mail valide et le plus d'information possible dans le formulaire. J'essayerais de répondre au plus vite !",
+  "form": {
+    "subject": {
+      "label": "Subject",
+      "option": {
+        "job": "Opportunité de mission",
+        "inquiry": "Demande d'information générale",
+        "synology": "Extension Synology Download",
+        "other": "Autre"
+      }
+    },
+    "sender_mail": "Email",
+    "sender_name": "Nom",
+    "title": "Titre",
+    "body": "Message"
+  }
+}

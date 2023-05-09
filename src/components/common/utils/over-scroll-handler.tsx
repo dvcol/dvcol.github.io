@@ -124,3 +124,16 @@ export const useOverScrollHandler = (options: Options) => {
     start,
   };
 };
+
+export const stopScrollPropagation = <T extends HTMLElement>(ref: T) => {
+  if (!ref) return;
+  const stopPropagation = (e: Event) => e.stopPropagation();
+
+  ref.addEventListener('touchmove', stopPropagation);
+  ref.addEventListener('wheel', stopPropagation);
+
+  onCleanup(() => {
+    ref.removeEventListener('touchmove', stopPropagation);
+    ref.removeEventListener('wheel', stopPropagation);
+  });
+};

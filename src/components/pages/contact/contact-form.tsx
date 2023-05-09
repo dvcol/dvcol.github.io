@@ -1,77 +1,221 @@
 import { send } from '@emailjs/browser';
-import { Button, Card, CardActions, CardContent, CardHeader } from '@suid/material';
+import { useI18n } from '@solid-primitives/i18n';
+import { Button, Card, CardActions, CardContent, CircularProgress, Grid, Stack } from '@suid/material';
 
-import { For } from 'solid-js';
+import MailSvg from 'line-md/svg/email.svg?component-solid';
+import RemoveSvg from 'line-md/svg/remove.svg?component-solid';
 
+import { createEffect, createSignal, For } from 'solid-js';
+
+import type CardProps from '@suid/material/Card/CardProps';
+import type { CardContentProps } from '@suid/material/CardContent';
+import type { GridProps } from '@suid/material/Grid';
 import type { Component } from 'solid-js';
 
-import type { FormInputProps, FormSelectProps, FormValidation } from '~/components';
+import type { FormInputProps, FormSelectProps, FormValidation, HeaderProps } from '~/components';
 
 import type { ContactTemplateForm } from '~/models';
 
-import { FormInput, FormSelect, Section } from '~/components';
+import type { FormGroupValidation } from '~/utils/validation.utils';
 
+import { FormInput, FormSelect, stopScrollPropagation } from '~/components';
 import { emailJS } from '~/models';
 
-export const ContactForm: Component = () => {
-  const form: ContactTemplateForm = {
-    sender_mail: 'test.mail@gmail.com',
-    sender_name: 'John Doe',
-    subject: 'My test subject for the message',
-    title: 'My custom Title text',
-    body: `Hello,
-        
-        This is a test message,
-        on multiple lines.
-        
-        Cordially,
-        Mr. John Doe
-        `,
-  };
-  const sendMail = () => send(emailJS.service, emailJS.template, form, emailJS.key);
+import { BreakPointsStop } from '~/themes';
+import { useValidator } from '~/utils/validation.utils';
 
-  const validation: Record<keyof ContactTemplateForm, FormValidation> = {
-    subject: {
-      valid: (value: string) => !!value,
-      message: 'Required',
-    },
-  };
+export type ContactFormProps = { cardProps?: CardProps; headerProps?: HeaderProps; contentProps?: CardContentProps };
+export const ContactForm: Component<ContactFormProps> = props => {
+  const [t] = useI18n();
+
+  const [form, setForm] = createSignal<FormGroupValidation<ContactTemplateForm>>({});
 
   const subject: FormSelectProps = {
-    id: 'form-subject',
-    label: 'subject',
-    options: [{ value: 'Business Inquiry' }, { value: 'Job opportunity' }, { value: 'Synology Demo' }, { value: 'custom', label: 'Other' }],
+    id: 'subject',
+    label: t('contact.form.subject.label'),
+    options: [
+      { value: t('contact.form.subject.option.job') },
+      { value: t('contact.form.subject.option.inquiry') },
+      { value: t('contact.form.subject.option.synology') },
+      { value: t('contact.form.subject.option.other') },
+    ],
+    controlProps: {
+      required: true,
+    },
   };
 
-  const inputs: FormInputProps[] = [
+  const clearForm = () => setForm({});
+
+  const [sending, setSending] = createSignal(false);
+  const sendMail = async () => {
+    try {
+      setSending(true);
+      await send(emailJS.service, emailJS.template, form().value, emailJS.key);
+      clearForm();
+    } catch (e) {
+      console.error('Failed to send message', e);
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const { email, required, maxLength } = useValidator();
+
+  const validation: Record<keyof ContactTemplateForm, FormValidation> = {
+    subject: required,
+    sender_mail: email,
+    sender_name: maxLength(120),
+    title: maxLength(120),
+    body: maxLength(5000),
+  };
+
+  const [bodyRef, setBodyRef] = createSignal<HTMLDivElement>();
+
+  createEffect(() => {
+    const _ref = bodyRef();
+    if (_ref) stopScrollPropagation(_ref);
+  });
+
+  const inputs: { input: FormInputProps; grid: GridProps }[] = [
     {
-      id: 'form-sender_mail',
-      label: 'Email',
+      input: {
+        id: 'sender_mail',
+        label: t('contact.form.sender_mail'),
+        validation: validation.sender_mail,
+        fieldProps: {
+          required: true,
+          autoComplete: 'email',
+        },
+        controlProps: {
+          sx: {
+            mr: {
+              [BreakPointsStop.sm]: '0.5rem',
+            },
+          },
+        },
+      },
+      grid: {
+        xs: 12,
+        sm: 6,
+      },
     },
     {
-      id: 'form-sender_name',
-      label: 'Name',
+      input: {
+        id: 'sender_name',
+        label: t('contact.form.sender_name'),
+        validation: validation.sender_name,
+        fieldProps: {
+          required: true,
+          autoComplete: 'name',
+        },
+        controlProps: {
+          sx: {
+            ml: {
+              [BreakPointsStop.sm]: '0.5rem',
+            },
+          },
+        },
+      },
+      grid: {
+        xs: 12,
+        sm: 6,
+      },
     },
     {
-      id: 'form-title',
-      label: 'Title',
+      input: {
+        id: 'title',
+        label: t('contact.form.title'),
+        validation: validation.title,
+        fieldProps: {
+          required: true,
+        },
+      },
+      grid: {
+        sm: 12,
+      },
     },
     {
-      id: 'form-body',
-      label: 'Message',
+      input: {
+        id: 'body',
+        label: t('contact.form.body'),
+        validation: validation.body,
+        fieldProps: {
+          required: true,
+          multiline: true,
+          rows: 10,
+        },
+        ref: setBodyRef,
+      },
+      grid: {
+        sm: 12,
+      },
     },
   ];
+
   return (
-    <Card>
-      <CardHeader title="Shrimp and Chorizo Paella" subheader="September 14, 2016" />
-      <CardContent>
-        <Section>
-          <FormSelect {...subject} validation={validation.subject} />
-          <For each={inputs}>{inputProps => <FormInput {...inputProps} />}</For>
-        </Section>
+    <Card
+      {...props.cardProps}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: '1 1 auto',
+        borderRadius: '0.5rem',
+        ...props.cardProps?.sx,
+      }}
+    >
+      <CardContent
+        {...props.contentProps}
+        sx={{
+          padding: {
+            [BreakPointsStop.default]: 0,
+            [BreakPointsStop.tablet]: '1rem',
+          },
+          ...props.contentProps?.sx,
+        }}
+      >
+        <Grid container sx={{ gap: '1rem 0', m: '1rem 0' }}>
+          <Grid item sm={12} sx={{ flex: '1 1 auto' }}>
+            <FormSelect form={[form, setForm]} key={subject.id} {...subject} validation={validation.subject} />
+          </Grid>
+          <For each={inputs}>
+            {({ input, grid }) => (
+              <Grid item {...grid} sx={{ flex: '1 1 auto', ...grid?.sx }}>
+                <FormInput form={[form, setForm]} key={input?.id} {...input} />
+              </Grid>
+            )}
+          </For>
+        </Grid>
       </CardContent>
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <Button onClick={sendMail}>Submit</Button>
+      <CardActions
+        sx={{
+          justifyContent: 'flex-end',
+          padding: {
+            [BreakPointsStop.default]: '0 1rem 1rem',
+            [BreakPointsStop.tablet]: '0 2rem 2rem',
+          },
+        }}
+      >
+        <Stack direction="row" spacing="1rem">
+          <Button
+            variant="outlined"
+            endIcon={<RemoveSvg style={{ scale: 0.8 }} />}
+            color="error"
+            onClick={clearForm}
+            sx={{ alignItems: 'flex-start' }}
+            disabled={sending()}
+          >
+            {t('buttons.clear')}
+          </Button>
+          <Button
+            variant="outlined"
+            endIcon={sending() ? <CircularProgress sx={{ width: '16px', p: '4px' }} /> : <MailSvg />}
+            onClick={sendMail}
+            sx={{ alignItems: 'flex-start' }}
+            disabled={!form().valid || sending()}
+          >
+            {t('buttons.submit')}
+          </Button>
+        </Stack>
       </CardActions>
     </Card>
   );
