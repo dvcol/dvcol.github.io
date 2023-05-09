@@ -112,13 +112,13 @@ export const SynologyDemo: Component = () => {
             </>
           }
         >
-          <Typography variant={'h4'} sx={{ mt: '1rem', color: RoutesMeta.SynologyDemo.accentColor }}>
+          <Typography variant={'h4'} sx={{ mt: '1rem', mb: '0.5em', color: RoutesMeta.SynologyDemo.accentColor }}>
             {t('synology.demo.button_title')}
           </Typography>
+          <Typography variant={'h6'} sx={{ mb: '0.5em' }}>
+            {t('synology.demo.button_description')}
+          </Typography>
           <Grid container spacing={2} sx={GridContainerSx}>
-            <Grid item sm={12} sx={{ mb: GridContainerSx.mt }}>
-              <Typography variant={'h6'}>{t('synology.demo.button_description')}</Typography>
-            </Grid>
             <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>
               <Button
                 id="add-task"
@@ -199,10 +199,14 @@ export const SynologyDemo: Component = () => {
         sx: {
           position: 'relative',
           marginTop: {
-            [BreakPointsStop.default]: '1rem',
-            [BreakPointsStop.tablet]: 0,
+            [BreakPointsStop.default]: '2rem',
+            [BreakPointsStop.desktop]: 0,
           },
-          margin: { [BreakPointsStop.default]: '1em', [BreakPointsStop.tablet]: '3em' },
+          margin: {
+            [BreakPointsStop.default]: '1rem',
+            [BreakPointsStop.tablet]: '2rem 3rem',
+            [BreakPointsStop.desktop]: '3rem',
+          },
           maxWidth: {
             [BreakPointsStop.desktop]: '50%',
             [BreakPointsStop.fhd]: '40%',

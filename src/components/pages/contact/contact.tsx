@@ -50,22 +50,26 @@ export const Contact: Component = () => {
     transition: 'transform 1s',
   });
 
+  const [inFlight, setInFlight] = createSignal(false);
   const [rotate, setRotate] = createSignal(0);
   const toggleEnveloppe = (open = rotate() < 270) => {
+    setInFlight(true);
     for (let i = 0; i <= 270; i += 1) {
       setRotate(open ? i : 270 - i);
     }
+    setInFlight(false);
   };
 
-  const [inFlight, setInFlight] = createSignal(false);
   const onClick = async () => {
     if (inFlight()) return;
+    setInFlight(true);
     setCardState({
       opacity: 1,
       transform: 'translateY(0)',
       transition: 'transform 1s',
     });
     await sleep(1000);
+    setInFlight(false);
     toggleEnveloppe();
   };
 
@@ -107,7 +111,7 @@ export const Contact: Component = () => {
   });
 
   onMount(() => {
-    setTimeout(onClick, 2000);
+    setTimeout(onClick, 1500);
   });
 
   return (

@@ -125,15 +125,22 @@ export const useOverScrollHandler = (options: Options) => {
   };
 };
 
-export const stopScrollPropagation = <T extends HTMLElement>(ref: T) => {
+export type StopScrollPropagationOption = { stopPropagation?: boolean; preventDefault?: boolean };
+export const stopScrollPropagation = <T extends HTMLElement>(ref: T, options: StopScrollPropagationOption = {}) => {
   if (!ref) return;
-  const stopPropagation = (e: Event) => e.stopPropagation();
+  const { stopPropagation, preventDefault } = { stopPropagation: true, preventDefault: false, ...options };
+  const eventListener = (e: Event) => {
+    if (stopPropagation) e.stopPropagation();
+    if (preventDefault) e.preventDefault();
+  };
 
-  ref.addEventListener('touchmove', stopPropagation);
-  ref.addEventListener('wheel', stopPropagation);
+  ref.addEventListener('touchmove', eventListener);
+  ref.addEventListener('wheel', eventListener);
+  ref.addEventListener('scroll', eventListener);
 
   onCleanup(() => {
-    ref.removeEventListener('touchmove', stopPropagation);
-    ref.removeEventListener('wheel', stopPropagation);
+    ref.removeEventListener('touchmove', eventListener);
+    ref.removeEventListener('wheel', eventListener);
+    ref.removeEventListener('scroll', eventListener);
   });
 };

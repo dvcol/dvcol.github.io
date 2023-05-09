@@ -165,8 +165,6 @@ export const ContactForm: Component<ContactFormProps> = props => {
     },
   ];
 
-  createEffect(() => console.info(form()));
-
   return (
     <Card
       {...props.cardProps}

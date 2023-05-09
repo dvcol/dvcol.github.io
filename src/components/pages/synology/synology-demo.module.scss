@@ -21,7 +21,6 @@
   }
 
   &::before {
-    margin: 0.75rem;
     background: linear-gradient(130deg, #00f, #0d63f8, #90caf9, #bdd5fb);
     background-size: 200% 200%;
     opacity: 0.25;
@@ -36,7 +35,7 @@
 
   @media screen and (min-width: 900px) {
     &::before {
-      margin: 2.5rem;
+      margin: -0.25rem;
     }
 
     .web_component {
