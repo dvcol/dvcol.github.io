@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.29.1](https://github.com/dvcol/dvcol.github.io/compare/v1.29.0...v1.29.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* **contact:** fix contact and coming soon sizing ([39c7c30](https://github.com/dvcol/dvcol.github.io/commit/39c7c305c3065baccbd975ca1d577299b60d7979))
+* **contact:** stagger opening ([1852264](https://github.com/dvcol/dvcol.github.io/commit/18522642c54e7e94a0affb2871f1d52afbc53115))
+
 ## [1.29.0](https://github.com/dvcol/dvcol.github.io/compare/v1.28.0...v1.29.0) (2023-05-09)
 
 
