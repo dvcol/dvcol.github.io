@@ -2,13 +2,13 @@ import { useI18n } from '@solid-primitives/i18n';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, createSignal, onMount } from 'solid-js';
+import { createEffect, createMemo, createSignal, on, onMount } from 'solid-js';
 
 import { ContactForm } from './contact-form';
 
 import type { Component } from 'solid-js';
 
-import ContactLottie from '~/assets/lottie/95145-contact.json?url';
+import ContactLottie from '~/assets/lottie/70229-contact-us.json?url';
 import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
@@ -28,8 +28,8 @@ export const Contact: Component = () => {
 
   const [cardHeight, setCardHeight] = createSignal(defaultHeight);
 
-  createEffect(() => {
-    setTimeout(() => {
+  createEffect(
+    on(resize, () => {
       const _section = sectionRef()?.clientHeight;
       const _card = cardRef()?.clientHeight;
       if (!_section || !_card) return setCardHeight(defaultHeight);
@@ -38,11 +38,8 @@ export const Contact: Component = () => {
         height: 'fit-content',
         margin: '1rem 0',
       });
-    });
-
-    // trigger effect on resize
-    resize();
-  });
+    }),
+  );
 
   const [cardState, setCardState] = createSignal({
     opacity: 0,
@@ -52,11 +49,9 @@ export const Contact: Component = () => {
 
   const [inFlight, setInFlight] = createSignal(false);
   const [rotate, setRotate] = createSignal(0);
-  const toggleEnveloppe = (open = rotate() < 270) => {
+  const toggleEnveloppe = (open = rotate() !== 270) => {
     setInFlight(true);
-    for (let i = 0; i <= 270; i += 1) {
-      setRotate(open ? i : 270 - i);
-    }
+    setRotate(open ? 270 : 0);
     setInFlight(false);
   };
 
@@ -96,19 +91,19 @@ export const Contact: Component = () => {
   const disabled = createMemo(() => !!cardState().opacity || inFlight());
 
   const [borders, setBorders] = createSignal({ width: 0, height: 0 });
-  createEffect(() => {
-    setTimeout(() => {
-      const _card = cardRef();
-      if (!_card || !_card.clientWidth || !_card.clientHeight) return;
-      setBorders({
-        width: _card.clientWidth / 2,
-        height: _card.clientHeight / 2,
-      });
-    });
-
-    // trigger effect on resize
-    resize();
-  });
+  createEffect(
+    on(resize, () =>
+      setTimeout(() => {
+        const _card = cardRef();
+        if (!_card || !_card.clientWidth || !_card.clientHeight) return;
+        console.info({ _card, width: _card.clientWidth });
+        setBorders({
+          width: _card.clientWidth / 2,
+          height: _card.clientHeight / 2,
+        });
+      }, 500),
+    ),
+  );
 
   onMount(() => {
     setTimeout(onClick, 1500);
@@ -150,7 +145,7 @@ export const Contact: Component = () => {
           },
         }}
       >
-        <HoverScale initialDelay={1000} disabled={disabled()}>
+        <HoverScale initialDelay={1000} initialScale={0.9} disabled={disabled()}>
           <LottiePlayer autoplay loop mode="normal" src={ContactLottie} onclick={onClick} />
         </HoverScale>
       </Box>
