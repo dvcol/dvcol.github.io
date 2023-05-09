@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.29.0](https://github.com/dvcol/dvcol.github.io/compare/v1.28.0...v1.29.0) (2023-05-09)
+
+
+### Features
+
+* **contact:** add envelope animation ([abbf572](https://github.com/dvcol/dvcol.github.io/commit/abbf572d0936c7b249f771b2d29a591c011b85cc))
+* **contact:** add transitions ([33185a6](https://github.com/dvcol/dvcol.github.io/commit/33185a6a40fcf86adb06844e84a5182b6f3206be))
+
+
+### Bug Fixes
+
+* **responsive:** fix broken responsive ui ([1b6dd89](https://github.com/dvcol/dvcol.github.io/commit/1b6dd89594d84670ce337313b8ea4677f8545c03))
+
 ## [1.28.0](https://github.com/dvcol/dvcol.github.io/compare/v1.27.0...v1.28.0) (2023-05-09)
 
 
