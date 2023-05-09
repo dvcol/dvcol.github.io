@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.28.0](https://github.com/dvcol/dvcol.github.io/compare/v1.27.0...v1.28.0) (2023-05-09)
+
+
+### Features
+
+* **contact:** basic form validation ([f25e686](https://github.com/dvcol/dvcol.github.io/commit/f25e686c7b94306f49644bfe0f0cd04fd04a7ef4))
+
+
+### Bug Fixes
+
+* **contact:** fix sizing ([6be5cb0](https://github.com/dvcol/dvcol.github.io/commit/6be5cb07c036899c39b0b32ece16d4b2a3db02b7))
+* **responsive:** fix responsive pages ([22420c9](https://github.com/dvcol/dvcol.github.io/commit/22420c95fc6f2dd4f511113d614479d03adaf0d9))
+
 ## [1.27.0](https://github.com/dvcol/dvcol.github.io/compare/v1.26.0...v1.27.0) (2023-05-07)
 
 
