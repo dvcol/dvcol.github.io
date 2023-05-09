@@ -2,7 +2,7 @@ import { useI18n } from '@solid-primitives/i18n';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createSignal } from 'solid-js';
+import { createEffect, createMemo, createSignal } from 'solid-js';
 
 import { ContactForm } from './contact-form';
 
@@ -12,6 +12,7 @@ import ContactLottie from '~/assets/lottie/95145-contact.json?url';
 import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
+import { setTimoutPromise } from '~/utils';
 
 export const Contact: Component = () => {
   const [t] = useI18n();
@@ -27,13 +28,55 @@ export const Contact: Component = () => {
     const _section = sectionRef()?.clientHeight;
     const _card = cardRef()?.clientHeight;
     if (!_section || !_card) return;
-    console.info('change', { _section, _card, test: _section < _card });
     if (_section > _card) return;
     setCardHeight({
       height: 'fit-content',
       margin: '1rem 0',
     });
   });
+
+  const [cardState, setCardState] = createSignal({
+    opacity: 0,
+    transform: 'translateY(150%)',
+    transition: 'transform 1s',
+  });
+
+  const [inFlight, setInFlight] = createSignal(false);
+  const onClick = () => {
+    if (inFlight()) return;
+    setCardState({
+      opacity: 1,
+      transform: 'translateY(0)',
+      transition: 'transform 1s',
+    });
+  };
+
+  const onSubmit = async () => {
+    setInFlight(true);
+    setCardState({
+      opacity: 1,
+      transform: 'translateX(150%)',
+      transition: 'transform 1s',
+    });
+    await setTimoutPromise(
+      () =>
+        setCardState({
+          opacity: 0,
+          transform: 'translateY(150%)',
+          transition: 'transform 0s',
+        }),
+      1000,
+    );
+    setCardState({
+      opacity: 0,
+      transform: 'translateY(150%)',
+      transition: 'transform 1s',
+    });
+    setInFlight(false);
+    onClick();
+  };
+
+  const disabled = createMemo(() => cardState().opacity || inFlight());
 
   return (
     <Page
@@ -71,8 +114,8 @@ export const Contact: Component = () => {
           },
         }}
       >
-        <HoverScale initialDelay={1000}>
-          <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
+        <HoverScale initialDelay={1000} disabled={disabled()}>
+          <LottiePlayer autoplay loop mode="normal" src={ContactLottie} onclick={onClick} />
         </HoverScale>
       </Box>
 
@@ -84,13 +127,19 @@ export const Contact: Component = () => {
           width: '100%',
           height: cardHeight().height,
           display: 'flex',
+          pointerEvents: 'none',
+          maxHeight: disabled() ? undefined : '50%',
+          overflow: disabled() ? undefined : 'hidden',
         }}
       >
         <ContactForm
+          onClear={onSubmit}
           cardProps={{
             ref: setCardRef,
             sx: {
+              pointerEvents: 'all',
               margin: cardHeight().margin,
+              ...cardState(),
             },
           }}
         />

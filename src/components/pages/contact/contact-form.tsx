@@ -26,7 +26,13 @@ import { emailJS } from '~/models';
 import { BreakPointsStop } from '~/themes';
 import { useValidator } from '~/utils';
 
-export type ContactFormProps = { cardProps?: PropsWithRef<CardProps>; headerProps?: HeaderProps; contentProps?: CardContentProps };
+export type ContactFormProps = {
+  cardProps?: PropsWithRef<CardProps>;
+  headerProps?: HeaderProps;
+  contentProps?: CardContentProps;
+  onClear?: (form?: Partial<ContactTemplateForm>) => void;
+  onSubmit?: (form?: Partial<ContactTemplateForm>) => void;
+};
 export const ContactForm: Component<ContactFormProps> = props => {
   const [t] = useI18n();
 
@@ -46,14 +52,19 @@ export const ContactForm: Component<ContactFormProps> = props => {
     },
   };
 
-  const clearForm = () => setForm({});
+  const clearForm = () => {
+    props.onClear?.(form().value);
+    setForm({});
+  };
 
   const [sending, setSending] = createSignal(false);
   const sendMail = async () => {
     try {
       setSending(true);
-      await send(emailJS.service, emailJS.template, form().value, emailJS.key);
-      clearForm();
+      const _form = form().value;
+      await send(emailJS.service, emailJS.template, _form, emailJS.key);
+      setForm({});
+      props.onSubmit?.(_form);
     } catch (e) {
       console.error('Failed to send message', e);
     } finally {

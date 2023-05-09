@@ -8,8 +8,8 @@ export type HoverScaleProps = { from?: number; to?: number; duration?: number; i
 export const HoverScale: ParentComponent<HoverScaleProps> = props => {
   const [disabled, setDisabled] = createSignal(!!props.initialDelay);
   const animations = createMemo(() => ({
-    animate: props.disabled ?? disabled() ? undefined : { scale: [props.to ?? 1, props.from ?? 0.9] },
-    hover: props.disabled ?? disabled() ? undefined : { scale: [props.from ?? 0.9, props.to ?? 1] },
+    animate: props.disabled ?? disabled() ? { scale: 0.9 } : { scale: [props.to ?? 1, props.from ?? 0.9] },
+    hover: props.disabled ?? disabled() ? { scale: 0.9 } : { scale: [props.from ?? 0.9, props.to ?? 1] },
   }));
 
   if (props.initialDelay) setTimeout(() => setDisabled(false), props.initialDelay);

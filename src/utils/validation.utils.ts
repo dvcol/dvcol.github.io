@@ -17,11 +17,11 @@ export type FormGroup<V = any> = {
   [key in keyof V]: FormGroupItem<V[key]>;
 };
 
-export type FormGroupValidation<V = any> = FormGroup<V> & {
-  value: V;
-  valid: boolean;
-  touched: boolean;
-  dirty: boolean;
+export type FormGroupValidation<V = any> = FormGroup<Partial<V>> & {
+  value?: Partial<V>;
+  valid?: boolean;
+  touched?: boolean;
+  dirty?: boolean;
 };
 
 export const watchFormChange = <V = any>(
