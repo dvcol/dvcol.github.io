@@ -49,9 +49,10 @@ export const Contact: Component = () => {
 
   const [inFlight, setInFlight] = createSignal(false);
   const [rotate, setRotate] = createSignal(0);
-  const toggleEnveloppe = (open = rotate() !== 270) => {
+  const toggleEnveloppe = async (open = rotate() !== 270) => {
     setInFlight(true);
     setRotate(open ? 270 : 0);
+    await sleep(1300);
     setInFlight(false);
   };
 
@@ -65,13 +66,12 @@ export const Contact: Component = () => {
     });
     await sleep(1000);
     setInFlight(false);
-    toggleEnveloppe();
+    await toggleEnveloppe();
   };
 
   const onSubmit = async () => {
+    await toggleEnveloppe();
     setInFlight(true);
-    toggleEnveloppe();
-    await sleep(1000);
     setCardState({
       opacity: 1,
       transform: 'translateX(150%)',
@@ -180,7 +180,7 @@ export const Contact: Component = () => {
               zIndex: 2,
               transformOrigin: 'left',
               transform: 'rotateY(var(--rotate))',
-              transition: 'transform 1s',
+              transition: 'transform 1.2s',
             }}
           />
           <Box
@@ -193,7 +193,7 @@ export const Contact: Component = () => {
               zIndex: 2,
               transformOrigin: 'right',
               transform: 'rotateY(var(--rotate))',
-              transition: 'transform 1s',
+              transition: 'transform 1.2s',
             }}
           />
           <ContactForm
@@ -224,7 +224,7 @@ export const Contact: Component = () => {
                   zIndex: 2,
                   transformOrigin: 'bottom',
                   transform: 'rotateX(var(--rotate))',
-                  transition: 'transform 1s',
+                  transition: 'transform 1.3s',
                 },
               },
             }}
