@@ -155,7 +155,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
         fieldProps: {
           required: true,
           multiline: true,
-          rows: 10,
+          rows: Math.ceil(window.innerHeight / 100),
         },
         ref: setBodyRef,
       },
@@ -164,6 +164,8 @@ export const ContactForm: Component<ContactFormProps> = props => {
       },
     },
   ];
+
+  createEffect(() => console.info(form()));
 
   return (
     <Card

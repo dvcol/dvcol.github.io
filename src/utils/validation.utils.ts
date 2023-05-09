@@ -55,14 +55,14 @@ export const watchFormChange = <V = any>(
             touched: touched(),
           },
         };
-        const keys = Object.keys(_newForm).filter(k => typeof _newForm[k] !== 'boolean');
+        const keys = Object.keys(_newForm).filter(k => k !== 'value' && typeof _newForm[k] !== 'boolean');
         _newForm.valid = keys.every(k => _newForm[k].valid);
         _newForm.touched = keys.some(k => _newForm[k as any].touched);
         _newForm.dirty = keys.some(k => _newForm[k as any].dirty);
-        _newForm.value = Object.keys(_form).reduce((acc, key) => {
-          if (typeof _form[key] !== 'boolean') acc[key] = _form[key].value;
+        _newForm.value = keys.reduce((acc, key) => {
+          acc[key] = _newForm[key].value;
           return acc;
-        }, {});
+        }, {} as any);
         return _newForm;
       });
     }

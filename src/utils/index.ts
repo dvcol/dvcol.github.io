@@ -4,3 +4,4 @@ export * from './web-components.utils';
 export * from './validation.utils';
 export * from './component.utils';
 export * from './promise.utils';
+export * from './hooks.utils';

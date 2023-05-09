@@ -6,3 +6,8 @@ export const setTimoutPromise = (...args: Parameters<typeof setTimeout>) =>
       r(null);
     }, ..._args);
   });
+
+export const sleep = (delay?: number) =>
+  new Promise(r => {
+    setTimeout(r, delay);
+  });

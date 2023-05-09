@@ -2,7 +2,7 @@ import { useI18n } from '@solid-primitives/i18n';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, createSignal } from 'solid-js';
+import { createEffect, createMemo, createSignal, onMount } from 'solid-js';
 
 import { ContactForm } from './contact-form';
 
@@ -12,27 +12,36 @@ import ContactLottie from '~/assets/lottie/95145-contact.json?url';
 import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
-import { setTimoutPromise } from '~/utils';
+import { sleep, useWatchResize } from '~/utils';
+
+const defaultHeight = {
+  height: '100%',
+  margin: 'auto',
+};
 
 export const Contact: Component = () => {
   const [t] = useI18n();
   const [sectionRef, setSectionRef] = createSignal<HTMLDivElement>();
   const [cardRef, setCardRef] = createSignal<HTMLDivElement>();
 
-  const [cardHeight, setCardHeight] = createSignal({
-    height: '100%',
-    margin: 'auto',
-  });
+  const { resize } = useWatchResize();
+
+  const [cardHeight, setCardHeight] = createSignal(defaultHeight);
 
   createEffect(() => {
-    const _section = sectionRef()?.clientHeight;
-    const _card = cardRef()?.clientHeight;
-    if (!_section || !_card) return;
-    if (_section > _card) return;
-    setCardHeight({
-      height: 'fit-content',
-      margin: '1rem 0',
+    setTimeout(() => {
+      const _section = sectionRef()?.clientHeight;
+      const _card = cardRef()?.clientHeight;
+      if (!_section || !_card) return setCardHeight(defaultHeight);
+      if (_section > _card) return setCardHeight(defaultHeight);
+      setCardHeight({
+        height: 'fit-content',
+        margin: '1rem 0',
+      });
     });
+
+    // trigger effect on resize
+    resize();
   });
 
   const [cardState, setCardState] = createSignal({
@@ -41,42 +50,65 @@ export const Contact: Component = () => {
     transition: 'transform 1s',
   });
 
+  const [rotate, setRotate] = createSignal(0);
+  const toggleEnveloppe = (open = rotate() < 270) => {
+    for (let i = 0; i <= 270; i += 1) {
+      setRotate(open ? i : 270 - i);
+    }
+  };
+
   const [inFlight, setInFlight] = createSignal(false);
-  const onClick = () => {
+  const onClick = async () => {
     if (inFlight()) return;
     setCardState({
       opacity: 1,
       transform: 'translateY(0)',
       transition: 'transform 1s',
     });
+    await sleep(1000);
+    toggleEnveloppe();
   };
 
   const onSubmit = async () => {
     setInFlight(true);
+    toggleEnveloppe();
+    await sleep(1000);
     setCardState({
       opacity: 1,
       transform: 'translateX(150%)',
       transition: 'transform 1s',
     });
-    await setTimoutPromise(
-      () =>
-        setCardState({
-          opacity: 0,
-          transform: 'translateY(150%)',
-          transition: 'transform 0s',
-        }),
-      1000,
-    );
+    await sleep(1000);
     setCardState({
       opacity: 0,
       transform: 'translateY(150%)',
-      transition: 'transform 1s',
+      transition: 'transform 0s',
     });
+    await sleep(100);
     setInFlight(false);
-    onClick();
+    await onClick();
   };
 
-  const disabled = createMemo(() => cardState().opacity || inFlight());
+  const disabled = createMemo(() => !!cardState().opacity || inFlight());
+
+  const [borders, setBorders] = createSignal({ width: 0, height: 0 });
+  createEffect(() => {
+    setTimeout(() => {
+      const _card = cardRef();
+      if (!_card || !_card.clientWidth || !_card.clientHeight) return;
+      setBorders({
+        width: _card.clientWidth / 2,
+        height: _card.clientHeight / 2,
+      });
+    });
+
+    // trigger effect on resize
+    resize();
+  });
+
+  onMount(() => {
+    setTimeout(onClick, 2000);
+  });
 
   return (
     <Page
@@ -132,17 +164,73 @@ export const Contact: Component = () => {
           overflow: disabled() ? undefined : 'hidden',
         }}
       >
-        <ContactForm
-          onClear={onSubmit}
-          cardProps={{
-            ref: setCardRef,
-            sx: {
-              pointerEvents: 'all',
-              margin: cardHeight().margin,
-              ...cardState(),
-            },
+        <Box
+          sx={{
+            margin: cardHeight().margin,
+            '--rotate': `${rotate()}deg`,
+            ...cardState(),
           }}
-        />
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              left: 0,
+              borderTop: `${borders().height}px solid transparent`,
+              borderLeft: `${borders().width}px solid #2e25b7`,
+              borderBottom: `${borders().height}px solid transparent`,
+              zIndex: 2,
+              transformOrigin: 'left',
+              transform: 'rotateY(var(--rotate))',
+              transition: 'transform 1s',
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              right: 0,
+              borderTop: `${borders().height}px solid transparent`,
+              borderRight: `${borders().width}px solid #2e25b7`,
+              borderBottom: `${borders().height}px solid transparent`,
+              zIndex: 2,
+              transformOrigin: 'right',
+              transform: 'rotateY(var(--rotate))',
+              transition: 'transform 1s',
+            }}
+          />
+          <ContactForm
+            onSubmit={onSubmit}
+            cardProps={{
+              ref: setCardRef,
+              sx: {
+                pointerEvents: 'all',
+                '&::before': {
+                  position: 'absolute',
+                  top: 0,
+                  content: '""',
+                  borderRight: `${borders().width}px solid transparent`,
+                  borderTop: `${borders().height}px solid #3c5ed6`,
+                  borderLeft: `${borders().width}px solid transparent`,
+                  zIndex: 2,
+                  transformOrigin: 'top',
+                  transform: 'rotateX(var(--rotate))',
+                  transition: 'transform 1s',
+                },
+                '&::after': {
+                  position: 'absolute',
+                  bottom: 0,
+                  content: '""',
+                  borderRight: `${borders().width}px solid transparent`,
+                  borderBottom: `${borders().height}px solid #032090`,
+                  borderLeft: `${borders().width}px solid transparent`,
+                  zIndex: 2,
+                  transformOrigin: 'bottom',
+                  transform: 'rotateX(var(--rotate))',
+                  transition: 'transform 1s',
+                },
+              },
+            }}
+          />
+        </Box>
       </Box>
     </Page>
   );
