@@ -1,7 +1,7 @@
 {
   "title": "Contact",
   "subtitle": "Any question or remark ? Just send a message !",
-  "description": "Please fill up the contact form with a valid email address and as much detail as possible. I'll try to answer as soon as I can !",
+  "description": "Please fill up the contact form with a valid email address and as much detail as possible.",
   "form": {
     "subject": {
       "label": "Sujet",

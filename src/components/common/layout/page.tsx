@@ -49,8 +49,14 @@ const getSideBySideSx = (breakpoint: BreakPointsStop): SideBySideSx => ({
 
 const fade: MotionComponentProps = { animate: { opacity: [0, 1] }, transition: { opacity: { duration: 1 } } };
 const scale: MotionComponentProps = { animate: { scale: [0, 1] }, transition: { scale: { duration: 1 } } };
-const slideLeft: MotionComponentProps = { animate: { translate: ['50%', 0] }, transition: { translate: { duration: 1 } } };
-const slideRight: MotionComponentProps = { animate: { translate: ['-50%', 0] }, transition: { translate: { duration: 1 } } };
+const slideLeft: MotionComponentProps = {
+  animate: { translate: ['50%', 0], opacity: [0, 1] },
+  transition: { translate: { duration: 1 }, opacity: { duration: 0.5 } },
+};
+const slideRight: MotionComponentProps = {
+  animate: { translate: ['-50%', 0], opacity: [0, 1] },
+  transition: { translate: { duration: 1 }, opacity: { duration: 0.5 } },
+};
 
 export type PageProps = PropsWithRef<{
   header?: JSX.Element;

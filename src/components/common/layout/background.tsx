@@ -21,7 +21,7 @@ export const Background: ParentComponent<BackgroundProps> = props => {
           <Motion
             class={styles.background}
             style={{ 'background-color': props.color, 'border-radius': '100%' }}
-            animate={{ scale: [0.25, 2] }}
+            animate={{ scale: [0, 2] }}
             exit={{ scale: [2, 0] }}
             transition={{ scale: { duration: 2 } }}
           >

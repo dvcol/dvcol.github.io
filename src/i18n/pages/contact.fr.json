@@ -1,7 +1,7 @@
 {
   "title": "Contact",
   "subtitle": "Un question ou remarque ? Écrivez moi un message !",
-  "description": "Veuillez saisir une adresse mail valide et le plus d'information possible dans le formulaire. J'essayerais de répondre au plus vite !",
+  "description": "Veuillez saisir une adresse mail valide et le plus d'information possible dans le formulaire.",
   "form": {
     "subject": {
       "label": "Subject",
