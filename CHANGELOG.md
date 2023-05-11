@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.30.0](https://github.com/dvcol/dvcol.github.io/compare/v1.29.1...v1.30.0) (2023-05-11)
+
+
+### Features
+
+* **home:** adds gif & lottie ([e2eb37a](https://github.com/dvcol/dvcol.github.io/commit/e2eb37a1a3479ae5c5ec8dac8d52e7f43ea976ac))
+
+
+### Bug Fixes
+
+* **ui:** various ui fixes ([87fbe07](https://github.com/dvcol/dvcol.github.io/commit/87fbe0750a841a2de4d622e61171fb3002a5f823))
+
 ### [1.29.1](https://github.com/dvcol/dvcol.github.io/compare/v1.29.0...v1.29.1) (2023-05-09)
 
 
