@@ -8,10 +8,11 @@ import type { Component } from 'solid-js';
 
 import type { ImageCardProps } from '~/components';
 
+import SynologyDemoGif from '~/assets/gif/synology_demo.gif?url';
 import SolidSvg from '~/assets/logo/solid.svg?url';
-import { HoverScale, ImageCard, Page, ParticlesContainer } from '~/components';
+import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
+import { HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
-import { TriangleParticles } from '~/components/common/particles/triangle.particles';
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
@@ -25,23 +26,24 @@ export const Home: Component = () => {
     {
       path: RoutesMeta.SynologyDemo.path,
       title: RoutesMeta.SynologyDemo.name,
-      imageProps: { image: SolidSvg },
+      imageProps: { component: 'img', image: SynologyDemoGif, sx: { background: 'black' } },
     },
 
     {
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
-      imageProps: { image: SolidSvg },
+      imageProps: { component: 'img', image: SolidSvg },
     },
     {
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
-      imageProps: { image: SolidSvg },
+      imageProps: { component: 'img', image: SolidSvg },
     },
     {
       path: RoutesMeta.Contact.path,
       title: RoutesMeta.Contact.name,
-      imageProps: { image: SolidSvg },
+      imageProps: { sx: { background: 'maroon' } },
+      lottieProps: { src: ContactLottie },
     },
   ];
   return (
@@ -67,13 +69,14 @@ export const Home: Component = () => {
           }}
         >
           <For each={cards}>
-            {({ path, title, imageProps }) => (
+            {({ path, title, imageProps, ..._props }) => (
               <Grid item xs={12} sm={6}>
                 <HoverScale>
                   <ImageCard
                     title={t(`routes.${camelToSnakeCase(title)}`)}
                     description={t(`home.${camelToSnakeCase(title)}`)}
                     imageProps={{
+                      ...imageProps,
                       alt: `cover image for ${title}`,
                       sx: {
                         height: {
@@ -81,9 +84,10 @@ export const Home: Component = () => {
                           [BreakPointsStop.tablet]: 300,
                           [BreakPointsStop.fhd]: 400,
                         },
+                        ...imageProps?.sx,
                       },
-                      ...imageProps,
                     }}
+                    {..._props}
                     onclick={() => navigate(path)}
                   />
                 </HoverScale>

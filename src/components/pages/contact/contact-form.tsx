@@ -155,7 +155,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
         fieldProps: {
           required: true,
           multiline: true,
-          rows: Math.ceil(window.innerHeight / 100),
+          rows: Math.ceil(2 + window.innerHeight / 100),
         },
         ref: setBodyRef,
       },

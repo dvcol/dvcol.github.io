@@ -1,13 +1,17 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@suid/material';
 
-import { splitProps } from 'solid-js';
+import { Show, splitProps } from 'solid-js';
 
 import type CardProps from '@suid/material/Card/CardProps';
 import type { CardActionsProps } from '@suid/material/CardActions';
 import type { CardMediaProps } from '@suid/material/CardMedia';
 import type { JSX, ParentComponent } from 'solid-js';
 
+import type { LottiePlayerProps } from '~/components';
+
 import type { ResponsiveStyleValue } from '~/themes';
+
+import { LottiePlayer } from '~/components';
 
 type ImageCardMediaProps = CardMediaProps & {
   component?: keyof JSX.IntrinsicElements;
@@ -17,6 +21,7 @@ export type ImageCardProps = {
   title?: string | JSX.Element;
   description?: string | JSX.Element;
   imageProps?: ImageCardMediaProps & { alt?: string };
+  lottieProps?: LottiePlayerProps;
   actionProps?: CardActionsProps;
 } & CardProps;
 export const ImageCard: ParentComponent<ImageCardProps> = props => {
@@ -26,8 +31,6 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
     <Card
       {...cardProps}
       sx={{
-        height: '100%',
-        width: '100%',
         whiteSpace: 'pre-line',
         ...cardProps.sx,
       }}
@@ -39,7 +42,11 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
           ..._props.actionProps?.sx,
         }}
       >
-        <CardMedia component="img" {..._props.imageProps} />
+        <CardMedia {..._props.imageProps}>
+          <Show when={props.lottieProps}>
+            <LottiePlayer autoplay loop mode="normal" {...props.lottieProps} />
+          </Show>
+        </CardMedia>
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             {_props.title}

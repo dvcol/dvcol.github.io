@@ -8,7 +8,7 @@ import { ContactForm } from './contact-form';
 
 import type { Component } from 'solid-js';
 
-import ContactLottie from '~/assets/lottie/70229-contact-us.json?url';
+import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
@@ -96,7 +96,6 @@ export const Contact: Component = () => {
       setTimeout(() => {
         const _card = cardRef();
         if (!_card || !_card.clientWidth || !_card.clientHeight) return;
-        console.info({ _card, width: _card.clientWidth });
         setBorders({
           width: _card.clientWidth / 2,
           height: _card.clientHeight / 2,
