@@ -144,7 +144,7 @@ export const Contact: Component = () => {
           },
         }}
       >
-        <HoverScale initialDelay={1000} initialScale={0.9} disabled={disabled()}>
+        <HoverScale initialDelay={1000} disabled={disabled()}>
           <LottiePlayer autoplay loop mode="normal" src={ContactLottie} onclick={onClick} />
         </HoverScale>
       </Box>

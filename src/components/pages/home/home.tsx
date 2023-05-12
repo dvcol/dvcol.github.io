@@ -11,7 +11,7 @@ import type { ImageCardProps } from '~/components';
 import SynologyDemoGif from '~/assets/gif/synology_demo.gif?url';
 import SolidSvg from '~/assets/logo/solid.svg?url';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
-import { HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
+import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
@@ -48,6 +48,7 @@ export const Home: Component = () => {
   ];
   return (
     <Page
+      maxWidth={BreakPointsStop.qhd}
       contentProps={{
         sx: { justifyContent: 'center' },
       }}
@@ -59,38 +60,46 @@ export const Home: Component = () => {
             position: 'relative',
             justifyContent: 'center',
             mt: {
-              [BreakPointsStop.default]: '2.5rem',
-              [BreakPointsStop.tablet]: 0,
+              [BreakPointsStop.default]: '3rem',
+              [BreakPointsStop.tablet]: '0',
+            },
+            gap: {
+              [BreakPointsStop.default]: 0,
+              [BreakPointsStop.fhd]: 4,
+              [BreakPointsStop.qhd]: 6,
+              [BreakPointsStop.uhd]: 10,
             },
           }}
-          spacing={{
-            [BreakPointsStop.default]: 0,
-            [BreakPointsStop.tablet]: 2,
-          }}
+          spacing={2}
         >
           <For each={cards}>
-            {({ path, title, imageProps, ..._props }) => (
-              <Grid item xs={12} sm={6}>
-                <HoverScale>
-                  <ImageCard
-                    title={t(`routes.${camelToSnakeCase(title)}`)}
-                    description={t(`home.${camelToSnakeCase(title)}`)}
-                    imageProps={{
-                      ...imageProps,
-                      alt: `cover image for ${title}`,
-                      sx: {
-                        height: {
-                          [BreakPointsStop.default]: 200,
-                          [BreakPointsStop.tablet]: 300,
-                          [BreakPointsStop.fhd]: 400,
+            {({ path, title, imageProps, ..._props }, index) => (
+              <Grid item xs={12} sm={6} lg={4}>
+                <EnterTranslate initialDelay={1 + 100 * index()}>
+                  <HoverScale from={0.95}>
+                    <ImageCard
+                      title={t(`routes.${camelToSnakeCase(title)}`)}
+                      description={t(`home.${camelToSnakeCase(title)}`)}
+                      imageProps={{
+                        ...imageProps,
+                        alt: `cover image for ${title}`,
+                        sx: {
+                          height: {
+                            [BreakPointsStop.default]: 200,
+                            [BreakPointsStop.mobile]: 200,
+                            [BreakPointsStop.tablet]: 300,
+                            [BreakPointsStop.fhd]: 350,
+                            [BreakPointsStop.qhd]: 500,
+                            [BreakPointsStop.uhd]: 550,
+                          },
+                          ...imageProps?.sx,
                         },
-                        ...imageProps?.sx,
-                      },
-                    }}
-                    {..._props}
-                    onclick={() => navigate(path)}
-                  />
-                </HoverScale>
+                      }}
+                      {..._props}
+                      onclick={() => navigate(path)}
+                    />
+                  </HoverScale>
+                </EnterTranslate>
               </Grid>
             )}
           </For>

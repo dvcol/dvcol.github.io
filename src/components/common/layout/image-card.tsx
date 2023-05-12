@@ -31,6 +31,8 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
     <Card
       {...cardProps}
       sx={{
+        height: '100%',
+        width: '100%',
         whiteSpace: 'pre-line',
         ...cardProps.sx,
       }}
@@ -47,7 +49,11 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
             <LottiePlayer autoplay loop mode="normal" {...props.lottieProps} />
           </Show>
         </CardMedia>
-        <CardContent>
+        <CardContent
+          sx={{
+            height: '100%',
+          }}
+        >
           <Typography gutterBottom variant="h6" component="div">
             {_props.title}
           </Typography>
