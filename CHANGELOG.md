@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.30.1](https://github.com/dvcol/dvcol.github.io/compare/v1.30.0...v1.30.1) (2023-05-12)
+
+
+### Bug Fixes
+
+* **home:** fix homepage animations ([71b3292](https://github.com/dvcol/dvcol.github.io/commit/71b32929dcece34ada1a3bb309daa9cac7f24ebb))
+
 ## [1.30.0](https://github.com/dvcol/dvcol.github.io/compare/v1.29.1...v1.30.0) (2023-05-11)
 
 
