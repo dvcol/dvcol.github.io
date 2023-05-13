@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.30.2](https://github.com/dvcol/dvcol.github.io/compare/v1.30.1...v1.30.2) (2023-05-13)
+
+
+### Bug Fixes
+
+* **home:** fix card layout ([faef01b](https://github.com/dvcol/dvcol.github.io/commit/faef01bbf33f48fe0876963b7e61925f2f3fb42b))
+
 ### [1.30.1](https://github.com/dvcol/dvcol.github.io/compare/v1.30.0...v1.30.1) (2023-05-12)
 
 
