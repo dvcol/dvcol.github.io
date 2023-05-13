@@ -1,6 +1,6 @@
 {
   "synology_demo": "A chrome extension to manage your Synology Nas right from the browser. Create, delete or edit your task, consult or transfer your local download to your nas, etc.",
   "trakt": "A chrome extension to manage your trakt.tv collections and lists. Consult, mark as watched or collect your shows or movies from your navigator.",
-  "about_me": "A small description of my project and past experiences in a dynamic layout. Consult my active projects, my previous jobs and studies, or just checkout my cv.",
+  "about_me": "A small summary of my projects and past experiences. Consult my active projects, my previous jobs and studies, or just checkout my cv.",
   "contact": "A convenient way to contact me about my projects or any other inquiry."
 }

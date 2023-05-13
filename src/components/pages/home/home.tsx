@@ -9,8 +9,9 @@ import type { Component } from 'solid-js';
 import type { ImageCardProps } from '~/components';
 
 import SynologyDemoGif from '~/assets/gif/synology_demo.gif?url';
-import SolidSvg from '~/assets/logo/solid.svg?url';
+import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
+import AboutMeSvg from '~/assets/lottie/99312-developer-skills.json?url';
 import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
 import { RoutesMeta } from '~/services';
@@ -28,16 +29,17 @@ export const Home: Component = () => {
       title: RoutesMeta.SynologyDemo.name,
       imageProps: { component: 'img', image: SynologyDemoGif, sx: { background: 'black' } },
     },
-
-    {
-      path: RoutesMeta.AboutMe.path,
-      title: RoutesMeta.AboutMe.name,
-      imageProps: { component: 'img', image: SolidSvg },
-    },
     {
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
-      imageProps: { component: 'img', image: SolidSvg },
+      imageProps: { sx: { background: 'darkblue' } },
+      lottieProps: { src: ComingSoonLottie },
+    },
+    {
+      path: RoutesMeta.AboutMe.path,
+      title: RoutesMeta.AboutMe.name,
+      imageProps: { sx: { background: '#6e079b' } },
+      lottieProps: { src: AboutMeSvg },
     },
     {
       path: RoutesMeta.Contact.path,
@@ -65,6 +67,7 @@ export const Home: Component = () => {
             },
             gap: {
               [BreakPointsStop.default]: 0,
+              [BreakPointsStop.desktop]: 3,
               [BreakPointsStop.fhd]: 4,
               [BreakPointsStop.qhd]: 6,
               [BreakPointsStop.uhd]: 10,
@@ -74,7 +77,7 @@ export const Home: Component = () => {
         >
           <For each={cards}>
             {({ path, title, imageProps, ..._props }, index) => (
-              <Grid item xs={12} sm={6} lg={4}>
+              <Grid item xs={12} sm={6} lg={5} xl={4}>
                 <EnterTranslate initialDelay={1 + 100 * index()}>
                   <HoverScale from={0.95}>
                     <ImageCard
