@@ -39,17 +39,17 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: 'assets/pwa-icon-192.png',
+            src: 'src/assets/pwa/192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'assets/pwa-icon-512.png',
+            src: 'src/assets/pwa/512.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: 'assets/pwa-icon-512.png',
+            src: 'src/assets/pwa/512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',

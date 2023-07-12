@@ -11,7 +11,7 @@ import type { ImageCardProps } from '~/components';
 import SynologyDemoGif from '~/assets/gif/synology_demo.gif?url';
 import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
-import AboutMeSvg from '~/assets/lottie/99312-developer-skills.json?url';
+import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
 import { RoutesMeta } from '~/services';
@@ -32,13 +32,13 @@ export const Home: Component = () => {
     {
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
-      imageProps: { sx: { background: 'darkblue' } },
+      imageProps: { sx: { background: '#36004d' } },
       lottieProps: { src: ComingSoonLottie },
     },
     {
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
-      imageProps: { sx: { background: '#6e079b' } },
+      imageProps: { sx: { background: 'darkblue' } },
       lottieProps: { src: AboutMeSvg },
     },
     {
