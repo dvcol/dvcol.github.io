@@ -10,7 +10,7 @@ import type { Component } from 'solid-js';
 
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
-import { RoutesMeta } from '~/services';
+import { RoutesMeta, useNavbar } from '~/services';
 import { BreakPointsStop } from '~/themes';
 import { sleep, useWatchResize } from '~/utils';
 
@@ -53,10 +53,10 @@ export const Contact: Component = () => {
     setInFlight(true);
     setRotate(open ? 270 : 0);
     await sleep(1300);
-    setInFlight(false);
   };
 
   const onClick = async () => {
+    if (cardState().opacity) return;
     if (inFlight()) return;
     setInFlight(true);
     setCardState({
@@ -65,13 +65,12 @@ export const Contact: Component = () => {
       transition: 'transform 1s',
     });
     await sleep(1000);
-    setInFlight(false);
     await toggleEnveloppe();
+    setInFlight(false);
   };
 
   const onSubmit = async () => {
     await toggleEnveloppe();
-    setInFlight(true);
     setCardState({
       opacity: 1,
       transform: 'translateX(150%)',
@@ -83,7 +82,7 @@ export const Contact: Component = () => {
       transform: 'translateY(150%)',
       transition: 'transform 0s',
     });
-    await sleep(100);
+    await sleep(1000);
     setInFlight(false);
     await onClick();
   };
@@ -107,6 +106,9 @@ export const Contact: Component = () => {
   onMount(() => {
     setTimeout(onClick, 1500);
   });
+
+  const { setScrollable } = useNavbar();
+  createEffect(() => setScrollable(!inFlight()));
 
   return (
     <Page
@@ -180,6 +182,7 @@ export const Contact: Component = () => {
               transformOrigin: 'left',
               transform: 'rotateY(var(--rotate))',
               transition: 'transform 1.2s',
+              pointerEvents: 'none',
             }}
           />
           <Box
@@ -193,6 +196,7 @@ export const Contact: Component = () => {
               transformOrigin: 'right',
               transform: 'rotateY(var(--rotate))',
               transition: 'transform 1.2s',
+              pointerEvents: 'none',
             }}
           />
           <ContactForm

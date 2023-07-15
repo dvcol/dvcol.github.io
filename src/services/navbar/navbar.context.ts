@@ -7,6 +7,8 @@ export type NavbarState = {
   inFlight: Accessor<boolean>;
   isScrolled: Accessor<number>;
   setScrolled: (offset?: number) => void;
+  isScrollable: Accessor<boolean>;
+  setScrollable: (disabled?: boolean) => void;
   open: () => void;
   close: () => void;
   toggle: (_open?: boolean) => void;

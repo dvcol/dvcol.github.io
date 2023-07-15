@@ -25,7 +25,7 @@ type StackPageProps = {
   sx?: BoxProps['sx'];
 };
 export const StackPage: ParentComponent<StackPageProps> = props => {
-  const { isOpen, open, setScrolled } = useNavbar();
+  const { isOpen, open, setScrolled, isScrollable } = useNavbar();
   const onTrigger: OnTriggerCallback = () => open();
 
   const { containerRef, setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
@@ -65,7 +65,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
           [styles.stack_page__active]: !!props.active,
           [styles.stack_page__inactive]: !props.active,
         }}
-        style={{ ...props.style, transform: props.style?.transform ?? scale() }}
+        style={{ ...props.style, transform: props.style?.transform ?? scale(), overflow: isScrollable() ? 'auto' : 'hidden' }}
         onClick={props.onClick}
         sx={props.sx}
       >
