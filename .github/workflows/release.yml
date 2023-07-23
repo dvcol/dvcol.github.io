@@ -14,10 +14,6 @@ on:
         description: Tag name
         required: false
         type: string
-      skip-npm:
-        description: Skip npm publish
-        required: false
-        type: boolean
 
 env:
   node_version: 20.x
@@ -82,7 +78,6 @@ jobs:
     secrets: inherit
     with:
       tag-name: ${{ inputs.tag-name }}
-      skip-npm: ${{ inputs.skip-npm }}
 
   deploy:
     name: Deploy
