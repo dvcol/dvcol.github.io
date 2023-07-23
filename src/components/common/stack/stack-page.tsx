@@ -1,3 +1,4 @@
+import { useLocation } from '@solidjs/router';
 import { Box } from '@suid/material';
 
 import { createEffect, createMemo, onCleanup, Show } from 'solid-js';
@@ -48,6 +49,13 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   createEffect(() => {
     const container = containerRef();
     if (container) container.addEventListener('scroll', scrollListener);
+  });
+
+  const location = useLocation();
+  createEffect(() => {
+    if (location && props.active && containerRef()?.scrollTop) {
+      containerRef()?.scrollTo({ top: 0, left: 0 });
+    }
   });
 
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
