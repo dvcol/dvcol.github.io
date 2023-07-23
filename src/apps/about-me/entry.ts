@@ -1,6 +1,8 @@
-import { defineComponent } from '@dvcol/about-me';
+import { baseUrl } from '@dvcol/about-me';
 
-import type { AppWc } from '@dvcol/about-me';
+import type { AboutMe, AppWc } from '@dvcol/about-me';
+
+import { AppLink } from '~/models';
 
 declare module 'solid-js' {
   namespace JSX {
@@ -10,4 +12,7 @@ declare module 'solid-js' {
   }
 }
 
-defineComponent();
+export const defineAboutMeComponents = async () => {
+  const aboutMe: AboutMe = await import(`${AppLink.pages}/${baseUrl}/entry/index.js`);
+  aboutMe.defineComponent();
+};

@@ -6,6 +6,7 @@ import type { RouteDefinition } from '@solidjs/router/dist/types';
 import type { ParentComponent } from 'solid-js';
 
 import { Shell } from '~/components';
+import RouterService from '~/components/common/router/router-service';
 import { RoutesDefinitions, RoutesMetas } from '~/services/router';
 
 export const Router: ParentComponent<{ routes?: RouteDefinition[] }> = ({ children, routes } = {}) => {
@@ -16,6 +17,7 @@ export const Router: ParentComponent<{ routes?: RouteDefinition[] }> = ({ childr
       <Shell routes={RoutesMetas}>
         <Routes />
         <RouteData />
+        <RouterService />
       </Shell>
       {children}
     </SolidRouter>

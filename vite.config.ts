@@ -29,7 +29,7 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'logo.svg', 'pwa/icon.png'],
+      includeAssets: ['**/favicon.ico', '**/logo.svg'],
       manifest: {
         name: 'Dinh-Van Colomban',
         short_name: 'Dinh-Van',
@@ -39,17 +39,17 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: 'src/assets/pwa/192.png',
+            src: 'assets/png/192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'src/assets/pwa/512.png',
+            src: 'assets/png/512.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: 'src/assets/pwa/512.png',
+            src: 'assets/png/512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
@@ -90,11 +90,12 @@ export default defineConfig({
         chunkFileNames: 'chunks/[name].chunk.[hash].js',
         entryFileNames: entry => `entry/[name].entry${entry.name !== 'worker' ? '.[hash]' : ''}.js`,
         assetFileNames: asset => {
-          const format = '[name].[extname]';
+          const format = '[name][extname]';
           if (asset.name?.endsWith('.png')) return `assets/png/${format}`;
+          if (asset.name?.endsWith('.gif')) return `assets/gif/${format}`;
           if (asset.name?.endsWith('.lottie')) return `assets/lottie/${format}`;
           if (asset.name?.endsWith('css')) return `styles/${format}`;
-          return `assets/[name].[extname]`;
+          return `assets/[name][extname]`;
         },
       },
     },
