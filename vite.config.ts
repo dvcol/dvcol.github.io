@@ -63,6 +63,7 @@ export default defineConfig({
         sourcemap: !!process.env.SERVICE_WOKER,
         importScripts: [process.env.SERVICE_WOKER ? 'src/sw/worker.ts' : 'entry/worker.entry.js'],
         globIgnores: ['entry/worker.entry.js'],
+        navigateFallbackDenylist: [/[^#]*\/about-me\/.*/, /[^#]*\/synology-download\/.*/],
       },
     }),
   ],
