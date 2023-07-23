@@ -100,7 +100,7 @@ export const Page: ParentComponent<PageProps> = props => {
       ref={props.ref}
       component="section"
       disableGutters
-      maxWidth={props.maxWidth ?? BreakPointsStop.desktop}
+      maxWidth={props.maxWidth ?? BreakPointsStop.fhd}
       sx={
         {
           display: 'flex',

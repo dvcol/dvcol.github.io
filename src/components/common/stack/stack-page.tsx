@@ -26,7 +26,7 @@ type StackPageProps = {
   sx?: BoxProps['sx'];
 };
 export const StackPage: ParentComponent<StackPageProps> = props => {
-  const { isOpen, open, setScrolled, isScrollable } = useNavbar();
+  const { isOpen, open, setScrolled, isScrollable, isScrolled } = useNavbar();
   const onTrigger: OnTriggerCallback = () => open();
 
   const { containerRef, setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
@@ -58,10 +58,12 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
     }
   });
 
+  const showProgress: boolean = createMemo(() => props.active && !isOpen() && isScrolled());
+
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
   return (
     <>
-      <Show when={props.active && !props.open}>
+      <Show when={showProgress()}>
         <ProgressBar container={containerRef} boxProps={{ sx: { background: props.active?.accentColor ?? Colors.accent } }} />
       </Show>
       <Box

@@ -13,7 +13,7 @@ export const AboutMe: Component = () => {
     navigate(Routes.Error);
   });
   return (
-    <Page>
+    <Page maxWidth="qhd">
       <wc-about-me />
     </Page>
   );
