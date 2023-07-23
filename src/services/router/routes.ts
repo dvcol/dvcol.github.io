@@ -2,9 +2,6 @@ import { createSignal, lazy } from 'solid-js';
 
 import type { RouteDefinition } from '@solidjs/router/dist/types';
 
-import { defineAboutMeComponents } from '~/apps/about-me/entry';
-import { routerService } from '~/services/router/router';
-
 export enum Routes {
   /** Technical pages **/
   NotFound = '/404',
@@ -169,15 +166,7 @@ export const RoutesDefinitions: RouteDefinition[] = [
   },
   {
     path: `${Routes.AboutMe}/*`,
-    component: lazy(async () => {
-      try {
-        await defineAboutMeComponents();
-      } catch {
-        console.error('Failed to define about-me web components');
-        routerService.navigate(Routes.Error);
-      }
-      return import('~/components/pages/about-me/about-me');
-    }),
+    component: lazy(() => import('~/components/pages/about-me/about-me')),
     data: getData(RoutesMeta.AboutMe),
   },
   {
