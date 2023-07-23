@@ -16,16 +16,12 @@ export enum BreakPointsStop {
 }
 
 export enum BreakPoints {
-  xs = 0,
-  sm = 600,
-  md = 900,
-  lg = 1200,
-  xl = 1900,
   default = 0,
   mobile = 600,
   tablet = 900,
   laptop = 1024,
-  desktop = 1280,
+  desktop = 1200,
+  desktopXl = 1900,
   hd = 1280,
   fhd = 1920,
   qhd = 2560,

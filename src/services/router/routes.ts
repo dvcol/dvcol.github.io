@@ -124,13 +124,14 @@ const [routeData, setRouteData] = createSignal<RouteMeta>();
 
 export const useRouteData = () => ({ active: routeData, previous });
 
-const getData =
-  (meta: RouteMeta): (() => RouteMeta) =>
-  () => {
+const getData = (meta: RouteMeta): (() => RouteMeta) => {
+  // eslint-disable-next-line solid/reactivity -- intentionally used for route side effect
+  return () => {
     setPrevious(routeData());
     setRouteData(meta);
     return meta;
   };
+};
 
 export const RoutesDefinitions: RouteDefinition[] = [
   /** Technical pages **/

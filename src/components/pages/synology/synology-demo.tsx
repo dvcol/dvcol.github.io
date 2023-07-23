@@ -55,6 +55,39 @@ export const SynologyDemo: Component = () => {
   createEffect(() => standaloneRef()?.addEventListener('connected', onConnected));
 
   const navigate = useNavigate();
+
+  const addTask = () => {
+    window._synology?.mock?.task?.add();
+    standaloneRef()?.poll();
+  };
+
+  const addDownload = () => {
+    window._synology?.mock?.download?.add();
+    standaloneRef()?.poll();
+  };
+
+  const openModal = () =>
+    contentRef()?.dialog?.({
+      open: true,
+      form: {
+        uri: 'http://my-download-link/modal/payload.pdf',
+        destination: {
+          path: 'modal/path',
+        },
+      },
+    });
+
+  const openMenu = () =>
+    contentRef()?.anchor?.({
+      anchor: quickMenuRef(),
+      form: {
+        uri: 'http://my-download-link/quick-menu/payload.pdf',
+        destination: {
+          path: 'quick/menu/path',
+        },
+      },
+    });
+
   return (
     <Page
       sideBySide
@@ -120,65 +153,22 @@ export const SynologyDemo: Component = () => {
           </Typography>
           <Grid container spacing={2} sx={GridContainerSx}>
             <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>
-              <Button
-                id="add-task"
-                endIcon={<TaskSvg />}
-                onClick={() => {
-                  window._synology?.mock?.task?.add();
-                  standaloneRef()?.poll();
-                }}
-              >
+              <Button id="add-task" endIcon={<TaskSvg />} onClick={addTask}>
                 {t('synology.demo.buttons.add_task')}
               </Button>
             </Grid>
             <Grid item xs={6} sm={3} lg={5} sx={GridItemSx}>
-              <Button
-                id="add-download"
-                endIcon={<DownloadSvg />}
-                onClick={() => {
-                  window._synology?.mock?.download?.add();
-                  standaloneRef()?.poll();
-                }}
-              >
+              <Button id="add-download" endIcon={<DownloadSvg />} onClick={addDownload}>
                 {t('synology.demo.buttons.add_download')}
               </Button>
             </Grid>
             <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>
-              <Button
-                id="open-modal"
-                endIcon={<ModalSvg />}
-                onClick={() =>
-                  contentRef()?.dialog?.({
-                    open: true,
-                    form: {
-                      uri: 'http://my-download-link/modal/payload.pdf',
-                      destination: {
-                        path: 'modal/path',
-                      },
-                    },
-                  })
-                }
-              >
+              <Button id="open-modal" endIcon={<ModalSvg />} onClick={openModal}>
                 {t('synology.demo.buttons.open_modal')}
               </Button>
             </Grid>
             <Grid item xs={6} sm={3} lg={5} sx={GridItemSx}>
-              <Button
-                ref={setQuickMenuRef}
-                id="quick-menu"
-                endIcon={<MenuSvg />}
-                onClick={() =>
-                  contentRef()?.anchor?.({
-                    anchor: quickMenuRef(),
-                    form: {
-                      uri: 'http://my-download-link/quick-menu/payload.pdf',
-                      destination: {
-                        path: 'quick/menu/path',
-                      },
-                    },
-                  })
-                }
-              >
+              <Button ref={setQuickMenuRef} id="quick-menu" endIcon={<MenuSvg />} onClick={openMenu}>
                 {t('synology.demo.buttons.open_menu')}
               </Button>
             </Grid>

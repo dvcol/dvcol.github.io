@@ -31,11 +31,11 @@ const scrollbar: Record<string, any> = {
 const common: ThemeOptions = {
   breakpoints: {
     values: {
-      xs: BreakPoints.xs,
-      sm: BreakPoints.sm,
-      md: BreakPoints.md,
-      lg: BreakPoints.lg,
-      xl: BreakPoints.xl,
+      xs: BreakPoints.default,
+      sm: BreakPoints.mobile,
+      md: BreakPoints.tablet,
+      lg: BreakPoints.hd,
+      xl: BreakPoints.desktopXl,
       default: BreakPoints.default,
       mobile: BreakPoints.mobile,
       tablet: BreakPoints.tablet,
