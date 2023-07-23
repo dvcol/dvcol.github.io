@@ -17,6 +17,8 @@ import type { Component } from 'solid-js';
 
 import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnectedEvent } from '~/apps/synology-extension/entry';
 
+import { defineSynologyDownloadComponents } from '~/apps/synology-extension/entry';
+
 import { GithubLoop, Page, PageHeader, Spinner, WebstoreSvg } from '~/components/common';
 import { AppLink } from '~/models';
 import { Routes, RoutesMeta } from '~/services';
@@ -48,13 +50,18 @@ export const SynologyDemo: Component = () => {
   const [quickMenuRef, setQuickMenuRef] = createSignal<HTMLButtonElement | null>(null);
 
   const [loaded, setLoaded] = createSignal(false);
-  import('~/apps/synology-extension/entry').then(() => setLoaded(true)).catch(() => console.error('Failed to define synology web components'));
+
+  const navigate = useNavigate();
+  defineSynologyDownloadComponents()
+    .then(() => setLoaded(true))
+    .catch(e => {
+      console.error('Failed to define synology web components', e);
+      navigate(Routes.Error);
+    });
 
   const onConnected = (e: Event) => (e as StandaloneConnectedEvent).detail?.login();
   // TODO : investigate stop propagation on scroll for mobile
   createEffect(() => standaloneRef()?.addEventListener('connected', onConnected));
-
-  const navigate = useNavigate();
 
   const addTask = () => {
     window._synology?.mock?.task?.add();

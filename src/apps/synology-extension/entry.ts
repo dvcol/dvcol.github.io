@@ -1,10 +1,14 @@
-import { activateDemo, defineComponents } from '@dvcol/synology-extension';
-
-import en from '@dvcol/synology-extension/dist/_locales/en/messages.json';
-
-import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnectedEvent, WebComponents } from '@dvcol/synology-extension';
+import type {
+  ContentAppHtmlElement,
+  StandaloneAppHtmlElement,
+  StandaloneConnectedEvent,
+  SynologyDownload,
+  WebComponents,
+} from '@dvcol/synology-extension';
 
 import type { SolidWebComponent } from '~/utils';
+
+import { AppLink } from '~/models';
 
 declare module 'solid-js' {
   namespace JSX {
@@ -15,11 +19,19 @@ declare module 'solid-js' {
   }
 }
 
-export { StandaloneAppHtmlElement, ContentAppHtmlElement, WebComponents, StandaloneConnectedEvent };
+const baseUrl = 'synology-download';
 
-defineComponents({ patch: true, locales: { en } })
-  .then(() => {
-    const { task, download } = window._synology?.mock ?? {};
-    if (task && download) activateDemo({ task: [task, 3000], download: [download, 3000] });
-  })
-  .catch(err => console.error('Synology Web components failed to define.', err));
+const defineSynologyDownloadComponents = async () => {
+  const messages$ = fetch(`${AppLink.pages}/${baseUrl}/_locales/en/messages.json#/`);
+  const { defineComponents, activateDemo }: SynologyDownload = await import(`${AppLink.pages}/${baseUrl}/entry/index.js`);
+  const en = await messages$.then(r => r.json());
+
+  defineComponents({ patch: true, locales: { en } })
+    .then(() => {
+      const { task, download } = window._synology?.mock ?? {};
+      if (task && download) activateDemo({ task: [task, 3000], download: [download, 3000] });
+    })
+    .catch(err => console.error('Synology Web components failed to define.', err));
+};
+
+export { StandaloneAppHtmlElement, ContentAppHtmlElement, WebComponents, StandaloneConnectedEvent, defineSynologyDownloadComponents };

@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@dvcol/about-me": "^1.2.2",
-    "@dvcol/synology-extension": "^3.8.5",
+    "@dvcol/synology-extension": "^3.8.6",
     "@emailjs/browser": "^3.11.0",
     "@lottiefiles/lottie-player": "^2.0.2",
     "@motionone/solid": "^10.16.2",
