@@ -1,6 +1,6 @@
 import { baseUrl } from '@dvcol/about-me';
 
-import type { AboutMe, AppWc, WebComponents } from '@dvcol/about-me';
+import type { AboutMe, AppWc } from '@dvcol/about-me';
 
 import { AppLink } from '~/models';
 
@@ -13,8 +13,9 @@ declare module 'solid-js' {
 }
 
 const defineAboutMeComponents = async () => {
-  const aboutMe: AboutMe = await import(`${AppLink.pages}/${baseUrl}/entry/index.js`);
+  if (customElements.get('wc-about-me')) return;
+  const aboutMe: AboutMe = await import(/* @vite-ignore  */ `${AppLink.pages}/${baseUrl}/entry/index.js`);
   aboutMe.defineComponent();
 };
 
-export { WebComponents, defineAboutMeComponents };
+export { defineAboutMeComponents };

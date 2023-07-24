@@ -6,7 +6,7 @@ import { createEffect, createMemo, onCleanup, Show } from 'solid-js';
 import styles from './stack-page.module.scss';
 
 import type BoxProps from '@suid/material/Box/BoxProps';
-import type { JSX, ParentComponent } from 'solid-js';
+import type { Accessor, JSX, ParentComponent } from 'solid-js';
 
 import type { OnTriggerCallback } from '~/components';
 
@@ -26,7 +26,7 @@ type StackPageProps = {
   sx?: BoxProps['sx'];
 };
 export const StackPage: ParentComponent<StackPageProps> = props => {
-  const { isOpen, open, setScrolled, isScrollable, isScrolled } = useNavbar();
+  const { isOpen, open, setScrolled, isScrollable, isScrolled, setCurrentPage } = useNavbar();
   const onTrigger: OnTriggerCallback = () => open();
 
   const { containerRef, setContainerRef, progress } = useOverScrollHandler({ onTrigger, threshold: 84 });
@@ -48,7 +48,10 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
 
   createEffect(() => {
     const container = containerRef();
-    if (container) container.addEventListener('scroll', scrollListener);
+    if (container) {
+      container.addEventListener('scroll', scrollListener);
+      setCurrentPage(container);
+    }
   });
 
   const location = useLocation();
@@ -58,7 +61,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
     }
   });
 
-  const showProgress: boolean = createMemo(() => props.active && !isOpen() && isScrolled());
+  const showProgress: Accessor<boolean> = createMemo(() => !!(props.active && !isOpen() && isScrolled()));
 
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
   return (

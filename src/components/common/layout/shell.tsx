@@ -1,4 +1,4 @@
-import { Navbar, NavbarButton } from '../navbar';
+import { Navbar, NavbarBack, NavbarButton } from '../navbar';
 import { Stack } from '../stack';
 
 import type { ParentComponent } from 'solid-js';
@@ -13,6 +13,7 @@ export const Shell: ParentComponent<{ routes?: RouteMeta[] }> = props => {
       <header style={{ position: 'absolute', top: '0', width: '100%' }}>
         <NavbarButton />
         <Navbar routes={props.routes?.filter(r => r.navbar)} />
+        <NavbarBack />
       </header>
       <main>
         <Stack>{props.children}</Stack>

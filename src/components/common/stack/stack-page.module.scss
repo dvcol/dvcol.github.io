@@ -15,6 +15,7 @@
   pointer-events: auto;
   overscroll-behavior-y: none;
   will-change: transform, opacify, min-height;
+  scroll-behavior: smooth;
 }
 
 .stack_page__active {

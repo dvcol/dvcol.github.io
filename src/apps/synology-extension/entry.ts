@@ -22,8 +22,9 @@ declare module 'solid-js' {
 const baseUrl = 'synology-download';
 
 const defineSynologyDownloadComponents = async () => {
+  if (customElements.get('wc-synology-download-standalone')) return;
   const messages$ = fetch(`${AppLink.pages}/${baseUrl}/_locales/en/messages.json#/`);
-  const { defineComponents, activateDemo }: SynologyDownload = await import(`${AppLink.pages}/${baseUrl}/entry/index.js`);
+  const { defineComponents, activateDemo }: SynologyDownload = await import(/* @vite-ignore */ `${AppLink.pages}/${baseUrl}/entry/index.js`);
   const en = await messages$.then(r => r.json());
 
   defineComponents({ patch: true, locales: { en } })

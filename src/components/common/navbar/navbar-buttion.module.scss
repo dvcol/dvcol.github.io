@@ -13,7 +13,7 @@
 
   @media screen and (max-width: 600px) {
     top: 15px;
-    right: 15px;
+    right: 10px;
     left: auto;
   }
 
@@ -94,7 +94,8 @@
     }
   }
 
-  &:not(.menu_button__open):hover {
+  &:not(.menu_button__open):hover,
+  &:not(.menu_button__open):focus {
     // stylelint-disable-line a11y/selector-pseudo-class-focus -- not animate when focused
     &::before {
       transform: translate3d(0, -10px, 0);

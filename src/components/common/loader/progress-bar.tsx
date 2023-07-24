@@ -29,13 +29,14 @@ export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefin
     const progress = ref();
     const container = props.container?.();
     if (progress && scrolled()) {
-      scroll(animate(progress, { scaleX: [0, 1] }), { container, axis: 'y' });
+      scroll(animate(progress, { scaleX: [0, 1] }), { container, axis: 'y', smooth: 500 });
     }
   });
 
   return (
     <Box
       ref={setRef}
+      id="progress-bar"
       {...props.boxProps}
       sx={{
         position: 'fixed',
@@ -44,6 +45,7 @@ export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefin
         height: '0.125rem',
         background: 'white',
         transform: 'scaleX(0)',
+        willChange: 'transform',
         zIndex: 9999,
         ...props.boxProps?.sx,
       }}

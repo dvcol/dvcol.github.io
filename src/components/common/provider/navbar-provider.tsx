@@ -12,6 +12,8 @@ export const NavbarProvider: ParentComponent = props => {
   const [isScrolled, setScrolled] = createSignal(0);
   const [isScrollable, setScrollable] = createSignal(true);
 
+  const [currentPage, setCurrentPage] = createSignal<HTMLDivElement>();
+
   let timeout: NodeJS.Timeout;
   createEffect(() => {
     setInflight(true);
@@ -27,6 +29,8 @@ export const NavbarProvider: ParentComponent = props => {
     setScrolled,
     isScrollable,
     setScrollable,
+    currentPage,
+    setCurrentPage,
     open: () => setOpen(true),
     close: () => setOpen(false),
     toggle: _open => setOpen(_was => _open ?? !_was),
