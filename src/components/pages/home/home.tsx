@@ -9,10 +9,12 @@ import type { Component } from 'solid-js';
 import type { ImageCardProps } from '~/components';
 
 import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
+
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
+import { MimeType } from '~/models';
 import { RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
@@ -26,7 +28,7 @@ export const Home: Component = () => {
     {
       path: RoutesMeta.SynologyDemo.path,
       title: RoutesMeta.SynologyDemo.name,
-      imageProps: { component: 'img', image: 'assets/gif/synology_demo.gif', sx: { background: 'black' } },
+      videoProps: { source: { src: 'assets/video/synology_demo.mp4', type: MimeType.MP4 } },
     },
     {
       path: RoutesMeta.Trakt.path,
@@ -86,6 +88,7 @@ export const Home: Component = () => {
                         ...imageProps,
                         alt: `cover image for ${title}`,
                         sx: {
+                          display: 'flex',
                           height: {
                             [BreakPointsStop.default]: 200,
                             [BreakPointsStop.mobile]: 200,

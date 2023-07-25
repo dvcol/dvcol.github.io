@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@suid/material';
+import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@suid/material';
 
 import { Show, splitProps } from 'solid-js';
 
@@ -17,10 +17,17 @@ type ImageCardMediaProps = CardMediaProps & {
   component?: keyof JSX.IntrinsicElements;
   height?: ResponsiveStyleValue<string | number>;
 };
+
+type VideoProps = Pick<HTMLVideoElement, 'autoplay' | 'muted' | 'loop' | 'controls'> & {
+  source: Pick<HTMLSourceElement, 'src' | 'type'>;
+  fit: 'cover' | 'fill' | 'contain';
+};
+
 export type ImageCardProps = {
   title?: string | JSX.Element;
   description?: string | JSX.Element;
   imageProps?: ImageCardMediaProps & { alt?: string };
+  videoProps?: VideoProps;
   lottieProps?: LottiePlayerProps;
   actionProps?: CardActionsProps;
 } & CardProps;
@@ -47,6 +54,11 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
         <CardMedia {..._props.imageProps}>
           <Show when={props.lottieProps}>
             <LottiePlayer autoplay loop mode="normal" {...props.lottieProps} />
+          </Show>
+          <Show when={props.videoProps}>
+            <Box component="video" sx={{ width: '100%', objectFit: props.videoProps?.fit ?? 'cover' }} autoplay muted loop {...props.videoProps}>
+              <source {...props.videoProps?.source} />
+            </Box>
           </Show>
         </CardMedia>
         <CardContent
