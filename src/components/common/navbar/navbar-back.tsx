@@ -32,7 +32,7 @@ export const NavbarBack: Component = () => {
   const collapsed = createMemo<boolean>(() => visible() && hover() === 'collapse');
   const expand = createMemo<boolean>(() => visible() && hover() === 'expand');
 
-  const onClick = () => currentPage()?.scrollTo({ top: 0, left: 0 });
+  const onClick = () => currentPage()?.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 
   return (
     <Box
