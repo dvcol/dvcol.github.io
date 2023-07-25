@@ -70,7 +70,7 @@
     "sass": "^1.59.3",
     "solid-devtools": "^0.26.0",
     "standard-version": "^9.5.0",
-    "stylelint": "^15.3.0",
+    "stylelint": "^15.10.2",
     "typescript": "^5.1.6",
     "vite": "^4.4.6",
     "vite-plugin-i18n-resources": "^1.0.3",
