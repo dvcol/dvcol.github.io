@@ -18,6 +18,7 @@ import { useNavbar } from '~/services';
 import { Colors } from '~/themes';
 
 type StackPageProps = {
+  id?: string;
   active?: RouteMeta;
   open?: boolean;
   class?: string;
@@ -48,7 +49,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
 
   createEffect(() => {
     const container = containerRef();
-    if (container) {
+    if (props.active && container) {
       container.addEventListener('scroll', scrollListener);
       setCurrentPage(container);
     }
@@ -72,6 +73,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
       <Box
         ref={setContainerRef}
         component={'article'}
+        id={props.id}
         class={[props?.class, styles.stack_page].join(' ')}
         classList={{
           [styles.pages_stack__open]: isOpen(),

@@ -2,7 +2,7 @@ import { useI18n } from '@solid-primitives/i18n';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, createSignal, on, onMount } from 'solid-js';
+import { createEffect, createMemo, createSignal, on, onCleanup, onMount } from 'solid-js';
 
 import { ContactForm } from './contact-form';
 
@@ -109,6 +109,8 @@ export const Contact: Component = () => {
 
   const { setScrollable } = useNavbar();
   createEffect(() => setScrollable(!inFlight()));
+
+  onCleanup(() => setScrollable(true));
 
   return (
     <Page
