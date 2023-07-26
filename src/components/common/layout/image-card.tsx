@@ -21,6 +21,7 @@ type ImageCardMediaProps = CardMediaProps & {
 type VideoProps = Pick<HTMLVideoElement, 'autoplay' | 'muted' | 'loop' | 'controls'> & {
   source: Pick<HTMLSourceElement, 'src' | 'type'>;
   fit: 'cover' | 'fill' | 'contain';
+  position: 'top' | 'bottom' | 'center' | 'left' | 'right';
 };
 
 export type ImageCardProps = {
@@ -56,7 +57,14 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
             <LottiePlayer autoplay loop mode="normal" {...props.lottieProps} />
           </Show>
           <Show when={props.videoProps}>
-            <Box component="video" sx={{ width: '100%', objectFit: props.videoProps?.fit ?? 'cover' }} autoplay muted loop {...props.videoProps}>
+            <Box
+              component="video"
+              sx={{ width: '100%', objectFit: props.videoProps?.fit ?? 'cover', objectPosition: props.videoProps?.position ?? 'top' }}
+              autoplay
+              muted
+              loop
+              {...props.videoProps}
+            >
               <source {...props.videoProps?.source} />
             </Box>
           </Show>
