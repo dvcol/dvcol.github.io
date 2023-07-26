@@ -63,6 +63,7 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
               autoplay
               muted
               loop
+              playsinline
               {...props.videoProps}
             >
               <source {...props.videoProps?.source} />
