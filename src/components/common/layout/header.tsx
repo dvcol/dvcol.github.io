@@ -1,5 +1,7 @@
 import { Typography } from '@suid/material';
 
+import { Show } from 'solid-js';
+
 import { Section } from './section';
 
 import type { SectionProps } from './section';
@@ -8,6 +10,7 @@ import type { JSX, ParentComponent } from 'solid-js';
 
 import type { PropsWithRef } from '~/utils';
 
+import { NavbarHeader } from '~/components';
 import { BreakPointsStop } from '~/themes';
 
 export type HeaderProps = PropsWithRef<{
@@ -18,6 +21,7 @@ export type HeaderProps = PropsWithRef<{
   subtitleProps?: TypographyProps;
   descriptionProps?: TypographyProps;
   sectionProps?: SectionProps;
+  navbar?: boolean;
 }>;
 export const Header: ParentComponent<HeaderProps> = props => {
   return (
@@ -70,6 +74,9 @@ export const Header: ParentComponent<HeaderProps> = props => {
       >
         {props.description}
       </Typography>
+      <Show when={props.navbar}>
+        <NavbarHeader />
+      </Show>
       {props.children}
     </Section>
   );

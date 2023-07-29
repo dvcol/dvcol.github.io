@@ -118,7 +118,7 @@ export const Contact: Component = () => {
       animate="slide"
       maxWidth="uhd"
       background={{ color: RoutesMeta.Contact.bgColor }}
-      header={<PageHeader title={t('contact.title')} subtitle={t('contact.subtitle')} description={t('contact.description')} />}
+      header={<PageHeader navbar title={t('contact.title')} subtitle={t('contact.subtitle')} description={t('contact.description')} />}
       headerProps={{
         sx: {
           justifyContent: {

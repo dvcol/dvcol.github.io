@@ -1,5 +1,8 @@
 {
   "back": "Go back",
+  "back_short": "Back",
   "home": "Go home",
-  "navbar": "Open navbar"
+  "home_short": "Home",
+  "navbar": "Open menu",
+  "navbar_short": "Menu"
 }

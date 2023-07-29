@@ -1,5 +1,8 @@
 {
   "back": "Page précédente",
+  "back_short": "Back",
   "home": "Pade d'accueil",
-  "navbar": "Barre de navigation"
+  "home_short": "Home",
+  "navbar": "Menu de navigation",
+  "navbar_short": "Menu"
 }

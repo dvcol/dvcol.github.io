@@ -1,6 +1,6 @@
 import { useI18n } from '@solid-primitives/i18n';
 import { useNavigate } from '@solidjs/router';
-import { Button, Stack } from '@suid/material';
+import { Button, Stack, useMediaQuery } from '@suid/material';
 
 import ArrowLeftSvg from 'line-md/svg/arrow-small-left.svg?component-solid';
 import HomeSvg from 'line-md/svg/home.svg?component-solid';
@@ -9,35 +9,34 @@ import StackSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 import type { Component } from 'solid-js';
 
 import { Routes, useNavbar } from '~/services';
-import { BreakPointsStop } from '~/themes';
+import { BreakPoints, BreakPointsStop } from '~/themes';
 
 export const NavbarHeader: Component = () => {
   const navigate = useNavigate();
   const [t] = useI18n();
   const { open } = useNavbar();
+
+  const isMobile = useMediaQuery(`(max-width: ${BreakPoints.mobile}px)`);
   return (
     <Stack
-      direction={{
-        [BreakPointsStop.default]: 'column',
-        [BreakPointsStop.mobile]: 'row',
-      }}
+      direction={'row'}
       sx={{
         gap: {
-          [BreakPointsStop.default]: '0.25em',
-          [BreakPointsStop.mobile]: '1em',
+          [BreakPointsStop.default]: '0.75rem',
+          [BreakPointsStop.mobile]: '1rem',
         },
-        justifyContent: {
-          [BreakPointsStop.default]: 'center',
-          [BreakPointsStop.mobile]: 'flex-start',
+        mt: {
+          [BreakPointsStop.default]: '0.5rem',
+          [BreakPointsStop.mobile]: '1rem',
         },
-        mt: '1rem',
+        justifyContent: 'flex-start',
       }}
     >
       <Button sx={{ alignItems: 'flex-start' }} startIcon={<ArrowLeftSvg />} onclick={() => window.history.back()}>
-        {t('navbar_header.back')}
+        {t(`navbar_header.back${isMobile() ? '_short' : ''}`)}
       </Button>
       <Button sx={{ alignItems: 'flex-start', mb: '0.25em' }} startIcon={<HomeSvg />} onclick={() => navigate(Routes.Home)}>
-        {t('navbar_header.home')}
+        {t(`navbar_header.home${isMobile() ? '_short' : ''}`)}
       </Button>
       <Button
         sx={{ alignItems: 'flex-start' }}
@@ -47,7 +46,7 @@ export const NavbarHeader: Component = () => {
           open();
         }}
       >
-        {t('navbar_header.navbar')}
+        {t(`navbar_header.navbar${isMobile() ? '_short' : ''}`)}
       </Button>
     </Stack>
   );
