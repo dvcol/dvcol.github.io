@@ -1,6 +1,6 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@suid/material';
 
-import { Show, splitProps } from 'solid-js';
+import { createSignal, Show, splitProps } from 'solid-js';
 
 import type CardProps from '@suid/material/Card/CardProps';
 import type { CardActionsProps } from '@suid/material/CardActions';
@@ -34,7 +34,7 @@ export type ImageCardProps = {
 } & CardProps;
 export const ImageCard: ParentComponent<ImageCardProps> = props => {
   const [_props, cardProps] = splitProps(props, ['title', 'description', 'imageProps', 'actionProps', 'children']);
-
+  const [hover, setHover] = createSignal<boolean>(false);
   return (
     <Card
       {...cardProps}
@@ -44,11 +44,16 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
         whiteSpace: 'pre-line',
         ...cardProps.sx,
       }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
     >
       <CardActionArea
         {..._props.actionProps}
         sx={{
           height: '100%',
+          position: 'relative',
           ..._props.actionProps?.sx,
         }}
       >
@@ -59,7 +64,12 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
           <Show when={props.videoProps}>
             <Box
               component="video"
-              sx={{ width: '100%', objectFit: props.videoProps?.fit ?? 'cover', objectPosition: props.videoProps?.position ?? 'top' }}
+              sx={{
+                width: '100%',
+                height: '100%',
+                objectFit: props.videoProps?.fit ?? 'cover',
+                objectPosition: props.videoProps?.position ?? 'top',
+              }}
               autoplay
               muted
               loop
@@ -72,13 +82,19 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
         </CardMedia>
         <CardContent
           sx={{
-            height: '100%',
+            position: 'absolute',
+            bottom: '0',
+            padding: '1.25rem',
+            borderRadius: '0.5rem',
+            background: 'linear-gradient(transparent 0%, black 100%)',
+            translate: hover() ? '0 0' : '0 calc(100% - 4rem)',
+            transition: 'translate 1s, background 1s',
           }}
         >
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography gutterBottom variant="h5" component="div" sx={{ marginBottom: '1rem', fontWeight: 'bolder' }}>
             {_props.title}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" color="white">
             {_props.description}
           </Typography>
           {_props.children}

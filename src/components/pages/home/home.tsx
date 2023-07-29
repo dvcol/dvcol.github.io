@@ -31,16 +31,16 @@ export const Home: Component = () => {
       videoProps: { source: { src: 'assets/video/synology_demo.mp4', type: MimeType.MP4 } },
     },
     {
-      path: RoutesMeta.Trakt.path,
-      title: RoutesMeta.Trakt.name,
-      imageProps: { sx: { background: '#36004d' } },
-      lottieProps: { src: ComingSoonLottie },
-    },
-    {
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
       imageProps: { sx: { background: 'darkblue' } },
       lottieProps: { src: AboutMeSvg },
+    },
+    {
+      path: RoutesMeta.Trakt.path,
+      title: RoutesMeta.Trakt.name,
+      imageProps: { sx: { background: '#36004d' } },
+      lottieProps: { src: ComingSoonLottie },
     },
     {
       path: RoutesMeta.Contact.path,
@@ -90,12 +90,12 @@ export const Home: Component = () => {
                         sx: {
                           display: 'flex',
                           height: {
-                            [BreakPointsStop.default]: 200,
-                            [BreakPointsStop.mobile]: 200,
-                            [BreakPointsStop.tablet]: 300,
-                            [BreakPointsStop.fhd]: 350,
-                            [BreakPointsStop.qhd]: 500,
-                            [BreakPointsStop.uhd]: 550,
+                            [BreakPointsStop.default]: 300,
+                            [BreakPointsStop.mobile]: 300,
+                            [BreakPointsStop.tablet]: 400,
+                            [BreakPointsStop.fhd]: 450,
+                            [BreakPointsStop.qhd]: 600,
+                            [BreakPointsStop.uhd]: 650,
                           },
                           ...imageProps?.sx,
                         },
