@@ -34,7 +34,7 @@ export type ImageCardProps = {
 } & CardProps;
 export const ImageCard: ParentComponent<ImageCardProps> = props => {
   const [_props, cardProps] = splitProps(props, ['title', 'description', 'imageProps', 'actionProps', 'children']);
-  const [hover, setHover] = createSignal<boolean>(false);
+  const [hover, setHover] = createSignal<boolean>(matchMedia(`only screen and (hover: none)`).matches);
   return (
     <Card
       {...cardProps}
@@ -42,6 +42,7 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
         height: '100%',
         width: '100%',
         whiteSpace: 'pre-line',
+        borderRadius: '0.5rem',
         ...cardProps.sx,
       }}
       onMouseEnter={() => setHover(true)}
@@ -83,9 +84,9 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
         <CardContent
           sx={{
             position: 'absolute',
+            width: '-webkit-fill-available',
             bottom: '0',
             padding: '1.25rem',
-            borderRadius: '0.5rem',
             background: 'linear-gradient(transparent 0%, black 100%)',
             translate: hover() ? '0 0' : '0 calc(100% - 4rem)',
             transition: 'translate 1s, background 1s',
