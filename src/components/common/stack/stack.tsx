@@ -13,12 +13,12 @@ import type { JSX, ParentComponent } from 'solid-js';
 import { RoutesMetas, useNavbar, useRouteData } from '~/services';
 import { Colors } from '~/themes';
 
-type TransformOptions = { offset?: number; opacity?: number } & Omit<JSX.CSSProperties, 'offset' | 'opacity' | 'transform'>;
+type TransformOptions = { offset?: number; brightness?: number } & Omit<JSX.CSSProperties, 'offset' | 'filter' | 'transform'>;
 const offsetTransform = (options: TransformOptions = {}, _styles?: JSX.CSSProperties): JSX.CSSProperties => {
-  const { offset, opacity: _opacity, ...props } = { offset: 2, ...options };
+  const { offset, brightness: _brightness, ...props } = { offset: 2, ...options };
   const transform = `translate3d(0,15%,-${offset * 100}px)`;
-  const opacity = _opacity ?? (10 - offset) / 10;
-  return { transform, opacity, ...props, ..._styles };
+  const filter = `brightness(${_brightness ?? 1 - (10 - offset) / 100})`;
+  return { transform, filter, ...props, ..._styles };
 };
 
 const computeTransform = (open = false): ((options: TransformOptions, _styles?: JSX.CSSProperties) => JSX.CSSProperties | undefined) =>
@@ -107,7 +107,7 @@ export const Stack: ParentComponent = props => {
         active={active()}
         open={isOpen()}
         class={styles.page}
-        style={transform()({ offset: 2, opacity: 1 }, { color: active()?.color, 'background-color': background() })}
+        style={transform()({ offset: 2, filter: 'none' }, { color: active()?.color, 'background-color': background() })}
         onClick={() => close()}
       >
         {props.children}
