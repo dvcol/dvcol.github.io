@@ -39,13 +39,13 @@ export const Home: Component = () => {
     {
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
-      imageProps: { sx: { background: '#36004d' } },
+      imageProps: { sx: { background: RoutesMeta.Trakt.bgColor } },
       lottieProps: { src: ComingSoonLottie },
     },
     {
       path: RoutesMeta.Contact.path,
       title: RoutesMeta.Contact.name,
-      imageProps: { sx: { background: 'maroon' } },
+      imageProps: { sx: { background: RoutesMeta.Contact.bgColor } },
       lottieProps: { src: ContactLottie },
     },
   ];

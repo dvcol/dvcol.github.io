@@ -72,12 +72,8 @@ export const Stack: ParentComponent = props => {
   const [background, setBackground] = createSignal<string>();
 
   createEffect(() => {
-    const activeDelay = active()?.transition;
     const activeBgColor = active()?.bgColor;
 
-    if (activeDelay && activeBgColor) {
-      return setTimeout(() => setBackground(activeBgColor), activeDelay);
-    }
     if (activeBgColor) return setBackground(activeBgColor);
     return setBackground(Colors.theme);
   });

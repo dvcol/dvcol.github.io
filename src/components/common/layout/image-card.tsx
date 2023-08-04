@@ -18,10 +18,10 @@ type ImageCardMediaProps = CardMediaProps & {
   height?: ResponsiveStyleValue<string | number>;
 };
 
-type VideoProps = Pick<HTMLVideoElement, 'autoplay' | 'muted' | 'loop' | 'controls'> & {
+type VideoProps = Partial<Pick<HTMLVideoElement, 'autoplay' | 'muted' | 'loop' | 'controls'>> & {
   source: Pick<HTMLSourceElement, 'src' | 'type'>;
-  fit: 'cover' | 'fill' | 'contain';
-  position: 'top' | 'bottom' | 'center' | 'left' | 'right';
+  fit?: 'cover' | 'fill' | 'contain';
+  position?: 'top' | 'bottom' | 'center' | 'left' | 'right';
 };
 
 export type ImageCardProps = {
