@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from '@solidjs/router';
 
 import type { Component } from 'solid-js';
 
-import { routerService } from '~/services/router/router';
+import { routerService } from '~/services/router';
 
 export const RouterService: Component = () => {
   const location = useLocation();

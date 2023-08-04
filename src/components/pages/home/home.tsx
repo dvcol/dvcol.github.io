@@ -15,7 +15,7 @@ import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
 import { MimeType } from '~/models';
-import { RoutesMeta } from '~/services';
+import { RoutesMeta, usePageTransition } from '~/services';
 import { BreakPointsStop } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
@@ -49,6 +49,21 @@ export const Home: Component = () => {
       lottieProps: { src: ContactLottie },
     },
   ];
+
+  const { transition } = usePageTransition();
+
+  const onClick = (event: MouseEvent, path: string, color?: string) =>
+    transition({
+      event,
+      color,
+      endColor: RoutesMeta.Home.bgColor,
+      position: {
+        top: event.clientY,
+        left: event.clientX,
+      },
+      then: () => navigate(path),
+    });
+
   return (
     <Page
       maxWidth={BreakPointsStop.qhd}
@@ -101,7 +116,7 @@ export const Home: Component = () => {
                         },
                       }}
                       {..._props}
-                      onclick={() => navigate(path)}
+                      onclick={e => onClick(e, path, imageProps?.sx?.background)}
                     />
                   </HoverScale>
                 </EnterTranslate>

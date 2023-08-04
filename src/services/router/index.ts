@@ -1,1 +1,2 @@
-export * from './routes';
+export * from './routes.service';
+export * from './router.service';

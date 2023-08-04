@@ -12,9 +12,9 @@ import type { OnTriggerCallback } from '~/components';
 
 import type { RouteMeta } from '~/services';
 
-import { useOverScrollHandler } from '~/components';
+import { Transition, useOverScrollHandler } from '~/components';
 import { ProgressBar } from '~/components/common/loader/progress-bar';
-import { useNavbar } from '~/services';
+import { useNavbar, usePageTransition } from '~/services';
 import { Colors } from '~/themes';
 
 type StackPageProps = {
@@ -65,10 +65,16 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   const showProgress: Accessor<boolean> = createMemo(() => !!(props.active && !isOpen() && isScrolled()));
 
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
+
+  const { state } = usePageTransition();
+
   return (
     <>
       <Show when={showProgress()}>
         <ProgressBar container={containerRef} boxProps={{ sx: { background: props.active?.accentColor ?? Colors.accent } }} />
+      </Show>
+      <Show when={props.active}>
+        <Transition {...state()} />
       </Show>
       <Box
         ref={setContainerRef}

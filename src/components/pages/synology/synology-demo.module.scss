@@ -1,5 +1,7 @@
+@use 'src/themes/z-index';
+
 .shadow {
-  z-index: 0;
+  z-index: z-index.$default;
 
   .web_component {
     position: relative;

@@ -1,6 +1,8 @@
+@use 'src/themes/z-index';
+
 .stack_page {
   position: relative;
-  z-index: 5;
+  z-index: z-index.$layer-1;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -23,7 +25,7 @@
 .stack_page__inactive {
   position: absolute;
   top: 0;
-  z-index: 0;
+  z-index: z-index.$default;
   height: 0;
   min-height: 0;
 }
