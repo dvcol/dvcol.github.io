@@ -112,6 +112,10 @@ export const Contact: Component = () => {
 
   onCleanup(() => setScrollable(true));
 
+  const [headerRef, setHeaderRef] = createSignal<HTMLDivElement>();
+
+  const headerHeight = createMemo(() => headerRef()?.clientHeight);
+
   return (
     <Page
       sideBySide
@@ -120,6 +124,7 @@ export const Contact: Component = () => {
       background={{ color: RoutesMeta.Contact.bgColor }}
       header={<PageHeader navbar title={t('contact.title')} subtitle={t('contact.subtitle')} description={t('contact.description')} />}
       headerProps={{
+        ref: setHeaderRef,
         sx: {
           justifyContent: {
             [BreakPointsStop.desktop]: 'center',
@@ -142,9 +147,9 @@ export const Contact: Component = () => {
         sx={{
           height: '100%',
           maxHeight: {
-            [BreakPointsStop.default]: 'calc(100dvh - 130px)',
-            [BreakPointsStop.mobile]: 'calc(100dvh - 185px)',
-            [BreakPointsStop.tablet]: 'calc(100dvh - 240px)',
+            [BreakPointsStop.default]: `calc(100dvh - ${headerHeight() ?? 260}px)`,
+            [BreakPointsStop.mobile]: `calc(100dvh - ${headerHeight() ?? 260}px)`,
+            [BreakPointsStop.tablet]: `calc(100dvh - ${headerHeight() ?? 260}px)`,
           },
         }}
       >
