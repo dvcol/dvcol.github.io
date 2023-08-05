@@ -11,7 +11,7 @@ export type TransitionOption = Omit<TransitionProps, 'open'> & {
 
 export type TransitionState = {
   state: Accessor<TransitionProps>;
-  pending: Accessor<boolean>;
+  pending: Accessor<boolean | undefined>;
   startEvent: Accessor<MouseEvent | undefined>;
   setStartEvent: Setter<MouseEvent | undefined>;
   transition: (options: TransitionOption) => Promise<void>;

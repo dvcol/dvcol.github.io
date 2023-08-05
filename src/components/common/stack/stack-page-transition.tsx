@@ -6,10 +6,10 @@ import { Transition } from '~/components';
 import { useNavbar, usePageTransition } from '~/services';
 
 export const StackPageTransition: Component = () => {
-  const { isScrolled, setScrollable } = useNavbar();
+  const { isScrolled, setDisabled } = useNavbar();
   const { state, pending } = usePageTransition();
 
-  createEffect(() => setScrollable(!pending()));
+  createEffect(() => setDisabled(!!pending()));
 
   return <Transition offset={isScrolled()} {...state()} />;
 };

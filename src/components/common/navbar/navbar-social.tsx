@@ -1,6 +1,6 @@
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, createSignal, Show } from 'solid-js';
+import { createEffect, createMemo, createSignal, onCleanup, Show } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 import type { JSX } from 'solid-js/types/jsx';
@@ -15,11 +15,14 @@ export const NavbarSocial: ParentComponent<{
 }> = props => {
   const [visible, setVisible] = createSignal(false);
 
+  let timeout: NodeJS.Timeout;
   createEffect(() => {
     if (!props.show) return setVisible(false);
     if (!props.delay) return setVisible(true);
-    return setTimeout(() => setVisible(true), props.delay);
+    timeout = setTimeout(() => setVisible(true), props.delay);
   });
+
+  onCleanup(() => clearTimeout(timeout));
 
   const fallback = createMemo(() => props.fallback ?? <Box component={'span'} sx={{ display: 'inline-block', minWidth: '1em' }} />);
 

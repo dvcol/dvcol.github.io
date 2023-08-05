@@ -67,20 +67,17 @@ export const Stack: ParentComponent = props => {
     if (oldHash !== newHash) close();
   };
 
-  window.addEventListener('hashchange', listener);
-  onCleanup(() => window.removeEventListener('hashchange', listener));
-
   const [background, setBackground] = createSignal<string>();
 
-  let timeout: NodeJS.Timeout;
+  let backgroundTimeout: NodeJS.Timeout;
   createEffect(() => {
-    clearTimeout(timeout);
+    clearTimeout(backgroundTimeout);
 
     const activeDelay = active()?.transition;
     const activeBgColor = active()?.bgColor;
 
     if (activeDelay && activeBgColor) {
-      timeout = setTimeout(() => setBackground(activeBgColor), activeDelay / 2);
+      backgroundTimeout = setTimeout(() => setBackground(activeBgColor), activeDelay / 2);
       return;
     }
     if (activeBgColor) return setBackground(activeBgColor);
@@ -91,6 +88,12 @@ export const Stack: ParentComponent = props => {
     const themeColor = document.querySelector('#meta-theme-color');
     const newValue = background();
     if (themeColor && newValue) themeColor?.setAttribute('content', newValue);
+  });
+
+  window.addEventListener('hashchange', listener);
+  onCleanup(() => {
+    clearTimeout(backgroundTimeout);
+    window.removeEventListener('hashchange', listener);
   });
 
   return (
@@ -110,7 +113,7 @@ export const Stack: ParentComponent = props => {
       <StackPage
         id={`stack-page-active`}
         active={active()}
-        open={isOpen()}
+        open={showOpen()}
         class={styles.page}
         style={transform()({ offset: 2, filter: 'none' }, { color: active()?.color, 'background-color': background() })}
         onClick={() => close()}

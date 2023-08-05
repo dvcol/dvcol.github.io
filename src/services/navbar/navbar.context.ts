@@ -5,6 +5,8 @@ import type { Accessor, Setter } from 'solid-js';
 export type NavbarState = {
   isOpen: Accessor<boolean>;
   inFlight: Accessor<boolean>;
+  isDisabled: Accessor<boolean>;
+  setDisabled: Setter<boolean>;
   isScrolled: Accessor<number>;
   setScrolled: (offset?: number) => void;
   isScrollable: Accessor<boolean>;

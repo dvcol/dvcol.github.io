@@ -23,7 +23,10 @@ export const TransitionProvider: ParentComponent = props => {
 
   useBeforeLeave(() => clearTimeout(timeout));
 
-  onCleanup(() => setPending(false));
+  onCleanup(() => {
+    setPending(false);
+    clearTimeout(timeout);
+  });
 
   const value: TransitionState = {
     state,

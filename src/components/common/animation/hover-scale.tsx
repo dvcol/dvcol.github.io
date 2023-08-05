@@ -1,6 +1,6 @@
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, onMount } from 'solid-js';
+import { createMemo, createSignal, onCleanup, onMount } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 
@@ -17,9 +17,11 @@ export const HoverScale: ParentComponent<HoverScaleProps> = props => {
     return hover() ? to() : from();
   });
 
+  let timeout: NodeJS.Timeout;
   onMount(() => {
-    if (props.initialDelay) setTimeout(() => setDisabled(false), props.initialDelay);
+    if (props.initialDelay) timeout = setTimeout(() => setDisabled(false), props.initialDelay);
   });
+  onCleanup(() => clearTimeout(timeout));
   return (
     <Box
       sx={{

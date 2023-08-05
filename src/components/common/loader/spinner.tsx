@@ -1,6 +1,6 @@
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, onMount, Show } from 'solid-js';
+import { createMemo, createSignal, onCleanup, onMount, Show } from 'solid-js';
 
 import styles from './spinner.module.scss';
 
@@ -20,10 +20,16 @@ export const Spinner: Component<SpinnerProps> = props => {
   );
 
   const [debounced, setDebounced] = createSignal(false);
+  let timeout: NodeJS.Timeout;
   onMount(() => {
-    if (props.debounce) return setTimeout(() => setDebounced(true), props.debounce);
+    if (props.debounce) {
+      timeout = setTimeout(() => setDebounced(true), props.debounce);
+      return;
+    }
     setDebounced(true);
   });
+
+  onCleanup(() => clearTimeout(timeout));
 
   return (
     <Show when={debounced()}>

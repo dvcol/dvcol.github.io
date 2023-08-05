@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from 'solid-js';
+import { createEffect, createMemo, createSignal } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 
@@ -9,6 +9,7 @@ import { NavbarContext } from '~/services';
 export const NavbarProvider: ParentComponent = props => {
   const [isOpen, setOpen] = createSignal(false);
   const [inFlight, setInflight] = createSignal(false);
+  const [isDisabled, setDisabled] = createSignal(false);
   const [isScrolled, setScrolled] = createSignal(0);
   const [isScrollable, setScrollable] = createSignal(true);
 
@@ -22,12 +23,17 @@ export const NavbarProvider: ParentComponent = props => {
     isOpen();
   });
 
+  const isNotDisabledAndOpen = createMemo(() => !isDisabled() && isOpen());
+  const isNotDisabledAndScrollable = createMemo(() => !isDisabled() && isScrollable());
+
   const state: NavbarState = {
-    isOpen,
+    isOpen: isNotDisabledAndOpen,
     inFlight,
+    isDisabled,
+    setDisabled,
     isScrolled,
     setScrolled,
-    isScrollable,
+    isScrollable: isNotDisabledAndScrollable,
     setScrollable,
     currentPage,
     setCurrentPage,

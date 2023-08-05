@@ -2,7 +2,7 @@ import { useI18n } from '@solid-primitives/i18n';
 import { useNavigate } from '@solidjs/router';
 import { Grid } from '@suid/material';
 
-import { createSignal, For } from 'solid-js';
+import { createSignal, For, onCleanup, onMount } from 'solid-js';
 import { v4 as uuid } from 'uuid';
 
 import type { Component } from 'solid-js';
@@ -14,7 +14,7 @@ import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
 
 import { MimeType } from '~/models';
-import { RoutesMeta, usePageTransition } from '~/services';
+import { RoutesMeta, useNavbar, usePageTransition } from '~/services';
 import { BreakPointsStop, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
@@ -84,6 +84,18 @@ export const Home: Component = () => {
       then: () => navigate(path),
     });
   };
+
+  const { setScrollable } = useNavbar();
+
+  let timeout: NodeJS.Timeout;
+  onMount(() => {
+    setScrollable(false);
+    timeout = setTimeout(() => setScrollable(true), 100 * (cards?.length ?? 0));
+  });
+  onCleanup(() => {
+    clearTimeout(timeout);
+    setScrollable(true);
+  });
 
   return (
     <Page

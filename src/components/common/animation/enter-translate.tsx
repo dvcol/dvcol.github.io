@@ -1,6 +1,6 @@
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, onMount } from 'solid-js';
+import { createMemo, createSignal, onCleanup, onMount } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 
@@ -30,9 +30,11 @@ export const EnterTranslate: ParentComponent<EnterTranslateProps> = props => {
     return 1;
   });
 
+  let timeout: NodeJS.Timeout;
   onMount(() => {
-    setTimeout(() => setDisabled(false), props.initialDelay);
+    timeout = setTimeout(() => setDisabled(false), props.initialDelay);
   });
+  onCleanup(() => clearTimeout(timeout));
   return (
     <Box
       sx={{

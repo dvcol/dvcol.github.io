@@ -90,27 +90,34 @@ export const Contact: Component = () => {
   const disabled = createMemo(() => !!cardState().opacity || inFlight());
 
   const [borders, setBorders] = createSignal({ width: 0, height: 0 });
+  let borderTimeout: NodeJS.Timeout;
   createEffect(
-    on(resize, () =>
-      setTimeout(() => {
+    on(resize, () => {
+      clearTimeout(borderTimeout);
+      borderTimeout = setTimeout(() => {
         const _card = cardRef();
         if (!_card || !_card.clientWidth || !_card.clientHeight) return;
         setBorders({
           width: _card.clientWidth / 2,
           height: _card.clientHeight / 2,
         });
-      }, 500),
-    ),
+      }, 500);
+    }),
   );
 
+  let mountTimeout: NodeJS.Timeout;
   onMount(() => {
-    setTimeout(onClick, 1500);
+    mountTimeout = setTimeout(onClick, 1500);
   });
 
   const { setScrollable } = useNavbar();
   createEffect(() => setScrollable(!inFlight()));
 
-  onCleanup(() => setScrollable(true));
+  onCleanup(() => {
+    clearTimeout(mountTimeout);
+    clearTimeout(borderTimeout);
+    setScrollable(true);
+  });
 
   const [headerRef, setHeaderRef] = createSignal<HTMLDivElement>();
 
