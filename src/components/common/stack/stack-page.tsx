@@ -73,9 +73,6 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
       <Show when={showProgress()}>
         <ProgressBar container={containerRef} boxProps={{ sx: { background: props.active?.accentColor ?? Colors.accent } }} />
       </Show>
-      <Show when={props.active}>
-        <Transition {...state()} />
-      </Show>
       <Box
         ref={setContainerRef}
         component={'article'}
@@ -86,10 +83,17 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
           [styles.stack_page__active]: !!props.active,
           [styles.stack_page__inactive]: !props.active,
         }}
-        style={{ ...props.style, transform: props.style?.transform ?? scale(), overflow: isScrollable() ? 'auto' : 'hidden' }}
+        style={{
+          ...props.style,
+          transform: props.style?.transform ?? scale(),
+          overflow: isScrollable() ? 'auto' : 'hidden',
+        }}
         onClick={props.onClick}
         sx={props.sx}
       >
+        <Show when={props.active}>
+          <Transition {...state()} />
+        </Show>
         {props.children}
       </Box>
     </>

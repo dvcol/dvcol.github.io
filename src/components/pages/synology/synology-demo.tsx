@@ -220,7 +220,7 @@ export const SynologyDemo: Component = () => {
       }}
     >
       <wc-synology-download-content ref={setContentRef} />
-      <Show when={loaded()} fallback={<Spinner size={'5em'} sx={{ position: 'absolute', top: 'calc(50% - 2.5em)', left: 'calc(50% - 2.5em)' }} />}>
+      <Show when={loaded()} fallback={<Spinner center size="5em" debounce={500} />}>
         <Motion
           class={styles.shadow}
           style={{ width: '100%', height: '100%' }}

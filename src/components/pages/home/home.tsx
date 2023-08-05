@@ -2,14 +2,13 @@ import { useI18n } from '@solid-primitives/i18n';
 import { useNavigate } from '@solidjs/router';
 import { Grid } from '@suid/material';
 
-import { For } from 'solid-js';
+import { createSignal, For } from 'solid-js';
+import { v4 as uuid } from 'uuid';
 
 import type { Component } from 'solid-js';
-
 import type { ImageCardProps } from '~/components';
 
 import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
-
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, TriangleParticles } from '~/components';
@@ -19,13 +18,14 @@ import { RoutesMeta, usePageTransition } from '~/services';
 import { BreakPointsStop, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
-type Cards = ImageCardProps & { path: string; title: string; bgColors: { source?: string; target?: string } };
+type Cards = ImageCardProps & { id: string; path: string; title: string; bgColors: { source?: string; target?: string } };
 export const Home: Component = () => {
   const navigate = useNavigate();
   const [t] = useI18n();
 
   const cards: Cards[] = [
     {
+      id: uuid(),
       path: RoutesMeta.SynologyDemo.path,
       title: RoutesMeta.SynologyDemo.name,
       videoProps: { source: { src: 'assets/video/synology_demo.mp4', type: MimeType.MP4 } },
@@ -35,6 +35,7 @@ export const Home: Component = () => {
       },
     },
     {
+      id: uuid(),
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
       imageProps: { sx: { background: 'darkblue' } },
@@ -45,6 +46,7 @@ export const Home: Component = () => {
       },
     },
     {
+      id: uuid(),
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
       imageProps: { sx: { background: RoutesMeta.Trakt.bgColor } },
@@ -55,6 +57,7 @@ export const Home: Component = () => {
       },
     },
     {
+      id: uuid(),
       path: RoutesMeta.Contact.path,
       title: RoutesMeta.Contact.name,
       imageProps: { sx: { background: RoutesMeta.Contact.bgColor } },
@@ -67,9 +70,11 @@ export const Home: Component = () => {
   ];
 
   const { transition } = usePageTransition();
+  const [clicked, setClicked] = createSignal();
 
-  const onClick = (event: MouseEvent, path: string, bgColors: Cards['bgColors']) =>
-    transition({
+  const onClick = (event: MouseEvent, { id, path, bgColors }: Pick<Cards, 'id' | 'path' | 'bgColors'>) => {
+    setClicked(id);
+    return transition({
       event,
       colors: [bgColors.source, RoutesMeta.Home.bgColor, bgColors.target],
       position: {
@@ -78,6 +83,7 @@ export const Home: Component = () => {
       },
       then: () => navigate(path),
     });
+  };
 
   return (
     <Page
@@ -107,14 +113,19 @@ export const Home: Component = () => {
           spacing={2}
         >
           <For each={cards}>
-            {({ path, bgColors, title, imageProps, ..._props }, index) => (
+            {({ id, path, bgColors, title, imageProps, ..._props }, index) => (
               <Grid
+                id={`card-${id}`}
                 item
                 xs={12}
                 sm={6}
                 lg={5}
                 xl={4}
                 sx={{
+                  transition: 'scale 2s ease-out, opacity 0.5s ease-out',
+                  willChange: 'scale, opacity',
+                  opacity: clicked() === id ? 0 : 1,
+                  scale: clicked() === id ? '1.2' : '1',
                   '&:hover': {
                     zIndex: zIndex.Layer3 + 10,
                   },
@@ -142,7 +153,7 @@ export const Home: Component = () => {
                         },
                       }}
                       {..._props}
-                      onclick={e => onClick(e, path, bgColors)}
+                      onclick={e => onClick(e, { id, path, bgColors })}
                     />
                   </HoverScale>
                 </EnterTranslate>

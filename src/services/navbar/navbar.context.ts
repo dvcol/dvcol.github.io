@@ -9,8 +9,8 @@ export type NavbarState = {
   setScrolled: (offset?: number) => void;
   isScrollable: Accessor<boolean>;
   setScrollable: (disabled?: boolean) => void;
-  currentPage: Accessor<HTMLDivElement>;
-  setCurrentPage: Setter<HTMLDivElement>;
+  currentPage: Accessor<HTMLDivElement | undefined>;
+  setCurrentPage: Setter<HTMLDivElement | undefined>;
   open: () => void;
   close: () => void;
   toggle: (_open?: boolean) => void;

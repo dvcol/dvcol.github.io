@@ -39,7 +39,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.not_found',
     color: 'white',
     bgColor: 'darkred',
-    transition: AnimationDuration.PageBackground,
+    transition: AnimationDuration.PageTransition,
   },
   Unauthorized: {
     path: Routes.Unauthorized,
@@ -47,7 +47,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.unauthorized',
     color: 'white',
     bgColor: 'navy',
-    transition: AnimationDuration.PageBackground,
+    transition: AnimationDuration.PageTransition,
   },
   Forbidden: {
     path: Routes.Forbidden,
@@ -55,7 +55,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.forbidden',
     color: 'white',
     bgColor: 'navy',
-    transition: AnimationDuration.PageBackground,
+    transition: AnimationDuration.PageTransition,
   },
   Error: {
     path: Routes.Error,
@@ -63,7 +63,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.error',
     color: 'white',
     bgColor: 'darkred',
-    transition: AnimationDuration.PageBackground,
+    transition: AnimationDuration.PageTransition,
   },
 
   /** Public pages **/
@@ -82,7 +82,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: '#36004d',
-    transition: AnimationDuration.PageBackground,
+    transition: AnimationDuration.PageTransition,
   },
   AboutMe: {
     path: Routes.AboutMe,
@@ -107,7 +107,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'black',
-    transition: AnimationDuration.PageBackground,
     accentColor: '#0D63F8',
   },
   Contact: {
@@ -117,7 +116,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'maroon',
-    transition: AnimationDuration.PageBackground,
+    transition: AnimationDuration.PageTransition,
     accentColor: 'white',
   },
 };

@@ -19,8 +19,6 @@ export const Transition: Component<TransitionProps> = props => {
 
   createEffect(() => setClipPath(props.open ? 100 : 0));
 
-  createEffect(() => console.info('colors', { ...props }, clipPath()));
-
   const state = createMemo(() => (index: number) => {
     return {
       top: props.position?.top ? `calc(${props.position?.top}px - 100dvh)` : '-50dvh',

@@ -17,27 +17,30 @@ export const TransitionProvider: ParentComponent = props => {
 
   const [pending, startTransition] = useTransition();
 
+  let timeout: NodeJS.Timeout;
+
   const value: TransitionState = {
     state,
     pending,
     startEvent,
     setStartEvent,
-    transition: async ({ event, then, ...options }: TransitionOption) =>
-      startTransition(async () => {
-        setStartEvent(event);
-        console.info(event);
-        setState({
-          open: true,
-          ...options,
-        });
-        await new Promise(r => {
-          setTimeout(r, AnimationDuration.PageTransition);
+    transition: async ({ event, then, ...options }: TransitionOption) => {
+      setStartEvent(event);
+      setState({
+        open: true,
+        ...options,
+      });
+      return startTransition(async () => {
+        await new Promise<void>(r => {
+          clearTimeout(timeout);
+          timeout = setTimeout(r, AnimationDuration.PageTransition);
         });
         await then?.();
         setState({
           open: false,
         });
-      }),
+      });
+    },
   };
   return <TransitionContext.Provider value={value}>{props.children}</TransitionContext.Provider>;
 };
