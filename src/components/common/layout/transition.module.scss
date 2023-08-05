@@ -1,13 +1,10 @@
 @use 'src/themes/z-index';
 
 .transition_container,
-.transition,
-.transition_end {
+.transition {
   top: 0;
   left: 0;
   z-index: z-index.$layer-3;
-  width: 200%;
-  height: 200%;
   pointer-events: none;
 }
 
@@ -18,18 +15,11 @@
   overflow: hidden;
 }
 
-.transition,
-.transition_end {
+.transition {
   position: absolute;
+  width: 200%;
+  height: 200%;
+  transition: clip-path 1s ease-out;
   clip-path: circle(0%);
   will-change: clip-path;
-}
-
-.transition {
-  transition: clip-path 1s ease-out;
-}
-
-.transition_end {
-  z-index: z-index.$layer-3 + 1;
-  transition: clip-path 2s ease-out;
 }

@@ -9,6 +9,8 @@ import type { TransitionState } from '~/services/navbar/transition.context';
 
 import { TransitionContext } from '~/services';
 
+import { AnimationDuration } from '~/themes';
+
 export const TransitionProvider: ParentComponent = props => {
   const [state, setState] = createSignal<TransitionProps>({ open: false });
   const [startEvent, setStartEvent] = createSignal<MouseEvent>();
@@ -23,12 +25,13 @@ export const TransitionProvider: ParentComponent = props => {
     transition: async ({ event, then, ...options }: TransitionOption) =>
       startTransition(async () => {
         setStartEvent(event);
+        console.info(event);
         setState({
           open: true,
           ...options,
         });
         await new Promise(r => {
-          setTimeout(r, 500);
+          setTimeout(r, AnimationDuration.PageTransition);
         });
         await then?.();
         setState({

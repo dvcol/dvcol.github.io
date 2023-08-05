@@ -147,9 +147,9 @@ export const Contact: Component = () => {
         sx={{
           height: '100%',
           maxHeight: {
-            [BreakPointsStop.default]: `calc(100dvh - ${headerHeight() ?? 260}px)`,
-            [BreakPointsStop.mobile]: `calc(100dvh - ${headerHeight() ?? 260}px)`,
-            [BreakPointsStop.tablet]: `calc(100dvh - ${headerHeight() ?? 260}px)`,
+            [BreakPointsStop.default]: `calc(100dvh - ${headerHeight() || 260}px)`,
+            [BreakPointsStop.mobile]: `calc(100dvh - ${headerHeight() || 260}px)`,
+            [BreakPointsStop.tablet]: `calc(100dvh - ${headerHeight() || 260}px)`,
           },
         }}
       >

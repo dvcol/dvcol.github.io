@@ -2,6 +2,8 @@ import { createSignal, lazy } from 'solid-js';
 
 import type { RouteDefinition } from '@solidjs/router/dist/types';
 
+import { AnimationDuration, Colors } from '~/themes';
+
 export enum Routes {
   /** Technical pages **/
   NotFound = '/404',
@@ -24,7 +26,7 @@ export type RouteMeta = {
   title: string;
   navbar?: boolean;
   color?: string;
-  bgColor?: string;
+  bgColor?: string | Colors;
   accentColor?: string;
   transition?: number;
 };
@@ -37,6 +39,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.not_found',
     color: 'white',
     bgColor: 'darkred',
+    transition: AnimationDuration.PageBackground,
   },
   Unauthorized: {
     path: Routes.Unauthorized,
@@ -44,6 +47,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.unauthorized',
     color: 'white',
     bgColor: 'navy',
+    transition: AnimationDuration.PageBackground,
   },
   Forbidden: {
     path: Routes.Forbidden,
@@ -51,6 +55,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.forbidden',
     color: 'white',
     bgColor: 'navy',
+    transition: AnimationDuration.PageBackground,
   },
   Error: {
     path: Routes.Error,
@@ -58,6 +63,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.error',
     color: 'white',
     bgColor: 'darkred',
+    transition: AnimationDuration.PageBackground,
   },
 
   /** Public pages **/
@@ -68,7 +74,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: '#0c0b12',
-    accentColor: 'white',
   },
   Trakt: {
     path: Routes.Trakt,
@@ -77,7 +82,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: '#36004d',
-    accentColor: 'white',
+    transition: AnimationDuration.PageBackground,
   },
   AboutMe: {
     path: Routes.AboutMe,
@@ -85,12 +90,15 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.about_me',
     navbar: true,
     accentColor: '#ff3e00',
+    bgColor: Colors.theme,
   },
   Synology: {
     path: Routes.Synology,
     name: 'Synology',
     title: 'routes.title.synology',
     navbar: true,
+    color: 'white',
+    bgColor: Colors.theme,
   },
   SynologyDemo: {
     path: Routes.SynologyDemo,
@@ -99,6 +107,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'black',
+    transition: AnimationDuration.PageBackground,
     accentColor: '#0D63F8',
   },
   Contact: {
@@ -108,6 +117,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: 'white',
     bgColor: 'maroon',
+    transition: AnimationDuration.PageBackground,
     accentColor: 'white',
   },
 };

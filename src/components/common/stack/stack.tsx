@@ -71,9 +71,17 @@ export const Stack: ParentComponent = props => {
 
   const [background, setBackground] = createSignal<string>();
 
+  let timeout: NodeJS.Timeout;
   createEffect(() => {
+    clearTimeout(timeout);
+
+    const activeDelay = active()?.transition;
     const activeBgColor = active()?.bgColor;
 
+    if (activeDelay && activeBgColor) {
+      timeout = setTimeout(() => setBackground(activeBgColor), activeDelay);
+      return;
+    }
     if (activeBgColor) return setBackground(activeBgColor);
     return setBackground(Colors.theme);
   });

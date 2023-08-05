@@ -16,10 +16,10 @@ import { EnterTranslate, HoverScale, ImageCard, Page, ParticlesContainer, Triang
 
 import { MimeType } from '~/models';
 import { RoutesMeta, usePageTransition } from '~/services';
-import { BreakPointsStop } from '~/themes';
+import { BreakPointsStop, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
-type Cards = ImageCardProps & { path: string; title: string };
+type Cards = ImageCardProps & { path: string; title: string; bgColors: { source?: string; target?: string } };
 export const Home: Component = () => {
   const navigate = useNavigate();
   const [t] = useI18n();
@@ -29,34 +29,49 @@ export const Home: Component = () => {
       path: RoutesMeta.SynologyDemo.path,
       title: RoutesMeta.SynologyDemo.name,
       videoProps: { source: { src: 'assets/video/synology_demo.mp4', type: MimeType.MP4 } },
+      bgColors: {
+        source: RoutesMeta.SynologyDemo.bgColor,
+        target: RoutesMeta.SynologyDemo.bgColor,
+      },
     },
     {
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
       imageProps: { sx: { background: 'darkblue' } },
       lottieProps: { src: AboutMeSvg },
+      bgColors: {
+        source: 'darkblue',
+        target: RoutesMeta.AboutMe.bgColor,
+      },
     },
     {
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
       imageProps: { sx: { background: RoutesMeta.Trakt.bgColor } },
       lottieProps: { src: ComingSoonLottie },
+      bgColors: {
+        source: RoutesMeta.Trakt.bgColor,
+        target: RoutesMeta.Trakt.bgColor,
+      },
     },
     {
       path: RoutesMeta.Contact.path,
       title: RoutesMeta.Contact.name,
       imageProps: { sx: { background: RoutesMeta.Contact.bgColor } },
       lottieProps: { src: ContactLottie },
+      bgColors: {
+        source: RoutesMeta.Contact.bgColor,
+        target: RoutesMeta.Contact.bgColor,
+      },
     },
   ];
 
   const { transition } = usePageTransition();
 
-  const onClick = (event: MouseEvent, path: string, color?: string) =>
+  const onClick = (event: MouseEvent, path: string, bgColors: Cards['bgColors']) =>
     transition({
       event,
-      color,
-      endColor: RoutesMeta.Home.bgColor,
+      colors: [bgColors.source, RoutesMeta.Home.bgColor, bgColors.target],
       position: {
         top: event.clientY,
         left: event.clientX,
@@ -92,8 +107,19 @@ export const Home: Component = () => {
           spacing={2}
         >
           <For each={cards}>
-            {({ path, title, imageProps, ..._props }, index) => (
-              <Grid item xs={12} sm={6} lg={5} xl={4}>
+            {({ path, bgColors, title, imageProps, ..._props }, index) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                lg={5}
+                xl={4}
+                sx={{
+                  '&:hover': {
+                    zIndex: zIndex.Layer3 + 10,
+                  },
+                }}
+              >
                 <EnterTranslate initialDelay={1 + 100 * index()}>
                   <HoverScale from={0.95}>
                     <ImageCard
@@ -116,7 +142,7 @@ export const Home: Component = () => {
                         },
                       }}
                       {..._props}
-                      onclick={e => onClick(e, path, imageProps?.sx?.background)}
+                      onclick={e => onClick(e, path, bgColors)}
                     />
                   </HoverScale>
                 </EnterTranslate>

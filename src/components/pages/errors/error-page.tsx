@@ -36,9 +36,9 @@ export const ErrorPage: ParentComponent<ErrorPageProps> = props => {
         sx: {
           justifyContent: 'center',
           maxHeight: {
-            [BreakPointsStop.default]: `calc(100dvh - ${headerHeight() ?? 310}px)`,
-            [BreakPointsStop.mobile]: `calc(100dvh - ${headerHeight() ?? 250}px)`,
-            [BreakPointsStop.tablet]: `calc(100dvh - ${headerHeight() ?? 300}px)`,
+            [BreakPointsStop.default]: `calc(100dvh - ${headerHeight() || 310}px)`,
+            [BreakPointsStop.mobile]: `calc(100dvh - ${headerHeight() || 250}px)`,
+            [BreakPointsStop.tablet]: `calc(100dvh - ${headerHeight() || 300}px)`,
           },
           ...props.contentProps?.sx,
         },
