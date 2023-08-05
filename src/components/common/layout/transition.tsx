@@ -11,6 +11,7 @@ import { computeStepDuration, zIndex } from '~/themes';
 export type TransitionProps = {
   open?: boolean;
   fade?: boolean;
+  offset?: number;
   position?: { left?: number; top?: number };
   colors?: JSX.CSSProperties['background-color'][3];
 };
@@ -35,7 +36,9 @@ export const Transition: Component<TransitionProps> = props => {
     <Box
       class={styles.transition_container}
       sx={{
-        zIndex: props.fade ? zIndex.Default : zIndex.Layer3,
+        top: `${props.offset ?? 0}px`,
+        zIndex: props.fade ? zIndex.Default : undefined,
+        pointerEvents: props.open ? 'all' : undefined,
       }}
     >
       <Box class={styles.transition} sx={state()(0)} />

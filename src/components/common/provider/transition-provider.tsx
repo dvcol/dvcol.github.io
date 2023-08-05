@@ -1,6 +1,6 @@
 import { useBeforeLeave } from '@solidjs/router';
 
-import { createSignal, useTransition } from 'solid-js';
+import { createSignal, onCleanup } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 
@@ -17,11 +17,13 @@ export const TransitionProvider: ParentComponent = props => {
   const [state, setState] = createSignal<TransitionProps>({ open: false });
   const [startEvent, setStartEvent] = createSignal<MouseEvent>();
 
-  const [pending, startTransition] = useTransition();
+  const [pending, setPending] = createSignal<boolean>();
 
   let timeout: NodeJS.Timeout;
 
   useBeforeLeave(() => clearTimeout(timeout));
+
+  onCleanup(() => setPending(false));
 
   const value: TransitionState = {
     state,
@@ -29,30 +31,30 @@ export const TransitionProvider: ParentComponent = props => {
     startEvent,
     setStartEvent,
     transition: async ({ event, then, ...options }: TransitionOption) => {
+      setPending(true);
       setStartEvent(event);
       setState({
         open: true,
         ...options,
       });
-      return startTransition(async () => {
-        await new Promise<void>(r => {
-          clearTimeout(timeout);
-          timeout = setTimeout(r, AnimationDuration.PageTransition);
-        });
-        await then?.();
-        setState({
-          open: true,
-          fade: true,
-          ...options,
-        });
-        await new Promise<void>(r => {
-          clearTimeout(timeout);
-          timeout = setTimeout(r, AnimationDuration.PageTransition / 2);
-        });
-        setState({
-          open: false,
-        });
+      await new Promise<void>(r => {
+        clearTimeout(timeout);
+        timeout = setTimeout(r, AnimationDuration.PageTransition);
       });
+      await then?.();
+      setState({
+        open: true,
+        fade: true,
+        ...options,
+      });
+      await new Promise<void>(r => {
+        clearTimeout(timeout);
+        timeout = setTimeout(r, AnimationDuration.PageTransition / 2);
+      });
+      setState({
+        open: false,
+      });
+      setPending(false);
     },
   };
   return <TransitionContext.Provider value={value}>{props.children}</TransitionContext.Provider>;
