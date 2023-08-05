@@ -10,6 +10,7 @@ import { computeStepDuration, zIndex } from '~/themes';
 
 export type TransitionProps = {
   open?: boolean;
+  fade?: boolean;
   position?: { left?: number; top?: number };
   colors?: JSX.CSSProperties['background-color'][3];
 };
@@ -25,13 +26,18 @@ export const Transition: Component<TransitionProps> = props => {
       left: props.position?.left ? `calc(${props.position?.left}px - 100dvw)` : '-50dvw',
       clipPath: `circle(${clipPath()}%)`,
       transitionDuration: `${computeStepDuration(index)}ms`,
-      zIndex: `${zIndex.Layer3 + 1 + index}`,
+      zIndex: props.fade ? zIndex.Default : `${zIndex.Layer3 + 1 + index}`,
       backgroundColor: props.colors?.[index],
     };
   });
 
   return (
-    <Box class={styles.transition_container}>
+    <Box
+      class={styles.transition_container}
+      sx={{
+        zIndex: props.fade ? zIndex.Default : zIndex.Layer3,
+      }}
+    >
       <Box class={styles.transition} sx={state()(0)} />
       <Box class={styles.transition} sx={state()(1)} />
       <Box class={styles.transition} sx={state()(2)} />

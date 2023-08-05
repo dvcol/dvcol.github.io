@@ -2,7 +2,7 @@
 
 .background_container,
 .background {
-  position: absolute;
+  position: fixed;
   z-index: z-index.$behind;
   width: 100%;
   height: 100%;

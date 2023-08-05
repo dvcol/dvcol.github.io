@@ -2,6 +2,7 @@
 
 .transition_container,
 .transition {
+  position: fixed;
   top: 0;
   left: 0;
   z-index: z-index.$layer-3;
@@ -9,14 +10,12 @@
 }
 
 .transition_container {
-  position: fixed;
   width: 100dvw;
   height: 100dvh;
   overflow: hidden;
 }
 
 .transition {
-  position: absolute;
   width: 200%;
   height: 200%;
   transition: clip-path 1s ease-out;

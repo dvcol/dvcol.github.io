@@ -79,7 +79,7 @@ export const Stack: ParentComponent = props => {
     const activeBgColor = active()?.bgColor;
 
     if (activeDelay && activeBgColor) {
-      timeout = setTimeout(() => setBackground(activeBgColor), activeDelay);
+      timeout = setTimeout(() => setBackground(activeBgColor), activeDelay / 2);
       return;
     }
     if (activeBgColor) return setBackground(activeBgColor);

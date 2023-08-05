@@ -37,6 +37,15 @@ export const TransitionProvider: ParentComponent = props => {
         });
         await then?.();
         setState({
+          open: true,
+          fade: true,
+          ...options,
+        });
+        await new Promise<void>(r => {
+          clearTimeout(timeout);
+          timeout = setTimeout(r, AnimationDuration.PageTransition / 2);
+        });
+        setState({
           open: false,
         });
       });
