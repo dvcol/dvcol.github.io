@@ -10,6 +10,7 @@ import styles from './stack.module.scss';
 
 import type { JSX, ParentComponent } from 'solid-js';
 
+import { StackPageTransition } from '~/components/common/stack/stack-page-transition';
 import { RoutesMetas, useNavbar, useRouteData } from '~/services';
 import { Colors } from '~/themes';
 
@@ -114,6 +115,7 @@ export const Stack: ParentComponent = props => {
         style={transform()({ offset: 2, filter: 'none' }, { color: active()?.color, 'background-color': background() })}
         onClick={() => close()}
       >
+        <StackPageTransition />
         {props.children}
       </StackPage>
     </div>

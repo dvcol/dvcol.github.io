@@ -2,7 +2,7 @@
 
 .transition_container,
 .transition {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: z-index.$layer-3;

@@ -1,3 +1,5 @@
+import { useBeforeLeave } from '@solidjs/router';
+
 import { createSignal, useTransition } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
@@ -18,6 +20,8 @@ export const TransitionProvider: ParentComponent = props => {
   const [pending, startTransition] = useTransition();
 
   let timeout: NodeJS.Timeout;
+
+  useBeforeLeave(() => clearTimeout(timeout));
 
   const value: TransitionState = {
     state,

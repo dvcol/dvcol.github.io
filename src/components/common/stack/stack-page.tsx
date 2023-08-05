@@ -12,9 +12,9 @@ import type { OnTriggerCallback } from '~/components';
 
 import type { RouteMeta } from '~/services';
 
-import { Transition, useOverScrollHandler } from '~/components';
+import { useOverScrollHandler } from '~/components';
 import { ProgressBar } from '~/components/common/loader/progress-bar';
-import { useNavbar, usePageTransition } from '~/services';
+import { useNavbar } from '~/services';
 import { Colors } from '~/themes';
 
 type StackPageProps = {
@@ -66,8 +66,6 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
 
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
 
-  const { state } = usePageTransition();
-
   return (
     <>
       <Show when={showProgress()}>
@@ -91,9 +89,6 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
         onClick={props.onClick}
         sx={props.sx}
       >
-        <Show when={props.active}>
-          <Transition {...state()} />
-        </Show>
         {props.children}
       </Box>
     </>

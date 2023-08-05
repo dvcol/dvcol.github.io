@@ -125,10 +125,8 @@ export const Home: Component = () => {
                   transition: 'scale 2s ease-out, opacity 0.5s ease-out',
                   willChange: 'scale, opacity',
                   opacity: clicked() === id ? 0 : 1,
-                  scale: clicked() === id ? '1.2' : '1',
-                  '&:hover': {
-                    zIndex: zIndex.Layer3 + 10,
-                  },
+                  scale: clicked() === id ? '1.5' : '1',
+                  zIndex: clicked() === id ? zIndex.Layer3 + 10 : undefined,
                 }}
               >
                 <EnterTranslate initialDelay={1 + 100 * index()}>
