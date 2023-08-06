@@ -58,6 +58,7 @@ export const TransitionProvider: ParentComponent = props => {
         open: false,
       });
       setPending(false);
+      startEvent();
     },
   };
   return <TransitionContext.Provider value={value}>{props.children}</TransitionContext.Provider>;

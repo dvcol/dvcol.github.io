@@ -12,10 +12,9 @@ import { AnimationDuration, Colors } from '~/themes';
 export type BackgroundProps = { color?: JSX.CSSProperties['background-color']; position?: { left?: number; top?: number } };
 export const Background: ParentComponent<BackgroundProps> = props => {
   const { previous } = useRouteData();
-  const { startEvent, setStartEvent } = usePageTransition();
+  const { pending } = usePageTransition();
 
-  const [clipPath, setClipPath] = createSignal<number>(startEvent() ? 200 : 0);
-  onMount(() => setClipPath(200));
+  const [clipPath, setClipPath] = createSignal<number>(pending() ? 200 : 0);
 
   const state = createMemo(() => {
     const top = props.position?.top ? `${props.position?.top}px` : '50%';
@@ -26,7 +25,16 @@ export const Background: ParentComponent<BackgroundProps> = props => {
     };
   });
 
-  onCleanup(() => setStartEvent());
+  let timeout: NodeJS.Timeout;
+  onMount(() => {
+    if (!pending()) {
+      timeout = setTimeout(() => setClipPath(200), 100);
+    }
+  });
+
+  onCleanup(() => {
+    clearTimeout(timeout);
+  });
 
   return (
     <Box class={styles.background_container} sx={{ backgroundColor: previous()?.bgColor ?? Colors.theme }}>
