@@ -5,12 +5,6 @@ import type { ThemeOptions } from '@suid/material/styles/createTheme';
 
 import { BreakPoints } from '~/themes/breakpoints';
 
-export enum Colors {
-  theme = '#2a2b30',
-  accent = '#9fa0a1',
-  background = '#1d1e21',
-}
-
 const scrollbar: Record<string, any> = {
   scrollbarWidth: 'thin',
   scrollbarColor: 'rgb(150 150 150 / 50%) transparent',

@@ -62,14 +62,15 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
     }
   });
 
-  const showProgress: Accessor<boolean> = createMemo(() => !!(props.active && !isOpen() && isScrolled()));
+  const showProgress: Accessor<boolean> = createMemo(() => !!(props.active && !isOpen() && isScrollable() && isScrolled()));
+  const accentColor: Accessor<boolean> = createMemo(() => props.active?.accentColor ?? props.active?.color ?? Colors.accent);
 
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
 
   return (
     <>
       <Show when={showProgress()}>
-        <ProgressBar container={containerRef} boxProps={{ sx: { background: props.active?.accentColor ?? Colors.accent } }} />
+        <ProgressBar container={containerRef} boxProps={{ sx: { background: accentColor() } }} />
       </Show>
       <Box
         ref={setContainerRef}

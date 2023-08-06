@@ -7,6 +7,8 @@ import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
 import type BoxProps from '@suid/material/Box/BoxProps';
 import type { Accessor, Component } from 'solid-js';
 
+import { Colors } from '~/themes';
+
 export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefined>; boxProps?: BoxProps }> = props => {
   const [scrolled, setScrolled] = createSignal();
 
@@ -43,7 +45,7 @@ export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefin
         top: 0,
         width: '100%',
         height: '0.125rem',
-        background: 'white',
+        background: Colors.accent,
         transform: 'scaleX(0)',
         willChange: 'transform',
         zIndex: 9999,

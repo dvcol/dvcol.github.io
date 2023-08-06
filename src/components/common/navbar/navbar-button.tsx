@@ -12,7 +12,7 @@ import { NavbarButtonId, useNavbar, useRouteData } from '~/services';
 import { computeHoverState } from '~/utils';
 
 export const NavbarButton: Component = () => {
-  const { isScrolled, isOpen, toggle } = useNavbar();
+  const { isScrolled, isOpen, isDisabled, toggle } = useNavbar();
   const { active } = useRouteData();
   const accent = createMemo(() => active()?.accentColor || active()?.color);
 
@@ -41,6 +41,7 @@ export const NavbarButton: Component = () => {
         [styles.menu_button__open]: isOpen(),
         [styles.menu_button__collapsed]: collapsed(),
         [styles.menu_button__expand]: expand(),
+        [styles.menu_button__disabled]: isDisabled(),
       }}
       sx={{
         '& span': { color: accent() },

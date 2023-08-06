@@ -1,4 +1,5 @@
 @use 'src/themes/z-index';
+@use 'src/themes/colors';
 
 .stack_page {
   position: relative;
@@ -8,8 +9,8 @@
   flex-direction: column;
   width: 100%;
   height: 100dvh;
-  color: #9fa0a1;
-  background: #2a2b30;
+  color: colors.$accent;
+  background: colors.$theme;
   transform: translate3d(0, 40%, 0);
   transition: transform 0.45s, filter 0.45s, min-height 0s linear 0.45s;
   transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);

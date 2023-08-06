@@ -12,7 +12,7 @@ import { NavbarBackId, useNavbar, useRouteData } from '~/services';
 import { computeHoverState } from '~/utils';
 
 export const NavbarBack: Component = () => {
-  const { isScrolled, isOpen, currentPage } = useNavbar();
+  const { isScrolled, isOpen, isScrollable, currentPage } = useNavbar();
   const { active } = useRouteData();
   const accent = createMemo(() => active()?.accentColor || active()?.color);
 
@@ -28,13 +28,13 @@ export const NavbarBack: Component = () => {
   onMount(() => window.addEventListener('mousemove', onMouseMove));
   onCleanup(() => window.removeEventListener('mousemove', onMouseMove));
 
-  const visible = createMemo(() => !!isScrolled() && !isOpen());
+  const visible = createMemo(() => !isOpen() && isScrollable() && !!isScrolled());
   const collapsed = createMemo<boolean>(() => visible() && hover() === 'collapse');
   const expand = createMemo<boolean>(() => visible() && hover() === 'expand');
 
   const onClick = () => {
     if (!currentPage()) return console.warn('No current page set', currentPage());
-    currentPage().scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    currentPage()?.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   return (
