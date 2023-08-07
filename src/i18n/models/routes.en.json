@@ -10,15 +10,15 @@
   "forbidden": "Forbidden",
   "error": "Error",
   "title": {
-    "home": "Home - Landing page for Dinh-Van's projects",
-    "trakt": "Trakt - A chrome extension for Trakt.tv",
-    "synology": "Synology - A chrome extension for Synology NAS",
-    "synology_demo": "Synology Demo - Interactive demo of Synology Download",
-    "about_me": "About Me - About my various projects and experiences",
-    "contact": "Contact - Contact form",
-    "not_found": "404 - Page not Found",
-    "unauthorized": "401 - Page unauthorized",
-    "forbidden": "403 - Page forbidden",
-    "error": "500 - Internal server error"
+    "home": "Dinh-Van Colomban | projects and experiences",
+    "trakt": "Trakt | A chrome extension for Trakt.tv",
+    "synology": "Synology | A chrome extension for Synology NAS",
+    "synology_demo": "Synology Demo | Interactive demo of Synology Download",
+    "about_me": "About Me | About my projects and experiences",
+    "contact": "Contact | Contact form",
+    "not_found": "404 | Page not Found",
+    "unauthorized": "401 | Page unauthorized",
+    "forbidden": "403 | Page forbidden",
+    "error": "500 | Internal server error"
   }
 }
