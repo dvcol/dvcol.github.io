@@ -25,10 +25,6 @@ import { Routes, RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';
 import { gradientText } from '~/utils';
 
-const GridContainerSx = {
-  mt: '0.5em',
-  justifyContent: 'center',
-};
 const GridItemSx = {
   display: 'flex',
   justifyContent: 'center',
@@ -121,7 +117,7 @@ export const SynologyDemo: Component = () => {
                 container
                 spacing={2}
                 sx={{
-                  ...GridContainerSx,
+                  justifyContent: 'center',
                   mt: '0.5em',
                 }}
               >
@@ -158,7 +154,14 @@ export const SynologyDemo: Component = () => {
           <Typography variant={'h6'} sx={{ mb: '0.5em' }}>
             {t('synology.demo.button_description')}
           </Typography>
-          <Grid container spacing={2} sx={GridContainerSx}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              justifyContent: 'center',
+              mt: '0.1em',
+            }}
+          >
             <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>
               <Button id="add-task" endIcon={<TaskSvg />} onClick={addTask}>
                 {t('synology.demo.buttons.add_task')}
