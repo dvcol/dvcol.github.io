@@ -29,7 +29,7 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['**/favicon.ico', '**/logo.svg'],
+      includeAssets: ['**/favicon.ico', '**/icon.svg', '**/icon*.png'],
       manifest: {
         name: 'Dinh-Van Colomban',
         short_name: 'Dinh-Van',
