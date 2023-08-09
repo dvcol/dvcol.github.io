@@ -111,7 +111,7 @@ export const Home: Component = () => {
             position: 'relative',
             justifyContent: 'center',
             p: {
-              [BreakPointsStop.default]: '3rem 0.5rem 2rem',
+              [BreakPointsStop.default]: '3rem 0.5rem 1rem',
               [BreakPointsStop.tablet]: '0',
             },
             gap: {

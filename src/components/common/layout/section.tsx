@@ -19,7 +19,7 @@ export const Section: ParentComponent<SectionProps> = props => {
         flex: '1 1 auto',
         flexDirection: 'column',
         margin: {
-          [BreakPointsStop.default]: '0 1rem',
+          [BreakPointsStop.default]: '0 0.5rem',
           [BreakPointsStop.tablet]: '0 3rem',
           [BreakPointsStop.qhd]: '0 4rem',
           [BreakPointsStop.uhd]: '0 6rem',
