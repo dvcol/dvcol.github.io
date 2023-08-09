@@ -2,9 +2,10 @@ import type { ParticlesProps } from 'solid-particles';
 
 export const TriangleParticles: ParticlesProps['options'] = {
   fpsLimit: 60,
+  delay: 0,
   particles: {
     number: {
-      value: 80,
+      value: 100,
       density: {
         enable: true,
         area: 800,

@@ -1,14 +1,9 @@
-@keyframes animate-fade {
-  0% {
-    opacity: 0;
-  }
+.particles_container {
+  opacity: 0;
+  transition: opacity 1s;
+  will-change: opacify;
 
-  100% {
+  &__visible {
     opacity: 1;
   }
-}
-
-.particles_container {
-  animation-name: animate-fade;
-  animation-duration: 1s;
 }

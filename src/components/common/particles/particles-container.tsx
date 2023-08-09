@@ -1,6 +1,7 @@
+/* eslint-disable solid/no-react-specific-props */
 import { Box } from '@suid/material';
 
-import { splitProps } from 'solid-js';
+import { createMemo, createSignal, splitProps } from 'solid-js';
 
 import Particles from 'solid-particles';
 
@@ -20,12 +21,29 @@ export const ParticlesContainer: ParentComponent<Omit<ParticlesProps, 'id' | 'in
     await loadPolygonMaskPlugin(main);
   };
 
+  const [loaded, setLoaded] = createSignal(false);
+
+  const classNames = createMemo(() => {
+    const _classes = [styles.particles_container];
+    if (loaded()) _classes.push(styles.particles_container__visible);
+    return _classes.filter(Boolean).join(' ');
+  });
+
   return (
-    <Box class={styles.particles_container}>
-      <Particles id="tsparticles" init={particlesInit} style={{ position: 'absolute', top: 0, left: 0 }} {..._props} />
+    <>
+      <Box class={classNames()}>
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          loaded={() => setLoaded(true)}
+          {..._props}
+          style={{ position: 'absolute', top: 0, left: 0, ..._props?.style }}
+        />
+      </Box>
       {children}
-    </Box>
+    </>
   );
 };
 
 export default ParticlesContainer;
+/* eslint-enable solid/no-react-specific-props */
