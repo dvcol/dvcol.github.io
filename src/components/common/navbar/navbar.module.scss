@@ -16,11 +16,12 @@
   display: flex;
   flex: 1 1 auto;
   flex-wrap: wrap;
+  gap: 0.5em;
   justify-content: center;
 
   &__social {
     flex: 0 1 auto;
-    padding: 0 2em;
+    padding: 0.25em 2em;
   }
 }
 
@@ -160,6 +161,10 @@ a.link {
 
   .pages_nav__items {
     padding: 0 2em;
+
+    &__social {
+      padding: 0.25em 2em 0;
+    }
   }
 
   .pages_nav__item {

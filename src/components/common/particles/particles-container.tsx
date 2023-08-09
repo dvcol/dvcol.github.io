@@ -8,6 +8,8 @@ import { loadFull } from 'tsparticles';
 
 import { loadPolygonMaskPlugin } from 'tsparticles-plugin-polygon-mask';
 
+import styles from './particles-container.module.scss';
+
 import type { ParentComponent } from 'solid-js';
 import type { ParticlesProps } from 'solid-particles';
 
@@ -19,7 +21,7 @@ export const ParticlesContainer: ParentComponent<Omit<ParticlesProps, 'id' | 'in
   };
 
   return (
-    <Box>
+    <Box class={styles.particles_container}>
       <Particles id="tsparticles" init={particlesInit} style={{ position: 'absolute', top: 0, left: 0 }} {..._props} />
       {children}
     </Box>

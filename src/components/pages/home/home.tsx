@@ -110,8 +110,8 @@ export const Home: Component = () => {
           sx={{
             position: 'relative',
             justifyContent: 'center',
-            mt: {
-              [BreakPointsStop.default]: '3rem',
+            p: {
+              [BreakPointsStop.default]: '3rem 0.5rem 2rem',
               [BreakPointsStop.tablet]: '0',
             },
             gap: {
