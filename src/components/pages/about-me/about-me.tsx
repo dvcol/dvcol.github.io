@@ -5,7 +5,7 @@ import { createSignal, Show } from 'solid-js';
 import type { Component } from 'solid-js';
 
 import { defineAboutMeComponents } from '~/apps/about-me/entry';
-import { Page, Spinner } from '~/components';
+import { ContactForm, InView, Page, Spinner } from '~/components';
 import { Routes } from '~/services';
 
 export const AboutMe: Component = () => {
@@ -19,10 +19,26 @@ export const AboutMe: Component = () => {
       navigate(Routes.Error);
     });
 
+  const [visible, setVisible] = createSignal(false);
+
   return (
     <Page maxWidth="qhd">
       <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
         <wc-about-me />
+        <InView margin={{ bottom: 200 }} onEnter={({ count }) => count && setVisible(true)}>
+          <ContactForm
+            cardProps={{
+              sx: {
+                m: '4rem 0',
+                willChange: 'translate, opacity',
+                transition: 'translate 1s, opacity 1s',
+                transitionDelay: '0.25s',
+                opacity: visible() ? 1 : 0,
+                translate: visible() ? 0 : '-50%',
+              },
+            }}
+          />
+        </InView>
       </Show>
     </Page>
   );
