@@ -25,7 +25,7 @@ export const AboutMe: Component = () => {
     <Page maxWidth="qhd">
       <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
         <wc-about-me />
-        <InView margin={{ bottom: 200 }} onEnter={({ count }) => count && setVisible(true)}>
+        <InView margin={{ bottom: 200 }} onEnter={() => setVisible(true)}>
           <ContactForm
             cardProps={{
               sx: {

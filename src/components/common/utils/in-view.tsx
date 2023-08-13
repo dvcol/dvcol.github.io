@@ -13,8 +13,8 @@ export const InView: ParentComponent<InViewProps> = props => {
   return (
     <div
       use:directive={{ margin: props.margin, options: props.options }}
-      on:enter={event => props.onEnter?.(event?.detail)}
-      on:leave={event => props.onLeave?.(event?.detail)}
+      on:enter={(event: CustomEvent<InViewEvent>) => props.onEnter?.(event?.detail)}
+      on:leave={(event: CustomEvent<InViewEvent>) => props.onLeave?.(event?.detail)}
     >
       {props.children}
     </div>
