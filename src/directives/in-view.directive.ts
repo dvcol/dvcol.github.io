@@ -40,8 +40,9 @@ export const parseOptions = (init: IntersectionObserverInit = {}, { right, left,
   return { rootMargin, ...init };
 };
 
-export const inViewDirective = (el: Element, { options, margin }: InViewOptions = {}) => {
+export const inViewDirective = (el: Element, inputs?: () => InViewOptions) => {
   const { handler } = handleIntersect();
+  const { options, margin } = inputs?.() ?? {};
   const observer = new IntersectionObserver(handler, parseOptions(options, margin));
   observer.observe(el);
   onCleanup(() => observer.disconnect());

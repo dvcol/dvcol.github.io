@@ -1,5 +1,7 @@
 import { useNavigate } from '@solidjs/router';
 
+import { Box } from '@suid/material';
+
 import { createSignal, Show } from 'solid-js';
 
 import type { Component } from 'solid-js';
@@ -24,7 +26,9 @@ export const AboutMe: Component = () => {
   return (
     <Page maxWidth="qhd">
       <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
-        <wc-about-me />
+        <Box sx={{ minHeight: '100dvh' }}>
+          <wc-about-me />
+        </Box>
         <InView margin={{ bottom: 200 }} onEnter={() => setVisible(true)}>
           <ContactForm
             cardProps={{
