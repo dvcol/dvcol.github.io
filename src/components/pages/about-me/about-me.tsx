@@ -1,14 +1,17 @@
 import { useNavigate } from '@solidjs/router';
 
-import { Box } from '@suid/material';
+import { Box, useMediaQuery } from '@suid/material';
 
 import { createSignal, Show } from 'solid-js';
 
 import type { Component } from 'solid-js';
 
 import { defineAboutMeComponents } from '~/apps/about-me/entry';
-import { ContactForm, InView, Page, Spinner } from '~/components';
+import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
+
+import { ContactForm, HoverScale, InView, LottiePlayer, Page, Spinner } from '~/components';
 import { Routes } from '~/services';
+import { BreakPoints } from '~/themes';
 
 export const AboutMe: Component = () => {
   const [loaded, setLoaded] = createSignal(false);
@@ -22,18 +25,24 @@ export const AboutMe: Component = () => {
     });
 
   const [visible, setVisible] = createSignal(false);
+  const isFHD = useMediaQuery(`(min-width: ${BreakPoints.fhd}px)`);
 
   return (
-    <Page maxWidth="qhd">
+    <Page maxWidth="fhd">
       <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
         <Box sx={{ minHeight: '100dvh' }}>
           <wc-about-me />
         </Box>
-        <InView margin={{ bottom: 200 }} onEnter={() => setVisible(true)}>
+        <InView
+          style={{ display: 'flex', 'justify-content': 'space-between', 'margin-bottom': '4rem' }}
+          margin={{ bottom: 200 }}
+          onEnter={() => setVisible(true)}
+        >
           <ContactForm
+            maxRows={20}
             cardProps={{
               sx: {
-                m: '4rem 0',
+                maxWidth: `${BreakPoints.laptop}px`,
                 willChange: 'translate, opacity',
                 transition: 'translate 1s, opacity 1s',
                 transitionDelay: '0.25s',
@@ -42,6 +51,24 @@ export const AboutMe: Component = () => {
               },
             }}
           />
+          <Show when={isFHD()}>
+            <HoverScale
+              initialDelay={1000}
+              boxProps={{
+                sx: {
+                  maxHeight: '700px',
+                  maxWidth: '800px',
+                  willChange: 'translate, opacity',
+                  transition: 'translate 1s, opacity 1s',
+                  transitionDelay: '0.25s',
+                  opacity: visible() ? 1 : 0,
+                  translate: visible() ? 0 : '50%',
+                },
+              }}
+            >
+              <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
+            </HoverScale>
+          </Show>
         </InView>
       </Show>
     </Page>

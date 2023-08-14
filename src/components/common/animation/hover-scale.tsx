@@ -2,9 +2,18 @@ import { Box } from '@suid/material';
 
 import { createMemo, createSignal, onCleanup, onMount } from 'solid-js';
 
+import type BoxProps from '@suid/material/Box/BoxProps';
 import type { ParentComponent } from 'solid-js';
 
-export type HoverScaleProps = { from?: number; to?: number; duration?: number; initialDelay?: number; disabled?: boolean; initialScale?: number };
+export type HoverScaleProps = {
+  from?: number;
+  to?: number;
+  duration?: number;
+  initialDelay?: number;
+  disabled?: boolean;
+  initialScale?: number;
+  boxProps?: BoxProps;
+};
 export const HoverScale: ParentComponent<HoverScaleProps> = props => {
   const [disabled, setDisabled] = createSignal(!!props.initialDelay);
   const [hover, setHover] = createSignal(false);
@@ -24,6 +33,7 @@ export const HoverScale: ParentComponent<HoverScaleProps> = props => {
   onCleanup(() => clearTimeout(timeout));
   return (
     <Box
+      {...props.boxProps}
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -33,9 +43,16 @@ export const HoverScale: ParentComponent<HoverScaleProps> = props => {
         scale: `${scale()}`,
         transition: 'scale 1s',
         willChange: 'scale',
+        ...props.boxProps?.sx,
       }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={e => {
+        setHover(true);
+        props.boxProps?.onMouseEnter?.(e);
+      }}
+      onMouseLeave={e => {
+        setHover(false);
+        props.boxProps?.onMouseLeave?.(e);
+      }}
     >
       {props.children}
     </Box>

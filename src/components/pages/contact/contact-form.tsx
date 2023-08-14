@@ -5,7 +5,7 @@ import { Button, Card, CardActions, CardContent, CircularProgress, Grid, Stack }
 import MailSvg from 'line-md/svg/email.svg?component-solid';
 import RemoveSvg from 'line-md/svg/remove.svg?component-solid';
 
-import { createEffect, createSignal, For } from 'solid-js';
+import { createEffect, createMemo, createSignal, For } from 'solid-js';
 
 import type CardProps from '@suid/material/Card/CardProps';
 import type { CardContentProps } from '@suid/material/CardContent';
@@ -27,6 +27,8 @@ import { BreakPointsStop } from '~/themes';
 import { useValidator } from '~/utils';
 
 export type ContactFormProps = {
+  minRows?: number;
+  maxRows?: number;
   cardProps?: PropsWithRef<CardProps>;
   headerProps?: HeaderProps;
   contentProps?: CardContentProps;
@@ -87,6 +89,12 @@ export const ContactForm: Component<ContactFormProps> = props => {
   createEffect(() => {
     const _ref = bodyRef();
     if (_ref) stopScrollPropagation(_ref);
+  });
+
+  const rows = createMemo(() => {
+    const _rows = (props.minRows ?? 0) + Math.ceil(2 + window.innerHeight / 100);
+    if (!props.maxRows) return _rows;
+    return _rows > props.maxRows ? props.maxRows : _rows;
   });
 
   const inputs: { input: FormInputProps; grid: GridProps }[] = [
@@ -155,7 +163,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
         fieldProps: {
           required: true,
           multiline: true,
-          rows: Math.ceil(2 + window.innerHeight / 100),
+          rows: rows(),
         },
         ref: setBodyRef,
       },
@@ -172,6 +180,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
         display: 'flex',
         flexDirection: 'column',
         flex: '1 1 auto',
+        height: 'fit-content',
         borderRadius: '0.5rem',
         boxShadow: '0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)',
         ...props.cardProps?.sx,

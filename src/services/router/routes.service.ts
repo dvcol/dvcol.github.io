@@ -85,14 +85,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     bgColor: '#36004d',
     transition: AnimationDuration.PageTransition,
   },
-  AboutMe: {
-    path: Routes.AboutMe,
-    name: 'AboutMe',
-    title: 'routes.title.about_me',
-    navbar: true,
-    accentColor: '#ff3e00',
-    bgColor: Colors.theme,
-  },
   Synology: {
     path: Routes.Synology,
     name: 'Synology',
@@ -109,6 +101,14 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     color: 'white',
     bgColor: 'black',
     accentColor: '#0D63F8',
+  },
+  AboutMe: {
+    path: Routes.AboutMe,
+    name: 'AboutMe',
+    title: 'routes.title.about_me',
+    navbar: true,
+    accentColor: '#ff3e00',
+    bgColor: Colors.theme,
   },
   Contact: {
     path: Routes.Contact,
