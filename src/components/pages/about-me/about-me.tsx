@@ -9,7 +9,7 @@ import type { Component } from 'solid-js';
 import { defineAboutMeComponents } from '~/apps/about-me/entry';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 
-import { ContactForm, HoverScale, InView, LottiePlayer, Page, Spinner } from '~/components';
+import { ContactForm, InView, LottiePlayer, Page, Spinner } from '~/components';
 import { Routes } from '~/services';
 import { BreakPoints } from '~/themes';
 
@@ -52,22 +52,19 @@ export const AboutMe: Component = () => {
             }}
           />
           <Show when={isFHD()}>
-            <HoverScale
-              initialDelay={1000}
-              boxProps={{
-                sx: {
-                  maxHeight: '700px',
-                  maxWidth: '800px',
-                  willChange: 'translate, opacity',
-                  transition: 'translate 1s, opacity 1s',
-                  transitionDelay: '0.25s',
-                  opacity: visible() ? 1 : 0,
-                  translate: visible() ? 0 : '50%',
-                },
+            <Box
+              sx={{
+                maxHeight: '700px',
+                maxWidth: '800px',
+                willChange: 'translate, opacity',
+                transition: 'translate 1s, opacity 1s',
+                transitionDelay: '0.25s',
+                opacity: visible() ? 1 : 0,
+                translate: visible() ? 0 : '50%',
               }}
             >
               <LottiePlayer autoplay loop mode="normal" src={ContactLottie} />
-            </HoverScale>
+            </Box>
           </Show>
         </InView>
       </Show>
