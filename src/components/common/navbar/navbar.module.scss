@@ -1,3 +1,5 @@
+@use 'src/themes/colors';
+
 .pages_nav {
   display: flex;
   flex-direction: column;
@@ -59,10 +61,12 @@
   font-weight: bold;
   font-size: 1em;
   letter-spacing: 1px;
+  transition: color 0.5s;
+  will-change: color;
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: colors.$white;
   }
 }
 
@@ -81,7 +85,7 @@ a.link {
 
 .link__page,
 .link__social {
-  color: #cecece;
+  color: colors.$grey;
 
   &::before {
     position: absolute;
@@ -98,7 +102,7 @@ a.link {
   }
 
   &.link__active::before {
-    color: #cecece;
+    color: colors.$grey;
     transform: scale3d(0.5, 1, 1);
   }
 
@@ -110,22 +114,22 @@ a.link {
   &:not(.link__faded) {
     &:hover::before,
     &:focus::before {
-      background: #fff;
+      background: colors.$white;
     }
   }
 }
 
 .link__faded {
-  color: #4f4f64;
+  color: colors.$purple-grey;
 
   &:hover,
   &:focus {
-    color: #5c5edc;
+    color: colors.$purple;
   }
 
   &::before {
     margin: 0 0 0 -15px;
-    background: #5c5edc;
+    background: colors.$purple;
   }
 }
 

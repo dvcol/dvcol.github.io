@@ -1,32 +1,20 @@
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, onCleanup, onMount } from 'solid-js';
+import { createMemo } from 'solid-js';
 
 import styles from './navbar-back.module.scss';
 
 import type { Component } from 'solid-js';
 
-import type { HoverState } from '~/utils';
-
 import { NavbarBackId, useNavbar, useRouteData } from '~/services';
-import { computeHoverState } from '~/utils';
+import { watchMouse } from '~/utils';
 
 export const NavbarBack: Component = () => {
   const { isScrolled, isOpen, isScrollable, currentPage } = useNavbar();
   const { active } = useRouteData();
   const accent = createMemo(() => active()?.accentColor || active()?.color);
 
-  const [hover, setHover] = createSignal<HoverState>('collapse');
-
-  const onMouseMove = ({ clientX, clientY }: MouseEvent) => {
-    const offsetX = window.innerWidth - clientX;
-    const offsetY = window.innerHeight - clientY;
-    const _hover = computeHoverState(hover(), { offsetX, offsetY });
-    if (hover() !== _hover) setHover(_hover);
-  };
-
-  onMount(() => window.addEventListener('mousemove', onMouseMove));
-  onCleanup(() => window.removeEventListener('mousemove', onMouseMove));
+  const { hover } = watchMouse({ corner: 'bottom-right' });
 
   const visible = createMemo(() => !isOpen() && isScrollable() && !!isScrolled());
   const collapsed = createMemo<boolean>(() => visible() && hover() === 'collapse');

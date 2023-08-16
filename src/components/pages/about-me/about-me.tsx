@@ -10,7 +10,7 @@ import { defineAboutMeComponents } from '~/apps/about-me/entry';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 
 import { ContactForm, InView, LottiePlayer, Page, Spinner } from '~/components';
-import { Routes } from '~/services';
+import { Routes, useNavbar } from '~/services';
 import { BreakPoints } from '~/themes';
 
 export const AboutMe: Component = () => {
@@ -27,10 +27,12 @@ export const AboutMe: Component = () => {
   const [visible, setVisible] = createSignal(false);
   const isFHD = useMediaQuery(`(min-width: ${BreakPoints.fhd}px)`);
 
+  const { isScrolled } = useNavbar();
+
   return (
     <Page maxWidth="fhd">
       <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
-        <Box sx={{ minHeight: '100dvh' }}>
+        <Box sx={{ minHeight: '100dvh', '--offset-scroll': `${isScrolled()}px` }}>
           <wc-about-me />
         </Box>
         <InView

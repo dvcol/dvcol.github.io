@@ -1,33 +1,20 @@
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, onCleanup, onMount } from 'solid-js';
+import { createMemo } from 'solid-js';
 
 import styles from './navbar-buttion.module.scss';
 
 import type { Component } from 'solid-js';
 
-import type { HoverState } from '~/utils';
-
 import { NavbarButtonId, useNavbar, useRouteData } from '~/services';
-import { computeHoverState } from '~/utils';
+import { watchMouse } from '~/utils';
 
 export const NavbarButton: Component = () => {
   const { isScrolled, isOpen, isDisabled, toggle } = useNavbar();
   const { active } = useRouteData();
   const accent = createMemo(() => active()?.accentColor || active()?.color);
 
-  const [hover, setHover] = createSignal<HoverState>('collapse');
-
-  const onMouseMove = ({ clientX, clientY }: MouseEvent) => {
-    const offsetX = window.innerWidth - clientX;
-    const offsetY = clientY;
-
-    const _hover = computeHoverState(hover(), { offsetX, offsetY });
-    if (hover() !== _hover) setHover(_hover);
-  };
-
-  onMount(() => window.addEventListener('mousemove', onMouseMove));
-  onCleanup(() => window.removeEventListener('mousemove', onMouseMove));
+  const { hover } = watchMouse();
 
   const collapsed = createMemo<boolean>(() => !!isScrolled() && hover() === 'collapse');
   const expand = createMemo<boolean>(() => !!isScrolled() && hover() === 'expand');

@@ -29,7 +29,8 @@ export const PageHeader: ParentComponent<PageHeaderProps> = props => {
         ...props.sectionProps,
         sx: {
           mt: {
-            [BreakPointsStop.default]: '1rem',
+            [BreakPointsStop.default]: '0.75rem',
+            [BreakPointsStop.mobile]: '1.25rem',
             [BreakPointsStop.tablet]: '3rem',
             [sideBySide()]: 0,
           },
