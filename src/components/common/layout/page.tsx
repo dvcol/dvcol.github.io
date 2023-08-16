@@ -41,6 +41,7 @@ const getSideBySideSx = (breakpoint: BreakPointsStop): SideBySideSx => ({
   },
   header: {
     maxWidth: { [breakpoint]: '50%' },
+    ml: { [breakpoint]: '3rem' },
   },
   section: {
     maxWidth: { [breakpoint]: '50%' },
