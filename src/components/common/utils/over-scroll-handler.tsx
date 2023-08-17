@@ -134,8 +134,8 @@ export const stopScrollPropagation = <T extends HTMLElement>(ref: T, options: St
     if (preventDefault) e.preventDefault();
   };
 
-  ref.addEventListener('touchmove', eventListener);
-  ref.addEventListener('wheel', eventListener);
+  ref.addEventListener('touchmove', eventListener, { passive: true });
+  ref.addEventListener('wheel', eventListener, { passive: true });
   ref.addEventListener('scroll', eventListener);
 
   onCleanup(() => {
