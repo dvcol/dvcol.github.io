@@ -141,7 +141,7 @@ export const Home: Component = () => {
                   zIndex: clicked() === id ? zIndex.Layer3 + 10 : undefined,
                 }}
               >
-                <EnterTranslate initialDelay={1 + 100 * index()}>
+                <EnterTranslate initialDelay={600 + 120 * index()}>
                   <HoverScale from={0.95}>
                     <ImageCard
                       title={t(`routes.${camelToSnakeCase(title)}`)}
