@@ -37,11 +37,11 @@ export const Background: ParentComponent<BackgroundProps> = props => {
   });
 
   return (
-    <Box class={styles.background_container} sx={{ backgroundColor: previous()?.bgColor ?? Colors.theme }}>
+    <Box class={styles.background_container} sx={{ background: previous()?.bgColor ?? Colors.theme }}>
       <Box
         class={styles.background}
         sx={{
-          backgroundColor: props.color,
+          background: props.color,
           transition: `clip-path ${AnimationDuration.PageBackground}ms ease-out`,
           ...state(),
         }}

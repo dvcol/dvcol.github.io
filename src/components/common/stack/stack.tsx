@@ -103,7 +103,7 @@ export const Stack: ParentComponent = props => {
           <StackPage
             id={`stack-page-${name}`}
             class={styles.page}
-            style={{ ...transform()({ offset: 3 - index() / 2 }), color, 'background-color': bgColor }}
+            style={{ ...transform()({ offset: 3 - index() / 2 }), color, background: bgColor }}
             onClick={() => navigate(path)}
           >
             <Box class={styles.page__title}>{t(title)}</Box>
@@ -115,7 +115,7 @@ export const Stack: ParentComponent = props => {
         active={active()}
         open={showOpen()}
         class={styles.page}
-        style={transform()({ offset: 2, filter: 'none' }, { color: active()?.color, 'background-color': background() })}
+        style={transform()({ offset: 2, filter: 'none' }, { color: active()?.color, background: background() })}
         onClick={() => close()}
       >
         <StackPageTransition />
