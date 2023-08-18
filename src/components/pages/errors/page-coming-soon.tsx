@@ -5,7 +5,7 @@ import { ErrorPage } from './error-page';
 import type { Component } from 'solid-js';
 
 import ComingSoonLottie from '~/assets/lottie/30331-isometric-internet-shop.json?url';
-import { LottiePlayer } from '~/components';
+import { LottiePlayer } from '~/components/common//lottie';
 import { BreakPointsStop, Colors } from '~/themes';
 
 export const PageComingSoon: Component<{ background?: string }> = props => {

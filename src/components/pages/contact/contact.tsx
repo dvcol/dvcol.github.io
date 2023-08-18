@@ -9,7 +9,10 @@ import { ContactForm } from './contact-form';
 import type { Component } from 'solid-js';
 
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
-import { HoverScale, LottiePlayer, Page, PageHeader } from '~/components';
+import { HoverScale } from '~/components/common/animation';
+import { Page, PageHeader } from '~/components/common/layout';
+import { LottiePlayer } from '~/components/common/lottie';
+
 import { RoutesMeta, useNavbar } from '~/services';
 import { BreakPointsStop } from '~/themes';
 import { sleep, useWatchResize } from '~/utils';

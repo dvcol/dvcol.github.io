@@ -5,7 +5,7 @@ import { ErrorPage } from './error-page';
 import type { Component } from 'solid-js';
 
 import SecurityLottie from '~/assets/lottie/78078-security-system.json?url';
-import { LottiePlayer } from '~/components';
+import { LottiePlayer } from '~/components/common//lottie';
 import { RoutesMeta } from '~/services';
 
 export const PageUnauthorized: Component = () => {

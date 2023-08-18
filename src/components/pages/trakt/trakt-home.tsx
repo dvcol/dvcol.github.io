@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
 
-import { PageComingSoon } from '~/components';
+import { PageComingSoon } from '~/components/pages';
 import { RoutesMeta } from '~/services';
 
 export const TraktHome: Component = () => {

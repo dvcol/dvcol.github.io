@@ -7,8 +7,6 @@ import Particles from 'solid-particles';
 
 import { loadFull } from 'tsparticles';
 
-import { loadPolygonMaskPlugin } from 'tsparticles-plugin-polygon-mask';
-
 import styles from './particles-container.module.scss';
 
 import type { ParentComponent } from 'solid-js';
@@ -18,7 +16,6 @@ export const ParticlesContainer: ParentComponent<Omit<ParticlesProps, 'id' | 'in
   const [{ children }, _props] = splitProps(props, ['children']);
   const particlesInit: ParticlesProps['init'] = async main => {
     await loadFull(main);
-    await loadPolygonMaskPlugin(main);
   };
 
   const [loaded, setLoaded] = createSignal(false);

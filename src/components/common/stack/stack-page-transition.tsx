@@ -2,7 +2,7 @@ import { createEffect } from 'solid-js';
 
 import type { Component } from 'solid-js';
 
-import { Transition } from '~/components';
+import { Transition } from '~/components/common/layout';
 import { useNavbar, usePageTransition } from '~/services';
 
 export const StackPageTransition: Component = () => {

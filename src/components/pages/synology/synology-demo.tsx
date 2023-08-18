@@ -19,7 +19,9 @@ import type { ContentAppHtmlElement, StandaloneAppHtmlElement, StandaloneConnect
 
 import { defineSynologyDownloadComponents } from '~/apps/synology-extension/entry';
 
-import { GithubLoop, Page, PageHeader, Spinner, WebstoreSvg } from '~/components/common';
+import { Page, PageHeader } from '~/components/common/layout';
+import { Spinner } from '~/components/common/loader';
+import { GithubLoop, WebstoreSvg } from '~/components/common/svg';
 import { AppLink } from '~/models';
 import { Routes, RoutesMeta } from '~/services';
 import { BreakPointsStop } from '~/themes';

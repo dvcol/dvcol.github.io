@@ -2,7 +2,7 @@ import { createContext, useContext } from 'solid-js';
 
 import type { Accessor, Setter } from 'solid-js';
 
-import type { TransitionProps } from '~/components';
+import type { TransitionProps } from '~/components/common/layout';
 
 export type TransitionOption = Omit<TransitionProps, 'open'> & {
   event?: MouseEvent;

@@ -5,7 +5,7 @@ import { ErrorPage } from './error-page';
 import type { Component } from 'solid-js';
 
 import PoliceLottie from '~/assets/lottie/84311-cop-riding-on-a-motorcycle.json?url';
-import { LottiePlayer } from '~/components';
+import { LottiePlayer } from '~/components/common//lottie';
 import { RoutesMeta } from '~/services';
 
 export const PageForbidden: Component = () => {

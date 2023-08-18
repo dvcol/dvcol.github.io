@@ -10,7 +10,7 @@ import type { JSX, ParentComponent } from 'solid-js';
 
 import type { PropsWithRef } from '~/utils';
 
-import { NavbarHeader } from '~/components';
+import { NavbarHeader } from '~/components/common/navbar';
 import { BreakPointsStop } from '~/themes';
 
 export type HeaderProps = PropsWithRef<{

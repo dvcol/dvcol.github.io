@@ -12,7 +12,9 @@ import type { CardContentProps } from '@suid/material/CardContent';
 import type { GridProps } from '@suid/material/Grid';
 import type { Component } from 'solid-js';
 
-import type { FormInputProps, FormSelectProps, FormValidation, HeaderProps } from '~/components';
+import type { FormInputProps, FormSelectProps, FormValidation } from '~/components/common/form';
+
+import type { HeaderProps } from '~/components/common/layout';
 
 import type { ContactTemplateForm } from '~/models';
 
@@ -20,7 +22,8 @@ import type { PropsWithRef } from '~/utils';
 
 import type { FormGroupValidation } from '~/utils/validation.utils';
 
-import { FormInput, FormSelect, stopScrollPropagation } from '~/components';
+import { FormInput, FormSelect } from '~/components/common/form';
+import { stopScrollPropagation } from '~/components/common/utils';
 import { emailJS } from '~/models';
 
 import { BreakPointsStop } from '~/themes';

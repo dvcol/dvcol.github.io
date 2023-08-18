@@ -2,7 +2,7 @@ import type { Component, JSX } from 'solid-js';
 
 import type { PropsWithRef } from '~/utils';
 
-import { PageHeader } from '~/components';
+import { PageHeader } from '~/components/common/layout';
 
 export type ErrorHeaderProps = PropsWithRef<{
   title?: JSX.Element | string;

@@ -4,7 +4,7 @@ import { createSignal, onCleanup } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 
-import type { TransitionProps } from '~/components';
+import type { TransitionProps } from '~/components/common/layout';
 import type { TransitionOption } from '~/services';
 
 import type { TransitionState } from '~/services/navbar/transition.context';

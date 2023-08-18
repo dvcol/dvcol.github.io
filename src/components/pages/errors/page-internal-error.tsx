@@ -5,7 +5,7 @@ import { ErrorPage } from './error-page';
 import type { Component } from 'solid-js';
 
 import MaintenanceLottie from '~/assets/lottie/6873-under-maintenance.json?url';
-import { LottiePlayer } from '~/components';
+import { LottiePlayer } from '~/components/common//lottie';
 import { RoutesMeta } from '~/services';
 
 export const PageInternalError: Component = () => {

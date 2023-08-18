@@ -12,7 +12,7 @@ import type { Component } from 'solid-js';
 
 import type { RouteMeta } from '~/services';
 
-import { GithubLoop } from '~/components';
+import { GithubLoop } from '~/components/common/svg';
 
 import { AppLink } from '~/models';
 import { useNavbar, useRouteData } from '~/services';

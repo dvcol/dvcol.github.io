@@ -5,9 +5,10 @@ import { ErrorHeader } from './error-header';
 import type { ErrorHeaderProps } from './error-header';
 import type { ParentComponent } from 'solid-js';
 
-import type { PageProps } from '~/components';
+import type { PageProps } from '~/components/common/layout';
 
-import { HoverScale, Page } from '~/components';
+import { HoverScale } from '~/components/common/animation';
+import { Page } from '~/components/common/layout';
 import { BreakPointsStop } from '~/themes';
 
 export type ErrorPageProps = ErrorHeaderProps & { page?: Omit<PageProps, 'header'>; contentProps?: PageProps['contentProps'] };

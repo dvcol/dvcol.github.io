@@ -29,3 +29,10 @@ export enum BreakPoints {
 }
 
 export type BreakPointsKeys = keyof typeof BreakPoints;
+
+export type ResponsiveStyleValue<T> =
+  | T
+  | Array<T | undefined>
+  | {
+      [key in BreakPoints]?: T;
+    };

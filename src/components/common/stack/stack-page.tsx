@@ -8,12 +8,12 @@ import styles from './stack-page.module.scss';
 import type BoxProps from '@suid/material/Box/BoxProps';
 import type { Accessor, JSX, ParentComponent } from 'solid-js';
 
-import type { OnTriggerCallback } from '~/components';
+import type { OnTriggerCallback } from '~/components/common/utils/';
 
 import type { RouteMeta } from '~/services';
 
-import { useOverScrollHandler } from '~/components';
 import { ProgressBar } from '~/components/common/loader/progress-bar';
+import { useOverScrollHandler } from '~/components/common/utils';
 import { useNavbar } from '~/services';
 import { Colors } from '~/themes';
 

@@ -2,9 +2,9 @@ import { createMemo } from 'solid-js';
 
 import type { ParentComponent } from 'solid-js';
 
-import type { HeaderProps } from '~/components';
+import type { HeaderProps } from '~/components/common/layout';
 
-import { Header } from '~/components';
+import { Header } from '~/components/common/layout';
 import { BreakPointsStop } from '~/themes';
 
 export type PageHeaderProps = HeaderProps & { sideBySide?: boolean | BreakPointsStop };

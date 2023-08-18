@@ -9,7 +9,12 @@ import type { Component } from 'solid-js';
 import { defineAboutMeComponents } from '~/apps/about-me/entry';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 
-import { ContactForm, InView, LottiePlayer, Page, Spinner } from '~/components';
+import { Page } from '~/components/common/layout';
+import { Spinner } from '~/components/common/loader';
+import { LottiePlayer } from '~/components/common/lottie';
+import { InView } from '~/components/common/utils';
+import { ContactForm } from '~/components/pages';
+
 import { Routes, useNavbar } from '~/services';
 import { BreakPoints } from '~/themes';
 

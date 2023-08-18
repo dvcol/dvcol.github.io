@@ -18,6 +18,7 @@
     "dev": "vite",
     "dev:sw": "SERVICE_WOKER=true vite",
     "build": "vite build",
+    "build:analyze": "vite-bundle-visualizer",
     "serve": "pnpm run build && vite preview",
     "test:unit": "vitest run --environment jsdom --coverage --passWithNoTests",
     "test:watch": "vitest --environment jsdom",
@@ -45,8 +46,8 @@
     "solid-particles": "^2.9.3",
     "solid-toast": "^0.5.0",
     "tsparticles": "^2.9.3",
-    "tsparticles-plugin-polygon-mask": "^2.9.3",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vite-bundle-visualizer": "^0.10.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",

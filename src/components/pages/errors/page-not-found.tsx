@@ -6,7 +6,7 @@ import type { Component } from 'solid-js';
 
 import NotFoundLottie from '~/assets/lottie/55873-404-error-page.json?url';
 
-import { LottiePlayer } from '~/components';
+import { LottiePlayer } from '~/components/common//lottie';
 import { RoutesMeta } from '~/services';
 
 export const PageNotFound: Component = () => {

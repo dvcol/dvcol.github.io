@@ -7,11 +7,11 @@ import type { CardActionsProps } from '@suid/material/CardActions';
 import type { CardMediaProps } from '@suid/material/CardMedia';
 import type { JSX, ParentComponent } from 'solid-js';
 
-import type { LottiePlayerProps } from '~/components';
+import type { LottiePlayerProps } from '~/components/common/lottie';
 
 import type { ResponsiveStyleValue } from '~/themes';
 
-import { LottiePlayer } from '~/components';
+import { LottiePlayer } from '~/components/common/lottie';
 
 type ImageCardMediaProps = CardMediaProps & {
   component?: keyof JSX.IntrinsicElements;
