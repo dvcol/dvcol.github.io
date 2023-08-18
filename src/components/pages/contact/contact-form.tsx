@@ -7,6 +7,8 @@ import RemoveSvg from 'line-md/svg/remove.svg?component-solid';
 
 import { createEffect, createMemo, createSignal, For } from 'solid-js';
 
+import { toast } from 'solid-toast';
+
 import type CardProps from '@suid/material/Card/CardProps';
 import type { CardContentProps } from '@suid/material/CardContent';
 import type { GridProps } from '@suid/material/Grid';
@@ -68,10 +70,12 @@ export const ContactForm: Component<ContactFormProps> = props => {
       setSending(true);
       const _form = form().value;
       await send(emailJS.service, emailJS.template, _form, emailJS.key);
+      toast.success(t('toast.mail_success'));
       setForm({});
       props.onSubmit?.(_form);
     } catch (e) {
       console.error('Failed to send message', e);
+      toast.error(t('toast.mail_failure'));
     } finally {
       setSending(false);
     }

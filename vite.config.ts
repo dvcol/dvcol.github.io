@@ -28,7 +28,7 @@ export default defineConfig({
       defaultAsComponent: true,
     }),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       includeAssets: ['**/favicon.ico', '**/icon.svg', '**/icon*.png'],
       manifest: {
         name: 'Dinh-Van Colomban',
@@ -88,6 +88,7 @@ export default defineConfig({
         synology: 'src/apps/synology-extension/entry.ts',
       },
       output: {
+        manualChunks: {},
         chunkFileNames: 'chunks/[name].chunk.[hash].js',
         entryFileNames: entry => `entry/[name].entry${entry.name !== 'worker' ? '.[hash]' : ''}.js`,
         assetFileNames: asset => {
