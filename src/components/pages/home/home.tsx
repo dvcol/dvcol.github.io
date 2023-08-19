@@ -32,10 +32,6 @@ export const Home: Component = () => {
       title: RoutesMeta.SynologyDemo.name,
       videoProps: {
         source: { src: 'assets/video/synology-download-preview.hevc.mp4', type: MimeType.MP4 },
-        sx: {
-          objectViewBox: 'inset(-6rem)',
-          background: `linear-gradient(180deg, ${RoutesMeta.SynologyDemo.accentColor}, black)`,
-        },
       },
       bgColors: {
         source: RoutesMeta.SynologyDemo.accentColor,
