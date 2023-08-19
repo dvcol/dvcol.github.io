@@ -5,6 +5,7 @@ import { createSignal, Show, splitProps } from 'solid-js';
 import type CardProps from '@suid/material/Card/CardProps';
 import type { CardActionsProps } from '@suid/material/CardActions';
 import type { CardMediaProps } from '@suid/material/CardMedia';
+import type SxProps from '@suid/system/sxProps';
 import type { JSX, ParentComponent } from 'solid-js';
 
 import type { LottiePlayerProps } from '~/components/common/lottie';
@@ -22,6 +23,7 @@ type VideoProps = Partial<Pick<HTMLVideoElement, 'autoplay' | 'muted' | 'loop' |
   source: Pick<HTMLSourceElement, 'src' | 'type'>;
   fit?: 'cover' | 'fill' | 'contain';
   position?: 'top' | 'bottom' | 'center' | 'left' | 'right';
+  sx?: SxProps;
 };
 
 export type ImageCardProps = {
@@ -65,17 +67,17 @@ export const ImageCard: ParentComponent<ImageCardProps> = props => {
           <Show when={props.videoProps}>
             <Box
               component="video"
+              autoplay
+              muted
+              loop
+              playsinline
               sx={{
                 width: '100%',
                 height: '100%',
                 objectFit: props.videoProps?.fit ?? 'cover',
                 objectPosition: props.videoProps?.position ?? 'top',
+                ...props.videoProps?.sx,
               }}
-              autoplay
-              muted
-              loop
-              playsinline
-              {...props.videoProps}
             >
               <source {...props.videoProps?.source} />
             </Box>

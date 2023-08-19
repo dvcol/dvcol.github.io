@@ -17,7 +17,7 @@ import { ParticlesContainer, TriangleParticles } from '~/components/common/parti
 
 import { MimeType } from '~/models';
 import { RoutesMeta, useNavbar, usePageTransition } from '~/services';
-import { BreakPointsStop, zIndex } from '~/themes';
+import { BreakPointsStop, Colors, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
 type Cards = ImageCardProps & { id: string; path: string; title: string; bgColors: { source?: string; target?: string } };
@@ -30,9 +30,15 @@ export const Home: Component = () => {
       id: uuid(),
       path: RoutesMeta.SynologyDemo.path,
       title: RoutesMeta.SynologyDemo.name,
-      videoProps: { source: { src: 'assets/video/synology_demo.mp4', type: MimeType.MP4 } },
+      videoProps: {
+        source: { src: 'assets/video/synology-download-preview.hevc.mp4', type: MimeType.MP4 },
+        sx: {
+          objectViewBox: 'inset(-6rem)',
+          background: `linear-gradient(180deg, ${RoutesMeta.SynologyDemo.accentColor}, black)`,
+        },
+      },
       bgColors: {
-        source: RoutesMeta.SynologyDemo.bgColor,
+        source: RoutesMeta.SynologyDemo.accentColor,
         target: RoutesMeta.SynologyDemo.bgColor,
       },
     },
@@ -44,17 +50,17 @@ export const Home: Component = () => {
       lottieProps: { src: AboutMeSvg },
       bgColors: {
         source: 'darkblue',
-        target: RoutesMeta.AboutMe.bgColor,
+        target: '#3f01fb',
       },
     },
     {
       id: uuid(),
       path: RoutesMeta.Trakt.path,
       title: RoutesMeta.Trakt.name,
-      imageProps: { sx: { background: RoutesMeta.Trakt.bgColor } },
+      imageProps: { sx: { background: '#36004d' } },
       lottieProps: { src: ComingSoonLottie },
       bgColors: {
-        source: RoutesMeta.Trakt.bgColor,
+        source: '#36004d',
         target: RoutesMeta.Trakt.bgColor,
       },
     },
@@ -74,11 +80,11 @@ export const Home: Component = () => {
   const { transition } = usePageTransition();
   const [clicked, setClicked] = createSignal();
 
-  const onClick = (event: MouseEvent, { id, path, bgColors }: Pick<Cards, 'id' | 'path' | 'bgColors'>) => {
+  const onClick = (event: MouseEvent, { id, path, bgColors: { source, target } }: Pick<Cards, 'id' | 'path' | 'bgColors'>) => {
     setClicked(id);
     return transition({
       event,
-      colors: [bgColors.source, RoutesMeta.Home.bgColor, bgColors.target],
+      colors: [source, Colors.background, target],
       position: {
         top: event.clientY,
         left: event.clientX,

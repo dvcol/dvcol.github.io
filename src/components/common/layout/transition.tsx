@@ -28,7 +28,7 @@ export const Transition: Component<TransitionProps> = props => {
       clipPath: `circle(${clipPath()}%)`,
       transitionDuration: `${computeStepDuration(index)}ms`,
       zIndex: props.fade ? zIndex.Default : `${zIndex.Layer3 + 1 + index}`,
-      backgroundColor: props.colors?.[index],
+      background: props.colors?.[index],
     };
   });
 
