@@ -38,7 +38,19 @@ export const AboutMe: Component = () => {
     <Page maxWidth="fhd">
       <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
         <Box sx={{ minHeight: '100dvh', '--offset-scroll': `${isScrolled()}px` }}>
-          <wc-about-me />
+          <wc-about-me>
+            <Box
+              sx={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                height: '100%',
+                width: '100%',
+                background: 'linear-gradient(-45deg, #ff5600, #ff0667, #8400f8, #1d00ff)',
+                backgroundSize: '400% 400%',
+              }}
+            />
+          </wc-about-me>
         </Box>
         <InView
           style={{ display: 'flex', 'justify-content': 'space-between', 'margin-bottom': '4rem' }}
