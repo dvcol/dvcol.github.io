@@ -36,7 +36,7 @@ export const AboutMe: Component = () => {
 
   return (
     <Page maxWidth="fhd">
-      <Show when={loaded()} fallback={<Spinner center size="10em" debounce={500} />}>
+      <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
         <Box sx={{ minHeight: '100dvh', '--offset-scroll': `${isScrolled()}px` }}>
           <wc-about-me container="stack-page-active">
             <Box

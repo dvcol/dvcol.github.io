@@ -7,14 +7,15 @@ import styles from './spinner.module.scss';
 import type BoxProps from '@suid/material/Box/BoxProps';
 import type { Component } from 'solid-js';
 
-export type SpinnerProps = { color?: string; accent?: string; size?: string; sx?: BoxProps['sx']; center?: boolean; debounce?: number };
+const defaultSize = 5;
+export type SpinnerProps = { color?: string; accent?: string; size?: number; sx?: BoxProps['sx']; center?: boolean; debounce?: number };
 export const Spinner: Component<SpinnerProps> = props => {
   const center = createMemo<Partial<BoxProps['sx']>>(() =>
     props.center
       ? {
           position: 'absolute',
-          top: 'calc(50% - 5rem)',
-          left: 'calc(50% - 5rem)',
+          top: `calc(50% - ${props.size / 2 ?? defaultSize / 2}em)`,
+          left: `calc(50% - ${props.size / 2 ?? defaultSize / 2}em)`,
         }
       : {},
   );
@@ -37,8 +38,8 @@ export const Spinner: Component<SpinnerProps> = props => {
         component="span"
         class={styles.spinner}
         sx={{
-          width: props.size,
-          height: props.size,
+          width: `${props.size ?? defaultSize}em`,
+          height: `${props.size ?? defaultSize}em`,
           color: props.color ?? 'white',
           '&::after': {
             color: props.accent ?? '#90caf9',

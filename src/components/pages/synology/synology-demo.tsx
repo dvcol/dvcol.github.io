@@ -225,7 +225,7 @@ export const SynologyDemo: Component = () => {
       }}
     >
       <wc-synology-download-content ref={setContentRef} />
-      <Show when={loaded()} fallback={<Spinner center size="5em" debounce={500} />}>
+      <Show when={loaded()} fallback={<Spinner center size={5} debounce={500} />}>
         <Motion
           class={styles.shadow}
           style={{ width: '100%', height: '100%' }}
@@ -233,7 +233,7 @@ export const SynologyDemo: Component = () => {
           transition={{ opacity: { duration: 1 }, translate: { duration: 1 } }}
         >
           <wc-synology-download-standalone class={styles.web_component} ref={setStandaloneRef} basename="synology/demo" data-over-scroll="false">
-            <Spinner size={'5em'} sx={{ alignSelf: 'center' }} />
+            <Spinner size={5} sx={{ alignSelf: 'center' }} />
           </wc-synology-download-standalone>
         </Motion>
       </Show>
