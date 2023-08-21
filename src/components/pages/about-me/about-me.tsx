@@ -13,7 +13,7 @@ import { Page } from '~/components/common/layout';
 import { Spinner } from '~/components/common/loader';
 import { LottiePlayer } from '~/components/common/lottie';
 import { InView } from '~/components/common/utils';
-import { ContactForm } from '~/components/pages';
+import { ContactForm } from '~/components/pages/contact';
 
 import { Routes, useNavbar } from '~/services';
 import { BreakPoints } from '~/themes';
@@ -26,7 +26,7 @@ export const AboutMe: Component = () => {
     .then(() => setLoaded(true))
     .catch(e => {
       console.error('Failed to load About Me web component.', e);
-      navigate(Routes.Error);
+      setTimeout(() => navigate(Routes.Error), 500);
     });
 
   const [visible, setVisible] = createSignal(false);
@@ -37,7 +37,7 @@ export const AboutMe: Component = () => {
   return (
     <Page maxWidth="fhd">
       <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
-        <Box sx={{ minHeight: '100dvh', '--offset-scroll': `${isScrolled()}px` }}>
+        <Box sx={{ minHeight: 'calc(100dvh + 5rem)', '--offset-scroll': `${isScrolled()}px` }}>
           <wc-about-me container="stack-page-active">
             <Box
               sx={{
@@ -49,7 +49,9 @@ export const AboutMe: Component = () => {
                 background: 'linear-gradient(-45deg, #ff5600, #ff0667, #8400f8, #1d00ff)',
                 backgroundSize: '400% 400%',
               }}
-            />
+            >
+              <Spinner center size={10} debounce={500} />
+            </Box>
           </wc-about-me>
         </Box>
         <InView

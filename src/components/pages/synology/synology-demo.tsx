@@ -54,7 +54,7 @@ export const SynologyDemo: Component = () => {
     .then(() => setLoaded(true))
     .catch(e => {
       console.error('Failed to define synology web components', e);
-      navigate(Routes.Error);
+      setTimeout(() => navigate(Routes.Error), 500);
     });
 
   const onConnected = (e: Event) => (e as StandaloneConnectedEvent).detail?.login();

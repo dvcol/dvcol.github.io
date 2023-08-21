@@ -1,6 +1,6 @@
 import { Box } from '@suid/material';
 
-import { createMemo, createSignal, onCleanup, onMount, Show } from 'solid-js';
+import { createMemo, createSignal, onCleanup, onMount } from 'solid-js';
 
 import styles from './spinner.module.scss';
 
@@ -33,22 +33,24 @@ export const Spinner: Component<SpinnerProps> = props => {
   onCleanup(() => clearTimeout(timeout));
 
   return (
-    <Show when={debounced()}>
-      <Box
-        component="span"
-        class={styles.spinner}
-        sx={{
-          width: `${props.size ?? defaultSize}em`,
-          height: `${props.size ?? defaultSize}em`,
-          color: props.color ?? 'white',
-          '&::after': {
-            color: props.accent ?? '#90caf9',
-          },
-          ...center(),
-          ...props.sx,
-        }}
-      />
-    </Show>
+    <Box
+      component="span"
+      class={styles.spinner}
+      sx={{
+        opacity: debounced() ? 1 : 0,
+        scale: debounced() ? '1' : '0.8',
+        willChange: 'opacity, scale',
+        transition: 'opacity 1s, scale 2s',
+        width: `${props.size ?? defaultSize}em`,
+        height: `${props.size ?? defaultSize}em`,
+        color: props.color ?? 'white',
+        '&::after': {
+          color: props.accent ?? '#90caf9',
+        },
+        ...center(),
+        ...props.sx,
+      }}
+    />
   );
 };
 
