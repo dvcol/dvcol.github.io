@@ -14,6 +14,7 @@ export enum Routes {
   /** Public pages **/
   Home = '/',
   Trakt = '/trakt',
+  TraktDemo = '/trakt/demo',
   AboutMe = '/about/me',
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
@@ -80,6 +81,15 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Trakt,
     name: 'Trakt',
     title: 'routes.title.trakt',
+    navbar: true,
+    color: Colors.white,
+    bgColor: Colors.trakt,
+    transition: AnimationDuration.PageTransition,
+  },
+  TraktDemo: {
+    path: Routes.TraktDemo,
+    name: 'TraktDemo',
+    title: 'routes.title.trakt_demo',
     navbar: true,
     color: Colors.white,
     bgColor: Colors.trakt,
@@ -171,6 +181,11 @@ export const RoutesDefinitions: RouteDefinition[] = [
     path: Routes.Trakt,
     component: lazy(() => import('~/components/pages/trakt/trakt-home')),
     data: getData(RoutesMeta.Trakt),
+  },
+  {
+    path: Routes.TraktDemo,
+    component: lazy(() => import('~/components/pages/trakt/trakt-demo')),
+    data: getData(RoutesMeta.TraktDemo),
   },
   {
     path: `${Routes.AboutMe}/*`,
