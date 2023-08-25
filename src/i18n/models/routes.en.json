@@ -1,6 +1,7 @@
 {
   "home": "Home",
   "trakt": "Trakt",
+  "trakt_demo": "Trakt Demo",
   "synology": "Synology",
   "synology_demo": "Synology Demo",
   "about_me": "About Me",
@@ -12,6 +13,7 @@
   "title": {
     "home": "Dinh-Van Colomban | Project portfolio",
     "trakt": "Trakt | A chrome extension for Trakt.tv",
+    "trakt_demo": "Trakt Demo | Interactive demo of Side Trakt",
     "synology": "Synology | A chrome extension for Synology NAS",
     "synology_demo": "Synology Demo | Interactive demo of Synology Download",
     "about_me": "About Me | About my projects and experiences",

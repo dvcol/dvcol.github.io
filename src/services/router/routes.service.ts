@@ -93,7 +93,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     color: Colors.white,
     bgColor: Colors.trakt,
-    transition: AnimationDuration.PageTransition,
   },
   Synology: {
     path: Routes.Synology,
@@ -183,7 +182,7 @@ export const RoutesDefinitions: RouteDefinition[] = [
     data: getData(RoutesMeta.Trakt),
   },
   {
-    path: Routes.TraktDemo,
+    path: `${Routes.TraktDemo}/*`,
     component: lazy(() => import('~/components/pages/trakt/trakt-demo')),
     data: getData(RoutesMeta.TraktDemo),
   },

@@ -18,6 +18,7 @@
     "dev": "vite",
     "dev:sw": "SERVICE_WOKER=true vite",
     "dev:about-me": "VITE_ABOUT_ME=http://192.168.1.68:4173 vite",
+    "dev:trakt": "VITE_TRAKT=http://192.168.1.68:8080 vite",
     "build": "vite build",
     "build:analyze": "vite-bundle-visualizer",
     "serve": "pnpm run build && vite preview",
@@ -33,7 +34,7 @@
   "dependencies": {
     "@dvcol/about-me": "^1.2.2",
     "@dvcol/synology-extension": "^3.8.6",
-    "@dvcol/trakt-extension": "^1.1.1",
+    "@dvcol/trakt-extension": "^1.1.3",
     "@emailjs/browser": "^3.11.0",
     "@lottiefiles/lottie-player": "^2.0.2",
     "@motionone/solid": "^10.16.2",
