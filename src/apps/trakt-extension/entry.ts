@@ -12,11 +12,12 @@ declare module 'solid-js' {
 
 const defineTraktExtensionComponents = async () => {
   if (customElements.get('wc-trakt-extension')) return;
-  const baseUrl = 'trakt-extension';
+  const remoteUrl = 'trakt-extension';
+  const baseUrl = import.meta.env.VITE_TRAKT ? './' : `/${remoteUrl}/`;
 
-  const domain = import.meta.env.VITE_TRAKT ?? `${AppLink.pages}/${baseUrl}`;
+  const domain = import.meta.env.VITE_TRAKT ?? `${AppLink.pages}/${remoteUrl}`;
   const trakt: TraktExtension = await import(/* @vite-ignore  */ `${domain}/entry/index.js`);
-  return trakt.defineComponent({ baseName: '/trakt/demo', baseUrl: '/trakt-extension/' });
+  return trakt.defineComponent({ baseName: '/trakt/demo', baseUrl });
 };
 
 export { defineTraktExtensionComponents };
