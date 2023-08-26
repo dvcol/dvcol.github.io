@@ -125,6 +125,7 @@ export const Home: Component = () => {
               [BreakPointsStop.qhd]: 6,
               [BreakPointsStop.uhd]: 10,
             },
+            pointerEvents: 'none',
           }}
           spacing={2}
         >
@@ -143,6 +144,7 @@ export const Home: Component = () => {
                   opacity: clicked() === id ? 0 : 1,
                   scale: clicked() === id ? '1.5' : '1',
                   zIndex: clicked() === id ? zIndex.Layer3 + 10 : undefined,
+                  pointerEvents: 'all',
                 }}
               >
                 <EnterTranslate initialDelay={200 + 120 * index()}>
