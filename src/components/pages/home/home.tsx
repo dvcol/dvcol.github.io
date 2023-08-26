@@ -51,13 +51,13 @@ export const Home: Component = () => {
     },
     {
       id: uuid(),
-      path: RoutesMeta.Trakt.path,
-      title: RoutesMeta.Trakt.name,
-      imageProps: { sx: { background: '#36004d' } },
+      path: RoutesMeta.TraktDemo.path,
+      title: RoutesMeta.TraktDemo.name,
+      imageProps: { sx: { background: RoutesMeta.TraktDemo.accentColor } },
       lottieProps: { src: ComingSoonLottie },
       bgColors: {
-        source: '#36004d',
-        target: RoutesMeta.Trakt.bgColor,
+        source: RoutesMeta.TraktDemo.accentColor,
+        target: RoutesMeta.TraktDemo.bgColor,
       },
     },
     {

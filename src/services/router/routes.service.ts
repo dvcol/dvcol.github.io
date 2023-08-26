@@ -87,16 +87,15 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.trakt',
     navbar: true,
     color: Colors.white,
-    bgColor: Colors.trakt,
-    transition: AnimationDuration.PageTransition,
   },
   TraktDemo: {
     path: Routes.TraktDemo,
     name: 'TraktDemo',
     title: 'routes.title.trakt_demo',
     navbar: true,
+    accentColor: Colors.trakt,
     color: Colors.white,
-    bgColor: Colors.trakt,
+    bgColor: Colors.black,
   },
   Synology: {
     path: Routes.Synology,
