@@ -70,7 +70,10 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   return (
     <>
       <Show when={showProgress()}>
-        <ProgressBar container={containerRef} boxProps={{ sx: { background: accentColor() } }} />
+        <ProgressBar
+          container={containerRef}
+          boxProps={{ sx: { background: accentColor(), transition: 'background-color 0.5s', willChange: 'background-color' } }}
+        />
       </Show>
       <Box
         ref={setContainerRef}

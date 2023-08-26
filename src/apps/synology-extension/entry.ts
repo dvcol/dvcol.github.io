@@ -27,7 +27,7 @@ const defineSynologyDownloadComponents = async () => {
   const { defineComponents, activateDemo }: SynologyDownload = await import(/* @vite-ignore */ `${AppLink.pages}/${baseUrl}/entry/index.js`);
   const en = await messages$.then(r => r.json());
 
-  defineComponents({ patch: true, locales: { en } })
+  return defineComponents({ patch: true, locales: { en } })
     .then(() => {
       const { task, download } = window._synology?.mock ?? {};
       if (task && download) activateDemo({ task: [task, 3000], download: [download, 3000] });

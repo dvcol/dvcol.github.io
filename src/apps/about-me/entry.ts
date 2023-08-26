@@ -16,7 +16,7 @@ const defineAboutMeComponents = async () => {
   if (customElements.get('wc-about-me')) return;
   const domain = import.meta.env.VITE_ABOUT_ME ?? AppLink.pages;
   const aboutMe: AboutMe = await import(/* @vite-ignore  */ `${domain}/${baseUrl}/entry/index.js`);
-  aboutMe.defineComponent();
+  return aboutMe.defineComponent();
 };
 
 export { defineAboutMeComponents };

@@ -2,12 +2,14 @@ import { Box } from '@suid/material';
 
 import { createEffect, createMemo, createSignal, onCleanup, Show } from 'solid-js';
 
+import type BoxProps from '@suid/material/Box/BoxProps';
 import type { ParentComponent } from 'solid-js';
 import type { JSX } from 'solid-js/types/jsx';
 
 export const NavbarSocial: ParentComponent<{
   link: string;
   class?: string;
+  sx?: BoxProps['sx'];
   label?: string;
   show?: boolean;
   delay?: number;
@@ -27,7 +29,7 @@ export const NavbarSocial: ParentComponent<{
   const fallback = createMemo(() => props.fallback ?? <Box component={'span'} sx={{ display: 'inline-block', minWidth: '1em' }} />);
 
   return (
-    <Box component={'a'} class={props.class} onMouseEnter={() => setVisible(true)} href={props.link}>
+    <Box component={'a'} class={props.class} sx={props.sx} onMouseEnter={() => setVisible(true)} href={props.link}>
       <Show when={!!props.label} keyed>
         <span>{props.label}</span>
       </Show>

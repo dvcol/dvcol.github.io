@@ -3,6 +3,7 @@
 .pages_nav {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
   padding: 30px;
   text-align: center;
   background: transparent;
@@ -18,11 +19,12 @@
   display: flex;
   flex: 1 1 auto;
   flex-wrap: wrap;
-  gap: 0.5em;
+  gap: 0.75rem 1rem;
   justify-content: center;
 
   &__social {
     flex: 0 1 auto;
+    gap: 0 1rem;
     padding: 0.25em 2em;
   }
 }
@@ -36,6 +38,7 @@
 
   &__social {
     flex: 0 1 120px;
+    min-width: 8rem;
     transform: translate3d(0, 20px, 0);
     opacity: 0;
     transition: -webkit-transform 1.2s, opacity 1.2s;

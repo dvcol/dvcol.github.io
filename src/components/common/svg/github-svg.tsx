@@ -1,7 +1,7 @@
-import type { Component } from 'solid-js';
+import type { JSX, Component } from 'solid-js';
 
-export const GithubLoop: Component = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+export const GithubLoop: Component<{ style?: JSX.CSSProperties }> = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" style={props.style}>
     <mask id="eyes" x="0" y="0" width="24" height="24">
       <g fill="white">
         <ellipse cx="9.5" cy="9" rx="1.5" ry="1" />
