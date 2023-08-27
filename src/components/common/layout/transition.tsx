@@ -4,16 +4,18 @@ import { createEffect, createMemo, createSignal, onMount } from 'solid-js';
 
 import styles from './transition.module.scss';
 
+import type BoxProps from '@suid/material/Box/BoxProps';
 import type { Component, JSX } from 'solid-js';
 
 import { computeStepDuration, zIndex } from '~/themes';
 
+export type BackgroundColors = JSX.CSSProperties['background-color'] | BoxProps['sx'];
 export type TransitionProps = {
   open?: boolean;
   fade?: boolean;
   offset?: number;
   position?: { left?: number; top?: number };
-  colors?: JSX.CSSProperties['background-color'][3];
+  colors?: BackgroundColors[];
 };
 export const Transition: Component<TransitionProps> = props => {
   const [clipPath, setClipPath] = createSignal<number>(0);
@@ -22,14 +24,17 @@ export const Transition: Component<TransitionProps> = props => {
   createEffect(() => setClipPath(props.open ? 100 : 0));
 
   const state = createMemo(() => (index: number) => {
-    return {
+    const _state = {
       top: props.position?.top ? `calc(${props.position?.top}px - 100dvh)` : '-50dvh',
       left: props.position?.left ? `calc(${props.position?.left}px - 100dvw)` : '-50dvw',
       clipPath: `circle(${clipPath()}%)`,
       transitionDuration: `${computeStepDuration(index)}ms`,
       zIndex: props.fade ? zIndex.Default : `${zIndex.Layer3 + 1 + index}`,
-      background: props.colors?.[index],
     };
+    const background = props.colors?.[index];
+
+    if (typeof background === 'string') return { ..._state, background };
+    return { ..._state, ...background };
   });
 
   return (

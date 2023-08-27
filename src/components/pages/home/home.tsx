@@ -6,7 +6,7 @@ import { createSignal, For, onCleanup, onMount } from 'solid-js';
 import { v4 as uuid } from 'uuid';
 
 import type { Component } from 'solid-js';
-import type { ImageCardProps } from '~/components/common/layout';
+import type { BackgroundColors, ImageCardProps } from '~/components/common/layout';
 
 import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
@@ -20,7 +20,7 @@ import { RoutesMeta, useNavbar, usePageTransition } from '~/services';
 import { BreakPointsStop, Colors, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
-type Cards = ImageCardProps & { id: string; path: string; title: string; bgColors: { source?: string; target?: string } };
+type Cards = ImageCardProps & { id: string; path: string; title: string; bgColors: { source?: BackgroundColors; target?: BackgroundColors } };
 export const Home: Component = () => {
   const navigate = useNavigate();
   const [t] = useI18n();
@@ -46,7 +46,10 @@ export const Home: Component = () => {
       lottieProps: { src: AboutMeSvg },
       bgColors: {
         source: 'darkblue',
-        target: '#3f01fb',
+        target: {
+          background: 'linear-gradient(-45deg, #ff5600, #ff0667, #8400f8, #1d00ff)',
+          backgroundSize: '400% 400%',
+        },
       },
     },
     {
