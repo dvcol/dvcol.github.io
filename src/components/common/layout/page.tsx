@@ -69,7 +69,7 @@ export type PageProps = PropsWithRef<{
   maxWidth?: BreakPointsKeys;
   sx?: ContainerProps['sx'];
   sideBySide?: boolean | BreakPointsStop;
-  animate?: 'fade' | 'scale' | 'slide';
+  animate?: 'fade' | 'scale' | 'slide' | boolean;
   motion?: { header?: MotionComponentProps; content?: MotionComponentProps };
 }>;
 export const Page: ParentComponent<PageProps> = props => {
