@@ -7,7 +7,7 @@ import { AppLink } from '~/models';
 declare module 'solid-js' {
   namespace JSX {
     interface IntrinsicElements extends HTMLElementTagNameMap {
-      ['wc-about-me']: Partial<AppWc>;
+      ['wc-about-me']: Partial<AppWc> | { container?: string; children?: any };
     }
   }
 }
