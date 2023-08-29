@@ -18,21 +18,7 @@ import { ContactForm } from '~/components/pages/contact';
 import { Routes, useNavbar } from '~/services';
 import { BreakPoints } from '~/themes';
 
-const Fallback: Component = () => (
-  <Box
-    sx={{
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      height: '100%',
-      width: '100%',
-      background: 'linear-gradient(-45deg, #ff5600, #ff0667, #8400f8, #1d00ff)',
-      backgroundSize: '400% 400%',
-    }}
-  >
-    <Spinner center size={10} debounce={500} />
-  </Box>
-);
+const Fallback: Component = () => <Spinner center size={10} debounce={500} />;
 
 export const AboutMe: Component = () => {
   const [loaded, setLoaded] = createSignal(false);
@@ -52,6 +38,17 @@ export const AboutMe: Component = () => {
 
   return (
     <Page maxWidth="fhd">
+      <Box
+        sx={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          height: '100%',
+          width: '100%',
+          background: 'linear-gradient(-45deg, #ff5600, #ff0667, #8400f8, #1d00ff)',
+          backgroundSize: '400% 400%',
+        }}
+      />
       <Show when={loaded()} fallback={<Fallback />}>
         <Box sx={{ minHeight: 'calc(100dvh + 5rem)', '--offset-scroll': `${isScrolled()}px` }}>
           <wc-about-me container="stack-page-active">
