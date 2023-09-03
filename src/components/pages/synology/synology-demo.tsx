@@ -24,7 +24,7 @@ import { Spinner } from '~/components/common/loader';
 import { GithubLoop, WebstoreSvg } from '~/components/common/svg';
 import { AppLink } from '~/models';
 import { Routes, RoutesMeta } from '~/services';
-import { BreakPointsStop } from '~/themes';
+import { BreakPointsStop, Colors } from '~/themes';
 import { gradientText } from '~/utils';
 
 const GridItemSx = {
@@ -102,18 +102,20 @@ export const SynologyDemo: Component = () => {
         <PageHeader
           title={t('synology.demo.title')}
           titleProps={{
-            sx: {
-              ...gradientText({
-                from: '#90caf9',
-                to: RoutesMeta.SynologyDemo.accentColor ?? '#0D63F8',
-              }),
-            },
+            sx: gradientText({
+              from: '#0024ff',
+              to: RoutesMeta.SynologyDemo.accentColor ?? Colors.SynologyDemo,
+            }),
           }}
           subtitle={t('synology.demo.subtitle')}
-          subtitleProps={{ color: RoutesMeta.SynologyDemo.accentColor }}
+          subtitleProps={{
+            variant: 'h4',
+            fontWeight: 'bold',
+            color: RoutesMeta.SynologyDemo.accentColor,
+          }}
           description={
             <>
-              <Box sx={{ mb: '0.5em' }}>{t('synology.demo.description_line_1')}</Box>
+              <Box>{t('synology.demo.description_line_1')}</Box>
               <Box>{t('synology.demo.description_line_2')}</Box>
               <Grid
                 container
@@ -121,6 +123,10 @@ export const SynologyDemo: Component = () => {
                 sx={{
                   justifyContent: 'center',
                   mt: '0.5em',
+                  m: {
+                    [BreakPointsStop.desktop]: '2rem 0',
+                    [BreakPointsStop.qhd]: '4rem 0',
+                  },
                 }}
               >
                 <Grid item xs={12} sm={4} xl={4} sx={GridItemSx}>
@@ -150,7 +156,7 @@ export const SynologyDemo: Component = () => {
             </>
           }
         >
-          <Typography variant={'h4'} sx={{ mt: '1rem', mb: '0.5em', color: RoutesMeta.SynologyDemo.accentColor }}>
+          <Typography variant={'h4'} sx={{ mt: '1rem', mb: '0.5em', fontWeight: 'bold', color: RoutesMeta.SynologyDemo.accentColor }}>
             {t('synology.demo.button_title')}
           </Typography>
           <Typography variant={'h6'} sx={{ mb: '0.5em' }}>
@@ -162,6 +168,10 @@ export const SynologyDemo: Component = () => {
             sx={{
               justifyContent: 'center',
               mt: '0.1em',
+              m: {
+                [BreakPointsStop.desktop]: '2rem 0 6rem',
+                [BreakPointsStop.qhd]: '4rem 0 6rem',
+              },
             }}
           >
             <Grid item xs={6} sm={3} lg={4} sx={GridItemSx}>

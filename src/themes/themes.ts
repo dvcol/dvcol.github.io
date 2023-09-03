@@ -44,9 +44,9 @@ const common: ThemeOptions = {
   typography: {
     // typography overrides here
     h2: {
-      fontSize: '3.75rem',
+      fontSize: '4rem',
       '@media (max-width:1500px)': {
-        fontSize: '3rem',
+        fontSize: '3.5rem',
       },
       '@media (max-width:900px)': {
         fontSize: '2.75rem',
@@ -70,10 +70,10 @@ const common: ThemeOptions = {
     },
     h6: {
       fontSize: '1.35rem',
-      lineHeight: '1.75rem',
+      lineHeight: '2rem',
       '@media (max-width:1500px)': {
         fontSize: '1.3rem',
-        lineHeight: '1.6rem',
+        lineHeight: '2rem',
       },
       '@media (max-width:900px)': {
         fontSize: '1.25rem',
