@@ -64,7 +64,7 @@ export default defineConfig({
         importScripts: [process.env.SERVICE_WOKER ? 'src/sw/worker.ts' : 'entry/worker.entry.js'],
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json,mp4}'],
         globIgnores: ['entry/worker.entry.js'],
-        navigateFallbackDenylist: [/[^#]*\/about-me\/.*/, /[^#]*\/synology-download\/.*/],
+        navigateFallbackDenylist: [/[^#]*\/about-me#?\/.*/, /[^#]*\/synology-download#?\/.*/, /^\/assets\/.*/, /[?&]no-sw=true/],
       },
     }),
   ],
