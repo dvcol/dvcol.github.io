@@ -1,11 +1,10 @@
-import { useI18n } from '@solid-primitives/i18n';
-
 import { ErrorPage } from './error-page';
 
 import type { Component } from 'solid-js';
 
 import ComingSoonLottie from '~/assets/lottie/30331-isometric-internet-shop.json?url';
 import { LottiePlayer } from '~/components/common//lottie';
+import { useI18n } from '~/services/i18n';
 import { BreakPointsStop, Colors } from '~/themes';
 
 export const PageComingSoon: Component<{ background?: string }> = props => {

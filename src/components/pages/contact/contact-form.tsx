@@ -1,5 +1,5 @@
 import { send } from '@emailjs/browser';
-import { useI18n } from '@solid-primitives/i18n';
+
 import { Button, Card, CardActions, CardContent, CircularProgress, Grid, Stack } from '@suid/material';
 
 import MailSvg from 'line-md/svg/email.svg?component-solid';
@@ -27,6 +27,7 @@ import type { FormGroupValidation } from '~/utils/validation.utils';
 import { FormInput, FormSelect } from '~/components/common/form';
 import { stopScrollPropagation } from '~/components/common/utils';
 import { emailJS } from '~/models';
+import { useI18n } from '~/services/i18n';
 
 import { BreakPointsStop } from '~/themes';
 import { useValidator } from '~/utils';

@@ -1,4 +1,3 @@
-import { useI18n } from '@solid-primitives/i18n';
 import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
@@ -12,6 +11,7 @@ import type { JSX, ParentComponent } from 'solid-js';
 
 import { StackPageTransition } from '~/components/common/stack/stack-page-transition';
 import { RoutesMetas, useNavbar, useRouteData } from '~/services';
+import { useI18n } from '~/services/i18n';
 import { Colors } from '~/themes';
 
 type TransformOptions = { offset?: number; brightness?: number } & Omit<JSX.CSSProperties, 'offset' | 'filter' | 'transform'>;

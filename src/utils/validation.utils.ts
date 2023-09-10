@@ -1,11 +1,11 @@
-import { useI18n } from '@solid-primitives/i18n';
-
 import { createEffect, createMemo, createSignal } from 'solid-js';
 
 import type { FormControlProps } from '@suid/material/FormControl';
 import type { Accessor, Setter, Signal } from 'solid-js';
 
 import type { FormValidation } from '~/models';
+
+import { useI18n } from '~/services/i18n';
 
 export type FormGroupItem<V> = {
   value: V;

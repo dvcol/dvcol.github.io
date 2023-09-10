@@ -1,4 +1,3 @@
-import { useI18n } from '@solid-primitives/i18n';
 import { Link } from '@solidjs/router';
 
 import { Box } from '@suid/material';
@@ -18,6 +17,7 @@ import { GithubLoop } from '~/components/common/svg';
 
 import { AppLink } from '~/models';
 import { RoutesMeta, useNavbar, useRouteData } from '~/services';
+import { useI18n } from '~/services/i18n';
 import { BreakPointsStop } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 

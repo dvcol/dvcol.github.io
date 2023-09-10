@@ -1,5 +1,3 @@
-import { useI18n } from '@solid-primitives/i18n';
-
 import { ErrorPage } from './error-page';
 
 import type { Component } from 'solid-js';
@@ -7,6 +5,7 @@ import type { Component } from 'solid-js';
 import PoliceLottie from '~/assets/lottie/84311-cop-riding-on-a-motorcycle.json?url';
 import { LottiePlayer } from '~/components/common//lottie';
 import { RoutesMeta } from '~/services';
+import { useI18n } from '~/services/i18n';
 
 export const PageForbidden: Component = () => {
   const [t] = useI18n();

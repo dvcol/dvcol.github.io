@@ -1,5 +1,3 @@
-import { useI18n } from '@solid-primitives/i18n';
-
 import { Box } from '@suid/material';
 
 import { createEffect, createMemo, createSignal, on, onCleanup, onMount } from 'solid-js';
@@ -14,6 +12,7 @@ import { Page, PageHeader } from '~/components/common/layout';
 import { LottiePlayer } from '~/components/common/lottie';
 
 import { RoutesMeta, useNavbar } from '~/services';
+import { useI18n } from '~/services/i18n';
 import { BreakPointsStop } from '~/themes';
 import { sleep, useWatchResize } from '~/utils';
 

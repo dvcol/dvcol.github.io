@@ -1,13 +1,13 @@
-import { useI18n } from '@solid-primitives/i18n';
-
 import type { Component } from 'solid-js';
 
+import { useI18n } from '~/services/i18n';
+
 export const I18nHmr: Component = () => {
-  const [, { add }] = useI18n();
+  const [, { setDictionaries }] = useI18n();
 
   if (import.meta.hot) {
     import.meta.hot.on('virtual:vite-plugin-i18n', ({ data }) => {
-      if (data) Object.keys(data).forEach(lang => add(lang, data[lang]));
+      if (data) setDictionaries(data);
     });
   }
 

@@ -1,4 +1,3 @@
-import { useI18n } from '@solid-primitives/i18n';
 import { useNavigate } from '@solidjs/router';
 import { Button, Stack, useMediaQuery } from '@suid/material';
 
@@ -9,6 +8,7 @@ import StackSvg from 'line-md/svg/text-box-multiple.svg?component-solid';
 import type { Component } from 'solid-js';
 
 import { Routes, useNavbar } from '~/services';
+import { useI18n } from '~/services/i18n';
 import { BreakPoints, BreakPointsStop } from '~/themes';
 
 export const NavbarHeader: Component = () => {

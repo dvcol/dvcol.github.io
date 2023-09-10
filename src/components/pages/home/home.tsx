@@ -1,4 +1,3 @@
-import { useI18n } from '@solid-primitives/i18n';
 import { useNavigate } from '@solidjs/router';
 import { Grid } from '@suid/material';
 
@@ -17,6 +16,7 @@ import { ParticlesContainer, TriangleParticles } from '~/components/common/parti
 
 import { MimeType } from '~/models';
 import { RoutesMeta, useNavbar, usePageTransition } from '~/services';
+import { useI18n } from '~/services/i18n';
 import { BreakPointsStop, Colors, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 

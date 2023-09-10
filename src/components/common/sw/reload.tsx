@@ -1,10 +1,11 @@
-import { useI18n } from '@solid-primitives/i18n';
 import DownloadSvg from 'line-md/svg/downloading-loop.svg?component-solid';
 
 import { toast } from 'solid-toast';
 import { useRegisterSW } from 'virtual:pwa-register/solid';
 
 import type { Component } from 'solid-js';
+
+import { useI18n } from '~/services/i18n';
 
 export const Reload: Component = () => {
   const [t] = useI18n();

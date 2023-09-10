@@ -1,10 +1,9 @@
-import { useI18n } from '@solid-primitives/i18n';
-
 import { createEffect } from 'solid-js';
 
 import type { Component } from 'solid-js';
 
 import { useRouteData } from '~/services';
+import { useI18n } from '~/services/i18n';
 
 export const RouteData: Component = () => {
   const [t] = useI18n();

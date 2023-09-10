@@ -1,5 +1,5 @@
 import { Motion } from '@motionone/solid';
-import { useI18n } from '@solid-primitives/i18n';
+
 import { useNavigate } from '@solidjs/router';
 import { Box, Button, Grid, Typography } from '@suid/material';
 
@@ -24,6 +24,7 @@ import { Spinner } from '~/components/common/loader';
 import { GithubLoop, WebstoreSvg } from '~/components/common/svg';
 import { AppLink } from '~/models';
 import { Routes, RoutesMeta } from '~/services';
+import { useI18n } from '~/services/i18n';
 import { BreakPointsStop, Colors } from '~/themes';
 import { gradientText } from '~/utils';
 
