@@ -42,7 +42,7 @@
     "@solidjs/meta": "^0.28.5",
     "@solidjs/router": "^0.8.2",
     "@suid/icons-material": "^0.6.9",
-    "@suid/material": "^0.14.2",
+    "@suid/material": "^0.15.0",
     "line-md": "^0.2.10",
     "motion": "^10.16.2",
     "solid-js": "^1.7.8",
