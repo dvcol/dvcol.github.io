@@ -39,7 +39,7 @@
     "@lottiefiles/lottie-player": "^2.0.2",
     "@motionone/solid": "^10.16.2",
     "@solid-primitives/i18n": "^2.0.0",
-    "@solidjs/meta": "^0.28.5",
+    "@solidjs/meta": "^0.29.0",
     "@solidjs/router": "^0.8.2",
     "@suid/icons-material": "^0.6.9",
     "@suid/material": "^0.15.0",
