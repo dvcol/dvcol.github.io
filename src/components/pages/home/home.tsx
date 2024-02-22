@@ -20,6 +20,9 @@ import { useI18n } from '~/services/i18n';
 import { BreakPointsStop, Colors, zIndex } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
+const traktApiRegex = /http(s?):\/\/api(-staging)?.trakt.tv/;
+const traktCodeRegex = /[?&]code=\w+/;
+
 type Cards = ImageCardProps & { id: string; path: string; title: string; bgColors: { source?: BackgroundColors; target?: BackgroundColors } };
 export const Home: Component = () => {
   const navigate = useNavigate();
@@ -94,8 +97,15 @@ export const Home: Component = () => {
 
   const { setScrollable } = useNavbar();
 
+  const redirectToTrakt = () => {
+    if (document.referrer && !traktApiRegex.test(document.referrer)) return;
+    if (!traktCodeRegex.test(window.location.href)) return;
+    navigate(RoutesMeta.TraktDemo.path);
+  };
+
   let timeout: NodeJS.Timeout;
   onMount(() => {
+    redirectToTrakt();
     setScrollable(false);
     timeout = setTimeout(() => setScrollable(true), 100 * (cards?.length ?? 0));
   });
