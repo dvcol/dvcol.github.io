@@ -1,11 +1,13 @@
 import type { TraktExtension } from '@dvcol/trakt-extension';
 
+import type { SolidWebComponent } from '~/utils';
+
 import { AppLink } from '~/models';
 
 declare module 'solid-js' {
   namespace JSX {
     interface IntrinsicElements extends HTMLElementTagNameMap {
-      ['wc-trakt-extension']: HTMLElement;
+      ['wc-trakt-extension']: SolidWebComponent<HTMLElement>;
     }
   }
 }

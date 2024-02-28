@@ -95,7 +95,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     accentColor: Colors.trakt,
     color: Colors.white,
-    bgColor: Colors.black,
+    bgColor: Colors.DarkGrey,
   },
   Synology: {
     path: Routes.Synology,

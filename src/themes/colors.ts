@@ -8,4 +8,5 @@ export enum Colors {
   Contact = '#800000',
   white = '#fff',
   black = '#000',
+  DarkGrey = '#181818',
 }

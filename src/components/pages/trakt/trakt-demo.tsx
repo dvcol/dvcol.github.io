@@ -26,7 +26,7 @@ export const TraktDemo: Component = () => {
   return (
     <Page maxWidth="fhd" animate="fade">
       <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
-        <wc-trakt-extension style={{ margin: '0.65rem 1rem', height: 'calc(100% - 2rem)', overflow: 'auto' }}>
+        <wc-trakt-extension style={{ margin: '0.7rem 1rem', height: 'calc(100% - 2rem)', overflow: 'auto' }}>
           <Spinner center size={10} debounce={500} />
         </wc-trakt-extension>
       </Show>
