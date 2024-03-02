@@ -2,6 +2,7 @@ import { createSignal, lazy } from 'solid-js';
 
 import type { RouteDefinition } from '@solidjs/router/dist/types';
 
+import { lazyWithProps } from '~/components/common/lazy/lazy-with-props';
 import { AnimationDuration, Colors } from '~/themes';
 
 export enum Routes {
@@ -19,6 +20,10 @@ export enum Routes {
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
   Contact = '/contact',
+
+  /** Hidden pages **/
+  Particles = '/particles',
+  Beams = '/beams',
 }
 
 export type RouteMeta = {
@@ -132,6 +137,24 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     transition: AnimationDuration.PageTransition,
     accentColor: Colors.white,
   },
+
+  /** Hidden pages **/
+  Particles: {
+    path: Routes.Particles,
+    name: 'Particles',
+    title: 'routes.title.particles',
+    navbar: false,
+    color: Colors.white,
+    bgColor: Colors.black,
+  },
+  Beams: {
+    path: Routes.Beams,
+    name: 'Beams',
+    title: 'routes.title.beams',
+    navbar: false,
+    color: Colors.white,
+    bgColor: Colors.black,
+  },
 };
 
 export const RoutesMetas = Object.values(RoutesMeta);
@@ -205,8 +228,20 @@ export const RoutesDefinitions: RouteDefinition[] = [
     data: getData(RoutesMeta.SynologyDemo),
   },
   {
-    path: `${Routes.Contact}`,
+    path: Routes.Contact,
     component: lazy(() => import('~/components/pages/contact/contact')),
     data: getData(RoutesMeta.Contact),
+  },
+
+  /** Hidden pages **/
+  {
+    path: Routes.Particles,
+    component: lazy(() => import('~/components/common/particles/particles-container')),
+    data: getData(RoutesMeta.Particles),
+  },
+  {
+    path: Routes.Beams,
+    element: lazyWithProps(() => import('~/components/common/beams/background-beams'), { color: getData(RoutesMeta.Beams)().color, animated: true }),
+    data: getData(RoutesMeta.Beams),
   },
 ];

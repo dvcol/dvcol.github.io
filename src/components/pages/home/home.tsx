@@ -2,9 +2,11 @@ import { useNavigate } from '@solidjs/router';
 import { Grid } from '@suid/material';
 
 import { createSignal, For, onCleanup, onMount } from 'solid-js';
+
 import { v4 as uuid } from 'uuid';
 
 import type { Component } from 'solid-js';
+
 import type { BackgroundColors, ImageCardProps } from '~/components/common/layout';
 
 import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
@@ -12,8 +14,8 @@ import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale } from '~/components/common/animation';
 import { ImageCard, Page } from '~/components/common/layout';
-import { ParticlesContainer, TriangleParticles } from '~/components/common/particles';
 
+import { ParticlesContainer } from '~/components/common/particles';
 import { MimeType } from '~/models';
 import { RoutesMeta, useNavbar, usePageTransition } from '~/services';
 import { useI18n } from '~/services/i18n';
@@ -121,7 +123,7 @@ export const Home: Component = () => {
         sx: { justifyContent: 'center' },
       }}
     >
-      <ParticlesContainer options={TriangleParticles}>
+      <ParticlesContainer>
         <Grid
           container
           sx={{

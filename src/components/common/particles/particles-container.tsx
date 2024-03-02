@@ -12,6 +12,8 @@ import styles from './particles-container.module.scss';
 import type { ParentComponent } from 'solid-js';
 import type { ParticlesProps } from 'solid-particles';
 
+import { TriangleParticles } from '~/components/common/particles/triangle.particles';
+
 export const ParticlesContainer: ParentComponent<Omit<ParticlesProps, 'id' | 'init'>> = props => {
   const [{ children }, _props] = splitProps(props, ['children']);
   const particlesInit: ParticlesProps['init'] = async main => {
@@ -33,6 +35,7 @@ export const ParticlesContainer: ParentComponent<Omit<ParticlesProps, 'id' | 'in
           id="tsparticles"
           init={particlesInit}
           loaded={() => setLoaded(true)}
+          options={TriangleParticles}
           {..._props}
           style={{ position: 'absolute', top: 0, left: 0, ..._props?.style }}
         />

@@ -21,6 +21,8 @@
     "not_found": "404 | Page non trouvée",
     "unauthorized": "401 | Page non autorisée",
     "forbidden": "403 | Page interdite",
-    "error": "500 | Erreur interne du serveur"
+    "error": "500 | Erreur interne du serveur",
+    "particles": "Background | Particules animées",
+    "beams": "Background | Faisceaux animés"
   }
 }
