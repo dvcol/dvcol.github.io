@@ -96,7 +96,7 @@ export const SynologyDemo: Component = () => {
     });
 
   return (
-    <BackgroundBeams>
+    <BackgroundBeams animated={true}>
       <Page
         sideBySide
         animate="fade"
