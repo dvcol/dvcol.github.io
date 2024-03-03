@@ -73,11 +73,11 @@ const getRatio = () => window.innerWidth / window.innerHeight;
 
 export const BackgroundBeams: ParentComponent<BackgroundBeamsProps> = props => {
   const [{ children }, _props] = splitProps(props, ['children']);
-  const [scale, setScale] = createSignal(getRatio() > 1 ? 1.2 : 1.75);
+  const [scale, setScale] = createSignal(getRatio() > 1 ? 1.2 : 2);
 
   const onResize = () => {
     const ratio = getRatio();
-    if (ratio < 1 && scale() < 1.75) setScale(1.75);
+    if (ratio < 1 && scale() < 2) setScale(2);
     else if (ratio > 1 && scale() > 1.2) setScale(1.2);
   };
 
