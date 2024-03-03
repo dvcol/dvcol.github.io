@@ -88,7 +88,9 @@ export const BackgroundBeams: ParentComponent<BackgroundBeamsProps> = props => {
       <div
         style={{
           height: '100%',
+          width: '100%',
           'max-height': '100dvh',
+          'max-width': '100dvw',
           overflow: 'hidden',
           position: 'absolute',
         }}
