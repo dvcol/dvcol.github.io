@@ -18,7 +18,7 @@
     "dev": "vite",
     "dev:sw": "SERVICE_WOKER=true vite",
     "dev:about-me": "VITE_ABOUT_ME=http://192.168.1.68:4173 vite",
-    "dev:trakt": "VITE_TRAKT=http://192.168.1.68:8080 vite",
+    "dev:trakt": "VITE_TRAKT=http://localhost:3304 vite",
     "build": "vite build",
     "build:analyze": "vite-bundle-visualizer",
     "serve": "pnpm run build && vite preview",
