@@ -1,5 +1,7 @@
 import { useNavigate } from '@solidjs/router';
 
+import { Box } from '@suid/material';
+
 import { createEffect, createSignal, Show } from 'solid-js';
 
 import type { Component } from 'solid-js';
@@ -10,6 +12,7 @@ import { Spinner } from '~/components/common/loader';
 
 import { stopScrollPropagation } from '~/components/common/utils';
 import { Routes } from '~/services';
+import { Colors } from '~/themes';
 
 export const TraktDemo: Component = () => {
   const [loaded, setLoaded] = createSignal(false);
@@ -32,14 +35,20 @@ export const TraktDemo: Component = () => {
   });
 
   return (
-    <Page maxWidth="fhd" animate="fade">
+    <Page maxWidth="tablet" animate="fade">
       <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
-        <wc-trakt-extension
-          ref={setWcRef}
-          style={{ margin: '0.7rem 1rem', height: 'calc(100dvh - 1.4rem)', overflow: 'hidden', position: 'relative' }}
+        <Box
+          sx={{
+            margin: '2rem 1rem',
+          }}
         >
-          <Spinner center size={10} debounce={500} />
-        </wc-trakt-extension>
+          <wc-trakt-extension
+            ref={setWcRef}
+            style={{ height: 'calc(100dvh - 4rem)', overflow: 'hidden', position: 'relative', background: Colors.DarkGrey }}
+          >
+            <Spinner center size={10} debounce={500} />
+          </wc-trakt-extension>
+        </Box>
       </Show>
     </Page>
   );

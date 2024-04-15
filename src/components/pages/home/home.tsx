@@ -9,7 +9,6 @@ import type { Component } from 'solid-js';
 
 import type { BackgroundColors, ImageCardProps } from '~/components/common/layout';
 
-import ComingSoonLottie from '~/assets/lottie/23888-website-build.json?url';
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
 import { EnterTranslate, HoverScale } from '~/components/common/animation';
@@ -61,8 +60,9 @@ export const Home: Component = () => {
       id: uuid(),
       path: RoutesMeta.TraktDemo.path,
       title: RoutesMeta.TraktDemo.name,
-      imageProps: { sx: { background: RoutesMeta.TraktDemo.accentColor } },
-      lottieProps: { src: ComingSoonLottie },
+      videoProps: {
+        source: { src: 'assets/video/trakt-extension-preview.hevc.mp4', type: MimeType.MP4 },
+      },
       bgColors: {
         source: RoutesMeta.TraktDemo.accentColor,
         target: RoutesMeta.TraktDemo.bgColor,
