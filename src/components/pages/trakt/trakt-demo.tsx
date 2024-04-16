@@ -35,7 +35,7 @@ export const TraktDemo: Component = () => {
   });
 
   return (
-    <Page maxWidth="tablet" animate="fade">
+    <Page maxWidth="hd" animate="fade">
       <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
         <Box
           sx={{
