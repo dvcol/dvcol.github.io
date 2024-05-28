@@ -4,7 +4,7 @@ import { Box, Button } from '@suid/material';
 
 import ExternalLinkSvg from 'line-md/svg/external-link.svg?component-solid';
 
-import { onMount, Show } from 'solid-js';
+import { createSignal, onMount, Show } from 'solid-js';
 
 import type { Component } from 'solid-js';
 
@@ -19,13 +19,20 @@ import { BreakPointsStop, Colors } from '~/themes';
 export const RedirectTo: Component<{ background?: string }> = props => {
   const [t] = useI18n();
   const [params] = useSearchParams();
+  const [url, setUrl] = createSignal<string>('');
 
   onMount(() => {
     if (!params?.to) {
       console.warn('No redirection found.', params);
     } else {
-      console.info('Redirecting to', params.to);
-      window.location.replace(decodeURIComponent(params.to));
+      const { to, ...otherParams } = params;
+      setUrl(decodeURIComponent(to) + (Object.keys(otherParams)?.length ? `?${new URLSearchParams(otherParams).toString()}` : ''));
+
+      console.info('Redirecting to', {
+        url: url(),
+        params,
+      });
+      window.location.replace(url());
     }
   });
 
@@ -66,7 +73,7 @@ export const RedirectTo: Component<{ background?: string }> = props => {
             </Box>
           }
         >
-          <Button startIcon={<ExternalLinkSvg />} onclick={() => window.location.replace(decodeURIComponent(params.to))}>
+          <Button startIcon={<ExternalLinkSvg />} onclick={() => window.location.replace(url())}>
             {t(`page_redirect_to.redirect`)}
           </Button>
         </Show>
