@@ -23,6 +23,7 @@
     "forbidden": "403 | Page forbidden",
     "error": "500 | Internal server error",
     "particles": "Background | Animated particles",
-    "beams": "Background | Animated beams"
+    "beams": "Background | Animated beams",
+    "redirect_to": "Redirect | Redirecting to another page"
   }
 }

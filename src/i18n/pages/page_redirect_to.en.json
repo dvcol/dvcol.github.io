@@ -1,0 +1,8 @@
+{
+  "title": "Redirection",
+  "subtitle": "This page handles redirections to the correct page.",
+  "description": "Attempting to redirect you to the correct page...",
+  "redirect": "CLick here to navigate to your page",
+  "error": "Something went wrong. The redirection URL is missing or malformed.",
+  "retry": "Please check the url and try again."
+}

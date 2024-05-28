@@ -24,6 +24,7 @@ export enum Routes {
   /** Hidden pages **/
   Particles = '/particles',
   Beams = '/beams',
+  RedirectTo = '/redirect-to',
 }
 
 export type RouteMeta = {
@@ -44,8 +45,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'NotFound',
     title: 'routes.title.not_found',
     navbar: false,
-    color: 'white',
-    bgColor: 'darkred',
+    color: Colors.white,
+    bgColor: Colors.DarkRed,
     transition: AnimationDuration.PageTransition,
   },
   Unauthorized: {
@@ -53,8 +54,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Unauthorized',
     title: 'routes.title.unauthorized',
     navbar: false,
-    color: 'white',
-    bgColor: 'navy',
+    color: Colors.white,
+    bgColor: Colors.Navy,
     transition: AnimationDuration.PageTransition,
   },
   Forbidden: {
@@ -62,8 +63,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Forbidden',
     title: 'routes.title.forbidden',
     navbar: false,
-    color: 'white',
-    bgColor: 'navy',
+    color: Colors.white,
+    bgColor: Colors.Navy,
     transition: AnimationDuration.PageTransition,
   },
   Error: {
@@ -71,8 +72,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     name: 'Error',
     title: 'routes.title.error',
     navbar: false,
-    color: 'white',
-    bgColor: 'darkred',
+    color: Colors.white,
+    bgColor: Colors.DarkRed,
     transition: AnimationDuration.PageTransition,
   },
 
@@ -151,6 +152,14 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Beams,
     name: 'Beams',
     title: 'routes.title.beams',
+    navbar: false,
+    color: Colors.white,
+    bgColor: Colors.black,
+  },
+  RedirectTo: {
+    path: Routes.RedirectTo,
+    name: 'RedirectTo',
+    title: 'routes.title.redirect_to',
     navbar: false,
     color: Colors.white,
     bgColor: Colors.black,
@@ -243,5 +252,10 @@ export const RoutesDefinitions: RouteDefinition[] = [
     path: Routes.Beams,
     element: lazyWithProps(() => import('~/components/common/beams/background-beams'), { color: getData(RoutesMeta.Beams)().color, animated: true }),
     data: getData(RoutesMeta.Beams),
+  },
+  {
+    path: Routes.RedirectTo,
+    component: lazy(() => import('~/components/pages/redirect/redirect-to')),
+    data: getData(RoutesMeta.RedirectTo),
   },
 ];

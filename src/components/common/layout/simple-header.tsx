@@ -4,13 +4,13 @@ import type { PropsWithRef } from '~/utils';
 
 import { PageHeader } from '~/components/common/layout';
 
-export type ErrorHeaderProps = PropsWithRef<{
+export type SimpleHeaderProps = PropsWithRef<{
   title?: JSX.Element | string;
   subtitle?: JSX.Element | string;
   description?: JSX.Element | string;
   navbar?: boolean;
 }>;
-export const ErrorHeader: Component<ErrorHeaderProps> = props => {
+export const SimpleHeader: Component<SimpleHeaderProps> = props => {
   return (
     <PageHeader
       ref={props.ref}
@@ -25,4 +25,4 @@ export const ErrorHeader: Component<ErrorHeaderProps> = props => {
   );
 };
 
-export default ErrorHeader;
+export default SimpleHeader;

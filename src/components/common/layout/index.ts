@@ -5,3 +5,5 @@ export * from './page-header';
 export * from './section';
 export * from './header';
 export * from './image-card';
+export * from './simple-header';
+export * from './simple-page';

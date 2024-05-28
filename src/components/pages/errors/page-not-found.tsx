@@ -1,10 +1,9 @@
-import { ErrorPage } from './error-page';
-
 import type { Component } from 'solid-js';
 
 import NotFoundLottie from '~/assets/lottie/55873-404-error-page.json?url';
 
 import { LottiePlayer } from '~/components/common//lottie';
+import { ErrorPage } from '~/components/pages/errors/error-page';
 import { RoutesMeta } from '~/services';
 import { useI18n } from '~/services/i18n';
 

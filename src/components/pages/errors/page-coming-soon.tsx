@@ -1,9 +1,8 @@
-import { ErrorPage } from './error-page';
-
 import type { Component } from 'solid-js';
 
 import ComingSoonLottie from '~/assets/lottie/30331-isometric-internet-shop.json?url';
 import { LottiePlayer } from '~/components/common//lottie';
+import { ErrorPage } from '~/components/pages/errors/error-page';
 import { useI18n } from '~/services/i18n';
 import { BreakPointsStop, Colors } from '~/themes';
 
