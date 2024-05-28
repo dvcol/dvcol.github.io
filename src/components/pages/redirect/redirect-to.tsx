@@ -16,6 +16,8 @@ import { LottiePlayer } from '~/components/common/lottie';
 import { useI18n } from '~/services';
 import { BreakPointsStop, Colors } from '~/themes';
 
+const externalUrlRegex = /[^/]+:\/\/.*/;
+
 export const RedirectTo: Component<{ background?: string }> = props => {
   const [t] = useI18n();
   const [search] = useSearchParams();
@@ -29,15 +31,23 @@ export const RedirectTo: Component<{ background?: string }> = props => {
     const redirect = id ?? to;
     if (!redirect) {
       console.warn('No redirection found.', { search: { ...search }, params: { ...params } });
-    } else {
-      setUrl(decodeURIComponent(redirect) + (Object.keys(otherParams)?.length ? `?${new URLSearchParams(otherParams).toString()}` : ''));
-
-      console.info('Redirecting to', {
-        url: url(),
-        search,
-      });
-      window.location.replace(url());
+      return;
     }
+
+    const decodedRedirect = decodeURIComponent(redirect);
+
+    if (!externalUrlRegex.test(decodedRedirect)) {
+      console.warn('Invalid redirection URL. Only external url are supported', { decodedRedirect });
+      return;
+    }
+
+    setUrl(decodeURIComponent(redirect) + (Object.keys(otherParams)?.length ? `?${new URLSearchParams(otherParams).toString()}` : ''));
+
+    console.info('Redirecting to', {
+      url: url(),
+      search,
+    });
+    window.location.replace(url());
   });
 
   return (
