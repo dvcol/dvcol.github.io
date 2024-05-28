@@ -65,6 +65,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json,mp4}'],
         globIgnores: ['entry/worker.entry.js'],
         navigateFallbackDenylist: [
+          /[^#]*\/redirect-to(\/.*|#\/?|$)/,
           /[^#]*\/about-me(\/.*|#\/?|$)/,
           /[^#]*\/synology-download(\/.*|#\/?|$)/,
           /[^#]*\/trakt-extension(\/.*|#\/?|$)/,
