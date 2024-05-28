@@ -1,4 +1,4 @@
-import { useSearchParams } from '@solidjs/router';
+import { useParams, useSearchParams } from '@solidjs/router';
 
 import { Box, Button } from '@suid/material';
 
@@ -18,19 +18,23 @@ import { BreakPointsStop, Colors } from '~/themes';
 
 export const RedirectTo: Component<{ background?: string }> = props => {
   const [t] = useI18n();
-  const [params] = useSearchParams();
+  const [search] = useSearchParams();
+  const params = useParams();
+
   const [url, setUrl] = createSignal<string>('');
 
   onMount(() => {
-    if (!params?.to) {
-      console.warn('No redirection found.', params);
+    const { to, ...otherParams } = search;
+    const { id } = params;
+    const redirect = id ?? to;
+    if (!redirect) {
+      console.warn('No redirection found.', { search: { ...search }, params: { ...params } });
     } else {
-      const { to, ...otherParams } = params;
-      setUrl(decodeURIComponent(to) + (Object.keys(otherParams)?.length ? `?${new URLSearchParams(otherParams).toString()}` : ''));
+      setUrl(decodeURIComponent(redirect) + (Object.keys(otherParams)?.length ? `?${new URLSearchParams(otherParams).toString()}` : ''));
 
       console.info('Redirecting to', {
         url: url(),
-        params,
+        search,
       });
       window.location.replace(url());
     }

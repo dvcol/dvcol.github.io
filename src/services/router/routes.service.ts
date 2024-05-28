@@ -24,7 +24,7 @@ export enum Routes {
   /** Hidden pages **/
   Particles = '/particles',
   Beams = '/beams',
-  RedirectTo = '/redirect-to',
+  RedirectTo = '/redirect-to/:id?',
 }
 
 export type RouteMeta = {
