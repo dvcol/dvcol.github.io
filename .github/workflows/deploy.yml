@@ -10,6 +10,9 @@ concurrency:
 on:
   workflow_dispatch:
   workflow_call:
+  push:
+    tags:
+      - 'deploy'
 
 env:
   node_version: 20.x
@@ -31,7 +34,7 @@ jobs:
       url: https://dvcol.github.io/
 
     steps:
-      - name: Checkout branch ${{ github.ref }}
+      - name: ⛙ Checkout branch ${{ github.ref }}
         uses: actions/checkout@v4
         
       - uses: actions/cache/restore@v4
@@ -40,37 +43,44 @@ jobs:
           path: dist
           key: ${{ github.ref }}-${{ github.run_id }}-build
 
-      - name: Build
+      - name: 🚧 Build
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: ./.github/actions/build
         with:
           node_version: ${{ env.node_version }}
           pnpm_version: ${{ env.pnpm_version }}
 
-      - name: Setup Pages
+      - name: 🏗️ Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: 📦 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: dist
 
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Setup credentials
+      - name: ⛙ Setup credentials
         run: |
-          # ================= Setup credentials =================
+          # ================= ⛙ Setup credentials =================
           
           git config user.name "GitHub Release Bot"
           git config user.email "<>"
 
-      - name: Tag deployment
+      - name: 🏷️ Tag deployment
         run: |
-          # ================= Tag deployment =================
+          # ================= 🏷️ Tag deployment =================
           
           git tag -fa deployed -m 'Deployed on github pages'
           git push origin --tags --force
+
+      - name: 🧹Cleanup tag
+        if: startsWith(github.ref, 'refs/tags/deploy')
+        run: |
+          # ================= Tag deployment =================
+          
+          git push --delete origin deploy
 
