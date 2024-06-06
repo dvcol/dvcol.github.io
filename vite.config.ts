@@ -69,6 +69,7 @@ export default defineConfig({
           /[^#]*\/about-me([/?].*|#\/?|$)/,
           /[^#]*\/synology-download([/?].*|#\/?|$)/,
           /[^#]*\/trakt-extension([/?].*|#\/?|$)/,
+          /[^#]*\/image-viewer([/?].*|#\/?|$)/,
           /^\/assets\/.*/,
           /[?&]no-sw=true/,
         ],
