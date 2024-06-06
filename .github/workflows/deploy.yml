@@ -11,10 +11,6 @@ on:
     tags:
       - 'deploy'
 
-env:
-  node_version: 20.x
-  pnpm_version: 8.x
-
 permissions:
   contents: write
   pages: write
@@ -43,9 +39,6 @@ jobs:
       - name: 🚧 Build
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: ./.github/actions/build
-        with:
-          node_version: ${{ env.node_version }}
-          pnpm_version: ${{ env.pnpm_version }}
 
       - name: 🏗️ Setup Pages
         uses: actions/configure-pages@v4
