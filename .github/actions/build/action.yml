@@ -2,39 +2,24 @@ name: Build
 description: Install and build the repo
 
 inputs:
-  node_version:
-    description: 'Pnpm version to use'
-    required: true
-  pnpm_version:
-    description: 'Node version to use'
-    required: true
+  script:
+    description: Build script
+    default: 'build'
 
+  base-url:
+    description: Base URL for serving on github pages
+    default: 'image-viewer'
 
 runs:
-  using: "composite"
+  using: composite
   steps:
-    - name: Setup pnpm ${{ inputs.pnpm_version }}
-      uses: pnpm/action-setup@v2
-      with:
-        version: ${{ inputs.pnpm_version }}
+    - name: 🧱 Install
+      uses: ./.github/actions/install
 
-    - name: Setup Node.js ${{ inputs.node_version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ inputs.node_version }}
-        registry-url: 'https://registry.npmjs.org'
-        cache: pnpm
-
-    - name: Install dependencies
+    - name: 🚧 Build sources
       shell: bash
+      env:
+        BASE_URL: ${{ inputs.base-url }}
       run: |
-        # ================= Install =================
-        
-        pnpm install
-
-    - name: Build sources
-      shell: bash
-      run: |
-        # =================  Build  =================
-
-        pnpm run build
+        # =================  🚧 Build  =================
+        pnpm run ${{ inputs.script }}
