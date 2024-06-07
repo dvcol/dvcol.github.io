@@ -10,6 +10,15 @@
   "unauthorized": "Accès non autorisée",
   "forbidden": "Accès interdit",
   "error": "Erreur",
+
+  "particles": "Particles",
+  "beams": "Beams",
+  "redirect_to": "Redirect to",
+
+  "synology_download": "Synology Download",
+  "trakt_extension": "Trakt Extension",
+  "image_viewer": "Image Viewer",
+
   "title": {
     "home": "Dinh-Van Colomban | Project portfolio",
     "trakt": "Trakt | Une extension chrome pour Trakt.tv",
@@ -24,6 +33,10 @@
     "error": "500 | Erreur interne du serveur",
     "particles": "Background | Particules animées",
     "beams": "Background | Faisceaux animés",
-    "redirect_to": "Redirect | Redirection vers une autre page"
+    "redirect_to": "Redirect | Redirection vers une autre page",
+
+    "synology_download": "Synology Download | Une extension chrome pour Synology Download",
+    "trakt_extension": "Trakt Extension | Une extension chrome pour Trakt.tv",
+    "image_viewer": "Image Viewer | Un simple visualiseur d'images"
   }
 }

@@ -1,17 +1,19 @@
 import { Link } from '@solidjs/router';
 
 import { Box } from '@suid/material';
+import ChevronDown from 'line-md/svg/chevron-down.svg?component-solid';
+import ChevronUp from 'line-md/svg/chevron-up.svg?component-solid';
 import EmailSvg from 'line-md/svg/email.svg?component-solid';
 import LinkedInSvg from 'line-md/svg/linkedin.svg?component-solid';
 
-import { For } from 'solid-js';
+import { For, Show } from 'solid-js';
 
 import { NavbarSocial } from './navbar-social';
 import styles from './navbar.module.scss';
 
 import type { Component } from 'solid-js';
 
-import type { RouteMeta } from '~/services';
+import type { BaseRoute } from '~/services';
 
 import { GithubLoop } from '~/components/common/svg';
 
@@ -21,10 +23,11 @@ import { useI18n } from '~/services/i18n';
 import { BreakPointsStop } from '~/themes';
 import { camelToSnakeCase } from '~/utils';
 
-export const Navbar: Component<{ routes?: RouteMeta[] }> = props => {
+export const Navbar: Component<{ routes?: BaseRoute[]; more?: BaseRoute[] }> = props => {
   const [t] = useI18n();
   const { active } = useRouteData();
-  const { isOpen, close } = useNavbar();
+  const { isOpen, close, isShowMore, toggleMore } = useNavbar();
+
   return (
     <nav class={styles.pages_nav} classList={{ [styles.pages_nav__open]: isOpen() ?? false }} id="navbar">
       <div class={styles.pages_nav__items}>
@@ -36,8 +39,9 @@ export const Navbar: Component<{ routes?: RouteMeta[] }> = props => {
                 classList={{ [styles.link__active]: active()?.path === route.path }}
                 href={route.path}
                 onclick={close}
+                title={t(`routes.title.${camelToSnakeCase(route.name)}`)?.toString()}
               >
-                {t(`routes.${camelToSnakeCase(route.name)}`)}
+                {t(`routes.${camelToSnakeCase(route.name)}`)?.toString()}
               </Link>
             </div>
           )}
@@ -90,6 +94,37 @@ export const Navbar: Component<{ routes?: RouteMeta[] }> = props => {
           </NavbarSocial>
         </Box>
       </div>
+      <Box sx={{ alignSelf: 'center' }} class={styles.pages_nav__show_more}>
+        <Show
+          when={props.more?.length && isShowMore()}
+          fallback={
+            <span title={t('navbar.show_more')?.toString()}>
+              <ChevronDown class={styles.pages_nav__show_more__chevron} onClick={() => toggleMore()} />
+            </span>
+          }
+        >
+          <span title={t('navbar.show_less')?.toString()}>
+            <ChevronUp class={styles.pages_nav__show_more__chevron} onClick={() => toggleMore()} />
+          </span>
+        </Show>
+      </Box>
+      <Show when={isShowMore()}>
+        <div class={styles.pages_nav__items} classList={{ [styles.pages_nav__more__open]: isShowMore() ?? false }}>
+          <For each={props.more}>
+            {route => (
+              <div class={styles.pages_nav__item}>
+                <Link
+                  class={`${styles.link} ${styles.link__more} ${styles.link__faded}`}
+                  href={route.path}
+                  title={t(`routes.title.${camelToSnakeCase(route.name)}`)?.toString()}
+                >
+                  {t(`routes.${camelToSnakeCase(route.name)}`)?.toString()}
+                </Link>
+              </div>
+            )}
+          </For>
+        </div>
+      </Show>
     </nav>
   );
 };
