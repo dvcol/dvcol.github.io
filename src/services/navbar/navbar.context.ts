@@ -4,6 +4,7 @@ import type { Accessor, Setter } from 'solid-js';
 
 export type NavbarState = {
   isOpen: Accessor<boolean>;
+  isShowMore: Accessor<boolean>;
   inFlight: Accessor<boolean>;
   isDisabled: Accessor<boolean>;
   setDisabled: Setter<boolean>;
@@ -16,6 +17,9 @@ export type NavbarState = {
   open: () => void;
   close: () => void;
   toggle: (_open?: boolean) => void;
+  showMore: () => void;
+  hideMore: () => void;
+  toggleMore: (_show?: boolean) => void;
 };
 
 export const NavbarContext = createContext<NavbarState>({} as NavbarState);

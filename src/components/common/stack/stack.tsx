@@ -2,7 +2,7 @@ import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
 
-import { createEffect, createMemo, createSignal, For, onCleanup } from 'solid-js';
+import { createEffect, createMemo, createSignal, For, on, onCleanup } from 'solid-js';
 
 import { StackPage } from './stack-page';
 import styles from './stack.module.scss';
@@ -27,7 +27,7 @@ const computeTransform = (open = false): ((options: TransformOptions, _styles?: 
 export const Stack: ParentComponent = props => {
   const routes = [...RoutesMetas];
 
-  const { isOpen, close } = useNavbar();
+  const { isOpen, close, isShowMore } = useNavbar();
 
   const transform = createMemo(() => computeTransform(isOpen()), computeTransform(false));
   const { active } = useRouteData();
@@ -56,12 +56,14 @@ export const Stack: ParentComponent = props => {
     return _overflow;
   });
 
+  const getNavbarHeight = () => document.querySelector('#navbar')?.clientHeight;
+  const [navbarHeight, setNavbarHeight] = createSignal(getNavbarHeight());
+
   const stackTransform = createMemo<JSX.CSSProperties>(() => {
-    const height = document.querySelector('#navbar')?.clientHeight;
-    return { transform: `translateY(${isOpen() ? height : 0}px)` };
+    return { transform: `translateY(${isOpen() ? navbarHeight() : 0}px)` };
   });
 
-  const listener = (e: HashChangeEvent) => {
+  const hashchangeListener = (e: HashChangeEvent) => {
     const oldHash = e.oldURL.split('?', 1)?.[0];
     const newHash = e.newURL.split('?', 1)?.[0];
     if (oldHash !== newHash) close();
@@ -90,10 +92,18 @@ export const Stack: ParentComponent = props => {
     if (themeColor && newValue) themeColor?.setAttribute('content', newValue);
   });
 
-  window.addEventListener('hashchange', listener);
+  const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
+
+  const windowResizeListener = () => setWindowWidth(window.innerWidth);
+
+  createEffect(on([() => windowWidth(), () => isOpen(), () => isShowMore()], () => setNavbarHeight(getNavbarHeight)));
+
+  window.addEventListener('resize', windowResizeListener);
+  window.addEventListener('hashchange', hashchangeListener);
   onCleanup(() => {
     clearTimeout(backgroundTimeout);
-    window.removeEventListener('hashchange', listener);
+    window.removeEventListener('hashchange', hashchangeListener);
+    window.removeEventListener('resize', windowResizeListener);
   });
 
   return (
@@ -113,7 +123,7 @@ export const Stack: ParentComponent = props => {
       <StackPage
         id={`stack-page-active`}
         active={active()}
-        open={showOpen()}
+        open={isOpen()}
         class={styles.page}
         style={transform()({ offset: 2, filter: 'none' }, { color: active()?.color, background: background() })}
         onClick={() => close()}
