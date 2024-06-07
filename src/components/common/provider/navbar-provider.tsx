@@ -12,6 +12,7 @@ export const NavbarProvider: ParentComponent = props => {
   const [isDisabled, setDisabled] = createSignal(false);
   const [isScrolled, setScrolled] = createSignal(0);
   const [isScrollable, setScrollable] = createSignal(true);
+  const [showMore, setShowMore] = createSignal(false);
 
   const [currentPage, setCurrentPage] = createSignal<HTMLDivElement>();
 
@@ -28,6 +29,7 @@ export const NavbarProvider: ParentComponent = props => {
 
   const state: NavbarState = {
     isOpen: isNotDisabledAndOpen,
+    isShowMore: showMore,
     inFlight,
     isDisabled,
     setDisabled,
@@ -38,8 +40,14 @@ export const NavbarProvider: ParentComponent = props => {
     currentPage,
     setCurrentPage,
     open: () => setOpen(true),
-    close: () => setOpen(false),
+    close: () => {
+      setShowMore(false);
+      setOpen(false);
+    },
     toggle: _open => setOpen(_was => _open ?? !_was),
+    showMore: () => setShowMore(true),
+    hideMore: () => setShowMore(false),
+    toggleMore: _show => setShowMore(_was => _show ?? !_was),
   };
 
   return <NavbarContext.Provider value={state}>{props.children}</NavbarContext.Provider>;
