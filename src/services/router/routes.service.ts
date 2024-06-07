@@ -3,6 +3,7 @@ import { createSignal, lazy } from 'solid-js';
 import type { RouteDefinition } from '@solidjs/router/dist/types';
 
 import { lazyWithProps } from '~/components/common/lazy/lazy-with-props';
+import { AppLink } from '~/models';
 import { AnimationDuration, Colors } from '~/themes';
 
 export enum Routes {
@@ -32,6 +33,7 @@ export type RouteMeta = {
   name: keyof typeof Routes;
   title: string;
   navbar?: boolean;
+  more?: boolean;
   color?: string;
   bgColor?: string | Colors;
   accentColor?: string;
@@ -144,7 +146,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Particles,
     name: 'Particles',
     title: 'routes.title.particles',
-    navbar: false,
+    navbar: true,
+    more: true,
     color: Colors.white,
     bgColor: Colors.black,
   },
@@ -152,7 +155,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Beams,
     name: 'Beams',
     title: 'routes.title.beams',
-    navbar: false,
+    navbar: true,
+    more: true,
     color: Colors.white,
     bgColor: Colors.black,
   },
@@ -160,7 +164,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.RedirectTo,
     name: 'RedirectTo',
     title: 'routes.title.redirect_to',
-    navbar: false,
+    navbar: true,
+    more: true,
     color: Colors.white,
     bgColor: Colors.black,
   },
@@ -257,5 +262,32 @@ export const RoutesDefinitions: RouteDefinition[] = [
     path: Routes.RedirectTo,
     component: lazy(() => import('~/components/pages/redirect/redirect-to')),
     data: getData(RoutesMeta.RedirectTo),
+  },
+];
+
+export type ExternalRoute = Pick<RouteMeta, 'title'> & { path: string; name: string };
+
+export type BaseRoute = RouteMeta | ExternalRoute;
+
+export const externalRoutes: ExternalRoute[] = [
+  {
+    path: `${AppLink.pages}/about-me`,
+    name: 'AboutMe',
+    title: 'routes.title.about_me',
+  },
+  {
+    path: `${AppLink.pages}/synology-download`,
+    name: 'SynologyDownload',
+    title: 'routes.title.synology_download',
+  },
+  {
+    path: `${AppLink.pages}/trakt-extension`,
+    name: 'TraktExtension',
+    title: 'routes.title.trakt_extension',
+  },
+  {
+    path: `${AppLink.pages}/image-viewer`,
+    name: 'ImageViewer',
+    title: 'routes.title.image_viewer',
   },
 ];

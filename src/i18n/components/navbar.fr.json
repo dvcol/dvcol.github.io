@@ -2,5 +2,7 @@
   "social": {
     "github": "Github",
     "linked": "Linked"
-  }
+  },
+  "show_more": "Afficher plus de liens",
+  "show_less": "Masquer les liens"
 }

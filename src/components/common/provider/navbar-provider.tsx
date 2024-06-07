@@ -27,6 +27,12 @@ export const NavbarProvider: ParentComponent = props => {
   const isNotDisabledAndOpen = createMemo(() => !isDisabled() && isOpen());
   const isNotDisabledAndScrollable = createMemo(() => !isDisabled() && isScrollable());
 
+  const open = () => setOpen(true);
+  const close = () => {
+    setShowMore(false);
+    setOpen(false);
+  };
+
   const state: NavbarState = {
     isOpen: isNotDisabledAndOpen,
     isShowMore: showMore,
@@ -39,12 +45,9 @@ export const NavbarProvider: ParentComponent = props => {
     setScrollable,
     currentPage,
     setCurrentPage,
-    open: () => setOpen(true),
-    close: () => {
-      setShowMore(false);
-      setOpen(false);
-    },
-    toggle: _open => setOpen(_was => _open ?? !_was),
+    open,
+    close,
+    toggle: (_open = isOpen()) => (_open ? close() : open()),
     showMore: () => setShowMore(true),
     hideMore: () => setShowMore(false),
     toggleMore: _show => setShowMore(_was => _show ?? !_was),
