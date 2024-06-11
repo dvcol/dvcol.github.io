@@ -34,6 +34,7 @@ export type RouteMeta = {
   title: string;
   navbar?: boolean;
   more?: boolean;
+  external?: boolean;
   color?: string;
   bgColor?: string | Colors;
   accentColor?: string;
@@ -265,7 +266,7 @@ export const RoutesDefinitions: RouteDefinition[] = [
   },
 ];
 
-export type ExternalRoute = Pick<RouteMeta, 'title'> & { path: string; name: string };
+export type ExternalRoute = Pick<RouteMeta, 'title' | 'external'> & { path: string; name: string };
 
 export type BaseRoute = RouteMeta | ExternalRoute;
 
@@ -274,20 +275,24 @@ export const externalRoutes: ExternalRoute[] = [
     path: `${AppLink.pages}/about-me`,
     name: 'AboutMe',
     title: 'routes.title.about_me',
+    external: true,
   },
   {
     path: `${AppLink.pages}/synology-download`,
     name: 'SynologyDownload',
     title: 'routes.title.synology_download',
+    external: true,
   },
   {
     path: `${AppLink.pages}/trakt-extension`,
     name: 'TraktExtension',
     title: 'routes.title.trakt_extension',
+    external: true,
   },
   {
     path: `${AppLink.pages}/image-viewer`,
     name: 'ImageViewer',
     title: 'routes.title.image_viewer',
+    external: true,
   },
 ];

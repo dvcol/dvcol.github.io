@@ -38,6 +38,7 @@ export const Navbar: Component<{ routes?: BaseRoute[]; more?: BaseRoute[] }> = p
                 class={`${styles.link} ${styles.link__page}`}
                 classList={{ [styles.link__active]: active()?.path === route.path }}
                 href={route.path}
+                target={route.external ? '_blank' : undefined}
                 onclick={close}
                 title={t(`routes.title.${camelToSnakeCase(route.name)}`)?.toString()}
               >
@@ -116,6 +117,7 @@ export const Navbar: Component<{ routes?: BaseRoute[]; more?: BaseRoute[] }> = p
                 <Link
                   class={`${styles.link} ${styles.link__more} ${styles.link__faded}`}
                   href={route.path}
+                  target={route.external ? '_blank' : undefined}
                   title={t(`routes.title.${camelToSnakeCase(route.name)}`)?.toString()}
                 >
                   {t(`routes.${camelToSnakeCase(route.name)}`)?.toString()}
