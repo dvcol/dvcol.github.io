@@ -37,6 +37,7 @@ export type RouteMeta = {
   external?: boolean;
   color?: string;
   bgColor?: string | Colors;
+  themeColor?: string | Colors;
   accentColor?: string;
   transition?: number;
 };
@@ -104,7 +105,8 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     accentColor: Colors.trakt,
     color: Colors.white,
-    bgColor: Colors.black,
+    bgColor: Colors.DarkGrey,
+    themeColor: Colors.trakt,
   },
   Synology: {
     path: Routes.Synology,
@@ -122,6 +124,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     color: Colors.white,
     bgColor: Colors.black,
     accentColor: Colors.SynologyDemo,
+    themeColor: Colors.Blue,
   },
   AboutMe: {
     path: Routes.AboutMe,
@@ -130,6 +133,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     navbar: true,
     accentColor: Colors.white,
     bgColor: Colors.theme,
+    themeColor: Colors.Blue,
   },
   Contact: {
     path: Routes.Contact,

@@ -13,6 +13,7 @@ import { StackPageTransition } from '~/components/common/stack/stack-page-transi
 import { RoutesMetas, useNavbar, useRouteData } from '~/services';
 import { useI18n } from '~/services/i18n';
 import { Colors } from '~/themes';
+import { useThemeColor } from '~/utils/hooks.utils';
 
 type TransformOptions = { offset?: number; brightness?: number } & Omit<JSX.CSSProperties, 'offset' | 'filter' | 'transform'>;
 const offsetTransform = (options: TransformOptions = {}, _styles?: JSX.CSSProperties): JSX.CSSProperties => {
@@ -70,6 +71,7 @@ export const Stack: ParentComponent = props => {
   };
 
   const [background, setBackground] = createSignal<string>();
+  const [, setThemeColor] = useThemeColor();
 
   let backgroundTimeout: NodeJS.Timeout;
   createEffect(() => {
@@ -77,19 +79,25 @@ export const Stack: ParentComponent = props => {
 
     const activeDelay = active()?.transition;
     const activeBgColor = active()?.bgColor;
+    const activeThemeColor = active()?.themeColor;
 
     if (activeDelay && activeBgColor) {
-      backgroundTimeout = setTimeout(() => setBackground(activeBgColor), activeDelay / 2);
+      backgroundTimeout = setTimeout(() => {
+        setBackground(activeBgColor);
+        setThemeColor(activeThemeColor ?? activeBgColor);
+      }, activeDelay / 2);
       return;
     }
-    if (activeBgColor) return setBackground(activeBgColor);
-    return setBackground(Colors.theme);
-  });
 
-  createEffect(() => {
-    const themeColor = document.querySelector('#meta-theme-color');
-    const newValue = background();
-    if (themeColor && newValue) themeColor?.setAttribute('content', newValue);
+    if (activeDelay && activeThemeColor) {
+      setBackground(activeBgColor ?? Colors.theme);
+      backgroundTimeout = setTimeout(() => {
+        setThemeColor(activeThemeColor ?? activeBgColor);
+      }, activeDelay / 2);
+      return;
+    }
+    setBackground(activeBgColor ?? Colors.theme);
+    setThemeColor(activeThemeColor ?? activeBgColor ?? Colors.theme);
   });
 
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);

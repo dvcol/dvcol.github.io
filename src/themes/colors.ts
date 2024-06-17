@@ -12,4 +12,6 @@ export enum Colors {
   Yellow = '#fad053',
   DarkRed = 'darkred',
   Navy = 'navy',
+  Blue = '#1d00ff',
+  Purple = '#800080',
 }
