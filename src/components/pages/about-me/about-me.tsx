@@ -2,7 +2,7 @@ import { useNavigate } from '@solidjs/router';
 
 import { Box, useMediaQuery } from '@suid/material';
 
-import { createSignal, Show } from 'solid-js';
+import { createEffect, createSignal, Show } from 'solid-js';
 
 import type { Component } from 'solid-js';
 
@@ -15,8 +15,9 @@ import { LottiePlayer } from '~/components/common/lottie';
 import { InView } from '~/components/common/utils';
 import { ContactForm } from '~/components/pages/contact';
 
-import { Routes, useNavbar } from '~/services';
-import { BreakPoints } from '~/themes';
+import { Routes, useNavbar, useRouteData } from '~/services';
+import { BreakPoints, Colors } from '~/themes';
+import { useThemeColor } from '~/utils';
 
 const Fallback: Component = () => <Spinner center size={10} debounce={500} />;
 
@@ -35,6 +36,17 @@ export const AboutMe: Component = () => {
   const isFHD = useMediaQuery(`(min-width: ${BreakPoints.fhd}px)`);
 
   const { isScrolled } = useNavbar();
+  const { active } = useRouteData();
+
+  const [themeColor, setThemeColor] = useThemeColor();
+
+  createEffect(() => {
+    if (isScrolled() > window.innerHeight) {
+      if (themeColor() !== Colors.AboutMe) setThemeColor(Colors.AboutMe);
+    } else if (themeColor() !== active()?.themeColor) {
+      setThemeColor(active()?.themeColor ?? Colors.theme);
+    }
+  });
 
   return (
     <Page maxWidth="fhd">
