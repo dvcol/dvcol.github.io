@@ -70,6 +70,7 @@ export default defineConfig({
           /[^#]*\/synology-download([/?].*|#\/?|$)/,
           /[^#]*\/trakt-extension([/?].*|#\/?|$)/,
           /[^#]*\/image-viewer([/?].*|#\/?|$)/,
+          /[^#]*\/syno-trakt([/?].*|#\/?|$)/,
           /^\/assets\/.*/,
           /[?&]no-sw=true/,
         ],

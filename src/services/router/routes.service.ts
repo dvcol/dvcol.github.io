@@ -299,4 +299,10 @@ export const externalRoutes: ExternalRoute[] = [
     title: 'routes.title.image_viewer',
     external: true,
   },
+  {
+    path: `${AppLink.pages}/syno-trakt`,
+    name: 'SynoTrakt',
+    title: 'routes.title.syno_trakt',
+    external: true,
+  },
 ];
