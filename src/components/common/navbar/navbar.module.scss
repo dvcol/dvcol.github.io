@@ -31,14 +31,16 @@
 
 .pages_nav__item {
   display: flex;
-  flex: 1 1 30%;
+  flex: 0 1 30%;
   align-items: center;
   justify-content: center;
+  min-width: max-content;
   padding: 1em 0;
+  text-align: center;
 
   &__social {
     flex: 0 1 120px;
-    min-width: 8rem;
+    min-width: 7rem;
     transform: translate3d(0, 20px, 0);
     opacity: 0;
     transition: -webkit-transform 1.2s, opacity 1.2s;
@@ -259,22 +261,10 @@ a.link {
 @media screen and (min-width: 1919px) {
   .pages_nav {
     &__item {
-      flex: 1 1 10%;
+      flex: 0 1 12.5rem;
 
       &__social {
-        flex: 0 1 10%;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 2159px) {
-  .pages_nav {
-    &__item {
-      flex: 1 1 10%;
-
-      &__social {
-        flex: 0 1 10%;
+        flex: 0 1 12.5rem;
       }
     }
   }
