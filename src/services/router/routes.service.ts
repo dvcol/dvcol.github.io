@@ -20,6 +20,8 @@ export enum Routes {
   AboutMe = '/about/me',
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
+  SynoTraktApp = '/syno-trakt-app',
+  SynoTraktAppDemo = '/syno-trakt/demo',
   Contact = '/contact',
 
   /** Hidden pages **/
@@ -95,7 +97,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Trakt,
     name: 'Trakt',
     title: 'routes.title.trakt',
-    navbar: true,
     color: Colors.white,
   },
   TraktDemo: {
@@ -112,7 +113,6 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Synology,
     name: 'Synology',
     title: 'routes.title.synology',
-    navbar: true,
     color: Colors.white,
     bgColor: Colors.theme,
   },
@@ -125,6 +125,22 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     bgColor: Colors.black,
     accentColor: Colors.SynologyDemo,
     themeColor: Colors.Blue,
+  },
+  SynoTraktApp: {
+    path: Routes.SynoTraktApp,
+    name: 'SynoTraktApp',
+    title: 'routes.title.syno-trakt-app',
+    navbar: true,
+    color: Colors.white,
+    bgColor: Colors.theme,
+  },
+  SynoTraktAppDemo: {
+    path: Routes.SynoTraktAppDemo,
+    name: 'SynoTraktAppDemo',
+    title: 'routes.title.syno-trakt-app-demo',
+    navbar: true,
+    color: Colors.white,
+    bgColor: Colors.SynoTrakt,
   },
   AboutMe: {
     path: Routes.AboutMe,
@@ -250,6 +266,16 @@ export const RoutesDefinitions: RouteDefinition[] = [
     path: Routes.Contact,
     component: lazy(() => import('~/components/pages/contact/contact')),
     data: getData(RoutesMeta.Contact),
+  },
+  {
+    path: `${Routes.SynoTraktApp}/*`,
+    component: lazy(() => import('~/components/pages/syno-trakt/syno-trakt')),
+    data: getData(RoutesMeta.SynoTraktApp),
+  },
+  {
+    path: `${Routes.SynoTraktAppDemo}/*`,
+    component: lazy(() => import('~/components/pages/syno-trakt/syno-trakt-demo')),
+    data: getData(RoutesMeta.SynoTraktAppDemo),
   },
 
   /** Hidden pages **/

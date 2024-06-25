@@ -39,7 +39,7 @@ export const TraktDemo: Component = () => {
       <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
         <Box
           sx={{
-            margin: '2rem 1rem',
+            margin: '2rem 2rem',
           }}
         >
           <wc-trakt-extension
