@@ -126,7 +126,7 @@ export const useOverScrollHandler = (options: Options) => {
 };
 
 export type StopScrollPropagationOption = { stopPropagation?: boolean; preventDefault?: boolean };
-export const stopScrollPropagation = <T extends HTMLElement>(ref: T, options: StopScrollPropagationOption = {}) => {
+export const stopScrollPropagation = <T extends HTMLElement | Document>(ref: T, options: StopScrollPropagationOption = {}) => {
   if (!ref) return;
   const { stopPropagation, preventDefault } = { stopPropagation: true, preventDefault: false, ...options };
   const eventListener = (e: Event) => {
