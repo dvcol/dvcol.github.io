@@ -129,7 +129,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
   SynoTraktApp: {
     path: Routes.SynoTraktApp,
     name: 'SynoTraktApp',
-    title: 'routes.title.syno-trakt-app',
+    title: 'routes.title.syno_trakt_app',
     navbar: true,
     color: Colors.white,
     bgColor: Colors.theme,
@@ -137,7 +137,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
   SynoTraktAppDemo: {
     path: Routes.SynoTraktAppDemo,
     name: 'SynoTraktAppDemo',
-    title: 'routes.title.syno-trakt-app-demo',
+    title: 'routes.title.syno_trakt_app_demo',
     navbar: true,
     color: Colors.white,
     bgColor: Colors.SynoTrakt,

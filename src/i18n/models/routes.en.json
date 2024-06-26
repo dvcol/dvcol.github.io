@@ -28,6 +28,8 @@
     "trakt_demo": "Trakt Demo | Interactive demo of Side Trakt",
     "synology": "Synology | A chrome extension for Synology NAS",
     "synology_demo": "Synology Demo | Interactive demo of Synology Download",
+    "syno_trakt_app": "Syno-Trakt | A react native app for Synology NAS and Trakt.tv",
+    "syno_trakt_app_demo": "Syno-Trakt Demo | Interactive demo of Syno-Trakt",
     "about_me": "About Me | About my projects and experiences",
     "contact": "Contact | Contact form",
     "not_found": "404 | Page not Found",
@@ -40,6 +42,7 @@
 
     "synology_download": "Synology Download | A chrome extension for Synology NAS",
     "trakt_extension": "Trakt Extension | A chrome extension for Trakt.tv",
-    "image_viewer": "Image Viewer | A simple image viewer"
+    "image_viewer": "Image Viewer | A simple image viewer",
+    "syno_trakt": "Syno-Trakt | A react native app for Synology NAS and Trakt.tv"
   }
 }
