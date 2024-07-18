@@ -44,7 +44,12 @@ export const TraktDemo: Component = () => {
         >
           <wc-trakt-extension
             ref={setWcRef}
-            style={{ height: 'calc(100dvh - 4rem)', overflow: 'hidden', position: 'relative', background: Colors.DarkGrey }}
+            style={{
+              '--full-height': 'calc(-4rem + 100dvh)',
+              overflow: 'hidden',
+              position: 'relative',
+              background: Colors.DarkGrey,
+            }}
           >
             <Spinner center size={10} debounce={500} />
           </wc-trakt-extension>

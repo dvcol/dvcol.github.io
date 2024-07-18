@@ -53,6 +53,7 @@ export const ContactForm: Component<ContactFormProps> = props => {
       { value: t('contact.form.subject.option.job') },
       { value: t('contact.form.subject.option.inquiry') },
       { value: t('contact.form.subject.option.synology') },
+      { value: t('contact.form.subject.option.trakt') },
       { value: t('contact.form.subject.option.other') },
     ],
     controlProps: {
