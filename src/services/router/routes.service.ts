@@ -20,8 +20,6 @@ export enum Routes {
   AboutMe = '/about/me',
   Synology = '/synology',
   SynologyDemo = '/synology/demo',
-  SynoTraktApp = '/syno-trakt-app',
-  SynoTraktAppDemo = '/syno-trakt/demo',
   Contact = '/contact',
 
   /** Hidden pages **/
@@ -93,11 +91,15 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     accentColor: Colors.white,
     bgColor: Colors.black,
   },
-  Trakt: {
-    path: Routes.Trakt,
-    name: 'Trakt',
-    title: 'routes.title.trakt',
+  SynologyDemo: {
+    path: Routes.SynologyDemo,
+    name: 'SynologyDemo',
+    title: 'routes.title.synology_demo',
+    navbar: true,
     color: Colors.white,
+    bgColor: Colors.black,
+    accentColor: Colors.SynologyDemo,
+    themeColor: Colors.Blue,
   },
   TraktDemo: {
     path: Routes.TraktDemo,
@@ -115,32 +117,14 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     title: 'routes.title.synology',
     color: Colors.white,
     bgColor: Colors.theme,
-  },
-  SynologyDemo: {
-    path: Routes.SynologyDemo,
-    name: 'SynologyDemo',
-    title: 'routes.title.synology_demo',
     navbar: true,
-    color: Colors.white,
-    bgColor: Colors.black,
-    accentColor: Colors.SynologyDemo,
-    themeColor: Colors.Blue,
   },
-  SynoTraktApp: {
-    path: Routes.SynoTraktApp,
-    name: 'SynoTraktApp',
-    title: 'routes.title.syno_trakt_app',
-    navbar: true,
+  Trakt: {
+    path: Routes.Trakt,
+    name: 'Trakt',
+    title: 'routes.title.trakt',
     color: Colors.white,
-    bgColor: Colors.theme,
-  },
-  SynoTraktAppDemo: {
-    path: Routes.SynoTraktAppDemo,
-    name: 'SynoTraktAppDemo',
-    title: 'routes.title.syno_trakt_app_demo',
     navbar: true,
-    color: Colors.white,
-    bgColor: Colors.SynoTrakt,
   },
   AboutMe: {
     path: Routes.AboutMe,
@@ -267,16 +251,6 @@ export const RoutesDefinitions: RouteDefinition[] = [
     component: lazy(() => import('~/components/pages/contact/contact')),
     data: getData(RoutesMeta.Contact),
   },
-  {
-    path: `${Routes.SynoTraktApp}/*`,
-    component: lazy(() => import('~/components/pages/syno-trakt/syno-trakt')),
-    data: getData(RoutesMeta.SynoTraktApp),
-  },
-  {
-    path: `${Routes.SynoTraktAppDemo}/*`,
-    component: lazy(() => import('~/components/pages/syno-trakt/syno-trakt-demo')),
-    data: getData(RoutesMeta.SynoTraktAppDemo),
-  },
 
   /** Hidden pages **/
   {
@@ -323,12 +297,6 @@ export const externalRoutes: ExternalRoute[] = [
     path: `${AppLink.pages}/image-viewer`,
     name: 'ImageViewer',
     title: 'routes.title.image_viewer',
-    external: true,
-  },
-  {
-    path: `${AppLink.pages}/syno-trakt`,
-    name: 'SynoTrakt',
-    title: 'routes.title.syno_trakt',
     external: true,
   },
 ];

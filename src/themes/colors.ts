@@ -14,5 +14,4 @@ export enum Colors {
   Navy = 'navy',
   Blue = '#1d00ff',
   Purple = '#800080',
-  SynoTrakt = '#151718',
 }
