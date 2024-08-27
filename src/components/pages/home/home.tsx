@@ -44,6 +44,18 @@ export const Home: Component = () => {
     },
     {
       id: uuid(),
+      path: RoutesMeta.TraktDemo.path,
+      title: RoutesMeta.TraktDemo.name,
+      videoProps: {
+        source: { src: 'assets/video/trakt-extension-preview.hevc.mp4', type: MimeType.MP4 },
+      },
+      bgColors: {
+        source: RoutesMeta.TraktDemo.accentColor,
+        target: RoutesMeta.TraktDemo.bgColor,
+      },
+    },
+    {
+      id: uuid(),
       path: RoutesMeta.AboutMe.path,
       title: RoutesMeta.AboutMe.name,
       imageProps: { sx: { background: 'darkblue' } },
@@ -54,18 +66,6 @@ export const Home: Component = () => {
           background: 'linear-gradient(-45deg, #ff5600, #ff0667, #8400f8, #1d00ff)',
           backgroundSize: '400% 400%',
         },
-      },
-    },
-    {
-      id: uuid(),
-      path: RoutesMeta.TraktDemo.path,
-      title: RoutesMeta.TraktDemo.name,
-      videoProps: {
-        source: { src: 'assets/video/trakt-extension-preview.hevc.mp4', type: MimeType.MP4 },
-      },
-      bgColors: {
-        source: RoutesMeta.TraktDemo.accentColor,
-        target: RoutesMeta.TraktDemo.bgColor,
       },
     },
     {
