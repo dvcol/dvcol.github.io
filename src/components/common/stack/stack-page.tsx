@@ -63,7 +63,7 @@ export const StackPage: ParentComponent<StackPageProps> = props => {
   });
 
   const showProgress: Accessor<boolean> = createMemo(() => !!(props.active && !isOpen() && isScrollable() && !inFlight()));
-  const accentColor: Accessor<boolean> = createMemo(() => props.active?.accentColor ?? props.active?.color ?? Colors.accent);
+  const accentColor: Accessor<boolean> = createMemo(() => props.active?.accentColor ?? props.active?.color ?? Colors.Accent);
 
   onCleanup(() => containerRef()?.removeEventListener('scroll', scrollListener));
 

@@ -39,8 +39,8 @@ export const TraktDemo: Component = () => {
     <BackgroundBeams
       animated={true}
       stop={{
-        head: Colors.traktBright,
-        tail: Colors.trakt,
+        head: Colors.TraktBright,
+        tail: Colors.Trakt,
       }}
     >
       <Page maxWidth="hd" animate="fade">
@@ -63,7 +63,7 @@ export const TraktDemo: Component = () => {
                 '--full-height': 'calc(-4rem + 100dvh)',
                 overflow: 'hidden',
                 position: 'relative',
-                background: Colors.DarkGrey,
+                background: Colors.TraktGrey,
               }}
             >
               <Spinner center size={10} debounce={500} />

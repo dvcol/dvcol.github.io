@@ -88,7 +88,7 @@ export const Home: Component = () => {
     setClicked(id);
     return transition({
       event,
-      colors: [source, Colors.background, target],
+      colors: [source, Colors.Background, target],
       position: {
         top: event.clientY,
         left: event.clientX,

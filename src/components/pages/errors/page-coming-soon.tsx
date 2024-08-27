@@ -14,7 +14,7 @@ export const PageComingSoon: Component<{ background?: string }> = props => {
       subtitle={t('page_coming_soon.subtitle')}
       description={t('page_coming_soon.description')}
       contentProps={{ sx: { overflow: { [BreakPointsStop.default]: 'hidden', [BreakPointsStop.desktop]: 'inherit' } } }}
-      page={{ background: { color: props.background ?? Colors.theme } }}
+      page={{ background: { color: props.background ?? Colors.Theme } }}
     >
       <LottiePlayer style={{ transform: 'translateX(-10%)', scale: '1.3', 'pointer-events': 'none' }} autoplay loop src={ComingSoonLottie} />
     </ErrorPage>

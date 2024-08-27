@@ -44,7 +44,7 @@ export const ProgressBar: Component<{ container?: Accessor<HTMLElement | undefin
         top: 0,
         width: '100%',
         height: '0.125rem',
-        background: Colors.accent,
+        background: Colors.Accent,
         scale: `${progress()} 1`,
         willChange: 'scale',
         transition: 'scale 100ms',

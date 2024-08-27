@@ -56,7 +56,7 @@ export const RedirectTo: Component<{ background?: string }> = props => {
       subtitle={t('page_redirect_to.subtitle')}
       description={t('page_redirect_to.description')}
       contentProps={{ sx: { overflow: { [BreakPointsStop.default]: 'hidden', [BreakPointsStop.desktop]: 'inherit' } } }}
-      page={{ background: { color: props.background ?? Colors.theme } }}
+      page={{ background: { color: props.background ?? Colors.Theme } }}
     >
       <Box
         sx={{

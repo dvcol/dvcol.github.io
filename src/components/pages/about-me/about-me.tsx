@@ -44,7 +44,7 @@ export const AboutMe: Component = () => {
     if (isScrolled() > window.innerHeight) {
       if (themeColor() !== Colors.AboutMe) setThemeColor(Colors.AboutMe);
     } else if (themeColor() !== active()?.themeColor) {
-      setThemeColor(active()?.themeColor ?? Colors.theme);
+      setThemeColor(active()?.themeColor ?? Colors.Theme);
     }
   });
 

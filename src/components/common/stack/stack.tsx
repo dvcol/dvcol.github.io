@@ -90,14 +90,14 @@ export const Stack: ParentComponent = props => {
     }
 
     if (activeDelay && activeThemeColor) {
-      setBackground(activeBgColor ?? Colors.theme);
+      setBackground(activeBgColor ?? Colors.Theme);
       backgroundTimeout = setTimeout(() => {
         setThemeColor(activeThemeColor ?? activeBgColor);
       }, activeDelay / 2);
       return;
     }
-    setBackground(activeBgColor ?? Colors.theme);
-    setThemeColor(activeThemeColor ?? activeBgColor ?? Colors.theme);
+    setBackground(activeBgColor ?? Colors.Theme);
+    setThemeColor(activeThemeColor ?? activeBgColor ?? Colors.Theme);
   });
 
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);

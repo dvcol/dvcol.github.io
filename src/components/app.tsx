@@ -25,8 +25,8 @@ export const App: Component = () => {
             position="bottom-right"
             toastOptions={{
               style: {
-                'background-color': Colors.theme,
-                color: Colors.white,
+                'background-color': Colors.Theme,
+                color: Colors.White,
               },
             }}
           />
