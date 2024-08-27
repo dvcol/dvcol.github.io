@@ -7,6 +7,7 @@ import { createEffect, createSignal, Show } from 'solid-js';
 import type { Component } from 'solid-js';
 
 import { defineTraktExtensionComponents } from '~/apps/trakt-extension/entry';
+import BackgroundBeams from '~/components/common/beams/background-beams';
 import { Page } from '~/components/common/layout';
 import { Spinner } from '~/components/common/loader';
 
@@ -35,34 +36,42 @@ export const TraktDemo: Component = () => {
   });
 
   return (
-    <Page maxWidth="hd" animate="fade">
-      <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
-        <Box
-          sx={{
-            margin: '2rem 2rem',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            transition: 'box-shadow 1s ease-in-out',
-            boxShadow: '1px 2px 10px 2px rgba(0,0,0,0.2)',
-            '&:hover': {
-              boxShadow: '3px 6px 12px 5px rgba(0,0,0,0.3)',
-            },
-          }}
-        >
-          <wc-trakt-extension
-            ref={setWcRef}
-            style={{
-              '--full-height': 'calc(-4rem + 100dvh)',
+    <BackgroundBeams
+      animated={true}
+      stop={{
+        head: Colors.traktBright,
+        tail: Colors.trakt,
+      }}
+    >
+      <Page maxWidth="hd" animate="fade">
+        <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
+          <Box
+            sx={{
+              margin: '2rem 2rem',
+              borderRadius: '16px',
               overflow: 'hidden',
-              position: 'relative',
-              background: Colors.DarkGrey,
+              transition: 'box-shadow 1s ease-in-out',
+              boxShadow: '1px 2px 10px 2px rgba(0,0,0,0.2)',
+              '&:hover': {
+                boxShadow: '3px 6px 12px 5px rgba(0,0,0,0.3)',
+              },
             }}
           >
-            <Spinner center size={10} debounce={500} />
-          </wc-trakt-extension>
-        </Box>
-      </Show>
-    </Page>
+            <wc-trakt-extension
+              ref={setWcRef}
+              style={{
+                '--full-height': 'calc(-4rem + 100dvh)',
+                overflow: 'hidden',
+                position: 'relative',
+                background: Colors.DarkGrey,
+              }}
+            >
+              <Spinner center size={10} debounce={500} />
+            </wc-trakt-extension>
+          </Box>
+        </Show>
+      </Page>
+    </BackgroundBeams>
   );
 };
 
