@@ -25,10 +25,16 @@
   &::before {
     background: linear-gradient(130deg, #00f, #0d63f8, #90caf9, #bdd5fb);
     background-size: 200% 200%;
-    opacity: 0.25;
-    filter: blur(20px);
-    transition: opacity 0.3s;
+    opacity: 0.1;
+    filter: blur(24px);
+    transition: opacity 0.3s ease-in-out, filter 0.6s ease-in-out;
     animation: gradient 6s infinite linear;
+  }
+
+  &:focus-visible::before,
+  &:focus-within::before,
+  &:hover::before {
+    filter: blur(10px);
   }
 
   &::after {

@@ -241,7 +241,7 @@ export const SynologyDemo: Component = () => {
         <Show when={loaded()} fallback={<Spinner center size={5} debounce={500} />}>
           <Motion
             class={styles.shadow}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: '100%', height: '100%', 'border-radius': '16px', overflow: 'hidden' }}
             animate={{ opacity: [0, 1] }}
             transition={{ opacity: { duration: 1 }, translate: { duration: 1 } }}
           >

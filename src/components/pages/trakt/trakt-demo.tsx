@@ -40,6 +40,13 @@ export const TraktDemo: Component = () => {
         <Box
           sx={{
             margin: '2rem 2rem',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            transition: 'box-shadow 1s ease-in-out',
+            boxShadow: '1px 2px 10px 2px rgba(0,0,0,0.2)',
+            '&:hover': {
+              boxShadow: '3px 6px 12px 5px rgba(0,0,0,0.3)',
+            },
           }}
         >
           <wc-trakt-extension
