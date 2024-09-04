@@ -1,3 +1,4 @@
+import { Motion } from '@motionone/solid';
 import { useNavigate } from '@solidjs/router';
 import { Grid } from '@suid/material';
 
@@ -11,7 +12,7 @@ import type { BackgroundColors, ImageCardProps } from '~/components/common/layou
 
 import ContactLottie from '~/assets/lottie/64643-receive-a-new-email.json?url';
 import AboutMeSvg from '~/assets/lottie/developer-front-end-lottie.json?url';
-import { EnterTranslate, HoverScale } from '~/components/common/animation';
+import { HoverScale } from '~/components/common/animation';
 import { ImageCard, Page } from '~/components/common/layout';
 
 import { ParticlesContainer } from '~/components/common/particles';
@@ -162,7 +163,7 @@ export const Home: Component = () => {
                   pointerEvents: 'all',
                 }}
               >
-                <EnterTranslate initialDelay={200 + 120 * index()}>
+                <Motion animate={{ opacity: [0, 1], scale: [0.5, 1] }} transition={{ duration: 1, delay: (150 * index()) / 1000 }}>
                   <HoverScale from={0.95}>
                     <ImageCard
                       title={t(`routes.${camelToSnakeCase(title)}`)}
@@ -187,7 +188,7 @@ export const Home: Component = () => {
                       onclick={e => onClick(e, { id, path, bgColors })}
                     />
                   </HoverScale>
-                </EnterTranslate>
+                </Motion>
               </Grid>
             )}
           </For>
