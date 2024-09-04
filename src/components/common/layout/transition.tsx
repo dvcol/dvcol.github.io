@@ -39,6 +39,7 @@ export const Transition: Component<TransitionProps> = props => {
 
   return (
     <Box
+      id="page-transition-container"
       class={styles.transition_container}
       sx={{
         top: `${props.offset ?? 0}px`,

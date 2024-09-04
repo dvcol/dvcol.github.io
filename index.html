@@ -299,14 +299,6 @@
       text-wrap: pretty;
   }
 
-  /* Declare as container for container queries */
-  :host > :is(header, main, footer),
-  body > :is(header, main, footer),
-  section,
-  article {
-      container-type: inline-size;
-  }
-
   @media (prefers-reduced-motion: reduce) {
       :has(:target) {
           scroll-behavior: smooth;

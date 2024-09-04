@@ -167,8 +167,8 @@ export const Home: Component = () => {
                 }}
               >
                 <Motion
-                  animate={{ opacity: [firstMount() ? 0 : 1, 1], scale: [firstMount() ? 0.7 : 1, 1] }}
-                  transition={{ duration: 1, delay: (140 * index()) / 1000 }}
+                  animate={{ opacity: [0, 1], scale: [firstMount() ? 0.7 : 0.8, 1] }}
+                  transition={{ duration: 1, delay: ((firstMount() ? 140 : 70) * index()) / 1000 }}
                 >
                   <HoverScale from={0.95}>
                     <ImageCard
