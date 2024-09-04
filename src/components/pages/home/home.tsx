@@ -25,6 +25,8 @@ import { camelToSnakeCase } from '~/utils';
 const traktApiRegex = /http(s?):\/\/api(-staging)?.trakt.tv/;
 const traktCodeRegex = /[?&]code=\w+/;
 
+const [firstMount, setFirstMount] = createSignal(true);
+
 type Cards = ImageCardProps & { id: string; path: string; title: string; bgColors: { source?: BackgroundColors; target?: BackgroundColors } };
 export const Home: Component = () => {
   const navigate = useNavigate();
@@ -115,6 +117,7 @@ export const Home: Component = () => {
   onCleanup(() => {
     clearTimeout(timeout);
     setScrollable(true);
+    if (firstMount()) setFirstMount(false);
   });
 
   return (
@@ -163,7 +166,10 @@ export const Home: Component = () => {
                   pointerEvents: 'all',
                 }}
               >
-                <Motion animate={{ opacity: [0, 1], scale: [0.5, 1] }} transition={{ duration: 1, delay: (150 * index()) / 1000 }}>
+                <Motion
+                  animate={{ opacity: [firstMount() ? 0 : 1, 1], scale: [firstMount() ? 0.7 : 1, 1] }}
+                  transition={{ duration: 1, delay: (140 * index()) / 1000 }}
+                >
                   <HoverScale from={0.95}>
                     <ImageCard
                       title={t(`routes.${camelToSnakeCase(title)}`)}
