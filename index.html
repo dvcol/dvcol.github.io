@@ -232,14 +232,21 @@
 </html>
 
 <style lang="scss">
+  *,
+  *::before,
+  *::after {
+      box-sizing: border-box;
+  }
+
+  html {
+      color-scheme: dark light;
+      hanging-punctuation: first last;
+  }
+
   html,
   body {
     scroll-behavior: smooth;
     overscroll-behavior-y: none;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
   }
 
   body {
@@ -253,6 +260,10 @@
     background-color: #1d1e21;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
   }
 
   code {
@@ -260,13 +271,17 @@
       monospace;
   }
 
-  #root {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    justify-content: center;
+  /* Improve media defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+      display: block;
+      max-width: 100%;
   }
 
+  /* Avoid ugly unbalanced word wrap */
   h1,
   h2,
   h3,
@@ -274,5 +289,35 @@
   h5,
   h6 {
       text-wrap: balance;
+  }
+
+  /* Avoid ugly orphan word wrap */
+  p,
+  li,
+  figcaption {
+      max-width: 80ch;
+      text-wrap: pretty;
+  }
+
+  /* Declare as container for container queries */
+  :host > :is(header, main, footer),
+  body > :is(header, main, footer),
+  section,
+  article {
+      container-type: inline-size;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+      :has(:target) {
+          scroll-behavior: smooth;
+          scroll-padding-top: 3rem;
+      }
+  }
+
+  #root {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
   }
 </style>

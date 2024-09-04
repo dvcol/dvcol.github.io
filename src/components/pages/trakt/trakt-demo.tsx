@@ -1,3 +1,4 @@
+import { Motion } from '@motionone/solid';
 import { useNavigate } from '@solidjs/router';
 
 import { Box } from '@suid/material';
@@ -45,30 +46,37 @@ export const TraktDemo: Component = () => {
     >
       <Page maxWidth="hd" animate="fade">
         <Show when={loaded()} fallback={<Spinner center size={10} debounce={500} />}>
-          <Box
-            sx={{
-              margin: '2rem 2rem',
-              borderRadius: '16px',
-              overflow: 'hidden',
-              transition: 'box-shadow 1s ease-in-out',
-              boxShadow: '1px 2px 10px 2px rgba(0,0,0,0.2)',
-              '&:hover': {
-                boxShadow: '3px 6px 12px 5px rgba(0,0,0,0.3)',
-              },
-            }}
+          <Motion
+            style={{ margin: '2rem' }}
+            animate={{ opacity: [0, 1], scale: [0.9, 1] }}
+            transition={{ opacity: { duration: 1 }, scale: { duration: 1 } }}
           >
-            <wc-trakt-extension
-              ref={setWcRef}
-              style={{
-                '--full-height': 'calc(-4rem + 100dvh)',
+            <Box
+              sx={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '16px',
                 overflow: 'hidden',
-                position: 'relative',
-                background: Colors.TraktGrey,
+                transition: 'box-shadow 0.5s ease-in-out',
+                boxShadow: '1px 2px 10px 2px rgba(0,0,0,0.2)',
+                '&:hover': {
+                  boxShadow: '3px 6px 12px 5px rgba(0,0,0,0.3)',
+                },
               }}
             >
-              <Spinner center size={10} debounce={500} />
-            </wc-trakt-extension>
-          </Box>
+              <wc-trakt-extension
+                ref={setWcRef}
+                style={{
+                  '--full-height': 'calc(-4rem + 100dvh)',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  background: Colors.TraktGrey,
+                }}
+              >
+                <Spinner center size={10} debounce={500} />
+              </wc-trakt-extension>
+            </Box>
+          </Motion>
         </Show>
       </Page>
     </BackgroundBeams>
