@@ -71,6 +71,7 @@ export default defineConfig({
           /[^#]*\/trakt-extension([/?].*|#\/?|$)/,
           /[^#]*\/image-viewer([/?].*|#\/?|$)/,
           /[^#]*\/syno-trakt([/?].*|#\/?|$)/,
+          /[^#]*\/svelte-simple-router([/?].*|#\/?|$)/,
           /^\/assets\/.*/,
           /[?&]no-sw=true/,
         ],
