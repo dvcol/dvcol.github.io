@@ -80,7 +80,7 @@
     "standard-version": "^9.5.0",
     "stylelint": "^15.10.2",
     "typescript": "^5.1.6",
-    "vite": "^4.4.9",
+    "vite": "^4.5.5",
     "vite-plugin-i18n-resources": "^1.0.3",
     "vite-plugin-pwa": "^0.16.4",
     "vite-plugin-solid": "^2.7.0",
