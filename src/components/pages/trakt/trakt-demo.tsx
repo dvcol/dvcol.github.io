@@ -68,6 +68,7 @@ export const TraktDemo: Component = () => {
                 ref={setWcRef}
                 style={{
                   '--full-height': 'calc(-4rem + 100dvh)',
+                  '--full-width': '100%',
                   overflow: 'hidden',
                   position: 'relative',
                   background: Colors.TraktGrey,
