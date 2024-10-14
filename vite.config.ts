@@ -69,6 +69,7 @@ export default defineConfig({
           /[^#]*\/about-me([/?].*|#\/?|$)/,
           /[^#]*\/synology-download([/?].*|#\/?|$)/,
           /[^#]*\/trakt-extension([/?].*|#\/?|$)/,
+          /[^#]*\/reddit-extension([/?].*|#\/?|$)/,
           /[^#]*\/image-viewer([/?].*|#\/?|$)/,
           /[^#]*\/syno-trakt([/?].*|#\/?|$)/,
           /[^#]*\/svelte-simple-router([/?].*|#\/?|$)/,
