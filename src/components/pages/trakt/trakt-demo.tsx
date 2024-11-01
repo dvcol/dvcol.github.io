@@ -67,8 +67,18 @@ export const TraktDemo: Component = () => {
               <wc-trakt-extension
                 ref={setWcRef}
                 style={{
+                  /** height */
                   '--full-height': 'calc(-4rem + 100dvh)',
+                  '--half-height': 'calc(-4rem + 50dvh)',
+                  '--height-40-dvh': 'calc(-4rem + 40dvh)',
+                  '--height-70-dvh': 'calc(-4rem + 70dvh)',
+                  '--height-90-dvh': 'calc(-4rem + 90dvh)',
+                  /** width */
                   '--full-width': '100%',
+                  '--half-width': '50%',
+                  '--width-40-dvh': '40%',
+                  '--width-70-dvh': '70%',
+                  '--width-80-dvh': '80%',
                   overflow: 'hidden',
                   position: 'relative',
                   background: Colors.TraktGrey,
