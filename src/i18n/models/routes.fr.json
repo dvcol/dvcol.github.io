@@ -19,6 +19,8 @@
 
   "synology_download": "Synology Download",
   "trakt_extension": "Trakt Extension",
+  "reddit_extension": "Reddit Extension",
+  "svelte_simple_router": "Svelte Simple Router",
   "image_viewer": "Image Viewer",
   "syno_trakt": "Syno Trakt",
 
@@ -42,6 +44,8 @@
 
     "synology_download": "Synology Download | Une extension chrome pour Synology Download",
     "trakt_extension": "Trakt Extension | Une extension chrome pour Trakt.tv",
+    "reddit_extension": "Reddit Extension | Une extension chrome pour Reddit",
+    "svelte_simple_router": "Svelte Simple Router | Un routeur simple pour Svelte 5",
     "image_viewer": "Image Viewer | Un simple visualiseur d'images",
     "syno_trakt": "Syno-Trakt | Une application react native pour Synology Download et Trakt.tv"
   }

@@ -294,6 +294,18 @@ export const externalRoutes: ExternalRoute[] = [
     external: true,
   },
   {
+    path: `${AppLink.pages}/reddit-extension`,
+    name: 'RedditExtension',
+    title: 'routes.title.reddit_extension',
+    external: true,
+  },
+  {
+    path: `${AppLink.pages}/svelte-simple-router`,
+    name: 'SvelteSimpleRouter',
+    title: 'routes.title.svelte_simple_router',
+    external: true,
+  },
+  {
     path: `${AppLink.pages}/image-viewer`,
     name: 'ImageViewer',
     title: 'routes.title.image_viewer',
