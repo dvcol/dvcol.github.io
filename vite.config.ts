@@ -72,6 +72,7 @@ export default defineConfig({
           /[^#]*\/reddit-extension([/?].*|#\/?|$)/,
           /[^#]*\/image-viewer([/?].*|#\/?|$)/,
           /[^#]*\/syno-trakt([/?].*|#\/?|$)/,
+          /[^#]*\/neo-svelte([/?].*|#\/?|$)/,
           /[^#]*\/svelte-simple-router([/?].*|#\/?|$)/,
           /^\/assets\/.*/,
           /[?&]no-sw=true/,

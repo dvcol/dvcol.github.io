@@ -306,6 +306,12 @@ export const externalRoutes: ExternalRoute[] = [
     external: true,
   },
   {
+    path: `${AppLink.pages}/neo-svelte`,
+    name: 'NeoSvelte',
+    title: 'routes.title.neo_svelte',
+    external: true,
+  },
+  {
     path: `${AppLink.pages}/image-viewer`,
     name: 'ImageViewer',
     title: 'routes.title.image_viewer',

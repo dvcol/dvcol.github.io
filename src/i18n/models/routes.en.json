@@ -20,6 +20,7 @@
   "synology_download": "Synology Download",
   "trakt_extension": "Trakt Extension",
   "reddit_extension": "Reddit Extension",
+  "neo_svelte": "Neo Svelte",
   "svelte_simple_router": "Svelte Simple Router",
   "image_viewer": "Image Viewer",
   "syno_trakt": "Syno-Trakt",
@@ -45,6 +46,7 @@
     "synology_download": "Synology Download | A chrome extension for Synology NAS",
     "trakt_extension": "Trakt Extension | A chrome extension for Trakt.tv",
     "reddit_extension": "Reddit Extension | A chrome extension for Reddit",
+    "neo_svelte": "Neo Svelte | A neomorphic UI library for svelte 5",
     "svelte_simple_router": "Svelte Simple Router | A simple Svelte 5 router",
     "image_viewer": "Image Viewer | A simple image viewer",
     "syno_trakt": "Syno-Trakt | A react native app for Synology NAS and Trakt.tv"
