@@ -32,6 +32,9 @@ export type RouteMeta = {
   path: Routes;
   name: keyof typeof Routes;
   title: string;
+  description?: string;
+  image?: string;
+  url?: string;
   navbar?: boolean;
   more?: boolean;
   external?: boolean;
@@ -86,6 +89,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Home,
     name: 'Home',
     title: 'routes.title.home',
+    description: 'routes.description.home',
     navbar: true,
     color: Colors.White,
     accentColor: Colors.White,
@@ -95,6 +99,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.SynologyDemo,
     name: 'SynologyDemo',
     title: 'routes.title.synology_demo',
+    description: 'routes.description.synology_demo',
     navbar: true,
     color: Colors.White,
     bgColor: Colors.Black,
@@ -105,6 +110,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.TraktDemo,
     name: 'TraktDemo',
     title: 'routes.title.trakt_demo',
+    description: 'routes.description.trakt_demo',
     navbar: true,
     accentColor: Colors.Trakt,
     color: Colors.White,
@@ -115,6 +121,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Synology,
     name: 'Synology',
     title: 'routes.title.synology',
+    description: 'routes.description.synology',
     color: Colors.White,
     bgColor: Colors.Theme,
     navbar: true,
@@ -123,6 +130,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.Trakt,
     name: 'Trakt',
     title: 'routes.title.trakt',
+    description: 'routes.description.trakt',
     color: Colors.White,
     navbar: true,
   },
@@ -130,6 +138,7 @@ export const RoutesMeta: Record<keyof typeof Routes, RouteMeta> = {
     path: Routes.AboutMe,
     name: 'AboutMe',
     title: 'routes.title.about_me',
+    description: 'routes.description.about_me',
     navbar: true,
     accentColor: Colors.White,
     bgColor: Colors.Theme,
@@ -270,7 +279,7 @@ export const RoutesDefinitions: RouteDefinition[] = [
   },
 ];
 
-export type ExternalRoute = Pick<RouteMeta, 'title' | 'external'> & { path: string; name: string };
+export type ExternalRoute = Pick<RouteMeta, 'title' | 'description' | 'url' | 'image' | 'external'> & { path: string; name: string };
 
 export type BaseRoute = RouteMeta | ExternalRoute;
 
@@ -279,42 +288,49 @@ export const externalRoutes: ExternalRoute[] = [
     path: `${AppLink.pages}/about-me`,
     name: 'AboutMe',
     title: 'routes.title.about_me',
+    description: 'routes.description.about_me',
     external: true,
   },
   {
     path: `${AppLink.pages}/synology-download`,
     name: 'SynologyDownload',
     title: 'routes.title.synology_download',
+    description: 'routes.description.synology_download',
     external: true,
   },
   {
     path: `${AppLink.pages}/trakt-extension`,
     name: 'TraktExtension',
     title: 'routes.title.trakt_extension',
+    description: 'routes.description.trakt_extension',
     external: true,
   },
   {
     path: `${AppLink.pages}/reddit-extension`,
     name: 'RedditExtension',
     title: 'routes.title.reddit_extension',
+    description: 'routes.description.reddit_extension',
     external: true,
   },
   {
     path: `${AppLink.pages}/svelte-simple-router`,
     name: 'SvelteSimpleRouter',
     title: 'routes.title.svelte_simple_router',
+    description: 'routes.description.svelte_simple_router',
     external: true,
   },
   {
     path: `${AppLink.pages}/neo-svelte`,
     name: 'NeoSvelte',
     title: 'routes.title.neo_svelte',
+    description: 'routes.description.neo_svelte',
     external: true,
   },
   {
     path: `${AppLink.pages}/image-viewer`,
     name: 'ImageViewer',
     title: 'routes.title.image_viewer',
+    description: 'routes.description.image_viewer',
     external: true,
   },
 ];

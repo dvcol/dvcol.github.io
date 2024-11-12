@@ -27,18 +27,21 @@
 
   "title": {
     "home": "Dinh-Van Colomban | Project portfolio",
+
     "trakt": "Trakt | Une extension chrome pour Trakt.tv",
     "trakt_demo": "Trakt Demo | Une démo interactive pour Side Trakt",
+
     "synology": "Synology | Une extension chrome pour les NAS Synology",
     "synology_demo": "Synology Demo | Une démo interactive pou Synology Download",
-    "syno_trakt_app": "Syno-Trakt | Une application react native pour Synology Download et Trakt.tv",
-    "syno_trakt_app_demo": "Syno-Trakt Demo | Une démo interactive pour Syno-Trakt",
+
     "about_me": "A propos | A propos de mes projects et expériences.",
     "contact": "Contact | Formulaire de contact",
+
     "not_found": "404 | Page non trouvée",
     "unauthorized": "401 | Page non autorisée",
     "forbidden": "403 | Page interdite",
     "error": "500 | Erreur interne du serveur",
+
     "particles": "Background | Particules animées",
     "beams": "Background | Faisceaux animés",
     "redirect_to": "Redirect | Redirection vers une autre page",
@@ -47,8 +50,26 @@
     "trakt_extension": "Trakt Extension | Une extension chrome pour Trakt.tv",
     "reddit_extension": "Reddit Extension | Une extension chrome pour Reddit",
     "neo_svelte": "Neo Svelte | Une library d'UI neomorphic for svelte 5",
-    "svelte_simple_router": "Svelte Simple Router | Un routeur simple pour Svelte 5",
-    "image_viewer": "Image Viewer | Un simple visualiseur d'images",
-    "syno_trakt": "Syno-Trakt | Une application react native pour Synology Download et Trakt.tv"
+    "svelte_simple_router": "Svelte Simple Router | Un simple router SPA pour Svelte 5",
+    "image_viewer": "Image Viewer | Un simple visualiseur d'images"
+  },
+
+  "description": {
+    "home": "Site personnel de Dinh-Van Colomban. Mes projets, démos et portfolio.",
+
+    "trakt": "Une extension chrome pour Trakt.tv. Suivez vos séries et films préférés.",
+    "trakt_demo": "Une démo interactive pour Side Trakt. Une extension chrome pour Trakt.tv.",
+
+    "synology": "Une extension chrome pour Synology NAS. Gérez vos téléchargements et fichiers.",
+    "synology_demo": "Une démo interactive pour Synology Download. Une extension chrome pour Synology NAS.",
+
+    "about_me": "A propos de Dinh-Van Colomban. Mes projets et expériences.",
+
+    "synology_download": "Une extension chrome pour Synology NAS. Gérez vos téléchargements et fichiers.",
+    "trakt_extension": "Une extension chrome pour Trakt.tv. Suivez vos séries et films préférés.",
+    "reddit_extension": "Une extension chrome pour Reddit. Suivez vos subreddits préférés.",
+    "neo_svelte": "Une library d'UI neomorphic pour Svelte 5.",
+    "svelte_simple_router": "Un simple router SPA pour Svelte 5.",
+    "image_viewer": "Un simple visualiseur d'images."
   }
 }
