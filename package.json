@@ -85,7 +85,7 @@
     "vite-plugin-pwa": "^0.16.4",
     "vite-plugin-solid": "^2.7.0",
     "vite-plugin-solid-svg": "^0.7.0",
-    "vitest": "^0.34.0",
+    "vitest": "^3.0.0",
     "workbox-window": "^7.0.0"
   },
   "lint-staged": {
